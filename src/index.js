@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import store from 'connect-mongo';
 import db from './db';
+import router from './router';
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use(session({
   checkExpirationInterval: 9000000,
   expiration: 86400000,
 }));
-
+app.use('/api', router);
 app.use('*', (req, res) => res.redirect('/'));
 
 const port = process.env.PORT || 3001;

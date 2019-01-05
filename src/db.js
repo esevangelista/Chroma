@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 
 mongoose.Promise = global.Promise;
 
-const db = mongoose.createConnection('mongodb://localhost/chroma', { useNewUrlParser: true });
+const db = mongoose.createConnection('mongodb://localhost/chroma', {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+});
 
 /* eslint-disable-next-line no-console */
 db.on('error', err => console.log(err));
