@@ -1,0 +1,14 @@
+version: 1
+jobs:
+   build:
+     docker:
+       - image: circleci/node:9.5.0
+       - image: mongo:3.4.10
+     steps:
+       - checkout
+       - run:
+           name: Install dependencies
+           command: yarn install
+       - run:
+           name: Check server linting
+           command: yarn lint
