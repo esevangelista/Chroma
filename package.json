@@ -19,6 +19,7 @@
     "connect-mongo": "^2.0.1",
     "crypto": "^1.0.1",
     "dotenv": "^6.2.0",
+    "escape-string-regexp": "^1.0.5",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "lodash": "^4.17.11",
@@ -26,7 +27,8 @@
     "mongoose-paginate": "^5.0.3",
     "mongoose-unique-validator": "^2.0.2",
     "nodemailer": "^5.0.0",
-    "validator": "^9.4.1"
+    "validator": "^9.4.1",
+    "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
