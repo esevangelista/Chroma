@@ -1,22 +1,15 @@
-class BaseError extends Error {
-  constructor(statusCode, description, internalError) {
-    super(internalError ? internalError.message : description);
-    if (internalError) {
-      this.stack = internalError.stack;
-      this.name = internalError.name;
-    } else {
-      Error.captureStackTrace(this, BaseError);
-    }
+class BaseError {
+  constructor(statusCode, message) {
     this.statusCode = statusCode;
-    this.description = description;
+    this.message = message;
   }
 }
 
 class InternalServerError extends BaseError {
-  constructor(internalError) {
-    super(500, 'Something went wrong please try again later.', internalError);
+  constructor(err) {
+    super(500, 'Something went wrong');
+    this.description = err;
   }
 }
-
 exports.BaseError = BaseError;
 exports.InternalServerError = InternalServerError;

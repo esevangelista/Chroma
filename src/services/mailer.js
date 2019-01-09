@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import path from 'path';
 
 require('dotenv').load();
 
@@ -10,6 +11,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 export function sendEmail(options) {
+  const logoPath = path.join(__dirname, '../utils/email/template/logo.png');
   const defaults = {
     from: '"Postmaster Chroma" <postmaster.chroma@gmail.com>',
     replyTo: 'postmaster.chroma@gmail.com',
@@ -17,6 +19,11 @@ export function sendEmail(options) {
     subject: 'test subject',
     text: 'test message',
     html: '<b>test html message</b>',
+    attachments: [{
+      filename: 'logo.png',
+      path: logoPath,
+      cid: 'logo_cid',
+    }],
   };
 
   const mailOpts = Object.assign({}, defaults, options);

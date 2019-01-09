@@ -9,6 +9,7 @@ router
   .post(passwordStrengthCheck, userController.addUser)
   .get(userController.getUsers);
 
+
 router
   .route('/users/:_id')
   .put(

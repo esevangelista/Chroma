@@ -6,7 +6,7 @@ import { generateToken } from '../../utils/generateToken';
 import { sendConfirmYourAccountEmail } from '../../utils/email/confirmEmail/sendConfirmEmail';
 import config from '../../config';
 
-export const getUsers = async (req, res, next) => {
+export const getUsers = async (req, res) => {
   try {
     // @TODO search by location, name, account type
     let { username, email } = req.query;
@@ -47,7 +47,6 @@ export const getUsers = async (req, res, next) => {
     const users = data.docs;
     delete data.docs;
 
-    res.status(200).json({ data: users, ...data });
     return res.status(200).json({
       success: true,
       message: 'Successfully retrieved user list',
@@ -55,29 +54,32 @@ export const getUsers = async (req, res, next) => {
       ...data,
     });
   } catch (err) {
-    return next(new InternalServerError(err));
+    return res.json(new InternalServerError(err));
   }
 };
 
-export const getUser = async (req, res, next) => {
+export const getUser = async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params._id });
+    if (!user) {
+      return res.json(new BaseError(404, 'User not found'));
+    }
     return res.status(200).json({
       success: true,
       message: 'Successfully fetched user info',
       user,
     });
   } catch (err) {
-    return next(new InternalServerError(err));
+    return res.json(new InternalServerError(err));
   }
 };
 
-export const addUser = async (req, res, next) => {
+export const addUser = async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
   if (user) {
-    return next(new BaseError(400, 'User already exists.'));
+    return res.json(new BaseError(400, 'User already exists.'));
   }
 
   try {
@@ -92,16 +94,16 @@ export const addUser = async (req, res, next) => {
       .status(200)
       .json({ success: true, message: 'Please check your email for instructions.' });
   } catch (err) {
-    return next(new InternalServerError(err));
+    return res.json(new InternalServerError(err));
   }
 };
 
-export const updateUser = async (req, res, next) => {
+export const updateUser = async (req, res) => {
   try {
     const { _id } = req.params;
     const { firstName, lastName, username } = req.body;
     if (!firstName || !username) {
-      return next(new BaseError(400, 'Missing information.'));
+      return res.json(new BaseError(400, 'Missing information.'));
     }
     const info = {
       firstName,
@@ -116,11 +118,11 @@ export const updateUser = async (req, res, next) => {
       user,
     });
   } catch (err) {
-    return next(new InternalServerError(err));
+    return res.json(new InternalServerError(err));
   }
 };
 
-export const verifyAccount = async (req, res, next) => {
+export const verifyAccount = async (req, res) => {
   try {
     const user = await User.findOneAndUpdate(
       { confirmToken: req.params.confirmToken },
@@ -129,26 +131,26 @@ export const verifyAccount = async (req, res, next) => {
     );
 
     if (!user) {
-      return next(new BaseError(409, 'Invalid confirmation token.'));
+      return res.json(new BaseError(409, 'Invalid confirmation token.'));
     }
     await User.findByIdAndUpdate(user._id, { emailVerified: true }).exec();
     return res.json({ success: true, message: 'Your email is now confirmed.' });
   } catch (error) {
-    return next(new InternalServerError(error));
+    return res.json(new InternalServerError(error));
   }
 };
 
-export const updatePassword = async (req, res, next) => {
+export const updatePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body;
   if (!currentPassword || !newPassword) {
-    return next(new BaseError(400, 'Missing information.'));
+    return res.json(new BaseError(400, 'Missing information.'));
   }
   try {
     const user = await User.findById(req.params._id);
     const isMatch = await bcrypt.compare(req.body.currentPassword, user.password);
 
     if (!isMatch) {
-      return next(new BaseError(400, 'Incorrect current password.'));
+      return res.json(new BaseError(400, 'Incorrect current password.'));
     }
 
     user.password = await bcrypt.hash(req.body.newPassword, 12);
@@ -158,7 +160,8 @@ export const updatePassword = async (req, res, next) => {
       success: true,
       message: 'Password updated.',
     });
-  } catch (error) {
-    return next(new InternalServerError(error));
+  } catch (err) {
+    return res.json(new InternalServerError(err));
   }
 };
+
