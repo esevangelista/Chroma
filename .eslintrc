@@ -1,11 +1,10 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb-base",
-  "plugins": ["jest"],
+  "plugins": [],
   "env": {
     "es6": true,
-    "node": true,
-    "jest/globals": true
+    "node": true
   },
   "parserOptions": {
     "ecmaVersion": 6
@@ -13,6 +12,7 @@
   "rules": {
     "global-require": "warn",
     "no-underscore-dangle": "off",
-    "no-use-before-define": ["error", { "functions": false }]
+    "no-use-before-define": ["error", { "functions": false }],
+    "import/prefer-default-export": "off"
   }
 }
