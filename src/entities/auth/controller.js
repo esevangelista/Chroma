@@ -2,16 +2,16 @@ import bcrypt from 'bcrypt';
 import User from '../user/model';
 import { BaseError, InternalServerError } from '../../utils/systemErrors';
 
-export const login = async (req, res, next) => {
+export const login = async (req, res) => {
   try {
     const { email, username } = req.body;
     const user = await User.findOne({ $or: [{ email }, { username }] });
     if (!user) {
-      return next(new BaseError(404, 'User not found.'));
+      return res.json(new BaseError(404, 'User not found.'));
     }
     const isMatch = await bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
-      return next(new BaseError(400, 'Incorrect password'));
+      return res.json(new BaseError(400, 'Incorrect password'));
     }
     delete user.password;
     req.session.user = user;
@@ -21,11 +21,11 @@ export const login = async (req, res, next) => {
       user,
     });
   } catch (err) {
-    return next(new InternalServerError(err));
+    return res.json(new InternalServerError(err));
   }
 };
 
-export const logout = async (req, res, next) => {
+export const logout = async (req, res) => {
   try {
     await req.session.destroy();
     return res.status(200).json({
@@ -33,7 +33,7 @@ export const logout = async (req, res, next) => {
       message: 'User logged out',
     });
   } catch (err) {
-    return next(new InternalServerError(err));
+    return res.json(new InternalServerError(err));
   }
 };
 

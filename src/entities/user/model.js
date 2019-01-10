@@ -55,6 +55,9 @@ const userSchema = new Schema({
     type: Date,
   },
   confirmToken: { type: String },
+  confirmReceivedAt: {
+    type: Date,
+  },
 }, {
   timestamps: true,
   toObject: { virtuals: true },

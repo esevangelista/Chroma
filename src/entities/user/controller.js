@@ -102,7 +102,7 @@ export const updateUser = async (req, res) => {
   try {
     const { _id } = req.params;
     const { firstName, lastName, username } = req.body;
-    if (!firstName || !username) {
+    if (!firstName || !username || !lastName) {
       return res.json(new BaseError(400, 'Missing information.'));
     }
     const info = {
@@ -111,7 +111,7 @@ export const updateUser = async (req, res) => {
       username,
     };
 
-    const user = await User.findByIdAndUpdate(_id, info);
+    const user = await User.findByIdAndUpdate(_id, { info });
     return res.status(200).json({
       success: true,
       message: 'User information updated.',
