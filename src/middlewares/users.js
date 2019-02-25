@@ -101,3 +101,16 @@ export const deletePreviousImage = async (req, res, next) => {
     return res.json(new InternalServerError(err));
   }
 };
+
+export const artistCheck = async (req, res, next) => {
+  try {
+    const { _id } = req.params;
+    const user = await User.findById(_id);
+    if (!user.isArtist) {
+      return res.json(new BaseError(403, 'User is not an artist'));
+    }
+    return next();
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};
