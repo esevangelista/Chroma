@@ -4,6 +4,8 @@ import User from './model';
 import { BaseError, InternalServerError } from '../../utils/systemErrors';
 import { generateToken } from '../../utils/generateToken';
 import { sendConfirmYourAccountEmail } from '../../utils/email/confirmEmail/sendConfirmEmail';
+import { addImage } from '../../services/cloud-storage/index';
+
 import config from '../../config';
 
 export const getUsers = async (req, res) => {
@@ -76,12 +78,6 @@ export const getUser = async (req, res) => {
 
 export const addUser = async (req, res) => {
   const { email } = req.body;
-
-  const user = await User.findOne({ email });
-  if (user) {
-    return res.json(new BaseError(400, 'User already exists.'));
-  }
-
   try {
     req.body.password = await bcrypt.hash(req.body.password, 12);
     const confirmToken = await generateToken(20);
@@ -165,3 +161,18 @@ export const updatePassword = async (req, res) => {
   }
 };
 
+export const uploadProfile = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const image = await addImage(req.files[0]);
+    await User.findByIdAndUpdate(_id, { image: image._id });
+    const user = await User.findById(_id);
+    return res.status(200).json({
+      success: true,
+      message: 'User profile image updated.',
+      user,
+    });
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};

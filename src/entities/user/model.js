@@ -9,6 +9,7 @@ import db from '../../db';
 -> location (country,city/municipality)
 -> currency (USD or PH Peso)
 -> Description/About
+-> add default image public url
 */
 const userSchema = new Schema({
   email: {
@@ -57,6 +58,11 @@ const userSchema = new Schema({
   confirmToken: { type: String },
   confirmReceivedAt: {
     type: Date,
+  },
+  image: {
+    type: Schema.Types.ObjectId,
+    ref: 'Image',
+    // default:
   },
 }, {
   timestamps: true,
