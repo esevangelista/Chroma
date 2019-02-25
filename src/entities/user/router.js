@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import * as userController from './controller';
-import { alreadyExists, deletePreviousImage, isAuthenticated, isAuthorized, isVerifiedID, passwordStrengthCheck } from '../../middlewares/users';
+import { alreadyExists, deletePreviousImage, artistCheck, isAuthenticated, isAuthorized, isVerifiedID, passwordStrengthCheck } from '../../middlewares/users';
 import { multerUpload } from '../../services/cloud-storage/index';
 
 const router = Router();
@@ -46,4 +46,22 @@ router
     userController.uploadProfile,
   );
 
+router
+  .route('/activate-artist/:_id')
+  .put(
+    isVerifiedID,
+    isAuthenticated,
+    isAuthorized,
+    userController.activateArtist,
+  );
+
+router
+  .route('/update-artist-info/:_id')
+  .put(
+    isVerifiedID,
+    isAuthenticated,
+    isAuthorized,
+    artistCheck,
+    userController.updateArtistBio,
+  );
 export default router;

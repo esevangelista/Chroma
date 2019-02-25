@@ -8,8 +8,6 @@ import db from '../../db';
 /* @TODO
 -> location (country,city/municipality)
 -> currency (USD or PH Peso)
--> Description/About
--> add default image public url
 */
 const userSchema = new Schema({
   email: {
@@ -42,18 +40,21 @@ const userSchema = new Schema({
     trim: true,
     // required: [true, 'Missing name field.'],
   },
-  accountType: {
-    type: String,
+  isArtist: {
+    type: Boolean,
     required: [true, 'Missing type field'],
-    enum: ['BUYER', 'SELLER', 'BOTH'],
-    default: 'BUYER',
+    default: false,
+  },
+  bio: {
+    type: String,
+  },
+  links: {
+    type: Map,
+    of: String,
   },
   emailVerified: {
     type: Boolean,
     default: false,
-  },
-  updatedAt: {
-    type: Date,
   },
   confirmToken: { type: String },
   confirmReceivedAt: {

@@ -176,3 +176,44 @@ export const uploadProfile = async (req, res) => {
     return res.json(new InternalServerError(err));
   }
 };
+
+export const activateArtist = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const user = await User.findByIdAndUpdate(_id, { isArtist: true });
+    return res.status(200).json({
+      success: true,
+      message: 'User is now a verified seller/artist',
+      user,
+    });
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};
+
+export const updateArtistBio = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const { links, bio } = req.body;
+    if (!links && !bio) {
+      return res.json(new BaseError(400, 'Missing info'));
+    }
+    const user = await User.findById(_id);
+    if (bio) {
+      user.bio = bio;
+      await user.save();
+    }
+    if (links) {
+      Object.entries(links).forEach(([key, value]) => user.set(`links.${key}`, `${value}`));
+      await user.save();
+    }
+    return res.status(200).json({
+      success: true,
+      message: 'Successfully updated artist\'s bio and links',
+      user,
+    });
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};
+
