@@ -14,4 +14,9 @@ module.exports = {
   zxcvbnOptions: {
     minimumAllowedScore: 3,
   },
+  gcp: {
+    project: process.env.GCLOUD_PROJECT,
+    bucket: process.env.GCS_BUCKET,
+    keyfile: process.env.GCS_KEYFILE,
+  },
 };

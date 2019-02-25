@@ -1,18 +1,20 @@
 import { Router } from 'express';
 import * as userController from './controller';
-import { isAuthenticated, isAuthorized, passwordStrengthCheck } from '../../middlewares/users';
+import { alreadyExists, deletePreviousImage, isAuthenticated, isAuthorized, isVerifiedID, passwordStrengthCheck } from '../../middlewares/users';
+import { multerUpload } from '../../services/cloud-storage/index';
 
 const router = Router();
 
 router
   .route('/users')
-  .post(passwordStrengthCheck, userController.addUser)
+  .post(alreadyExists, passwordStrengthCheck, userController.addUser)
   .get(userController.getUsers);
 
 
 router
   .route('/users/:_id')
   .put(
+    isVerifiedID,
     isAuthenticated,
     isAuthorized,
     userController.updateUser,
@@ -26,10 +28,22 @@ router
 router
   .route('/update-password/:_id')
   .put(
+    isVerifiedID,
     isAuthenticated,
     isAuthorized,
     passwordStrengthCheck,
     userController.updatePassword,
+  );
+
+router
+  .route('/upload-profile-image/:_id')
+  .put(
+    isVerifiedID,
+    isAuthenticated,
+    isAuthorized,
+    deletePreviousImage,
+    multerUpload,
+    userController.uploadProfile,
   );
 
 export default router;
