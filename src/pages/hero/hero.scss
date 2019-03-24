@@ -1,0 +1,173 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+
+.hero-mask {
+  background-image: url('/landing/sis.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right top;
+  background-color: rgba(255,255,255,0.15);
+  background-blend-mode: color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 360px;  
+  margin-top: 80px;
+
+  .hero-container {
+    background-color: rgba(254,255,233,0.7);    
+    background-color: rgba(255,255,255,0.7);    
+    padding-bottom: 12px;
+    min-width: 270px;
+    max-width: 320px;
+
+    h1 {
+      color: $black;
+      font-family: 'Sailec-Bold';
+      text-align: center;
+      font-size: 24px;
+      font-weight: bolder;
+      padding-top: 24px;
+      margin-bottom: 0px;
+    }
+    p {
+      text-align: center;
+      color: $black;
+      margin-top: 0px;
+      font-family: 'Sailec-Light';
+      font-size: 12px;
+      &.link-to-list {
+        font-size: 10px;
+      }
+    }
+    .btn-hero {
+      display: block;
+      margin: 0 auto;
+      background-color: $chroma-red;
+      border-color: $chroma-red;
+      color: $white;
+      font-weight: 900;
+      letter-spacing: 0.9px;
+      text-align: center;
+      opacity: 0.9;
+      font-size: 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+  }
+  
+  @include for-phone-only {
+    height: 360px;
+    .hero-container {
+      min-width: 270px;
+      max-width: 320px;  
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        font-size:12px;
+        &.link-to-list {
+          font-size: 10px;
+        }
+      }
+    }
+  } 
+  @include for-tablet-portrait-up {
+    height: 480px;
+    .hero-container {
+      min-width: 360px;
+      max-width: 480px;  
+      h1 {
+        font-size: 32px;
+      }
+      p {
+        font-size:16px;
+        &.link-to-list {
+          font-size: 12px;
+        }
+      }
+      .btn-hero {
+        font-size: 24px;
+      }
+    } 
+  }
+  @include for-tablet-portrait-down {
+    height: 480px;
+    .hero-container {
+      min-width: 360px;
+      max-width: 480px;  
+      h1 {
+        font-size: 32px;
+      }
+      p {
+        font-size:16px;
+        &.link-to-list {
+          font-size: 12px;
+        }
+      }
+      .btn-hero {
+        font-size: 24px;
+      }
+    } 
+  }
+
+  @include for-tablet-landscape-up {
+    height: 600px;
+    .hero-container {
+      min-width: 480px;
+      max-width: 600px;
+      h1 {
+        font-size: 48px;
+      }
+      p {
+        font-size: 18px;
+        &.link-to-list {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  @include for-desktop-up {
+    height: 720px;
+    .hero-container {
+      min-width: 720px;
+      max-width: 840px;
+      h1 {
+        font-size: 64px;
+      }
+      p {
+        font-size: 24px;
+        &.link-to-list {
+          font-size: 18px;
+        }
+      }
+      .btn-hero {
+        height: 64px;
+        font-size: 32px;
+        min-width: 200px;
+      }
+    }
+  }
+  @include for-big-desktop-up {
+    height: 840px;
+    .hero-container {
+      min-width: 840px;
+      max-width: 960px;
+      h1 {
+        font-size: 72px;
+      }
+      p {
+        font-size: 32px;
+        &.link-to-list {
+          font-size: 24px;
+        }
+      }
+      .btn-hero {
+        height: 64px;
+        font-size: 32px;
+        min-width: 200px;
+      }
+    }
+  }
+}

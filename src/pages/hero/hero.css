@@ -1,0 +1,131 @@
+.hero-mask {
+  background-image: url("/landing/sis.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right top;
+  background-color: rgba(255, 255, 255, 0.15);
+  background-blend-mode: color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 360px;
+  margin-top: 80px; }
+  .hero-mask .hero-container {
+    background-color: rgba(254, 255, 233, 0.7);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding-bottom: 12px;
+    min-width: 270px;
+    max-width: 320px; }
+    .hero-mask .hero-container h1 {
+      color: #152230;
+      font-family: 'Sailec-Bold';
+      text-align: center;
+      font-size: 24px;
+      font-weight: bolder;
+      padding-top: 24px;
+      margin-bottom: 0px; }
+    .hero-mask .hero-container p {
+      text-align: center;
+      color: #152230;
+      margin-top: 0px;
+      font-family: 'Sailec-Light';
+      font-size: 12px; }
+      .hero-mask .hero-container p.link-to-list {
+        font-size: 10px; }
+    .hero-mask .hero-container .btn-hero {
+      display: block;
+      margin: 0 auto;
+      background-color: #CA0000;
+      border-color: #CA0000;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: 0.9px;
+      text-align: center;
+      opacity: 0.9;
+      font-size: 20px;
+      border-radius: 8px;
+      margin-bottom: 16px; }
+  @media only screen and (max-width: 480px) {
+    .hero-mask {
+      height: 360px; }
+      .hero-mask .hero-container {
+        min-width: 270px;
+        max-width: 320px; }
+        .hero-mask .hero-container h1 {
+          font-size: 24px; }
+        .hero-mask .hero-container p {
+          font-size: 12px; }
+          .hero-mask .hero-container p.link-to-list {
+            font-size: 10px; } }
+  @media only screen and (min-width: 768px) {
+    .hero-mask {
+      height: 480px; }
+      .hero-mask .hero-container {
+        min-width: 360px;
+        max-width: 480px; }
+        .hero-mask .hero-container h1 {
+          font-size: 32px; }
+        .hero-mask .hero-container p {
+          font-size: 16px; }
+          .hero-mask .hero-container p.link-to-list {
+            font-size: 12px; }
+        .hero-mask .hero-container .btn-hero {
+          font-size: 24px; } }
+  @media only screen and (max-width: 767px) and (min-width: 481px) {
+    .hero-mask {
+      height: 480px; }
+      .hero-mask .hero-container {
+        min-width: 360px;
+        max-width: 480px; }
+        .hero-mask .hero-container h1 {
+          font-size: 32px; }
+        .hero-mask .hero-container p {
+          font-size: 16px; }
+          .hero-mask .hero-container p.link-to-list {
+            font-size: 12px; }
+        .hero-mask .hero-container .btn-hero {
+          font-size: 24px; } }
+  @media only screen and (min-width: 992px) {
+    .hero-mask {
+      height: 600px; }
+      .hero-mask .hero-container {
+        min-width: 480px;
+        max-width: 600px; }
+        .hero-mask .hero-container h1 {
+          font-size: 48px; }
+        .hero-mask .hero-container p {
+          font-size: 18px; }
+          .hero-mask .hero-container p.link-to-list {
+            font-size: 16px; } }
+  @media (min-width: 1200px) {
+    .hero-mask {
+      height: 720px; }
+      .hero-mask .hero-container {
+        min-width: 720px;
+        max-width: 840px; }
+        .hero-mask .hero-container h1 {
+          font-size: 64px; }
+        .hero-mask .hero-container p {
+          font-size: 24px; }
+          .hero-mask .hero-container p.link-to-list {
+            font-size: 18px; }
+        .hero-mask .hero-container .btn-hero {
+          height: 64px;
+          font-size: 32px;
+          min-width: 200px; } }
+  @media (min-width: 1800px) {
+    .hero-mask {
+      height: 840px; }
+      .hero-mask .hero-container {
+        min-width: 840px;
+        max-width: 960px; }
+        .hero-mask .hero-container h1 {
+          font-size: 72px; }
+        .hero-mask .hero-container p {
+          font-size: 32px; }
+          .hero-mask .hero-container p.link-to-list {
+            font-size: 24px; }
+        .hero-mask .hero-container .btn-hero {
+          height: 64px;
+          font-size: 32px;
+          min-width: 200px; } }

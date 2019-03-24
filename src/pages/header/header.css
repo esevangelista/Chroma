@@ -1,0 +1,90 @@
+.site-header {
+  width: 100%;
+  z-index: 100;
+  position: fixed; }
+  .site-header.site-header {
+    background: #f8f8f8;
+    height: 80px;
+    line-height: 80px; }
+  .site-header .ant-menu {
+    background: none;
+    display: flex;
+    justify-content: flex-end; }
+  .site-header .ant-menu-horizontal {
+    border-bottom: none;
+    line-height: 80px; }
+  .site-header .ant-menu-item.ant-menu-item {
+    border-bottom: none;
+    margin-top: 0;
+    top: 0;
+    height: 80px;
+    padding: 0 10px; }
+    .site-header .ant-menu-item.ant-menu-item.logo-container {
+      flex-grow: 1; }
+      .site-header .ant-menu-item.ant-menu-item.logo-container a {
+        display: inline-block;
+        height: 80px; }
+    .site-header .ant-menu-item.ant-menu-item.discover a {
+      display: inline-block;
+      height: 80px;
+      padding: 0 16px;
+      font-size: 16px;
+      font-weight: 700;
+      vertical-align: sub; }
+    .site-header .ant-menu-item.ant-menu-item:hover {
+      border-bottom: none;
+      cursor: auto; }
+  .site-header #btn-drawer {
+    height: 0;
+    padding: 0;
+    line-height: 0;
+    border-radius: 0;
+    border: none; }
+  .site-header .logo {
+    height: 75px;
+    display: inline-block;
+    width: auto;
+    line-height: 80px;
+    vertical-align: middle; }
+  .site-header .ant-menu-item {
+    display: none; }
+    .site-header .ant-menu-item.logo-container {
+      display: block;
+      text-align: left; }
+    .site-header .ant-menu-item.show-on-desktop {
+      display: none; }
+  @media only screen and (min-width: 992px) {
+    .site-header .ant-menu-item {
+      display: none; }
+      .site-header .ant-menu-item.logo-container {
+        text-align: left; } }
+  @media (min-width: 1200px) {
+    .site-header .ant-menu-item.show-on-desktop {
+      display: block; }
+      .site-header .ant-menu-item.show-on-desktop.discover {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 0 48px 16px 0px; }
+    .site-header .ant-menu-item.hide-on-desktop {
+      display: none; } }
+  @media (min-width: 1800px) {
+    .site-header .ant-menu-item.show-on-desktop {
+      display: block; }
+      .site-header .ant-menu-item.show-on-desktop.discover {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 0 10px; }
+    .site-header .ant-menu-item.hide-on-desktop {
+      display: none; } }
+
+.ant-drawer-content-wrapper {
+  max-width: 200px;
+  width: 200px;
+  background: #f8f8f8; }
+  .ant-drawer-content-wrapper .ant-drawer-body {
+    padding: 64px 16px 0px 16px;
+    font-weight: 300;
+    font-size: 16px;
+    color: #CA0000; }
+  .ant-drawer-content-wrapper .ant-drawer-close {
+    color: #CA0000; }
