@@ -9,21 +9,37 @@ import './main.css';
 
 const { Content } = Layout;
 
+// class Main extends Component {
+//   render() {
+//     return (
+//       <Content>
+//         <Layout>
+//           <Header />
+//           <Content>
+//             <Hero />
+//             <Landing />
+//           </Content>
+//           <Footer />
+//         </Layout>
+//       </Content>
+//     );
+//   }
+// }
+
 class Main extends Component {
   render() {
     return (
-      <Content>
+       <Content>
         <Layout>
           <Header />
           <Content>
             <Hero />
             <Landing />
           </Content>
-          <Footer />
         </Layout>
+        <Footer />
       </Content>
-    );
+    )
   }
 }
-
 export default Main;

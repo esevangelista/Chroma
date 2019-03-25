@@ -104,7 +104,7 @@ class Landing extends Component {
           <Row type="flex" justify="space-between"  className="categories">
             {
               data.map(item => (
-                    <Col key="item.title" xs={24} sm={12} md={8} lg={8} xl={4} >
+                    <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} >
                       <Link to="/">
                         <div className="container">
                           <img alt={item.title} src={item.attachment}/>
@@ -121,7 +121,7 @@ class Landing extends Component {
               data.map(item => (
                     <Col xs={24} sm={12} md={8} lg={8} xl={4} >
                       <Link to="/">
-                        <div className="container">
+                        <div  key={item.title} className="container">
                           <img alt={item.title} src={item.attachment}/>
                           <p> {item.title} </p>
                         </div>
