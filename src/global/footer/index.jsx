@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Route, Switch } from 'react-router-dom';
-import { Layout, Row, Col, Divider } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import './footer.css';
 
 const { Content } = Layout;
@@ -21,12 +21,12 @@ class Footer extends Component {
             <a href="/"><p> A-Z </p></a>
             <a href="/"><p> Commission artwork </p></a>
             <a href="/"><p> Sell on Chroma</p></a>
-          </Col>   
+          </Col>  
           <Col className="col-container" xs={12} sm={6} md={6} lg={6} xl={6}>
             <h3> FAQs</h3>
             <a href="/"><p> For Artists </p></a>
             <a href="/"><p> For Art Buyers </p></a>
-          </Col> 
+          </Col>
           <Col className="col-container" xs={12} sm={6} md={6} lg={6} xl={6}>
             <h3> About </h3>
             <a href="/"><p> Chroma </p></a>

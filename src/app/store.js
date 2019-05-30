@@ -1,11 +1,10 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
-import { all } from 'redux-saga/effects';
 import createHistory from 'history/createBrowserHistory';
 import ErrorReporting from '../errorReporting';
-import authReducer from '../pages/login/duck';
-import authSagas from '../pages/login/saga';
+import rootSaga from '../sagas';
+import rootReducer from '../ducks';
 
 export const history = createHistory();
 
@@ -33,14 +32,8 @@ const composedEnhancers = compose(
   ...enhancers,
 );
 
-const rootReducer = combineReducers({
-  auth: authReducer,
-});
 const store = createStore(rootReducer, initialState, composedEnhancers);
 
-function* rootSaga() {
-  yield all([...authSagas]);
-}
 sagaMiddleware.run(rootSaga);
 
 export default store;

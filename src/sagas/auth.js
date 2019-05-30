@@ -1,0 +1,93 @@
+import { takeLatest, takeEvery } from 'redux-saga';
+import { call, put, select, fork } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
+
+import {
+  LOGIN_REQUEST,
+  LOGOUT_REQUEST,
+  REGISTER_REQUEST,
+  CONFIRM_EMAIL_REQUEST,
+  loginSuccess,
+  loginFailed,
+  logoutSuccess,
+  logoutFailed,
+  registerSuccess,
+  registerFailed,
+  confirmEmailSuccess,
+  confirmEmailFailed,
+} from '../ducks/auth';
+import { alertDisplay } from '../ducks/feedback';
+import { postRequestService, putRequestService } from '../api/apiRequest';
+
+export function* loginFlow(action) {
+  try {
+    const response = yield call(postRequestService, '/login', action.data);
+    const { success } = response.data;
+    if (success) {
+      yield put(loginSuccess(response.data.message));
+      yield put(push('/'));
+    } else {
+      yield put(loginFailed(response.data.message));
+    }
+  } catch (err) {
+    const { message } = err.response.data;
+    yield put(loginFailed(message));
+  }
+}
+
+export function* logoutFlow() {
+  try {
+    const response = yield call(postRequestService, '/logout');
+    const { success } = response.data;
+    if (success) {
+      yield put(logoutSuccess());
+      yield put(push('/'));
+    } else {
+      console.log(response.data);
+      yield put(logoutFailed(response.data.message));
+    }
+  } catch (err) {
+    const { message } = err.response.data;
+    console.log(err);
+    yield put(logoutFailed(message));
+  }
+}
+
+export function* registerFlow(action) {
+  try {
+    const response = yield call(postRequestService, '/users', action.data);
+    const { success } = response.data;
+    if (success) {
+      yield put(registerSuccess(response.data.message));
+    }
+  } catch (err) {
+    const { message } = err.response.data;
+    yield put(registerFailed(message));
+  }
+}
+
+export function* confirmEmailFlow(action) {
+  try {
+    const response = yield call(putRequestService, `/verify-account/${action.data}`);
+    const { message } = response.data;
+    yield put(confirmEmailSuccess(message));
+    yield put(push('/'));
+    yield put(alertDisplay({ alertType: 'success', message }));
+  } catch (err) {
+    const { message } = err.response.data;
+    yield put(confirmEmailFailed(message));
+  }
+}
+
+export function* watchAuthFlow() {
+  yield [
+    takeEvery(LOGIN_REQUEST, loginFlow),
+    takeEvery(LOGOUT_REQUEST, logoutFlow),
+    takeEvery(REGISTER_REQUEST, registerFlow),
+    takeEvery(CONFIRM_EMAIL_REQUEST, confirmEmailFlow),
+  ];
+}
+
+const authSagas = [watchAuthFlow()];
+
+export default authSagas;

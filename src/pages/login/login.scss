@@ -1,0 +1,77 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+div {
+  #btn-user {
+    height: 0;
+    padding: 0;
+    line-height: 0;
+    border-radius: 0;
+    border: none;
+    &:hover, &:active, &:link {
+      color: $chroma-red;
+    }
+    color: #575757;
+  }
+  .btn-switch-form {
+    color: $dark-mod-red;
+    &:hover {
+      color: $chroma-red;
+      text-decoration: underline;
+    }
+  }
+  .login-modal {
+    .login-form, .reg-form {
+      h3 {
+        font-family: 'Sailec-Bold';
+        font-weight: 800;
+        font-size: 24px;
+        text-align: center;
+        color: $grey;
+      }
+      .login-form-button, .reg-form-button {
+        &:hover, &:active, &:focus, &:link {
+          background: $chroma-red;
+          border-color: $chroma-red;
+        }
+        background: $pure-red;
+        border-color: $pure-red;
+      }
+      .login-form-forgot {
+        float: right;
+        color: $grey;
+        &:hover {
+          color: $chroma-red;
+          text-decoration: underline;
+        }
+      }
+      .btn-switch-form {
+        color: $dark-mod-red;
+        &:hover {
+          color: $chroma-red;
+          text-decoration: underline;
+        }
+      }
+      .ant-form-item-control {
+        margin-bottom: 0px;
+      }
+      .ant-form-item {
+        margin-bottom: 0px;
+        padding-bottom: 8px;
+      }
+
+    }
+  }
+} 
+
+@include for-phone-only {
+  div {
+    .login-modal {
+      .ant-modal-content{
+        .ant-modal-body {
+          padding: 48px 24px 24px 24px;
+        }
+      }
+    }
+  }
+}

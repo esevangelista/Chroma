@@ -1,0 +1,61 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.reg-form {
+  .alert-reg {
+    padding-bottom: 8px;
+  }
+  .password-field {
+
+    .meter {
+      position: absolute;
+      width: 0%;
+      height: 4px;
+      left: 0;
+      background: transparent;
+      transition: all 300ms ease-in-out;
+      &[data-score="null"] {
+        width: 0;
+        background: red;
+      }
+      &[data-score="0"] {
+        width: 5%;
+        background: $error;
+      }
+      &[data-score="1"] {
+        width: 25%;
+        background: $error;
+      }
+      &[data-score="2"] {
+        width: 50%;
+        background: $warning;
+      }
+      &[data-score="3"] {
+        width: 75%;
+        background: $success;
+      }
+      &[data-score="4"] {
+        width: 100%;
+        background: $success;
+      }
+    }
+    @include for-phone-only {
+      .strength-feedback {
+        height: 16px;
+        padding-top: 8px;
+        font-size: 10px;
+        padding-bottom: 16px;
+      }
+    }
+    .strength-feedback {
+      height: 16px;
+      padding-top: 8px;
+      font-size: 12px;
+      padding-bottom: 8px;
+    }
+
+    .is-validating.has-feedback .ant-form-item-children:after {
+      display: none;
+    }
+  }
+}

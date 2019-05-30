@@ -1,0 +1,58 @@
+div #btn-user {
+  height: 0;
+  padding: 0;
+  line-height: 0;
+  border-radius: 0;
+  border: none;
+  color: #575757; }
+
+div #btn-user:hover, div #btn-user:active, div #btn-user:link {
+  color: #CA0000; }
+
+div .btn-switch-form {
+  color: #943636; }
+
+div .btn-switch-form:hover {
+  color: #CA0000;
+  text-decoration: underline; }
+
+div .login-modal .login-form h3, div .login-modal .reg-form h3 {
+  font-family: 'Sailec-Bold';
+  font-weight: 800;
+  font-size: 24px;
+  text-align: center;
+  color: #828282; }
+
+div .login-modal .login-form .login-form-button, div .login-modal .login-form .reg-form-button, div .login-modal .reg-form .login-form-button, div .login-modal .reg-form .reg-form-button {
+  background: #e40000;
+  border-color: #e40000; }
+
+div .login-modal .login-form .login-form-button:hover, div .login-modal .login-form .login-form-button:active, div .login-modal .login-form .login-form-button:focus, div .login-modal .login-form .login-form-button:link, div .login-modal .login-form .reg-form-button:hover, div .login-modal .login-form .reg-form-button:active, div .login-modal .login-form .reg-form-button:focus, div .login-modal .login-form .reg-form-button:link, div .login-modal .reg-form .login-form-button:hover, div .login-modal .reg-form .login-form-button:active, div .login-modal .reg-form .login-form-button:focus, div .login-modal .reg-form .login-form-button:link, div .login-modal .reg-form .reg-form-button:hover, div .login-modal .reg-form .reg-form-button:active, div .login-modal .reg-form .reg-form-button:focus, div .login-modal .reg-form .reg-form-button:link {
+  background: #CA0000;
+  border-color: #CA0000; }
+
+div .login-modal .login-form .login-form-forgot, div .login-modal .reg-form .login-form-forgot {
+  float: right;
+  color: #828282; }
+
+div .login-modal .login-form .login-form-forgot:hover, div .login-modal .reg-form .login-form-forgot:hover {
+  color: #CA0000;
+  text-decoration: underline; }
+
+div .login-modal .login-form .btn-switch-form, div .login-modal .reg-form .btn-switch-form {
+  color: #943636; }
+
+div .login-modal .login-form .btn-switch-form:hover, div .login-modal .reg-form .btn-switch-form:hover {
+  color: #CA0000;
+  text-decoration: underline; }
+
+div .login-modal .login-form .ant-form-item-control, div .login-modal .reg-form .ant-form-item-control {
+  margin-bottom: 0px; }
+
+div .login-modal .login-form .ant-form-item, div .login-modal .reg-form .ant-form-item {
+  margin-bottom: 0px;
+  padding-bottom: 8px; }
+
+@media only screen and (max-width: 480px) {
+  div .login-modal .ant-modal-content .ant-modal-body {
+    padding: 48px 24px 24px 24px; } }

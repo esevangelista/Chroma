@@ -1,25 +1,20 @@
 .extra-mask {
   text-align: center; }
-
-.extra-mask .extra {
-  display: inline-flex;
-  margin-bottom: 8px;
-  font-size: 10px; }
-
-.extra-mask .extra h4 {
-  font-family: 'Sailec-Light';
-  text-align: center;
-  margin: 0 8px; }
-
-.extra-mask .extra a {
-  color: #152230; }
-
-.extra-mask .extra a p {
-  font-family: 'Sailec-Light';
-  margin: 0 8px; }
-
-.extra-mask .extra a :hover {
-  color: #CA0000; }
+  .extra-mask .extra {
+    display: inline-flex;
+    margin-bottom: 8px;
+    font-size: 10px; }
+    .extra-mask .extra h4 {
+      font-family: 'Sailec-Light';
+      text-align: center;
+      margin: 0 8px; }
+    .extra-mask .extra a {
+      color: #152230; }
+      .extra-mask .extra a p {
+        font-family: 'Sailec-Light';
+        margin: 0 8px; }
+      .extra-mask .extra a :hover {
+        color: #CA0000; }
 
 .footer-container {
   margin-top: 16px;
@@ -27,24 +22,19 @@
   margin-left: auto;
   margin-right: auto;
   width: 60%; }
-
-.footer-container .col-container {
-  left: 10%; }
-
-.footer-container a {
-  color: #152230; }
-
-.footer-container a p {
-  font-size: 12px;
-  font-family: 'Sailec-Regular'; }
-
-.footer-container a:hover {
-  color: #CA0000; }
-
-.footer-container h3 {
-  font-size: 16px;
-  font-family: 'Sailec-Bold';
-  font-weight: 600; }
+  .footer-container .col-container {
+    left: 10%; }
+  .footer-container a {
+    color: #152230; }
+    .footer-container a p {
+      font-size: 12px;
+      font-family: 'Sailec-Regular'; }
+  .footer-container a:hover {
+    color: #CA0000; }
+  .footer-container h3 {
+    font-size: 16px;
+    font-family: 'Sailec-Bold';
+    font-weight: 600; }
 
 @media only screen and (min-width: 768px) {
   .footer-container {

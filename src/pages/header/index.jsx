@@ -1,38 +1,40 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import { Layout, Menu, Icon, Input, Drawer, Button } from 'antd';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Layout, Menu, Icon, Input, Drawer, Button, Popover, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../global/logo';
 import './header.css';
+import LoginForm from '../login/';
+import { logoutRequest } from '../../ducks/auth';
+import { checkUserSession } from '../../ducks/users';
 
 const { Search } = Input;
-// const menu = (
-//   <Menu>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
-//     </Menu.Item>
-//     <Menu.Item>
-//       <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
-//     </Menu.Item>
-//   </Menu>
-// );
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false };
+    this.state = {
+      visible: false,
+    };
     this.onClose = this.onClose.bind(this);
     this.showDrawer = this.showDrawer.bind(this);
+    this.logout = this.logout.bind(this);
   }
+  componentDidMount() {
+    // this.props.checkUserSession();
+    // console.log(this.props)
+  }
+
   onClose = () => {
     this.setState({
       visible: false,
     });
   };
 
+  logout = () => {
+    this.props.logoutRequest();
+  }
   showDrawer = () => {
     this.setState({
       visible: true,
@@ -40,6 +42,7 @@ class Header extends Component {
   };
 
   render() {
+    const { profile } = this.props;
     return (
       <Layout.Header className="site-header">
         <Menu mode="horizontal" >
@@ -65,11 +68,31 @@ class Header extends Component {
           <Menu.Item key="4" className="hide-on-desktop">
             <Icon type="search" />
           </Menu.Item>
-          <Menu.Item key="5" >
-            <Icon type="shopping" />
+          <Menu.Item key="5">
+            <Popover
+              className="popover"
+              placement="bottom"
+              content={"Your cart is empty."}
+              trigger="click"
+              arrowPointAtCenter
+            >
+              <Icon type="shopping" />
+            </Popover>
           </Menu.Item>
           <Menu.Item key="6" className="show-on-desktop">
-            <Icon type="user" />
+            { profile ?
+              <Popover
+                className="popover"
+                placement="bottomRight"
+                content={<a onClick={this.logout}> Logout </a>}
+                trigger="click"
+                arrowPointAtCenter
+              >
+                <Icon type="user" />
+              </Popover>
+              :
+              <LoginForm />
+            }
           </Menu.Item>
           <Menu.Item key="7" className="hide-on-desktop">
             <Button id="btn-drawer" onClick={this.showDrawer} >
@@ -80,15 +103,27 @@ class Header extends Component {
               onClose={this.onClose}
               visible={this.state.visible}
             >
-              <p>Artworks</p>
-              <p>Artists</p>
-              <p>Profile</p>
-              <p>Wishlist</p>
-              <p>My Orders</p>
-              <p>Gallery</p>
-              <p>Inbox</p>
-              <p>FAQs</p>
-              <p>Logout</p>
+              {
+                profile ?
+                  <div>
+                    <p>Artworks</p>
+                    <p>Artists</p>
+                    <p>Profile</p>
+                    <p>Wishlist</p>
+                    <p>My Orders</p>
+                    <p>Gallery</p>
+                    <p>Inbox</p>
+                    <p>FAQs</p>
+                    <p> Logout </p>
+                  </div>
+                :
+                  <div>
+                    <p>Artworks</p>
+                    <p>Artists</p>
+                    <p>FAQs</p>
+                    <Row><LoginForm isMobile /></Row>
+                  </div>
+              }
 
             </Drawer>
           </Menu.Item>
@@ -98,4 +133,22 @@ class Header extends Component {
   }
 }
 
-export default Header;
+Header.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.bool,
+  logoutRequest: PropTypes.func.isRequired,
+  checkUserSession: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  error: null,
+};
+
+const mapStateToProps = (state) => {
+  const { error, isFetching } = state.auth.logout;
+  const { profile } = state.user;
+  return { error, isFetching, profile };
+};
+
+// export default connect(mapStateToProps, { checkUserSession, logoutRequest })(Header);
+export default connect(mapStateToProps, { logoutRequest })(Header);
