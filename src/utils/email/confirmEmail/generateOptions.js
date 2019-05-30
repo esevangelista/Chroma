@@ -1,7 +1,7 @@
 import { getHtml, getText } from '../template/base';
 
 export function generateOptions(to, token, clientUrl) {
-  const confirmEmailUrl = `${clientUrl}/confirm-email/${token}`;
+  const confirmEmailUrl = `${clientUrl}/verify-account/${token}`;
   const emailLocalpart = to.split('@')[0];
   const content = `
     <p style="color: #4a4a4a;"><strong style="font-size: 16px;">Hi ${emailLocalpart},</strong></p>

@@ -4,7 +4,6 @@ import mongoosePaginate from 'mongoose-paginate';
 import db from '../../db';
 
 /* @TODO
-  - year finished
   - middleware : delete document if artist is deleted
   - middleware: delete image if deleted on parent and vice versa
 */
@@ -30,7 +29,7 @@ const artworkSchema = new Schema({
     required: [true, 'Missing art medium'],
   },
   dimensions: {
-    required: [true, 'Missing dimensions'],
+    // required: [true, 'Missing dimensions'],
     height: Number,
     width: Number,
     depth: Number,
@@ -49,6 +48,7 @@ const artworkSchema = new Schema({
   artform: {
     type: String,
     enum: ['PAINTING', 'PHOTOGRAPHY', 'DRAWING', 'SCULPTURE', 'COLLAGE', 'PRINT', 'DIGITAL ART'],
+    required: [true, 'Missing materials field'],
   },
   materials: {
     type: [String],
