@@ -180,7 +180,8 @@ export const uploadProfile = async (req, res) => {
 export const activateArtist = async (req, res) => {
   try {
     const { _id } = req.params;
-    const user = await User.findByIdAndUpdate(_id, { isArtist: true });
+    await User.findByIdAndUpdate(_id, { isArtist: true });
+    const user = await User.findById(_id);
     return res.status(200).json({
       success: true,
       message: 'User is now a verified seller/artist',

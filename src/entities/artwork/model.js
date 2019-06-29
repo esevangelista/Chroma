@@ -1,6 +1,7 @@
 import { Schema } from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate';
-
+import Image from '../../services/cloud-storage/model';
+import Wishlist from '../wishlist/model';
 import db from '../../db';
 
 /* @TODO
@@ -22,10 +23,10 @@ const artworkSchema = new Schema({
   },
   description: {
     type: String,
-    maxlength: 350,
+    // maxlength: 350,
   },
   medium: {
-    type: String,
+    type: [String],
     required: [true, 'Missing art medium'],
   },
   dimensions: {
@@ -33,33 +34,26 @@ const artworkSchema = new Schema({
     height: Number,
     width: Number,
     depth: Number,
-    unitOfMeasurement: String,
   },
   style: {
     type: String,
     required: [true, 'Missing style'],
   },
   subject: {
-    type: String,
-  },
-  theme: {
-    type: String,
+    type: [String],
   },
   artform: {
     type: String,
     enum: ['PAINTING', 'PHOTOGRAPHY', 'DRAWING', 'SCULPTURE', 'COLLAGE', 'PRINT', 'DIGITAL ART'],
-    required: [true, 'Missing materials field'],
+    required: [true, 'Missing form field'],
   },
-  materials: {
-    type: [String],
-    required: [true, 'Missing materials field'],
-  },
+  // materials: {
+  //   type: [String],
+  //   required: [true, 'Missing materials field'],
+  // },
   price: {
     type: Number,
     required: [true, 'Missing price value'],
-  },
-  keywords: {
-    type: [String],
   },
   status: {
     type: String,
@@ -76,11 +70,6 @@ const artworkSchema = new Schema({
     type: [{
       type: Schema.Types.ObjectId,
       ref: 'Image',
-      classification: {
-        type: String,
-        enum: ['FULL FRONTAL', 'IN-ROOM', 'CLOSE-UP', 'IN-PROGRESS', 'BACK', 'FRAMED', 'PACKAGED'],
-        required: true,
-      },
     }],
     required: [true, 'Missing image url/s'],
     maxlength: 7,
@@ -88,6 +77,19 @@ const artworkSchema = new Schema({
   },
 }, {
   timestamps: true,
+  toObject: { virtuals: true },
+});
+
+artworkSchema.pre('remove', async function (next) {
+  if (this.images) {
+    await Promise.all(this.images.map(i => Image.findByIdAndRemove({ _id: i._id })));
+  }
+  return next();
+});
+
+artworkSchema.virtual('wishCount').get(async function getCount() {
+  const count = await Wishlist.count({ products: { $in: [this._id] } });
+  return count;
 });
 
 artworkSchema.plugin(mongoosePaginate);

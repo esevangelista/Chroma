@@ -31,7 +31,7 @@ export const uploadHandler = Multer({
 });
 
 export const multerUpload = async (req, res, next) => {
-  uploadHandler.array('files')(req, res, (err) => {
+  uploadHandler.array('files', 7)(req, res, (err) => {
     if (err) {
       return res.json(new InternalServerError(err));
     }
@@ -46,6 +46,7 @@ export async function addImage(files) {
     folder: filename.split('/')[0],
     filename,
   });
+  await makeFilePublic(filename);
   await image.save();
   return (image);
 }

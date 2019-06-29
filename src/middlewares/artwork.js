@@ -11,28 +11,41 @@ export const isArtist = async (req, res, next) => {
   return next();
 };
 
+export const canEdit = async (req, res, next) => {
+  try {
+    const { _id } = req.params;
+    const art = await Artwork.findById(_id).populate('artist');
+    if (req.session.user._id != art.artist._id) {
+      return res.json(new BaseError(403, 'User is not authorized for this action'));
+    }
+    return next();
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};
 export const validateArtwork = async (req, res, next) => {
   const reqdKeys =
     [
-      'artist',
       'title',
+      'description',
       'medium',
       'dimensions',
       'style',
       'artform',
-      'materials',
+      'subject',
       'price',
-      'status',
       'quantity',
       'images',
     ];
-  const dimensionKeys = ['height', 'width', 'depth', 'unitOfMeasurement'];
-  if (!Object.keys(req.body).includes(...reqdKeys)) {
+  if (
+    !Object.keys(req.body).includes(...reqdKeys)
+    || !Object.keys(req.body.dimensions).includes('height', 'width', 'depth')
+    || req.body.medium.length === 0
+  ) {
     return res.json(new BaseError(400, 'Missing required info.'));
   }
-  if (!Object.keys(req.body.dimensions).includes(...dimensionKeys)) {
-    return res.json(new BaseError(400, 'Missing required dimension info.'));
-  }
+
+  req.body.artist = req.session.user._id;
   return next();
 };
 

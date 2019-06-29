@@ -2,7 +2,8 @@ import { Schema } from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate';
 import uniqueValidator from 'mongoose-unique-validator';
 import validator from 'validator';
-
+import Cart from '../cart/model';
+import Wishlist from '../wishlist/model';
 import db from '../../db';
 
 /* @TODO
@@ -68,6 +69,13 @@ const userSchema = new Schema({
 }, {
   timestamps: true,
   toObject: { virtuals: true },
+});
+
+userSchema.post('save', async function (user) {
+  const cart = new Cart({ ownedBy: user._id });
+  await cart.save();
+  const wishlist = new Wishlist({ ownedBy: user._id });
+  await wishlist.save();
 });
 
 userSchema.plugin(mongoosePaginate);

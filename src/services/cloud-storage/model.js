@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import { deleteFile } from './index';
 import db from '../../db';
 
 const imageSchema = new Schema({
@@ -10,7 +11,7 @@ const imageSchema = new Schema({
   },
   folder: {
     type: String,
-    enum: ['ARTWORK', 'USERS', 'OTHERS'],
+    enum: ['ARTWORKS', 'USERS', 'OTHERS'],
     required: [true, 'Missing filename'],
   },
   filename: {
@@ -23,6 +24,10 @@ const imageSchema = new Schema({
   timestamps: true,
 });
 
+imageSchema.post('remove', function (next) {
+  if (this.publicURL) deleteFile(this);
+  return next();
+});
 const Image = db.model('Image', imageSchema);
 
 export default Image;
