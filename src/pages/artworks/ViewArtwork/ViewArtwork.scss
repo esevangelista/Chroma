@@ -1,0 +1,37 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.active-art-container {
+  padding: 32px 32px;
+  .content {
+    .right-content {
+      .btn-actions {
+        display: grid;
+        margin-top: 16px;
+        #cart {
+          // width: 100%;
+          background: $chroma-red;
+          border-color: $chroma-red;
+          max-width: unset;
+          margin-bottom: 16px;
+        }
+        #fav {
+          &:hover, &focus, &active {
+            border-color: $chroma-red;
+            color: $chroma-red;
+          }
+        }
+      }
+    }
+  }
+  .ant-breadcrumb {
+    padding-bottom: 16px;
+    span {
+      .ant-breadcrumb-link a {
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+    }
+  }
+}

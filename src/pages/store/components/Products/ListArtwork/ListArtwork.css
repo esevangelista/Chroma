@@ -1,0 +1,13 @@
+.list-artwork-container {
+  font-family: 'Sailec-Regular'; }
+  .list-artwork-container .ant-form-item {
+    margin-bottom: 8px; }
+  .list-artwork-container .list-form-btn {
+    background: #CA0000;
+    border-color: #CA0000;
+    font-size: 24px;
+    text-align: center;
+    margin: 16px 0 8px 0; }
+    .list-artwork-container .list-form-btn:hover, .list-artwork-container .list-form-btn:focus, .list-artwork-container .list-form-btn:link, .list-artwork-container .list-form-btn:visited, .list-artwork-container .list-form-btn:active {
+      background: #CA0000;
+      border-color: #CA0000; }

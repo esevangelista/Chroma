@@ -1,0 +1,17 @@
+.active-art-container {
+  padding: 32px 32px; }
+  .active-art-container .content .right-content .btn-actions {
+    display: grid;
+    margin-top: 16px; }
+    .active-art-container .content .right-content .btn-actions #cart {
+      background: #CA0000;
+      border-color: #CA0000;
+      max-width: unset;
+      margin-bottom: 16px; }
+    .active-art-container .content .right-content .btn-actions #fav:hover, .active-art-container .content .right-content .btn-actions #favfocus, .active-art-container .content .right-content .btn-actions #favactive {
+      border-color: #CA0000;
+      color: #CA0000; }
+  .active-art-container .ant-breadcrumb {
+    padding-bottom: 16px; }
+    .active-art-container .ant-breadcrumb span .ant-breadcrumb-link a:hover {
+      color: #CA0000; }

@@ -13,9 +13,19 @@ class AlertContainer extends Component {
     this.props.alertHide();
   }
   render() {
-    if (this.props.alertMessage === null) return false;
-    return this.props.alertType === 'success' ?
-      message.success(this.props.alertMessage, 5) : message.error(this.props.alertMessage, 5);
+    const { alertMessage, alertType } = this.props;
+    return (
+      <div>
+        {
+          alertMessage ?
+            alertType === 'success' ?
+              message.success(this.props.alertMessage, 5)
+            :
+              message.error(this.props.alertMessage, 5)
+          : ''
+        }
+      </div>
+    );
   }
 }
 

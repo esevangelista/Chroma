@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Form, Icon, Input, Button, Alert, Modal } from 'antd';
-import { loginRequest, alertClear } from '../../ducks/auth';
+import { loginRequest, alertClear, handleLoginModal } from '../../ducks/auth';
 import RegForm from '../register/';
 import './login.css';
 
@@ -11,7 +11,7 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       registerIsVisible: false,
-      showModal: false,
+      // showModal: false,
     };
 
     this.toggleModal = this.toggleModal.bind(this);
@@ -26,7 +26,8 @@ class LoginForm extends Component {
   }
 
   toggleModal = () => {
-    this.setState({ showModal: !this.state.showModal });
+    // this.setState({ showModal: !this.state.showModal });
+    this.props.handleLoginModal(!this.props.visible);
   }
   showRegister = () => {
     this.setState({ registerIsVisible: true });
@@ -49,7 +50,7 @@ class LoginForm extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { isFetching, error, isMobile } = this.props;
+    const { isFetching, error, isMobile, visible, isCartIcon } = this.props;
     const { registerIsVisible } = this.state;
     return (
       <div>
@@ -57,12 +58,12 @@ class LoginForm extends Component {
           isMobile ?
             <a onClick={this.toggleModal}> Join/Login </a>
           :
-            <Button onClick={this.toggleModal} className="popover" id="btn-user"><Icon type="user" /></Button>
+            <Button onClick={this.toggleModal} className="popover" id="btn-user"><Icon type={isCartIcon ? "shopping" : "user"} /></Button>
         }
         <Modal
           className="login-modal"
           centered
-          visible={this.state.showModal}
+          visible={visible}
           footer={null}
           destroyOnClose
           afterClose={this.clearAlert}
@@ -131,9 +132,12 @@ LoginForm.propTypes = {
     resetFields: PropTypes.func.isRequired,
   }).isRequired,
   isFetching: PropTypes.bool.isRequired,
+  message: PropTypes.string,
   error: PropTypes.bool,
   loginRequest: PropTypes.func.isRequired,
   alertClear: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+  handleLoginModal: PropTypes.func.isRequired,
 };
 
 LoginForm.defaultProps = {
@@ -142,11 +146,10 @@ LoginForm.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { error, isFetching, message } = state.auth.login;
-  return { error, isFetching, message };
+  return { ...state.auth.login };
 };
 
 export default connect(
   mapStateToProps,
-  { loginRequest, alertClear },
+  { loginRequest, alertClear, handleLoginModal },
 )(Form.create()(LoginForm));

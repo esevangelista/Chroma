@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 // import { Route, Switch } from 'react-router-dom';
-import { Layout, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 import './footer.css';
 
-const { Content } = Layout;
 
-class Footer extends Component {
+class FooterContent extends Component {
   render() {
     return (
-      <Content>
-        <Row type="flex" justify="center" className="footer-container">       
+      <div className="footer">
+        <Row type="flex" justify="center" className="footer-container">      
           <Col className="col-container" xs={12} sm={6} md={6} lg={6} xl={6} >
             <h3> Artworks </h3>
             <a href="/"><p> Form </p></a>
@@ -40,9 +39,9 @@ class Footer extends Component {
             <a href="/"><p> Privacy Policy </p></a>
           </div>
         </div>
-      </Content>
+      </div>
     );
   }
 }
 
-export default Footer;
+export default FooterContent;

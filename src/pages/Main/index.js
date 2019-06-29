@@ -5,6 +5,7 @@ import { Layout } from 'antd';
 import Hero from '../hero/';
 import Landing from '../landing/';
 import Header from '../header/';
+import Footer from '../../global/footer/';
 import { checkUserSession } from '../../ducks/users';
 import './main.css';
 
@@ -23,6 +24,7 @@ class Main extends Component {
             <Hero />
             <Landing />
           </Content>
+          <Footer />
         </Layout>
       </Content>
     );

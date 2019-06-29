@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import zxcvbn from 'zxcvbn';
 import { connect } from 'react-redux';
-import { Form, Icon, Input, Button, Checkbox, Alert, Modal } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Alert } from 'antd';
 import { registerRequest, alertClear } from '../../ducks/auth';
 import './register.css';
 import { getRequestService } from '../../api/apiRequest';

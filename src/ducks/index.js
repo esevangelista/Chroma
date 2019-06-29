@@ -3,12 +3,20 @@ import { routerReducer } from 'react-router-redux';
 import user from './users';
 import auth from './auth';
 import feedback from './feedback';
+import product from './products';
+import artworks from './artworks';
+import cart from './cart';
+import wishlist from './wishlist';
 
 const appReducer = combineReducers({
   router: routerReducer,
   auth,
   user,
+  cart,
+  wishlist,
   feedback,
+  product,
+  artworks,
 });
 
 const LOGOUT_REQUEST = 'LOGOUT_REQUEST';

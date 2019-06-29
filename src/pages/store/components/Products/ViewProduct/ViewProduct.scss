@@ -1,0 +1,63 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.ant-carousel {
+  display: unset;
+}
+
+.images {
+  width: 100%;
+}
+
+.ant-popover-placement-top {
+  .ant-popover-content {
+    .ant-popover-inner {
+      .ant-popover-inner-content {
+        .ant-popover-buttons {
+          .ant-btn-primary {
+            border-radius: 0;
+            max-width: unset;
+            width: auto;
+            background: $dark-mod-red;
+            border-color: $dark-mod-red;
+          }
+        }
+      }
+    }
+  }
+}
+.right-content {
+  #art-title {
+  }
+  #artist {
+    color: $chroma-red;
+  }
+  .desc {
+    border: 1px solid $pale-grey;
+    padding: 16px 16px;
+  }
+  .btn-opt {
+    text-align: center;
+    margin: 16px 0;
+    
+    #upd, #del {
+      margin: 4px 8px;
+    }
+    #del {
+      color: $dark-mod-red;
+      border-color: $dark-mod-red;
+      &:hover, &:focus, &:active {
+        background: $dark-mod-red;
+        color: $white;
+      }
+    }
+    #upd {
+      color: $bluish-grey;
+      border-color: $bluish-grey;
+      &:hover, &:focus, &:active {
+        background: $bluish-grey;
+        color: $white;
+      }
+    }
+  }
+}

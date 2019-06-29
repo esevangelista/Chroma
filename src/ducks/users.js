@@ -22,7 +22,7 @@ export function fetchSessionFailed(error) {
 const initialState = {
   isGettingSession: true,
   errorMessage: null,
-  profile: null,
+  profile: {},
 };
 
 export default function userReducer(state = initialState, action) {

@@ -18,6 +18,11 @@ export const LOGOUT_FAILED = 'LOGOUT_FAILED';
 
 export const ALERT_CLEAR = 'ALERT_CLEAR';
 
+export const HANDLE_LOGIN_MODAL = 'HANDLE_LOGIN_MODAL';
+
+export function handleLoginModal(visible) {
+  return { type: HANDLE_LOGIN_MODAL, visible };
+}
 export function alertClear() {
   return { type: ALERT_CLEAR };
 }
@@ -74,6 +79,7 @@ const initialState = {
   isFetching: false,
   error: false,
   message: '',
+  visible: false,
 };
 
 function createAuthReducer(actions) {
@@ -106,6 +112,11 @@ function createAuthReducer(actions) {
           error: true,
           message: action.message,
         };
+      case actions.prompt:
+        return {
+          ...state,
+          visible: action.visible,
+        };
       default:
         return state;
     }
@@ -126,6 +137,7 @@ export default combineReducers({
   }),
   login: createAuthReducer({
     alertclear: ALERT_CLEAR,
+    prompt: HANDLE_LOGIN_MODAL,
     request: LOGIN_REQUEST,
     success: LOGIN_SUCCESS,
     failed: LOGIN_FAILED,

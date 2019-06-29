@@ -87,6 +87,11 @@ $header-height: 80px;
     }
   }
 
+  .cart {
+    &:hover, &:active, &:focus {
+      color: $chroma-red;
+    }
+  }
   @include for-tablet-landscape-up {
     .ant-menu-item {
       display: none;

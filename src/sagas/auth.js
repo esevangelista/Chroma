@@ -1,7 +1,6 @@
-import { takeLatest, takeEvery } from 'redux-saga';
-import { call, put, select, fork } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga';
+import { call, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-
 import {
   LOGIN_REQUEST,
   LOGOUT_REQUEST,
@@ -22,7 +21,7 @@ import { postRequestService, putRequestService } from '../api/apiRequest';
 export function* loginFlow(action) {
   try {
     const response = yield call(postRequestService, '/login', action.data);
-    const { success } = response.data;
+    const { success, user } = response.data;
     if (success) {
       yield put(loginSuccess(response.data.message));
       yield put(push('/'));
@@ -43,12 +42,10 @@ export function* logoutFlow() {
       yield put(logoutSuccess());
       yield put(push('/'));
     } else {
-      console.log(response.data);
       yield put(logoutFailed(response.data.message));
     }
   } catch (err) {
     const { message } = err.response.data;
-    console.log(err);
     yield put(logoutFailed(message));
   }
 }
@@ -72,7 +69,7 @@ export function* confirmEmailFlow(action) {
     const { message } = response.data;
     yield put(confirmEmailSuccess(message));
     yield put(push('/'));
-    yield put(alertDisplay({ alertType: 'success', message }));
+    yield call(alertDisplay({ alertType: 'success', message }));
   } catch (err) {
     const { message } = err.response.data;
     yield put(confirmEmailFailed(message));

@@ -1,13 +1,11 @@
-import { takeLatest, takeEvery } from 'redux-saga';
-import { call, put, select } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
-
+import { takeLatest } from 'redux-saga';
+import { call, put, select, fork } from 'redux-saga/effects';
 import {
   CHECK_SESSION_EXISTS,
   fetchSessionSuccess,
   fetchSessionFailed,
 } from '../ducks/users';
-import { postRequestService, putRequestService, getRequestService } from '../api/apiRequest';
+import { postRequestService } from '../api/apiRequest';
 
 export const getSession = state => state.user.profile;
 
@@ -28,7 +26,7 @@ export function* checkSessionExists() {
   try {
     const profile = yield select(getSession);
     if (!profile || !profile.email) {
-      yield call(fetchSession);
+      yield fork(fetchSession);
     }
   } catch (err) {
     yield put(fetchSessionFailed(err || 'Something went wrong'));

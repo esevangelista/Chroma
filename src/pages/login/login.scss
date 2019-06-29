@@ -8,6 +8,7 @@ div {
     line-height: 0;
     border-radius: 0;
     border: none;
+    box-shadow: none
     &:hover, &:active, &:link {
       color: $chroma-red;
     }

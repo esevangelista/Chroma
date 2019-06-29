@@ -1,0 +1,20 @@
+.art-main-container .art-container .ant-spin-spinning {
+  position: relative;
+  left: 50%; }
+
+.art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container {
+  margin-top: 16px; }
+
+.art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container .ant-col .ant-list-item .artwork {
+  padding-top: 0; }
+
+.art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container .ant-col .ant-list-item .artwork .ant-card-body .bottom-div .actions .ant-btn {
+  border: none;
+  height: 0;
+  padding: 8px 6px;
+  font-size: 18px;
+  line-height: 0;
+  border-radius: 0; }
+
+.art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container .ant-col .ant-list-item .artwork .ant-card-body .bottom-div .actions .ant-btn:hover, .art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container .ant-col .ant-list-item .artwork .ant-card-body .bottom-div .actions .ant-btn:active, .art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container .ant-col .ant-list-item .artwork .ant-card-body .bottom-div .actions .ant-btn:link, .art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container .ant-col .ant-list-item .artwork .ant-card-body .bottom-div .actions .ant-btn:focus {
+  color: inherit; }

@@ -1,0 +1,40 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.art-main-container {
+  .art-container {
+    .breadcrumb {
+      margin-bottom: 8px;
+      span {
+        .ant-breadcrumb-link a {
+          &:hover {
+            color: $chroma-red;
+          }
+        }
+      }
+    }
+    .filter-content {
+      .col-items {
+        .artworks {
+          .artwork {
+            .bottom-div {
+              .actions {
+                .ant-btn {
+                  border: none;
+                  height: 0;
+                  padding: 8px 6px;
+                  font-size: 18px;
+                  line-height: 0;
+                  border-radius: 0;
+                  &:hover, &:active, &:link, &:focus {
+                    color: inherit;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -53,6 +53,8 @@
       text-align: left; }
     .site-header .ant-menu-item.show-on-desktop {
       display: none; }
+  .site-header .cart:hover, .site-header .cart:active, .site-header .cart:focus {
+    color: #CA0000; }
   @media only screen and (min-width: 992px) {
     .site-header .ant-menu-item {
       display: none; }

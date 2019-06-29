@@ -1,0 +1,42 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.art-main-container {
+  .art-container {
+    .ant-spin-spinning {
+      position: relative;
+      left: 50%;
+    }
+    .wishlist {
+      .ant-spin-nested-loading {
+        .ant-spin-container {
+          margin-top: 16px;
+          .ant-col {
+            .ant-list-item {
+              .artwork {
+              padding-top: 0;
+               .ant-card-body {
+                .bottom-div {
+                  .actions {
+                    .ant-btn {
+                      border: none;
+                      height: 0;
+                      padding: 8px 6px;
+                      font-size: 18px;
+                      line-height: 0;
+                      border-radius: 0;
+                      &:hover, &:active, &:link, &:focus {
+                        color: inherit;
+                      }
+                    }
+                  }
+                }
+              }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

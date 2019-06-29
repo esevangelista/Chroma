@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, Input, Drawer, Button, Popover, Row } from 'antd';
+import { Layout, Menu, Icon, Input, Drawer, Button, Popover, Row, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../global/logo';
 import './header.css';
 import LoginForm from '../login/';
 import { logoutRequest } from '../../ducks/auth';
-import { checkUserSession } from '../../ducks/users';
+import Cart from '../cart/';
 
 const { Search } = Input;
+
+const storeNav =  (
+  <div>
+    <a href="/my-store"> Overview </a>
+    <a href="/my-store"> Transactions </a>
+    <a href="/my-store/products"> Products </a>
+    <a href="/my-store"> Feedback </a>
+  </div>
+);
 
 class Header extends Component {
   constructor(props) {
@@ -20,10 +29,6 @@ class Header extends Component {
     this.onClose = this.onClose.bind(this);
     this.showDrawer = this.showDrawer.bind(this);
     this.logout = this.logout.bind(this);
-  }
-  componentDidMount() {
-    // this.props.checkUserSession();
-    // console.log(this.props)
   }
 
   onClose = () => {
@@ -42,7 +47,7 @@ class Header extends Component {
   };
 
   render() {
-    const { profile } = this.props;
+    const { profile, isGettingSession } = this.props.user;
     return (
       <Layout.Header className="site-header">
         <Menu mode="horizontal" >
@@ -65,22 +70,27 @@ class Header extends Component {
           <Menu.Item key="3" className="show-on-desktop discover">
             Artworks
           </Menu.Item>
+          {
+            profile && profile.isArtist ?
+              <Menu.Item key="3.5" className=" show-on-desktop discover">
+                <Popover content={storeNav} trigger="click">
+                  My Store
+                </Popover>
+              </Menu.Item>
+            : ''
+          }
           <Menu.Item key="4" className="hide-on-desktop">
             <Icon type="search" />
           </Menu.Item>
           <Menu.Item key="5">
-            <Popover
-              className="popover"
-              placement="bottom"
-              content={"Your cart is empty."}
-              trigger="click"
-              arrowPointAtCenter
-            >
-              <Icon type="shopping" />
-            </Popover>
+            {
+              !isGettingSession && profile && profile._id ?
+                <Cart />
+              : <LoginForm isCartIcon />
+            }
           </Menu.Item>
           <Menu.Item key="6" className="show-on-desktop">
-            { profile ?
+            { !isGettingSession && profile && profile._id ?
               <Popover
                 className="popover"
                 placement="bottomRight"
@@ -111,9 +121,21 @@ class Header extends Component {
                     <p>Profile</p>
                     <p>Wishlist</p>
                     <p>My Orders</p>
-                    <p>Gallery</p>
                     <p>Inbox</p>
+                    {
+                      profile && profile.isArtist ?
+                        <div>
+                          <Divider> Text </Divider>
+                          <Row><a href="/my-store"> Overview </a></Row>
+                          <Row><a href="/my-store"> Transactions </a></Row>
+                          <Row><a href="/my-store"> Products </a></Row>
+                          <Row><a href="/my-store"> Feedback </a></Row>
+
+                          </div>
+                      : ''
+                    }
                     <p>FAQs</p>
+                    <br />
                     <p> Logout </p>
                   </div>
                 :
@@ -137,7 +159,6 @@ Header.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.bool,
   logoutRequest: PropTypes.func.isRequired,
-  checkUserSession: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
@@ -146,9 +167,8 @@ Header.defaultProps = {
 
 const mapStateToProps = (state) => {
   const { error, isFetching } = state.auth.logout;
-  const { profile } = state.user;
-  return { error, isFetching, profile };
+  const { user } = state;
+  return { error, isFetching, user };
 };
 
-// export default connect(mapStateToProps, { checkUserSession, logoutRequest })(Header);
 export default connect(mapStateToProps, { logoutRequest })(Header);

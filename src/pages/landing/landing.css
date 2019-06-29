@@ -211,7 +211,7 @@
   .hero-extension img {
     height: 24px; }
   .ant-carousel, a.more-mobile {
-    display: none; }
+    display: none !important; }
   .banner h3 {
     font-size: 36px; }
   .site-content.categories .cards {
@@ -233,7 +233,7 @@
   .hero-extension img {
     height: 32px; }
   .ant-carousel, a.more-mobile {
-    display: none; }
+    display: none !important; }
   .banner h3 {
     font-size: 48px; }
   .banner .ant-btn.btn-mor {
@@ -248,7 +248,7 @@
   .hero-extension img {
     height: 48px; }
   .ant-carousel, a.more-mobile {
-    display: none; }
+    display: none !important; }
   .banner h3 {
     font-size: 56px; }
   .banner .ant-btn.btn-mor {
