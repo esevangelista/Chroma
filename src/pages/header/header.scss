@@ -3,10 +3,24 @@
 
 $header-height: 80px;
 
+.submenu-store, .submenu-user{
+  .ant-menu {
+    .ant-menu-item-group {
+      .ant-menu-item-group-list {
+        .ant-menu-item {
+            a:hover {
+              color: $chroma-red;
+            }
+        }
+      }
+    }
+  }
+}
 .site-header {
   width: 100%;
   z-index: 100;
-  position: fixed;
+  position: sticky;
+  top: 0;
   &.site-header {
     background: $dead-grey;
     height: $header-height;
@@ -17,19 +31,52 @@ $header-height: 80px;
     background: none;
     display: flex;
     justify-content: flex-end;
+    .submenu-store, .submenu-user {
+      display: none;
+      .ant-menu {
+        .ant-menu-item-group {
+          .ant-menu-item-group-list {
+            .ant-menu-item {
+              a:hover {
+                color: $chroma-red;
+              }
+            }
+          }
+        }
+      }
+      .ant-menu-submenu-title {
+        font-size: 16px;
+        font-weight: 700;
+          &:hover, &:focus-within, &:focus, &:active {
+          color: $chroma-red;
+        }
+      }
+      &:hover, &:focus-within, &:focus, &:active {
+        color: $chroma-red;
+        border-color: $chroma-red;
+      }
+    }
   }
 
   .ant-menu-horizontal {
     border-bottom: none;
     line-height: $header-height;
+    .ant-menu-submenu-active {
+      color: $chroma-red !important;
+      border-color: $chroma-red !important;
+    }
+    .submenu-user {
+      display: none;
+    }
   }
+
 
   .ant-menu-item.ant-menu-item {
     border-bottom: none;
     margin-top: 0;
     top: 0;
     height: $header-height;
-    padding: 0 10px;
+    padding: 0 16px;
 
     &.logo-container {
       flex-grow: 1;
@@ -47,7 +94,10 @@ $header-height: 80px;
         padding: 0 16px;
         font-size: 16px;
         font-weight: 700;
-        vertical-align: sub;
+        // vertical-align: sub;
+        &:hover {
+          color: $chroma-red;
+        }
       }
     }
     &:hover {
@@ -63,6 +113,9 @@ $header-height: 80px;
     line-height: 0;
     border-radius: 0;
     border: none;
+    &:hover, &:active, &:focus {
+      color: $chroma-red;
+    }
   }
 
 
@@ -104,7 +157,12 @@ $header-height: 80px;
 
 
   // show some tabs when large device
-  @include for-desktop-up {
+  @include for-tablet-landscape-up {
+    .ant-menu-horizontal {
+      .submenu-store, .submenu-user {
+        display: inline-block;
+      }
+    }
     .ant-menu-item {
        &.show-on-desktop {
         display: block;
@@ -112,7 +170,6 @@ $header-height: 80px;
         &.discover {
           font-size: 16px;
           font-weight: 600;
-          padding: 0 32px 16px 0px;
         }
       }
       &.hide-on-desktop {
@@ -122,6 +179,11 @@ $header-height: 80px;
     }
   }
   @include for-big-desktop-up {
+    .ant-menu-horizontal {
+      .submenu-store, .submenu-user {
+        display: inline-block;
+      }
+    }
     .ant-menu-item {
        &.show-on-desktop {
         display: block;
@@ -158,6 +220,48 @@ $header-height: 80px;
       font-weight: 300;
       font-size: 16px;
       color: $chroma-red;
+      .mobile-menu {
+        margin-top: 16px;
+        .ant-menu-item {
+          padding-left: 8px !important;
+          a {
+            color: $chroma-red;
+            font-size: 16px;
+          }
+        }
+        .ant-menu-submenu-open {
+          &:active {
+            background: $gray-4;
+          }
+        }
+        .ant-menu-submenu {
+          color: $chroma-red;
+          .ant-menu-submenu-title {
+            padding-left: 8px !important;
+            color: $chroma-red;
+            font-size: 16px;
+            &:active {
+              background: transparent;
+            }
+            .ant-menu-submenu-arrow:before, .ant-menu-submenu-arrow:after{
+              background: $chroma-red;
+              font-size: 14px;
+
+            }
+          }
+          .ant-menu-item-group-title {
+            display: none;
+          }
+          .ant-menu-item-group-list {
+            padding-left: 24px;
+            .ant-menu-item {
+              a {
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
     }
     .ant-drawer-close{
       color: $chroma-red;

@@ -1,0 +1,169 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+$mult: 32px;
+
+.change-type-modal {
+  .ant-modal-content {
+    .ant-modal-footer {
+      .ant-btn {
+        &:hover, &:focus, &:active {
+          border-color: $chroma-red;
+          color: $chroma-red;
+        }
+      }
+      .ant-btn-primary {
+        background: $chroma-red;
+        border-color: $chroma-red;
+        &:hover, &:focus, &:active {
+          background: $chroma-red;
+          border-color: $chroma-red;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.acc-form-container {
+  padding: $mult $mult;
+  .alert-reg {
+    margin-bottom: 16px;
+    color: $white;
+    .anticon-check-circle {
+      color: $white;
+    }
+    .anticon-close-circle  {
+      color: $white !important;
+    }
+  }
+
+  .menu {
+    margin-top: 16px;
+  }
+  .acc-form {
+    .pw-acc-form-div {
+      margin: 16px 0;
+      #pw-label {
+        font-weight: 700;
+      }
+      #pw-icon {
+        float: right;
+        cursor: pointer;
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+      .pw-button {
+        color: $chroma-red;
+        border-color: $chroma-red;
+      }
+    }
+    .form-button {
+      margin: 16px 0 8px 0;
+      background: $chroma-red;
+      border-color: $chroma-red;
+      font-size: 16px;
+    }
+    #manage {
+      margin-right: 16px;
+    }
+    #change-acc-type {
+      color: $chroma-red;
+      border-color: $chroma-red;
+      padding: 4px 8px;
+      font-size: 14px;
+      font-weight: 400;
+      &:hover {
+        background: $chroma-red;
+        color: $white;
+      }
+    }
+    #change-mail {
+      cursor: pointer;
+      color: $chroma-red;
+      float: right;
+      &:hover {
+        text-decoration: underline;
+      }
+      margin-bottom: 12px;
+    }
+    .password-field {
+
+      .meter {
+        position: absolute;
+        width: 0%;
+        height: 4px;
+        left: 0;
+        background: transparent;
+        transition: all 300ms ease-in-out;
+        &[data-score="null"] {
+          width: 0;
+          background: red;
+        }
+        &[data-score="0"] {
+          width: 5%;
+          background: $error;
+        }
+        &[data-score="1"] {
+          width: 25%;
+          background: $error;
+        }
+        &[data-score="2"] {
+          width: 50%;
+          background: $warning;
+        }
+        &[data-score="3"] {
+          width: 75%;
+          background: $success;
+        }
+        &[data-score="4"] {
+          width: 100%;
+          background: $success;
+        }
+      }
+      @include for-phone-only {
+        .strength-feedback {
+          height: 16px;
+          padding-top: 8px;
+          font-size: 10px;
+          padding-bottom: 16px;
+        }
+      }
+      .strength-feedback {
+        height: 16px;
+        padding-top: 8px;
+        font-size: 12px;
+        padding-bottom: 8px;
+      }
+
+      .is-validating.has-feedback .ant-form-item-children:after {
+        display: none;
+      }
+    }
+    .email-area {
+      margin-bottom: 0 !important;
+    }
+    .ant-form-item {
+      margin-bottom: 16px;
+      .ant-form-item-label {
+        label {
+          color: $gray-8;
+        }
+      }
+    }
+  }
+}
+
+
+@include for-tablet-portrait-up {
+  .acc-form-container {
+    margin: $mult/2 $mult;
+  }
+}
+
+@include for-desktop-up {
+  .acc-form-container {
+    margin: $mult/2 $mult*2;
+  }
+}

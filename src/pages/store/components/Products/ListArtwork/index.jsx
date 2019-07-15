@@ -315,7 +315,7 @@ class ListArtwork extends Component {
           isUpdate ?
             <Form.Item label="Status">
               {getFieldDecorator('status', {
-                initialValue: 'AVAILABLE',
+                initialValue: isUpdate ? selectedProduct.status : 'AVAILABLE',
                 rules: [{ required: true }],
               })(
                 <Radio.Group>

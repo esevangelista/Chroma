@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 import Hero from '../hero/';
 import Landing from '../landing/';
 import Header from '../header/';
@@ -18,14 +18,19 @@ class Main extends Component {
   render() {
     return (
       <Content>
-        <Layout>
-          <Header {...this.props} />
-          <Content>
-            <Hero />
-            <Landing />
-          </Content>
-          <Footer />
-        </Layout>
+        {
+          this.props.isGettingSession ?
+            <Spin style={{ top: '50%', left: '50%', position: 'absolute' }} />
+          :
+            <Layout>
+              <Header {...this.props} />
+              <Content>
+                <Hero />
+                <Landing />
+              </Content>
+              <Footer />
+            </Layout>
+        }
       </Content>
     );
   }
@@ -33,8 +38,8 @@ class Main extends Component {
 
 Main.propTypes = {
   checkUserSession: PropTypes.func.isRequired,
+  isGettingSession: PropTypes.bool.isRequired,
 };
-const mapStateToProps = state => state;
+const mapStateToProps = state => state.user;
 
 export default connect(mapStateToProps, { checkUserSession })(Main);
-// export default Main;

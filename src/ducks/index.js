@@ -7,6 +7,7 @@ import product from './products';
 import artworks from './artworks';
 import cart from './cart';
 import wishlist from './wishlist';
+import artists from './artists';
 
 const appReducer = combineReducers({
   router: routerReducer,
@@ -17,6 +18,7 @@ const appReducer = combineReducers({
   feedback,
   product,
   artworks,
+  artists,
 });
 
 const LOGOUT_REQUEST = 'LOGOUT_REQUEST';

@@ -66,10 +66,16 @@ export function* registerFlow(action) {
 export function* confirmEmailFlow(action) {
   try {
     const response = yield call(putRequestService, `/verify-account/${action.data}`);
-    const { message } = response.data;
-    yield put(confirmEmailSuccess(message));
-    yield put(push('/'));
-    yield call(alertDisplay({ alertType: 'success', message }));
+    const { success, message } = response.data;
+    if (success) {
+      yield put(confirmEmailSuccess(message));
+      yield put(push('/'));
+      yield put(alertDisplay({ alertType: 'success', message }));
+    } else {
+      yield put(confirmEmailFailed(message));
+      yield put(push('/notfound'));
+      yield put(alertDisplay({ alertType: 'error', message }));
+    }
   } catch (err) {
     const { message } = err.response.data;
     yield put(confirmEmailFailed(message));

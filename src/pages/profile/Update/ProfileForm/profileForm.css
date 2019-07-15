@@ -1,0 +1,28 @@
+.ant-input:hover, .ant-input:focus, .ant-input:active {
+  border-color: #e8e8e8 !important; }
+
+.acc-form #link-label {
+  font-weight: 700; }
+
+.acc-form .link-container {
+  padding: 16px 16px; }
+  @media only screen and (min-width: 992px) {
+    .acc-form .link-container {
+      padding: 16px 32px; } }
+
+.acc-form .loc-container {
+  display: flex; }
+  .acc-form .loc-container .ant-form-item {
+    margin-right: 8px; }
+
+.acc-form .uploader #plus-icon {
+  font-size: 40px; }
+
+.acc-form .uploader .ant-upload {
+  border-color: #CA0000;
+  border-radius: 50%; }
+  .acc-form .uploader .ant-upload .ant-upload {
+    word-break: break-all;
+    padding: 4px; }
+  .acc-form .uploader .ant-upload:hover, .acc-form .uploader .ant-upload:active {
+    border-color: #CA0000; }

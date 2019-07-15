@@ -27,7 +27,13 @@
   }
 }
 .right-content {
+  margin-top: 16px;
+  ul {
+    padding-inline-start: 16px;
+  }
   #art-title {
+    font-family: 'Sailec-Bold';
+    font-size: 28px;    
   }
   #artist {
     color: $chroma-red;
@@ -35,6 +41,11 @@
   .desc {
     border: 1px solid $pale-grey;
     padding: 16px 16px;
+    text-align: justify;
+  }
+  #price {
+    font-family: 'Sailec-Bold';
+    font-size: 24px;
   }
   .btn-opt {
     text-align: center;
@@ -59,5 +70,11 @@
         color: $white;
       }
     }
+  }
+}
+
+@include for-tablet-landscape-up {
+  .right-content {
+    margin-top: 0;
   }
 }

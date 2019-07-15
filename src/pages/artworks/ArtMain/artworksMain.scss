@@ -2,6 +2,43 @@
 @import 'src/styles/devices';
 
 .art-main-container {
+  .ant-pagination {
+    float: right;
+    margin: 16px 0;
+    .ant-pagination-options {
+      .ant-pagination-options-size-changer {
+        .ant-select-selection {
+          &:hover, &:active, &:focus-within{
+            border-color: $chroma-red;
+          }
+        }
+      }
+    }
+    .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+      &:hover, &:focus {
+        border-color: $chroma-red;
+      }
+      a {
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+      .ant-pagination-item-link {
+        &:hover {
+          border-color: $pale-grey;
+        }
+      }
+    }
+    .ant-pagination-item-active {
+      border-color: $chroma-red;
+      a {
+        color: $chroma-red;
+        &:hover, &:link, &:focus {
+          color: $chroma-red;
+        }
+      }
+    }
+  }
   .art-container {
     .breadcrumb {
       margin-bottom: 8px;
@@ -22,7 +59,6 @@
                 .ant-btn {
                   border: none;
                   height: 0;
-                  padding: 8px 6px;
                   font-size: 18px;
                   line-height: 0;
                   border-radius: 0;

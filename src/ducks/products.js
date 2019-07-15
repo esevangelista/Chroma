@@ -131,7 +131,7 @@ export function changeQueryLimit(limit) {
 }
 
 export function changeQueryPage(page) {
-  return { type: CHANGE_QUERY_PAGE, page};
+  return { type: CHANGE_QUERY_PAGE, page };
 }
 export function updateDrawer(product) {
   return { type: UPDATE_DRAWER, product };

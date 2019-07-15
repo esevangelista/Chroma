@@ -1,0 +1,40 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.ant-input:hover, .ant-input:focus, .ant-input:active {
+  border-color: $gray-4 !important;
+}
+
+.acc-form {
+  #link-label {
+    font-weight: 700;
+  }
+  .link-container {
+    padding: 16px 16px;
+    @include for-tablet-landscape-up {
+      padding: 16px 32px;
+    }
+  }
+  .loc-container {
+    display: flex;
+    .ant-form-item {
+      margin-right: 8px;
+    }
+  }
+  .uploader {
+    #plus-icon {
+      font-size: 40px;
+    }
+    .ant-upload {
+      border-color: $chroma-red;
+      border-radius: 50%;
+      .ant-upload{
+        word-break: break-all;
+        padding: 4px;
+      }
+      &:hover, &:active {
+        border-color: $chroma-red;
+      }
+    }
+  }
+}

@@ -18,6 +18,7 @@ import {
   Checkbox,
   Empty,
   Pagination,
+  Spin,
 } from 'antd';
 import {
   getArtRequest,
@@ -37,12 +38,14 @@ import {
 } from '../../../ducks/artworks';
 import { updateWishlistRequest } from '../../../ducks/wishlist';
 import { updateCartRequest } from '../../../ducks/cart';
+import { handleLoginModal } from '../../../ducks/auth';
 import { styles, medium, moreMedium, subject, moreSubject, cbox } from '../../store/components/constant';
 import './artworksMain.css';
 
 const { Text } = Typography;
 const { Search } = Input;
 const { Panel } = Collapse;
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class ArtMain extends Component {
   constructor(props) {
@@ -286,20 +289,26 @@ class ArtMain extends Component {
   }
 
   addToWishlist = async (_id) => {
-    let products = await this.props.wishlist.map(w => w._id) || [];
-    if (products.includes(_id)) products = await products.filter(p => p !== _id);
-    else await products.push(_id);
-    this.props.updateWishlistRequest(products);
+    const { profile } = this.props;
+    if (profile && profile._id) {
+      let products = await this.props.wishlist.map(w => w._id) || [];
+      if (products.includes(_id)) products = await products.filter(p => p !== _id);
+      else await products.push(_id);
+      this.props.updateWishlistRequest(products);
+    } else this.props.handleLoginModal(true);
   }
   handleAddToCart(prod) {
-    const products = this.props.cart.products || [];
-    if (!this.props.cart.products.some(i => i._id == prod._id)) {
-      products.push(prod);
-    }
-    let val = parseInt(this.props.cart.tally[prod._id]) + 1 || 1;
-    if (val > prod.quantity) val = 1;
-    const tally = { id: prod._id, val };
-    this.props.updateCartRequest(products, tally);
+    const { profile } = this.props;
+    if (profile && profile._id) {
+      const products = this.props.cart.products || [];
+      if (!this.props.cart.products.some(i => i._id == prod._id)) {
+        products.push(prod);
+      }
+      let val = parseInt(this.props.cart.tally[prod._id]) + 1 || 1;
+      if (val > prod.quantity) val = 1;
+      const tally = { id: prod._id, val };
+      this.props.updateCartRequest(products, tally);
+    } else this.props.handleLoginModal(true);
   }
   render() {
     const {
@@ -321,7 +330,6 @@ class ArtMain extends Component {
           style,
           subject,
           medium,
-          status,
           minPrice,
           maxPrice,
           minHeight,
@@ -336,7 +344,6 @@ class ArtMain extends Component {
         if (style) arr.push(style);
         if (medium) medium.map(m => arr.push(m));
         if (subject) subject.map(s => arr.push(s));
-        if (status) status.map(st => arr.push(st));
         if (minPrice && !maxPrice) arr.push(`Min Price: ${minPrice}`);
         if (maxPrice && !minPrice) arr.push(`Max Price: ${maxPrice}`);
         if (minPrice && maxPrice) arr.push(`Price: ${minPrice} - ${maxPrice}`);
@@ -356,212 +363,217 @@ class ArtMain extends Component {
     const ids = this.props.wishlist.map(w => w._id);
     const { total, page, limit } = this.props.pagination;
     return (
-      <div className="products-main-container art-main-container">
-        <div className="products-container art-container">
-          <Breadcrumb className="breadcrumb">
-            <Breadcrumb.Item><Link to="/"><Icon type="home" /></Link></Breadcrumb.Item>
-            <Breadcrumb.Item><Link to="/artworks"> Artworks </Link></Breadcrumb.Item>
-            {
-              this.props.query && this.props.query.artform ?
-                <Breadcrumb.Item> {this.props.query.artform} </Breadcrumb.Item>
-              : <Breadcrumb.Item> All Artworks </Breadcrumb.Item>
-            }
-          </Breadcrumb>
-          <Search className="search" placeholder="Search for title or keywords of an artwork" onSearch={value => this.props.changeQueryTitle(value)} allowClear enterButton />
-          {
-            tags(this.props.query).map(t => <Tag key={t} className="search-tags"> {t} </Tag>)
-          }
-          <Row className="filter-content">
-            <Col xs={24} sm={24} md={24} lg={24} xl={6} xxl={6}>
-              <Collapse
-                bordered={false}
-                defaultActiveKey={['1']}
-                expandIconPosition="right"
-                accordion
-                className="collapse-filter"
-                expandIcon={({ isActive }) => <Icon type="down" rotate={isActive ? 180 : 0} />}
-              >
-                <Panel header="FILTERS" key="1" className="filter-panel">
+      <div>
+        {
+          isFetching ? <Spin className="loader" indicator={antIcon} style={{ position: 'absolute', top: '50%', left: '50%' }} />:
+          <div className="products-main-container art-main-container">
+            <div className="products-container art-container">
+              <Breadcrumb className="breadcrumb">
+                <Breadcrumb.Item><Link to="/"><Icon type="home" /></Link></Breadcrumb.Item>
+                <Breadcrumb.Item><Link to="/artworks"> Artworks </Link></Breadcrumb.Item>
+                {
+                  this.props.query && this.props.query.artform ?
+                    <Breadcrumb.Item> {this.props.query.artform} </Breadcrumb.Item>
+                  : <Breadcrumb.Item> All Artworks </Breadcrumb.Item>
+                }
+              </Breadcrumb>
+              <Search className="search" placeholder="Search for title or keywords of an artwork" onSearch={value => this.props.handleQueryTitle(value)} allowClear enterButton />
+              {
+                tags(this.props.query).map(t => <Tag key={t} className="search-tags"> {t} </Tag>)
+              }
+              <Row className="filter-content">
+                <Col xs={24} sm={24} md={24} lg={24} xl={6} xxl={6}>
                   <Collapse
                     bordered={false}
+                    defaultActiveKey={['1']}
                     expandIconPosition="right"
                     accordion
-                    className="collapse-inner"
-                    expandIcon={({ isActive }) => <Icon type="caret-down" rotate={isActive ? 180 : 0} />}
+                    className="collapse-filter"
+                    expandIcon={({ isActive }) => <Icon type="down" rotate={isActive ? 180 : 0} />}
                   >
-                    <Panel header="TYPE" key="1">
-                      <Radio.Group className="radio-type" onChange={this.handleTypeChange} value={this.state.type}>
-                        <Radio value="PAINTING"> Painting</Radio>
-                        <Radio value="PRINT"> Print </Radio>
-                        <Radio value="DRAWING"> Drawing </Radio>
-                        <Radio value="DIGITAL ART"> Digital Art </Radio>
-                        <Radio value="COLLAGE"> Collage  </Radio>
-                        <Radio value="PHOTOGRAPHY"> Photography </Radio>
-                        <Radio value="SCULPTURE"> Sculpture </Radio>
-                      </Radio.Group>
-                    </Panel>
-                    <Panel header="STYLE" key="2">
-                      <Radio.Group className="radio-type" onChange={this.handleStyleChange} value={this.state.style}>
-                        {
-                          styles.map(styl =>
-                            <Radio key={styl} value={styl.toUpperCase()}> {styl} </Radio>)
-                        }
-                      </Radio.Group>
-                    </Panel>
-                    <Panel header="MEDIUM" key="3">
-                      <Checkbox.Group
-                        options={seeMore ? cbox([...medium, ...moreMedium]) : cbox(medium)}
-                        className="checkbox-type"
-                        onChange={this.handleMediumChange}
-                        value={this.state.medium}
-                      />
-                      {
-                        seeMore ?
-                          <a onClick={this.seeMoreMedium}> Less Options </a>
-                        : <a onClick={this.seeMoreMedium}> More Options </a>
-                      }
-                    </Panel>
-                    <Panel header="SUBJECT" key="4">
-                      <Checkbox.Group
-                        options={moreSubj ? cbox([...subject, ...moreSubject]) : cbox(subject)}
-                        className="checkbox-type"
-                        onChange={this.handleSubjectChange}
-                        value={this.state.subject}
-                      />
-                      {
-                        moreSubj ?
-                          <a onClick={this.seeMoreSubject}> Less Options </a>
-                        : <a onClick={this.seeMoreSubject}> More Options </a>
-                      }
-                    </Panel>
-                    <Panel header="PRICE" key="5">
-                      <Input.Group compact className="input-price">
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinPrice} value={this.state.minP} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxPrice} value={this.state.maxP} />
-                        </div>
-                        {
-                          priceErr ?
-                            <Text type="danger"> Price must be a valid range of amount </Text>
-                          : ''
-                        }
-                      </Input.Group>
-                    </Panel>
-                    <Panel header="SIZE" key="6">
-                      <Input.Group compact className="input-price">
-                        <Text className="dimension-label"> HEIGHT (inches) </Text>
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinHeight} value={this.state.minH} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxHeight} value={this.state.maxH} />
-                        </div>
-                        {
-                          heightErr ?
-                            <Text type="danger"> Height range must be valid.  </Text>
-                          : ''
-                        }
-                      </Input.Group>
-                      <Input.Group compact className="input-price">
-                        <Text className="dimension-label"> WIDTH (inches) </Text>
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinWidth} value={this.state.minW} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxWidth} value={this.state.maxW} />
-                        </div>
-                        {
-                          widthErr ?
-                            <Text type="danger"> Width range must be valid.  </Text>
-                          : ''
-                        }
-                      </Input.Group>
-                      <Input.Group compact className="input-price">
-                        <Text className="dimension-label"> DEPTH (inches) </Text>
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinDepth} value={this.state.minD} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxDepth} value={this.state.maxD} />
-                        </div>
-                        {
-                          depthErr ?
-                            <Text type="danger"> Depth range must be valid.  </Text>
-                          : ''
-                        }
-                      </Input.Group>
+                    <Panel header="Filters" key="1" className="filter-panel">
+                      <Collapse
+                        bordered={false}
+                        expandIconPosition="right"
+                        accordion
+                        className="collapse-inner"
+                        expandIcon={({ isActive }) => <Icon type="caret-down" rotate={isActive ? 180 : 0} />}
+                      >
+                        <Panel header="TYPE" key="1">
+                          <Radio.Group className="radio-type" onChange={this.handleTypeChange} value={this.state.type}>
+                            <Radio value="PAINTING"> Painting</Radio>
+                            <Radio value="PRINT"> Print </Radio>
+                            <Radio value="DRAWING"> Drawing </Radio>
+                            <Radio value="DIGITAL ART"> Digital Art </Radio>
+                            <Radio value="COLLAGE"> Collage  </Radio>
+                            <Radio value="PHOTOGRAPHY"> Photography </Radio>
+                            <Radio value="SCULPTURE"> Sculpture </Radio>
+                          </Radio.Group>
+                        </Panel>
+                        <Panel header="STYLE" key="2">
+                          <Radio.Group className="radio-type" onChange={this.handleStyleChange} value={this.state.style}>
+                            {
+                              styles.map(styl =>
+                                <Radio key={styl} value={styl.toUpperCase()}> {styl} </Radio>)
+                            }
+                          </Radio.Group>
+                        </Panel>
+                        <Panel header="MEDIUM" key="3">
+                          <Checkbox.Group
+                            options={seeMore ? cbox([...medium, ...moreMedium]) : cbox(medium)}
+                            className="checkbox-type"
+                            onChange={this.handleMediumChange}
+                            value={this.state.medium}
+                          />
+                          {
+                            seeMore ?
+                              <a onClick={this.seeMoreMedium}> Less Options </a>
+                            : <a onClick={this.seeMoreMedium}> More Options </a>
+                          }
+                        </Panel>
+                        <Panel header="SUBJECT" key="4">
+                          <Checkbox.Group
+                            options={moreSubj ? cbox([...subject, ...moreSubject]) : cbox(subject)}
+                            className="checkbox-type"
+                            onChange={this.handleSubjectChange}
+                            value={this.state.subject}
+                          />
+                          {
+                            moreSubj ?
+                              <a onClick={this.seeMoreSubject}> Less Options </a>
+                            : <a onClick={this.seeMoreSubject}> More Options </a>
+                          }
+                        </Panel>
+                        <Panel header="PRICE" key="5">
+                          <Input.Group compact className="input-price">
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinPrice} value={this.state.minP} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxPrice} value={this.state.maxP} />
+                            </div>
+                            {
+                              priceErr ?
+                                <Text type="danger"> Price must be a valid range of amount </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                        </Panel>
+                        <Panel header="SIZE" key="6">
+                          <Input.Group compact className="input-price">
+                            <Text className="dimension-label"> HEIGHT (inches) </Text>
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinHeight} value={this.state.minH} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxHeight} value={this.state.maxH} />
+                            </div>
+                            {
+                              heightErr ?
+                                <Text type="danger"> Height range must be valid.  </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                          <Input.Group compact className="input-price">
+                            <Text className="dimension-label"> WIDTH (inches) </Text>
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinWidth} value={this.state.minW} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxWidth} value={this.state.maxW} />
+                            </div>
+                            {
+                              widthErr ?
+                                <Text type="danger"> Width range must be valid.  </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                          <Input.Group compact className="input-price">
+                            <Text className="dimension-label"> DEPTH (inches) </Text>
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinDepth} value={this.state.minD} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxDepth} value={this.state.maxD} />
+                            </div>
+                            {
+                              depthErr ?
+                                <Text type="danger"> Depth range must be valid.  </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                        </Panel>
+                      </Collapse>
+                      <a className="clear" onClick={this.handleClearFilters}> Clear Filters</a>
                     </Panel>
                   </Collapse>
-                  <a className="clear" onClick={this.handleClearFilters}> Clear Filters</a>
-                </Panel>
-              </Collapse>
-            </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={18} xxl={18} className="col-items">
-              {
-                isEmpty ?
-                  <Empty />
-                :
-                  <List
-                    loading={isFetching}
-                    className="products artworks"
-                    dataSource={artworks}
-                    renderItem={info => (
-                      <List.Item>
-                        <Card
-                          loading={isFetching}
-                          className="product artwork"
-                          hoverable
-                          size="small"
-                          key={info._id}
-                          cover={
-                            <img
-                              alt="example"
-                              onClick={() => this.props.history.push(`/artworks/${info._id}`)}
-                              src={info.images[0].publicURL}
-                            />
-                          }
-                        >
-                          <Link to={`/artworks/${info._id}`}>
-                            <div>
-                                <Text strong>{info.title}</Text><br />
-                                <Text>By {info.artist.firstName} {info.artist.lastName}</Text>
-                                <br />
-                                <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
-                                <br />
-                            </div>
-                          </Link>
-                          <Row className="bottom-div" justify="space-between" type="flex">
-                            <Link to={`/artworks/${info._id}`}>
-                              <Text strong> PHP {info.price} </Text>
-                            </Link>
-                            <div className="actions">
-                              <Button onClick={() => this.addToWishlist(info._id)} >
-                                <Icon
-                                  type="heart"
-                                  style={{ color: ids.includes(info._id) ? '#CA0000' : 'inherit' }}
-                                  theme={ids.includes(info._id) ? 'filled' : 'outlined'}
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={24} xl={18} xxl={18} className="col-items">
+                  {
+                    isEmpty ?
+                      <Empty />
+                    :
+                      <List
+                        loading={isFetching}
+                        className="products artworks"
+                        dataSource={artworks}
+                        renderItem={info => (
+                          <List.Item>
+                            <Card
+                              loading={isFetching}
+                              className="product artwork"
+                              hoverable
+                              size="small"
+                              key={info._id}
+                              cover={
+                                <img
+                                  alt="example"
+                                  onClick={() => this.props.history.push(`/artworks/${info._id}`)}
+                                  src={info.images[0].publicURL}
                                 />
-                              </Button>
-                              <Button icon="shopping-cart" onClick={() => this.handleAddToCart(info)} />
-                            </div>
-                          </Row>
-                        </Card>
-                      </List.Item>
-                    )}
-                  />
-              }
-            </Col>
-          </Row>
-        </div>
-        <Button className="btn-afx" icon="arrow-right" shape="circle" onClick={() => console.log('checkout')} />
-        <Pagination
-          current={page}
-          total={total}
-          pageSize={limit}
-          hideOnSinglePage
-          pageSizeOptions={['12', '24', '36', '48']}
-          showSizeChanger
-          onChange={p => this.props.handleQueryPage(p)}
-          onShowSizeChange={(_, size) => size !== limit ? this.props.handleQueryLimit(size) : null}
-        />
+                              }
+                            >
+                              <Link to={`/artworks/${info._id}`}>
+                                <div>
+                                    <Text strong>{info.title}</Text><br />
+                                    <Text>By {info.artist.firstName} {info.artist.lastName}</Text>
+                                    <br />
+                                    <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
+                                    <br />
+                                </div>
+                              </Link>
+                              <Row className="bottom-div" justify="space-between" type="flex">
+                                <Link to={`/artworks/${info._id}`}>
+                                  <Text strong> PHP {info.price} </Text>
+                                </Link>
+                                <div className="actions">
+                                  <Button disabled={(info.status === 'SOLD') || (this.props.profile && this.props.profile._id && (info.artist._id == this.props.profile._id))} onClick={() => this.addToWishlist(info._id)} >
+                                    <Icon
+                                      type="heart"
+                                      style={{ color: ids.includes(info._id) ? '#CA0000' : 'inherit' }}
+                                      theme={ids.includes(info._id) ? 'filled' : 'outlined'}
+                                    />
+                                  </Button>
+                                  <Button disabled={(info.status === 'SOLD') || (this.props.profile && this.props.profile._id && (info.artist._id == this.props.profile._id))} icon="shopping-cart" onClick={() => this.handleAddToCart(info)} />
+                                </div>
+                              </Row>
+                            </Card>
+                          </List.Item>
+                        )}
+                      />
+                  }
+                </Col>
+              </Row>
+            </div>
+            <Button className="btn-afx" icon="arrow-right" shape="circle" onClick={() => console.log('checkout')} />
+            <Pagination
+              current={page}
+              total={total}
+              pageSize={limit}
+              hideOnSinglePage
+              pageSizeOptions={['12', '24', '36', '48']}
+              showSizeChanger
+              onChange={p => this.props.handleQueryPage(p)}
+              onShowSizeChange={(_, size) => size !== limit ? this.props.handleQueryLimit(size) : null}
+            />
+          </div>
+        }
       </div>
     );
   }
@@ -597,6 +609,7 @@ ArtMain.propTypes = {
   handleActiveArtwork: PropTypes.func.isRequired,
   updateWishlistRequest: PropTypes.func.isRequired,
   updateCartRequest: PropTypes.func.isRequired,
+  handleLoginModal: PropTypes.func.isRequired,
   activeArtwork: PropTypes.shape({
     _id: PropTypes.string,
   }).isRequired,
@@ -607,7 +620,7 @@ ArtMain.propTypes = {
     products: PropTypes.arrayOf(PropTypes.shape({
       _id: PropTypes.string,
     })),
-  })
+  }),
 };
 
 ArtMain.defaultProps = {
@@ -618,6 +631,7 @@ const mapStateToProps = (state) => {
   const { activeArtwork } = active;
   const { profile } = state.user;
   const { wishlist } = state.wishlist;
+  const { location } = state.router;
   const { cart } = state;
   return {
     ...fetch,
@@ -625,6 +639,7 @@ const mapStateToProps = (state) => {
     profile,
     wishlist,
     cart,
+    location,
   };
 };
 
@@ -645,6 +660,7 @@ const mapDispatchToProps = {
   handleActiveArtwork,
   updateWishlistRequest,
   updateCartRequest,
+  handleLoginModal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtMain);

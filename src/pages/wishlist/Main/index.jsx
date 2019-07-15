@@ -12,6 +12,7 @@ import {
   Row,
   Empty,
   Spin,
+  Pagination,
 } from 'antd';
 import { updateWishlistRequest, fetchWishlistRequest, wishQueryPage, wishQueryLimit } from '../../../ducks/wishlist';
 import { updateCartRequest } from '../../../ducks/cart';
@@ -53,7 +54,6 @@ class Main extends Component {
       page,
       limit,
     } = this.props.wishlist;
-    console.log(this.props)
     const isEmpty = wishlist && wishlist.length === 0;
     const ids = wishlist ? wishlist.map(w => w._id) : [];
     return (
@@ -65,80 +65,71 @@ class Main extends Component {
           </Breadcrumb>
             {
               isFetching ?
-                <Spin />
+                <Spin style={{ position: 'absolute', top: '50%', left: '50%'}} />
               :
               isEmpty ?
                 <Empty />
               :
-                <List
-                  loading={isFetching}
-                  className="artworks wishlist"
-                  pagination={{
-                    pageSize: limit,
-                    total,
-                    showSizeChanger: true,
-                    // hideOnSinglePage: true,
-                    current: page,
-                    pageSizeOptions: ['12', '24', '36', '48'],
-                    onChange:  p => {this.props.wishQueryPage(p)},
-                    onShowSizeChange: (p, size) => {
-                      size !== limit ? this.props.wishQueryLimit(size) : null;
-                    },
-                  }}
-                  grid={{
-                    gutter: 32,
-                    xs: 1,
-                    sm: 2,
-                    md: 3,
-                    lg: 3,
-                    xl: 4,
-                    xxl: 5,
-                  }}
-                  dataSource={wishlist}
-                  renderItem={info => (
-                    <List.Item>
-                      <Card
-                        loading={isFetching}
-                        className="product artwork"
-                        hoverable
-                        size="small"
-                        key={info._id}
-                        cover={
-                          <img
-                            alt="example"
-                            onClick={() => this.props.history.push(`/artworks/${info._id}`)}
-                            src={info.images[0].publicURL}
-                          />
-                        }
-                      >
-                        <Link to={`/artworks/${info._id}`}>
-                          <div>
-                              <Text strong>{info.title}</Text><br />
-                              <Text>By {info.artist.firstName} {info.artist.lastName}</Text>
-                              <br />
-                              <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
-                              <br />
-                          </div>
-                        </Link>
-                        <Row className="bottom-div" justify="space-between" type="flex">
+                <div>
+                  <List
+                    loading={isFetching}
+                    className="wishlist artworks"
+                    dataSource={wishlist}
+                    renderItem={info => (
+                      <List.Item>
+                        <Card
+                          loading={isFetching}
+                          className="product artwork"
+                          hoverable
+                          size="small"
+                          key={info._id}
+                          cover={
+                            <img
+                              alt="example"
+                              onClick={() => this.props.history.push(`/artworks/${info._id}`)}
+                              src={info.images[0].publicURL}
+                            />
+                          }
+                        >
                           <Link to={`/artworks/${info._id}`}>
-                            <Text strong> PHP {info.price} </Text>
+                            <div>
+                                <Text strong>{info.title}</Text><br />
+                                <Text>By {info.artist.firstName} {info.artist.lastName}</Text>
+                                <br />
+                                <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
+                                <br />
+                            </div>
                           </Link>
-                          <div className="actions">
-                            <Button onClick={() => this.addToWishlist(info._id)} >
-                              <Icon
-                                type="heart"
-                                style={{ color: ids.includes(info._id) ? '#CA0000' : 'inherit' }}
-                                theme={ids.includes(info._id) ? 'filled' : 'outlined'}
-                              />
-                            </Button>
-                            <Button icon="shopping-cart" onClick={() => this.addToCart(info)} />
-                          </div>
-                        </Row>
-                      </Card>
-                    </List.Item>
-                  )}
-                />
+                          <Row className="bottom-div" justify="space-between" type="flex">
+                            <Link to={`/artworks/${info._id}`}>
+                              <Text strong> PHP {info.price} </Text>
+                            </Link>
+                            <div className="actions">
+                              <Button onClick={() => this.addToWishlist(info._id)} >
+                                <Icon
+                                  type="heart"
+                                  style={{ color: ids.includes(info._id) ? '#CA0000' : 'inherit' }}
+                                  theme={ids.includes(info._id) ? 'filled' : 'outlined'}
+                                />
+                              </Button>
+                              <Button icon="shopping-cart" onClick={() => this.addToCart(info)} />
+                            </div>
+                          </Row>
+                        </Card>
+                      </List.Item>
+                    )}
+                  />
+                  <Pagination
+                    current={page}
+                    total={total}
+                    pageSize={limit}
+                    hideOnSinglePage
+                    pageSizeOptions={['12', '24', '36', '48']}
+                    showSizeChanger
+                    onChange={p => this.props.wishQueryPage(p)}
+                    onShowSizeChange={(_, size) => size !== limit ? this.props.wishQueryLimit(size) : null}
+                  />
+                </div>
             }
         </div>
       </div>

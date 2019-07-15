@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Spin, Icon } from 'antd';
+import { Spin, Icon, Layout } from 'antd';
 import { connect } from 'react-redux';
-import { Layout } from 'antd';
 import Header from '../header/';
 import Footer from '../../global/footer/';
 import { checkUserSession } from '../../ducks/users';
@@ -27,7 +26,7 @@ class Store extends Component {
             profile && profile.isArtist ?
               <Layout>
                 <Header {...this.props} />
-                <Content className="store-site-content">
+                <Content className="art-site-content">
                   <Switch>
                     <Route path="/(my-store|my-store/transactions|my-store/products|my-store/feedbacks|my-store/settings)/" component={StoreMain} {...this.props} />
                   </Switch>

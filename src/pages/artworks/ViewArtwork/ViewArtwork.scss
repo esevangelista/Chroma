@@ -2,24 +2,49 @@
 @import 'src/styles/devices';
 
 .active-art-container {
-  padding: 32px 32px;
+  padding: 16px 16px;
   .content {
     .right-content {
+      margin-top: 16px;
+      ul {
+        padding-inline-start: 16px;
+        font-family: 'Sailec-Bold';
+        font-size: 18px;
+      }
+      #qty-label, #artist, #form {
+        font-family: 'Sailec-Bold';
+        font-size: 18px;
+      }
+      #art-title {
+        font-family: 'Sailec-Bold';
+        font-size: 28px;
+      }
+      #price {
+        font-size: 24px;
+        margin-top: 8px;
+        font-family: 'Sailec-Bold';
+      }
+      #qty-selector {
+        margin-left: 8px;
+      }
       .btn-actions {
         display: grid;
         margin-top: 16px;
+        width: 100%;
         #cart {
-          // width: 100%;
           background: $chroma-red;
           border-color: $chroma-red;
           max-width: unset;
           margin-bottom: 16px;
+          height: 40px;
+          font-size: 16px;
+          font-weight: 500;
         }
         #fav {
-          &:hover, &focus, &active {
-            border-color: $chroma-red;
-            color: $chroma-red;
-          }
+          height: 40px;
+          color: $gray-8;
+          border-color: $gray-4;
+          border-radius: 0;
         }
       }
     }
@@ -30,6 +55,44 @@
       .ant-breadcrumb-link a {
         &:hover {
           color: $chroma-red;
+        }
+      }
+    }
+  }
+  .more-info {
+    margin-top: 16px;
+    .ant-collapse-item-active {
+      .ant-collapse-header {
+        color: $chroma-red !important;
+      }
+    }
+    .ant-collapse-item {
+      .ant-collapse-header {
+        color: $gray-8;
+        font-family: 'Sailec-Bold';
+        font-size: 20px;
+      }
+      .ant-collapse-content {
+        text-align: justify;
+      }
+    }
+  }
+}
+
+@include for-tablet-landscape-up {
+  .active-art-container {
+    padding: 32px 32px;
+    .content {
+      .right-content {
+        margin-top: 0;
+      }
+    }
+    .more-info {
+      padding: 16px 16px;
+      .ant-collapse-item {
+        .ant-collapse-content {
+          padding: 12px 12px;
+          font-size: 16px;
         }
       }
     }

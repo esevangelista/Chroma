@@ -1852,6 +1852,11 @@ assert@^1.1.1:
   dependencies:
     util "0.10.3"
 
+assertion-error@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/assertion-error/-/assertion-error-1.0.0.tgz#c7f85438fdd466bc7ca16ab90c81513797a5d23b"
+  integrity sha1-x/hUOP3UZrx8oWq5DIFRN5el0js=
+
 assign-symbols@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
@@ -8784,6 +8789,11 @@ merge-descriptors@1.0.1:
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
   integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
 
+merge-recursive@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/merge-recursive/-/merge-recursive-0.0.3.tgz#de7901efcaecc906d8cab2ad1e9c470f5a3dae84"
+  integrity sha1-3nkB78rsyQbYyrKtHpxHD1o9roQ=
+
 merge-stream@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-1.0.1.tgz#4041202d508a342ba00174008df0c251b8c135e1"
@@ -9377,6 +9387,13 @@ nwsapi@^2.0.7, nwsapi@^2.0.9:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.0.9.tgz#77ac0cdfdcad52b6a1151a84e73254edc33ed016"
   integrity sha512-nlWFSCTYQcHk/6A9FFnfhKc14c3aFhfdNBXgo8Qgi9QTBu/qg3Ww+Uiz9wMzXd1T8GFxPc2QIHB6Qtf2XFryFQ==
 
+oath@latest:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/oath/-/oath-1.0.0.tgz#2f4e1f7797b903a78b243527dc68245b0aeb0d58"
+  integrity sha1-L04fd5e5A6eLJDUn3GgkWwrrDVg=
+  dependencies:
+    simple-assert "~1.0.0"
+
 oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
@@ -9848,6 +9865,11 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+philippines@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/philippines/-/philippines-1.0.0.tgz#658513d038042fe09e464c3558aae536f812fc3b"
+  integrity sha1-ZYUT0DgEL+CeRkw1WKrlNvgS/Ds=
 
 pidtree@^0.3.0:
   version "0.3.0"
@@ -12570,6 +12592,13 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
+sechash@~0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/sechash/-/sechash-0.2.1.tgz#8b71fe47d68272f47a35f1640e4cc921325b133b"
+  integrity sha1-i3H+R9aCcvR6NfFkDkzJITJbEzs=
+  dependencies:
+    oath latest
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -12757,10 +12786,25 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
+short-id@^0.1.0-1:
+  version "0.1.0-1"
+  resolved "https://registry.yarnpkg.com/short-id/-/short-id-0.1.0-1.tgz#a4c0f3537fff4623ff84964882b5d43019a24095"
+  integrity sha1-pMDzU3//RiP/hJZIgrXUMBmiQJU=
+  dependencies:
+    merge-recursive "0.0.3"
+    sechash "~0.2.1"
+
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
+
+simple-assert@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/simple-assert/-/simple-assert-1.0.0.tgz#53f1790000d714424124290780bc2a3e511cf0ef"
+  integrity sha1-U/F5AADXFEJBJCkHgLwqPlEc8O8=
+  dependencies:
+    assertion-error "1.0.0"
 
 simple-swizzle@^0.2.2:
   version "0.2.2"

@@ -2,7 +2,9 @@
 @import 'src/styles/devices';
 
 .footer {
-  background: transparent;
+  bottom: 0;
+  width: 100%;
+  background: $dead-grey;
 }
 
 .extra-mask {
@@ -33,13 +35,11 @@
 
 
 .footer-container {
-  margin-top: 16px;
-  padding: 32px 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
+  margin-top: 32px;
+  text-align: center;
+  width: 100%;
   .col-container {
-    left: 10%;
+    // left: 10%;
   }
 
   a {
@@ -59,11 +59,11 @@
   }
 }
 
-@include for-tablet-portrait-up {
-  .footer-container {
-    width: 80%;   
-  }
-}
+// @include for-tablet-portrait-up {
+//   .footer-container {
+//     width: 80%;   
+//   }
+// }
 
 @include for-desktop-up {
   .extra-mask {

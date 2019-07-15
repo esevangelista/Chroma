@@ -1,7 +1,11 @@
+.submenu-store .ant-menu .ant-menu-item-group .ant-menu-item-group-list .ant-menu-item a:hover, .submenu-user .ant-menu .ant-menu-item-group .ant-menu-item-group-list .ant-menu-item a:hover {
+  color: #CA0000; }
+
 .site-header {
   width: 100%;
   z-index: 100;
-  position: fixed; }
+  position: sticky;
+  top: 0; }
   .site-header.site-header {
     background: #f8f8f8;
     height: 80px;
@@ -10,15 +14,32 @@
     background: none;
     display: flex;
     justify-content: flex-end; }
+    .site-header .ant-menu .submenu-store, .site-header .ant-menu .submenu-user {
+      display: none; }
+      .site-header .ant-menu .submenu-store .ant-menu .ant-menu-item-group .ant-menu-item-group-list .ant-menu-item a:hover, .site-header .ant-menu .submenu-user .ant-menu .ant-menu-item-group .ant-menu-item-group-list .ant-menu-item a:hover {
+        color: #CA0000; }
+      .site-header .ant-menu .submenu-store .ant-menu-submenu-title, .site-header .ant-menu .submenu-user .ant-menu-submenu-title {
+        font-size: 16px;
+        font-weight: 700; }
+        .site-header .ant-menu .submenu-store .ant-menu-submenu-title:hover, .site-header .ant-menu .submenu-store .ant-menu-submenu-title:focus-within, .site-header .ant-menu .submenu-store .ant-menu-submenu-title:focus, .site-header .ant-menu .submenu-store .ant-menu-submenu-title:active, .site-header .ant-menu .submenu-user .ant-menu-submenu-title:hover, .site-header .ant-menu .submenu-user .ant-menu-submenu-title:focus-within, .site-header .ant-menu .submenu-user .ant-menu-submenu-title:focus, .site-header .ant-menu .submenu-user .ant-menu-submenu-title:active {
+          color: #CA0000; }
+      .site-header .ant-menu .submenu-store:hover, .site-header .ant-menu .submenu-store:focus-within, .site-header .ant-menu .submenu-store:focus, .site-header .ant-menu .submenu-store:active, .site-header .ant-menu .submenu-user:hover, .site-header .ant-menu .submenu-user:focus-within, .site-header .ant-menu .submenu-user:focus, .site-header .ant-menu .submenu-user:active {
+        color: #CA0000;
+        border-color: #CA0000; }
   .site-header .ant-menu-horizontal {
     border-bottom: none;
     line-height: 80px; }
+    .site-header .ant-menu-horizontal .ant-menu-submenu-active {
+      color: #CA0000 !important;
+      border-color: #CA0000 !important; }
+    .site-header .ant-menu-horizontal .submenu-user {
+      display: none; }
   .site-header .ant-menu-item.ant-menu-item {
     border-bottom: none;
     margin-top: 0;
     top: 0;
     height: 80px;
-    padding: 0 10px; }
+    padding: 0 16px; }
     .site-header .ant-menu-item.ant-menu-item.logo-container {
       flex-grow: 1; }
       .site-header .ant-menu-item.ant-menu-item.logo-container a {
@@ -29,8 +50,9 @@
       height: 80px;
       padding: 0 16px;
       font-size: 16px;
-      font-weight: 700;
-      vertical-align: sub; }
+      font-weight: 700; }
+      .site-header .ant-menu-item.ant-menu-item.discover a:hover {
+        color: #CA0000; }
     .site-header .ant-menu-item.ant-menu-item:hover {
       border-bottom: none;
       cursor: auto; }
@@ -40,6 +62,8 @@
     line-height: 0;
     border-radius: 0;
     border: none; }
+    .site-header #btn-drawer:hover, .site-header #btn-drawer:active, .site-header #btn-drawer:focus {
+      color: #CA0000; }
   .site-header .logo {
     height: 75px;
     display: inline-block;
@@ -60,16 +84,19 @@
       display: none; }
       .site-header .ant-menu-item.logo-container {
         text-align: left; } }
-  @media (min-width: 1200px) {
+  @media only screen and (min-width: 992px) {
+    .site-header .ant-menu-horizontal .submenu-store, .site-header .ant-menu-horizontal .submenu-user {
+      display: inline-block; }
     .site-header .ant-menu-item.show-on-desktop {
       display: block; }
       .site-header .ant-menu-item.show-on-desktop.discover {
         font-size: 16px;
-        font-weight: 600;
-        padding: 0 32px 16px 0px; }
+        font-weight: 600; }
     .site-header .ant-menu-item.hide-on-desktop {
       display: none; } }
   @media (min-width: 1800px) {
+    .site-header .ant-menu-horizontal .submenu-store, .site-header .ant-menu-horizontal .submenu-user {
+      display: inline-block; }
     .site-header .ant-menu-item.show-on-desktop {
       display: block; }
       .site-header .ant-menu-item.show-on-desktop.discover {
@@ -92,5 +119,31 @@
     font-weight: 300;
     font-size: 16px;
     color: #CA0000; }
+    .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu {
+      margin-top: 16px; }
+      .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-item {
+        padding-left: 8px !important; }
+        .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-item a {
+          color: #CA0000;
+          font-size: 16px; }
+      .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu-open:active {
+        background: #e8e8e8; }
+      .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu {
+        color: #CA0000; }
+        .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu .ant-menu-submenu-title {
+          padding-left: 8px !important;
+          color: #CA0000;
+          font-size: 16px; }
+          .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu .ant-menu-submenu-title:active {
+            background: transparent; }
+          .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu .ant-menu-submenu-title .ant-menu-submenu-arrow:before, .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu .ant-menu-submenu-title .ant-menu-submenu-arrow:after {
+            background: #CA0000;
+            font-size: 14px; }
+        .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu .ant-menu-item-group-title {
+          display: none; }
+        .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu .ant-menu-item-group-list {
+          padding-left: 24px; }
+          .ant-drawer-content-wrapper .ant-drawer-body .mobile-menu .ant-menu-submenu .ant-menu-item-group-list .ant-menu-item a {
+            font-size: 16px; }
   .ant-drawer-content-wrapper .ant-drawer-close {
     color: #CA0000; }

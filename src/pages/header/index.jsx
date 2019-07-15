@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, Input, Drawer, Button, Popover, Row, Divider } from 'antd';
+import { Layout, Menu, Icon, Drawer, Button, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../global/logo';
 import './header.css';
@@ -9,16 +9,7 @@ import LoginForm from '../login/';
 import { logoutRequest } from '../../ducks/auth';
 import Cart from '../cart/';
 
-const { Search } = Input;
-
-const storeNav =  (
-  <div>
-    <a href="/my-store"> Overview </a>
-    <a href="/my-store"> Transactions </a>
-    <a href="/my-store/products"> Products </a>
-    <a href="/my-store"> Feedback </a>
-  </div>
-);
+const { SubMenu } = Menu;
 
 class Header extends Component {
   constructor(props) {
@@ -48,6 +39,12 @@ class Header extends Component {
 
   render() {
     const { profile, isGettingSession } = this.props.user;
+    const userNav = (
+      <Menu>
+        <Menu.Item><a href="/account/profile"> Profile </a></Menu.Item>
+        <Menu.Item><a onClick={this.logout}> Logout </a></Menu.Item>
+      </Menu>
+    );
     return (
       <Layout.Header className="site-header">
         <Menu mode="horizontal" >
@@ -56,32 +53,24 @@ class Header extends Component {
               <Logo />
             </Link>
           </Menu.Item>
-          <Menu.Item key="1" className="show-on-desktop discover">
-            <Search
-              placeholder="Search"
-              onSearch={value => console.log(value)}
-              style={{ width: 300 }}
-              allowClear
-            />
-          </Menu.Item>
           <Menu.Item key="2" className="show-on-desktop discover">
-            Artists
+            <Link to='/artists'> Artists </Link>
           </Menu.Item>
           <Menu.Item key="3" className="show-on-desktop discover">
-            Artworks
+            <Link to='/artworks'> Artworks </Link>
           </Menu.Item>
           {
             profile && profile.isArtist ?
-              <Menu.Item key="3.5" className=" show-on-desktop discover">
-                <Popover content={storeNav} trigger="click">
-                  My Store
-                </Popover>
-              </Menu.Item>
+              <SubMenu className="show-on-desktop submenu-store" key="3.5.0" title="Store">
+                <Menu.ItemGroup key="group">
+                  <Menu.Item key="3.5.1"><Link to="/my-store"> Overview </Link></Menu.Item>
+                  <Menu.Item key="3.5.2"><Link to="/my-store"> Transactions </Link></Menu.Item>
+                  <Menu.Item key="3.5.3"><Link to="/my-store/products"> My Artworks </Link></Menu.Item>
+                  <Menu.Item key="3.5.4"><Link to="/my-store"> Feedback </Link></Menu.Item>
+                </Menu.ItemGroup>
+              </SubMenu>
             : ''
           }
-          <Menu.Item key="4" className="hide-on-desktop">
-            <Icon type="search" />
-          </Menu.Item>
           <Menu.Item key="5">
             {
               !isGettingSession && profile && profile._id ?
@@ -89,21 +78,18 @@ class Header extends Component {
               : <LoginForm isCartIcon />
             }
           </Menu.Item>
-          <Menu.Item key="6" className="show-on-desktop">
-            { !isGettingSession && profile && profile._id ?
-              <Popover
-                className="popover"
-                placement="bottomRight"
-                content={<a onClick={this.logout}> Logout </a>}
-                trigger="click"
-                arrowPointAtCenter
-              >
-                <Icon type="user" />
-              </Popover>
-              :
-              <LoginForm />
-            }
-          </Menu.Item>
+          { !isGettingSession && profile && profile._id ?
+            <SubMenu className="show-on-desktop submenu-user" key="6" title={<Icon type="user" />}>
+              <Menu.ItemGroup key="user-group">
+                <Menu.Item key="6.1"><Link to="/account/profile"> Profile </Link></Menu.Item>
+                <Menu.Item key="6.2"><Link to="/wishlist"> Wishlist </Link></Menu.Item>
+                <Menu.Item key="6.3"><Link to="/account/settings"> Settings </Link></Menu.Item>
+                <Menu.Item key="6.4"><a onClick={this.logout}> Logout </a></Menu.Item>
+              </Menu.ItemGroup>
+            </SubMenu>
+            :
+            <LoginForm />
+          }
           <Menu.Item key="7" className="hide-on-desktop">
             <Button id="btn-drawer" onClick={this.showDrawer} >
               <Icon type="menu-unfold" />
@@ -115,29 +101,29 @@ class Header extends Component {
             >
               {
                 profile ?
-                  <div>
-                    <p>Artworks</p>
-                    <p>Artists</p>
-                    <p>Profile</p>
-                    <p>Wishlist</p>
-                    <p>My Orders</p>
-                    <p>Inbox</p>
+                  <Menu defaultSelectedKeys={[]} className="mobile-menu" mode="inline">
+                    <Menu.Item key="Home"><Link to="/">Home</Link></Menu.Item>
+                    <Menu.Item key="art"><Link to="/artworks">Artworks</Link></Menu.Item>
+                    <Menu.Item key="artist"><Link to="/artists">Artists</Link></Menu.Item>
+                    <Menu.Item key="mobile-profile"><Link to="/account/profile">Profile</Link></Menu.Item>
+                    <Menu.Item key="wishlist"><Link to="/wishlist">Wishlist</Link></Menu.Item>
+                    <Menu.Item key="order"><Link to="/">Orders</Link></Menu.Item>
+                    <Menu.Item key="inbox"><Link to="/">Inbox</Link></Menu.Item>
                     {
                       profile && profile.isArtist ?
-                        <div>
-                          <Divider> Text </Divider>
-                          <Row><a href="/my-store"> Overview </a></Row>
-                          <Row><a href="/my-store"> Transactions </a></Row>
-                          <Row><a href="/my-store"> Products </a></Row>
-                          <Row><a href="/my-store"> Feedback </a></Row>
-
-                          </div>
+                        <SubMenu title="My Store" key="sub-store">
+                          <Menu.ItemGroup key="store-group">
+                            <Menu.Item key="over"><Link to="/my-store"> Overview </Link></Menu.Item>
+                            <Menu.Item key="trans"><Link to="/my-store"> Transactions </Link></Menu.Item>
+                            <Menu.Item key="products"><Link to="/my-store/products"> My Artworks </Link></Menu.Item>
+                            <Menu.Item key="feed"><Link to="/my-store"> Feedback </Link></Menu.Item>
+                          </Menu.ItemGroup>
+                        </SubMenu>
                       : ''
                     }
-                    <p>FAQs</p>
-                    <br />
-                    <p> Logout </p>
-                  </div>
+                    <Menu.Item key="faq"><Link to="/"> FAQs </Link></Menu.Item>
+                    <Menu.Item key="logoutt"><a onClick={this.logout}> Logout </a></Menu.Item>
+                  </Menu>
                 :
                   <div>
                     <p>Artworks</p>

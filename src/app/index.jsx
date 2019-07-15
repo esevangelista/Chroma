@@ -7,6 +7,9 @@ import AlertContainer from '../global/alertContainer';
 import Artworks from '../pages/artworks/';
 import Store from '../pages/store/';
 import Wishlist from '../pages/wishlist/';
+import Profile from '../pages/profile/';
+import Artists from '../pages/artists/';
+import NotFound from '../global/notFound/';
 
 import './App.css';
 
@@ -25,7 +28,10 @@ class App extends Component {
             <Route exact path="/" component={props => <Main {...props} />} />
             <Route path="/artworks" component={props => <Artworks {...props} />} />
             <Route path="/my-store" component={props => <Store {...props} />} />
-            <Route path="/wishlist" component={props => <Wishlist {...props} />} />
+            <Route exact path="/wishlist" component={props => <Wishlist {...props} />} />
+            <Route path="/artists" component={props => <Artists {...props} />} />
+            <Route path="/(account/profile|account/settings)/" component={props => <Profile {...props} />} />
+            <Route component={NotFound} />
           </Switch>
         </Content>
       </Layout>

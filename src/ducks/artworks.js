@@ -107,7 +107,9 @@ const initialFetchState = {
     total: 0,
     limit: 12,
   },
-  query: {},
+  query: {
+    status: ['AVAILABLE'],
+  },
   isFetching: false,
   error: false,
   message: '',
@@ -223,7 +225,7 @@ function fetchReducer(state = initialFetchState, action) {
     case REMOVE_ALL_FILTERS:
       return {
         ...state,
-        query: {},
+        query: { status: ['AVAILABLE'],},
       };
     case HANDLE_QUERY_LIMIT:
       return {

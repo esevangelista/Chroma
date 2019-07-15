@@ -7,11 +7,13 @@ import SlideShow from 'react-image-show';
 import { getActiveArtRequest } from '../../../ducks/artworks';
 import { updateCartRequest } from '../../../ducks/cart';
 import { updateWishlistRequest } from '../../../ducks/wishlist';
+import { handleLoginModal } from '../../../ducks/auth';
 
 import './ViewArtwork.css';
 
 const { Option } = Select;
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
+const { Panel } = Collapse;
 
 class ViewArtwork extends Component {
   constructor(props) {
@@ -28,23 +30,29 @@ class ViewArtwork extends Component {
   }
   qtyChange = value => this.setState({ qty: value });
   handleUpdateCart = async () => {
-    const { activeArtwork, cart } = this.props;
-    const products = cart.products || [];
-    if (!cart.products.some(i => i._id == activeArtwork._id)) {
-      await products.push(activeArtwork);
-    }
-    let val = parseInt(cart.tally[activeArtwork._id]) + this.state.qty || this.state.qty;
-    if (val > activeArtwork.quantity) val = this.state.qty;
-    const tally = { id: activeArtwork._id, val };
-    this.props.updateCartRequest(products, tally);
+    const { profile } = this.props;
+    if (profile && profile._id) {
+      const { activeArtwork, cart } = this.props;
+      const products = cart.products || [];
+      if (!cart.products.some(i => i._id == activeArtwork._id)) {
+        await products.push(activeArtwork);
+      }
+      let val = parseInt(cart.tally[activeArtwork._id]) + this.state.qty || this.state.qty;
+      if (val > activeArtwork.quantity) val = this.state.qty;
+      const tally = { id: activeArtwork._id, val };
+      this.props.updateCartRequest(products, tally);
+    } else this.props.handleLoginModal(true);
   }
 
   handleAddToWishlist() {
-    const { _id } = this.props.activeArtwork;
-    let products = this.props.wishlist.map(w => w._id) || [];
-    if (products.includes(_id)) products = products.filter(p => p !== _id);
-    else products.push(_id);
-    this.props.updateWishlistRequest(products);
+    const { profile } = this.props;
+    if (profile && profile._id) {
+      const { _id } = this.props.activeArtwork;
+      let products = this.props.wishlist.map(w => w._id) || [];
+      if (products.includes(_id)) products = products.filter(p => p !== _id);
+      else products.push(_id);
+      this.props.updateWishlistRequest(products);
+    } else this.props.handleLoginModal(true);
   }
   render() {
     const { activeArtwork, isFetching } = this.props;
@@ -59,8 +67,10 @@ class ViewArtwork extends Component {
       artist,
       dimensions,
       price,
+      status,
       quantity,
     } = activeArtwork;
+    const formattedDesc = description ? description.split('\n') : '';
     const list = this.props.wishlist.map(w => w._id);
     return (
       <Skeleton loading={isFetching}>
@@ -77,7 +87,7 @@ class ViewArtwork extends Component {
                 <Breadcrumb.Item> {artform} </Breadcrumb.Item>
                 <Breadcrumb.Item> {title} </Breadcrumb.Item>
               </Breadcrumb>
-              <Row className="content" type="flex" justify={"space-around"}>
+              <Row className="content" type="flex" justify="space-around">
                 <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
                   <SlideShow
                     width="100%"
@@ -90,24 +100,23 @@ class ViewArtwork extends Component {
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10} className="right-content">
                   <Title level={4} id="art-title"> {title} </Title>
+                  <Text id="form"> {artform} by </Text>
                   <Text id="artist"> {artist.firstName} {artist.lastName} </Text> <br />
-                  <Text> {artform} </Text> <br />
-                  <Text> Size: {dimensions.height}H x {dimensions.width}W x {dimensions.depth} in</Text><br />
-                  <br /><Text> Medium : {medium.map(m => <Text code key={m}> {m} </Text>)} </Text><br />
-                  <Text> Style : {style} </Text><br />
-                  <Text> Subject : {subject.map(s => <Text code key={s}> {s} </Text>)} </Text><br />
-                  <br /><Text strong> Artwork Description </Text>
                   <br />
-                  <div className="desc">
-                    <Text> {description} </Text>
-                  </div>
-                  <br />
+                  <ul>
+                    <li><Text> Size: {dimensions.height}H x {dimensions.width}W x {dimensions.depth} in</Text></li>
+                    <li><Text> Style: {style} </Text></li>
+                    <li><Text> Medium: {medium.map(m => <Text code key={m}> {m} </Text>)} </Text></li>
+                    <li><Text> Subject: {subject.map(s => <Text code key={s}> {s} </Text>)} </Text></li>
+                  </ul>
+                  <Text id="qty-label"> QTY </Text>
                   {
                     quantity > 1 ?
                       <Select
                         showSearch
                         value={this.state.qty}
                         onChange={this.qtyChange}
+                        id="qty-selector"
                       >
                         {
                           [...Array(quantity).keys()].map(i =>
@@ -116,21 +125,42 @@ class ViewArtwork extends Component {
                       </Select>
                     : ''
                   }
-                  <Text strong> PHP {price} </Text><br />
+                  <br /><Text strong id="price"> <span>&#8369;</span> {price} </Text><br />
                   <div className="btn-actions">
-                    <Button id="cart" icon="shopping" type="primary" loading={this.props.cart.isFetching} onClick={this.handleUpdateCart} >
+                    <Button disabled={status === 'SOLD' || (this.props.profile && this.props.profile._id && (artist._id === this.props.profile._id))} id="cart" icon="shopping" type="primary" loading={this.props.cart.isFetching} onClick={this.handleUpdateCart} >
                       Add to Cart
                     </Button>
-                    <Button id="fav" icon="heart" onClick={this.handleAddToWishlist}>
+                    <Button disabled={status === 'SOLD' || (this.props.profile && this.props.profile._id && (artist._id === this.props.profile._id))} id="fav" icon="heart" onClick={this.handleAddToWishlist} style={{ color: list.includes(activeArtwork._id) ? '#CA0000': '#828282' }}>
                       {
                         list.includes(activeArtwork._id) ? 'Saved to wishlist' : 'Add to my wishlist'
                       }
                     </Button>
                   </div>
-                  <Collapse accordion>
-                  </Collapse>
                 </Col>
               </Row>
+              <Collapse
+                className="more-info"
+                bordered={false}
+                defaultActiveKey={['1']}
+                expandIconPosition="right"
+                accordion
+                expandIcon={({ isActive }) => <Icon type="down" rotate={isActive ? 180 : 0} />}
+              >
+                <Panel header="Artwork Description" key="1">
+                  <div className="desc">
+                   {
+                    formattedDesc.map(d => <Paragraph> {d} </Paragraph>)
+                   }
+                  </div>
+                  <br />
+                </Panel>
+                <Panel header="Shipment Information" key="2">
+                  <p> ... </p>
+                </Panel>
+                <Panel header="Returns and Refunds" key="3">
+                  <p> ... </p>
+                </Panel>
+              </Collapse>
             </div>
           : ''
         }
@@ -149,17 +179,32 @@ ViewArtwork.propTypes = {
   getActiveArtRequest: PropTypes.func.isRequired,
   updateCartRequest: PropTypes.func.isRequired,
   updateWishlistRequest: PropTypes.func.isRequired,
+  handleLoginModal: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       _id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  profile: PropTypes.shape({
+    _id: PropTypes.string,
+  }),
 };
 const mapStateToProps = (state) => {
   const { active } = state.artworks;
   const { cart } = state;
   const { wishlist } = state.wishlist;
-  return { ...active, cart, wishlist };
+  const { profile } = state.user;
+  return {
+    ...active,
+    cart,
+    wishlist,
+    profile,
+  };
 };
-const mapDispatchToProps = { getActiveArtRequest, updateCartRequest,   updateWishlistRequest };
+const mapDispatchToProps = {
+  getActiveArtRequest,
+  updateCartRequest,
+  updateWishlistRequest,
+  handleLoginModal,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ViewArtwork);

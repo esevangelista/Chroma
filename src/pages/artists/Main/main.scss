@@ -1,0 +1,305 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.loader {
+  margin: 32px 0;
+}
+.artists-container {
+  margin-bottom: 24px;
+  .paginate {
+    float: right;
+    margin: 16px 0;
+    .ant-pagination-options {
+      .ant-pagination-options-size-changer {
+        .ant-select-selection {
+          &:hover, &:active, &:focus-within{
+            border-color: $chroma-red;
+          }
+        }
+      }
+    }
+    .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+      &:hover, &:focus {
+        border-color: $chroma-red;
+      }
+      a {
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+      .ant-pagination-item-link {
+        &:hover {
+          border-color: $pale-grey;
+        }
+      }
+    }
+    .ant-pagination-item-active {
+      border-color: $chroma-red;
+      a {
+        color: $chroma-red;
+        &:hover, &:link, &:focus {
+          color: $chroma-red;
+        }
+      }
+    }
+  }
+  .paths {
+    margin-bottom: 8px;
+    span {
+      .ant-breadcrumb-link a {
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+    }
+  }
+  .content {
+    margin-top: 16px;
+
+    .col-filters {
+      text-align: center;
+      color: $gray-8;
+      padding: 16px 16px;
+      font-family: 'Sailec-Light';
+      display: none;
+      .category, .rating, .location {
+        margin: 16px 0;
+        text-align: left;
+      }
+      #clear-btn {
+        color: $chroma-red;
+        cursor: pointer;
+        text-align: center;
+        &:hover {
+          text-decoration: underline;
+        }
+
+      }
+      .rating {
+        .ant-rate {
+          display: block;
+          font-size: 24px;
+          .ant-rate-star-full {
+            color: $chroma-red;
+          }
+        }
+      }
+      .location, .category {
+        #region {
+          display: block;
+        }
+        .ant-select {
+          width: 100%;
+          margin-bottom: 8px;
+          .ant-select-selection {
+            border-radius: 0;
+            border: none;
+            background: $gray-4;
+          }
+        }
+      }
+    }
+    .col-filters-mobile {
+
+      text-align: center;
+      color: $gray-8;
+      font-family: 'Sailec-Light';
+      display: none;
+      margin-bottom: 16px;
+      .ant-collapse-item {
+        .ant-collapse-header {
+          font-size: 20px;
+          font-family: 'Sailec-Bold';
+          color: $gray-8;
+          text-align: left;
+          background: $gray-4;
+        }
+      }
+      .category, .rating, .location {
+        margin: 16px 0;
+        text-align: left;
+      }
+      #clear-btn {
+        color: $chroma-red;
+        cursor: pointer;
+        text-align: center;
+        &:hover {
+          text-decoration: underline;
+        }
+
+      }
+      .rating {
+        .ant-rate {
+          display: block;
+          font-size: 24px;
+          .ant-rate-star-full {
+            color: $chroma-red;
+          }
+        }
+      }
+      .location, .category {
+        #region {
+          display: block;
+        }
+        .ant-select {
+          width: 100%;
+          margin-bottom: 8px;
+          .ant-select-selection {
+            border-radius: 0;
+            border: none;
+            background: $gray-4;
+          }
+        }
+      }
+    }
+    .col-artist {
+      .artist-card {
+        padding-top: 0;
+        margin-bottom: 16px;
+        min-height: unset;
+        .avatar-container {
+          .info {
+            display: flex;
+            margin-top: 16px;
+            .brief-info {
+              margin-left: 16px;
+              #name {
+                font-family: 'Sailec-Bold';
+                font-weight: 600;
+                font-size: 20px;
+              }
+              #location {
+                font-family: 'Sailec-Regular';
+                .anticon {
+                  color: $chroma-red;
+                  border-color: $chroma-red;
+                }
+              }
+            }
+          }
+          .no-data {
+            text-align: center;
+            position: relative;
+            #no-data-text {
+              top: 30%;
+              position: inherit;
+            }
+          }
+          .artwork-panel {
+            display: flex;
+            margin-top: 12px;
+            .arts {
+              background-size: cover !important;
+              background-repeat: no-repeat !important;
+              background-position: center !important;
+              margin: 0 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include for-phone-only {
+  .artists-container {
+    .content {
+      .col-filters-mobile {
+        display: block;
+      }
+      .col-artist {
+        .artist-card {
+          .avatar-container {
+            .no-data {
+              margin-bottom: 16px;
+            }
+          }
+          .artwork-panel {
+            .arts {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include for-tablet-portrait-down {
+  .artists-container {
+    .content {
+      .col-filters-mobile {
+        display: block;
+      }
+      .col-artist {
+        .artist-card {
+          .avatar-container {
+            .no-data {
+              margin-bottom: 16px;
+            }
+            .artwork-panel {
+              .arts {
+                width: 60px;
+                height: 60px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include for-tablet-portrait-up {
+  .artists-container {
+    .content {
+      .col-filters {
+        display: block;
+      }
+      .col-filters-mobile {
+        display: none;
+      }
+
+      .col-artist {
+        padding-left: 16px;
+        .artist-card {
+          .avatar-container {
+            .info {
+              .ant-avatar {
+                width: 80px !important;
+                height: 80px !important;
+              }
+            }
+            .artwork-panel {
+              .arts {
+                width: 60px;
+                height: 60px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@include for-desktop-up {
+  .artists-container {
+    .content {
+      .col-artist {
+        .artist-card {
+          .avatar-container {
+            .artwork-panel {
+              .arts {
+                width: 80px;
+                height: 80px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

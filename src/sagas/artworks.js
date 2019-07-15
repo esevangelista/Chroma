@@ -1,6 +1,6 @@
 import { takeLatest } from 'redux-saga';
 import { call, put, select } from 'redux-saga/effects';
-// import { push } from 'react-router-redux';
+import { push } from 'react-router-redux';
 import qs from 'qs';
 import { getRequestService } from '../api/apiRequest';
 import {
@@ -24,9 +24,11 @@ import {
   getActiveArtSuccess,
   getActiveArtFailed,
 } from '../ducks/artworks';
+import { fetchWishlistRequest } from '../ducks/wishlist';
 
 export const getQuery = state => state.artworks.fetch.query;
 export const getActiveArtwork = state => state.artworks.fetch.activeArtwork;
+export const getSearch = state => state.router.location.search;
 
 export function* getArtworks() {
   try {
@@ -38,6 +40,7 @@ export function* getArtworks() {
       yield put(getArtFailed(data.message || 'Something went wrong.'));
     } else {
       const { artworks, pagination, message } = data;
+      yield put(fetchWishlistRequest());
       yield put(getArtSuccess(artworks, pagination, message));
     }
   } catch (err) {
@@ -59,7 +62,10 @@ export function* fetchActiveArtwork(action) {
     const response = yield call(getRequestService, `/artwork/${_id}`);
     const { success, artwork, message } = response.data;
     if (success) yield put(getActiveArtSuccess(artwork));
-    else yield put(getActiveArtFailed(message));
+    else {
+      yield put(push('/notfound'));
+      yield put(getActiveArtFailed(message));
+    }
   } catch (err) {
     const { message } = err.response.data;
     yield put(getActiveArtFailed(message || 'Something went wrong.'));

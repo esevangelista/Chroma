@@ -6,7 +6,7 @@ import SlideShow from 'react-image-show';
 import { updateDrawer, deleteArtRequest } from '../../../../../ducks/products';
 import './ViewProduct.css';
 
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
 class ViewProduct extends Component {
   constructor(props) {
     super(props);
@@ -34,13 +34,14 @@ class ViewProduct extends Component {
       dimensions,
       price,
     } = activeProduct;
+    const formattedDesc = description ? description.split('\n') : '';
     return (
       <div>
         {
           activeProduct && images ?
             <div>
               <Row gutter={16}>
-                <Col xs={24} sm={24} md={24} lg={16} xl={16} xxl={16}>
+                <Col xs={24} sm={24} md={24} lg={14} xl={14} xxl={14}>
                   <SlideShow
                     width="100%"
                     images={images.map(i => i.publicURL)}
@@ -50,21 +51,25 @@ class ViewProduct extends Component {
                     imagesWidth="100%"
                   />
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={8} xl={8} xxl={8} className="right-content">
+                <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10} className="right-content">
                   <Title level={4} id="art-title"> {title} </Title>
+                  <Text id="form"> {artform} by </Text>
                   <Text id="artist"> {artist.firstName} {artist.lastName} </Text> <br />
-                  <Text code> {artform} </Text> <br />
-                  <Text> QTY: {quantity} </Text><br />
-                  <Text strong> PHP {price} </Text><br />
-                  <Text> Size (HxWxD): {dimensions.height} x {dimensions.width} x {dimensions.depth} in</Text><br />
-                  <Text> Medium : {medium.map(m => <Text code key={m}> {m} </Text>)} </Text><br />
-                  <Text> Style : {style} </Text><br />
-                  <Text> Subject : {subject.map(s => <Text code key={s}> {s} </Text>)} </Text><br />
+                  <ul>
+                    <li><Text> Size (HxWxD): {dimensions.height} x {dimensions.width} x {dimensions.depth} in</Text></li>
+                    <li><Text> Medium: {medium.map(m => <Text code key={m}> {m} </Text>)} </Text></li>
+                    <li><Text> Style: {style} </Text></li>
+                    <li><Text> Subject: {subject.map(s => <Text code key={s}> {s} </Text>)} </Text></li>
+                  </ul>
+                  <Text id="qty-label"> QTY: {quantity} </Text><br />
                   <Text mark> {status} </Text><br />
-                  <Text strong> Artwork Description </Text>
+                  <Text strong id="price"><span>&#8369;</span> {price} </Text><br />
+                  <Text strong id="desc-label"> Artwork Description </Text>
                   <br />
                   <div className="desc">
-                    <Text> {description} </Text>
+                    {
+                      formattedDesc.map(p => <Paragraph> {p} </Paragraph>)
+                    }
                   </div>
                   <div className="btn-opt">
                     <Button icon="edit" id="upd" onClick={() => this.props.updateDrawer(activeProduct)}> Update </Button>

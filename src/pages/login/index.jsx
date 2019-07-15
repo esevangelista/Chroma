@@ -80,7 +80,7 @@ class LoginForm extends Component {
               <Form onSubmit={this.handleLogin} className="login-form">
                 <h3> Log in to your account </h3>
                 { error ? (
-                    <Alert type="error" message={"Incorrect email and/or password."} closable />
+                    <Alert type="error" message={"Incorrect email and/or password. "} closable />
                 ) : (
                   ''
                 )}

@@ -8,11 +8,17 @@ body {
   display: flex;
   flex-direction: column; }
 
+.ant-layout-content {
+  min-height: 75vh !important; }
+
 .site-main.site-main {
   flex: 1 0 auto; }
 
 .site-footer.site-footer {
   flex-shrink: 0; }
+
+.site-content.site.content {
+  min-height: 100vh; }
 
 .site-header.site-header,
 .site-content.site-content,

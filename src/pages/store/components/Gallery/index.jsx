@@ -8,7 +8,7 @@ class Gallery extends Component {
   render() {
     return (
       <Content>
-        Gallery
+        Overview
       </Content>
     );
   }

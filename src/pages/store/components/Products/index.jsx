@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   Typography,
   Card,
@@ -14,10 +15,12 @@ import {
   Collapse,
   Row,
   Col,
+  Spin,
   Radio,
   Checkbox,
   Empty,
   Pagination,
+  Breadcrumb,
 } from 'antd';
 import {
   fetchArtRequest,
@@ -44,6 +47,7 @@ import './Products.css';
 const { Text } = Typography;
 const { Search } = Input;
 const { Panel } = Collapse;
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class Products extends Component {
   constructor(props) {
@@ -122,11 +126,11 @@ class Products extends Component {
   }
   handleMediumChange(values) {
     this.setState({ medium: values });
-    this.props.handleQueryMedium(values);
+    this.props.changeQueryMedium(values);
   }
   handleSubjectChange(values) {
     this.setState({ subject: values });
-    this.props.handleQuerySubject(values);
+    this.props.changeQuerySubject(values);
   }
   handleClearFilters() {
     this.setState({
@@ -147,7 +151,7 @@ class Products extends Component {
       medium: [],
       subject: [],
     });
-    this.props.cleanFilter();
+    this.props.clearFilter();
   }
   async handleMinHeight(e) {
     await this.setState({ minH: e.target.value });
@@ -349,225 +353,238 @@ class Products extends Component {
       }
       return '';
     };
-    const {total, page, limit} = this.props.pagination;
+    const { total, page, limit } = this.props.pagination;
     return (
-      <div className="products-main-container">
-        <div className="products-container">
-          <h3> Products </h3>
-          <Search className="search" placeholder="Search for title or keywords of an artwork" onSearch={value => this.props.changeQueryTitle(value)} allowClear enterButton />
-          {
-            tags(this.props.query).map(t => <Tag key={t} className="search-tags"> {t} </Tag>)
-          }
-          <Row className="filter-content">
-            <Col xs={24} sm={24} md={24} lg={24} xl={6} xxl={6}>
-              <Collapse
-                bordered={false}
-                defaultActiveKey={['1']}
-                expandIconPosition="right"
-                accordion
-                className="collapse-filter"
-                expandIcon={({ isActive }) => <Icon type="down" rotate={isActive ? 180 : 0} />}
-              >
-                <Panel header="FILTERS" key="1" className="filter-panel">
+      <div>
+        {
+          isFetching ? <Spin className="loader" indicator={antIcon} style={{ margin: '32px 0', position: 'relative', top: '50%', left: '50%' }} /> :   
+          <div className="products-main-container">
+            <div className="products-container">
+              <Breadcrumb className="breadcrumb">
+                <Breadcrumb.Item><Link to="/my-store/overview"><Icon type="shop" /></Link></Breadcrumb.Item>
+                <Breadcrumb.Item><Link to="/my-store/products"> My Artworks </Link></Breadcrumb.Item>
+                {
+                  this.props.query && this.props.query.artform ?
+                    <Breadcrumb.Item> {this.props.query.artform} </Breadcrumb.Item>
+                  : <Breadcrumb.Item> All  </Breadcrumb.Item>
+                }
+              </Breadcrumb>
+              <Search className="search" placeholder="Search for title or keywords of an artwork" onSearch={value => this.props.changeQueryTitle(value)} allowClear enterButton />
+              {
+                tags(this.props.query).map(t => <Tag key={t} className="search-tags"> {t} </Tag>)
+              }
+              <Row className="filter-content">
+                <Col xs={24} sm={24} md={24} lg={24} xl={6} xxl={6}>
                   <Collapse
                     bordered={false}
+                    defaultActiveKey={['1']}
                     expandIconPosition="right"
                     accordion
-                    className="collapse-inner"
-                    expandIcon={({ isActive }) => <Icon type="caret-down" rotate={isActive ? 180 : 0} />}
+                    className="collapse-filter"
+                    expandIcon={({ isActive }) => <Icon type="down" rotate={isActive ? 180 : 0} />}
                   >
-                    <Panel header="TYPE" key="1">
-                      <Radio.Group className="radio-type" onChange={this.handleTypeChange} value={this.state.type}>
-                        <Radio value="PAINTING"> Painting</Radio>
-                        <Radio value="PRINT"> Print </Radio>
-                        <Radio value="DRAWING"> Drawing </Radio>
-                        <Radio value="DIGITAL ART"> Digital Art </Radio>
-                        <Radio value="COLLAGE"> Collage  </Radio>
-                        <Radio value="PHOTOGRAPHY"> Photography </Radio>
-                        <Radio value="SCULPTURE"> Sculpture </Radio>
-                      </Radio.Group>
-                    </Panel>
-                    <Panel header="STYLE" key="2">
-                      <Radio.Group className="radio-type" onChange={this.handleStyleChange} value={this.state.style}>
-                        {
-                          styles.map(styl =>
-                            <Radio key={styl} value={styl.toUpperCase()}> {styl} </Radio>)
-                        }
-                      </Radio.Group>
-                    </Panel>
-                    <Panel header="MEDIUM" key="3">
-                      <Checkbox.Group
-                        options={seeMore ? cbox([...medium, ...moreMedium]) : cbox(medium)}
-                        className="checkbox-type"
-                        onChange={this.handleMediumChange}
-                        value={this.state.medium}
-                      />
-                      {
-                        seeMore ?
-                          <a onClick={this.seeMoreMedium}> Less Options </a>
-                        : <a onClick={this.seeMoreMedium}> More Options </a>
-                      }
-                    </Panel>
-                    <Panel header="SUBJECT" key="4">
-                      <Checkbox.Group
-                        options={moreSubj ? cbox([...subject, ...moreSubject]) : cbox(subject)}
-                        className="checkbox-type"
-                        onChange={this.handleSubjectChange}
-                        value={this.state.subject}
-                      />
-                      {
-                        moreSubj ?
-                          <a onClick={this.seeMoreSubject}> Less Options </a>
-                        : <a onClick={this.seeMoreSubject}> More Options </a>
-                      }
-                    </Panel>
-                    <Panel header="PRICE" key="5">
-                      <Input.Group compact className="input-price">
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinPrice} value={this.state.minP} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxPrice} value={this.state.maxP} />
-                        </div>
-                        {
-                          priceErr ?
-                            <Text type="danger"> Price must be a valid range of amount </Text>
-                          : ''
-                        }
-                      </Input.Group>
-                    </Panel>
-                    <Panel header="SIZE" key="6">
-                      <Input.Group compact className="input-price">
-                        <Text className="dimension-label"> HEIGHT (inches) </Text>
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinHeight} value={this.state.minH} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxHeight} value={this.state.maxH} />
-                        </div>
-                        {
-                          heightErr ?
-                            <Text type="danger"> Height range must be valid.  </Text>
-                          : ''
-                        }
-                      </Input.Group>
-                      <Input.Group compact className="input-price">
-                        <Text className="dimension-label"> WIDTH (inches) </Text>
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinWidth} value={this.state.minW} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxWidth} value={this.state.maxW} />
-                        </div>
-                        {
-                          widthErr ?
-                            <Text type="danger"> Width range must be valid.  </Text>
-                          : ''
-                        }
-                      </Input.Group>
-                      <Input.Group compact className="input-price">
-                        <Text className="dimension-label"> DEPTH (inches) </Text>
-                        <div className="price-range">
-                          <Input placeholder="MIN" onChange={this.handleMinDepth} value={this.state.minD} />
-                          <Text type="secondary"> ~ </Text>
-                          <Input placeholder="MAX" onChange={this.handleMaxDepth} value={this.state.maxD} />
-                        </div>
-                        {
-                          depthErr ?
-                            <Text type="danger"> Depth range must be valid.  </Text>
-                          : ''
-                        }
-                      </Input.Group>
-                    </Panel>
-                    <Panel header="STATUS" key="7">
-                      <Checkbox.Group
-                        options={['AVAILABLE', 'SOLD', 'HIDDEN']}
-                        className="checkbox-type"
-                        onChange={this.handleStatusChange}
-                      />
+                    <Panel header="Filters" key="1" className="filter-panel">
+                      <Collapse
+                        bordered={false}
+                        expandIconPosition="right"
+                        accordion
+                        className="collapse-inner"
+                        expandIcon={({ isActive }) => <Icon type="caret-down" rotate={isActive ? 180 : 0} />}
+                      >
+                        <Panel header="TYPE" key="1">
+                          <Radio.Group className="radio-type" onChange={this.handleTypeChange} value={this.state.type}>
+                            <Radio value="PAINTING"> Painting</Radio>
+                            <Radio value="PRINT"> Print </Radio>
+                            <Radio value="DRAWING"> Drawing </Radio>
+                            <Radio value="DIGITAL ART"> Digital Art </Radio>
+                            <Radio value="COLLAGE"> Collage  </Radio>
+                            <Radio value="PHOTOGRAPHY"> Photography </Radio>
+                            <Radio value="SCULPTURE"> Sculpture </Radio>
+                          </Radio.Group>
+                        </Panel>
+                        <Panel header="STYLE" key="2">
+                          <Radio.Group className="radio-type" onChange={this.handleStyleChange} value={this.state.style}>
+                            {
+                              styles.map(styl =>
+                                <Radio key={styl} value={styl.toUpperCase()}> {styl} </Radio>)
+                            }
+                          </Radio.Group>
+                        </Panel>
+                        <Panel header="MEDIUM" key="3">
+                          <Checkbox.Group
+                            options={seeMore ? cbox([...medium, ...moreMedium]) : cbox(medium)}
+                            className="checkbox-type"
+                            onChange={this.handleMediumChange}
+                            value={this.state.medium}
+                          />
+                          {
+                            seeMore ?
+                              <a onClick={this.seeMoreMedium}> Less Options </a>
+                            : <a onClick={this.seeMoreMedium}> More Options </a>
+                          }
+                        </Panel>
+                        <Panel header="SUBJECT" key="4">
+                          <Checkbox.Group
+                            options={moreSubj ? cbox([...subject, ...moreSubject]) : cbox(subject)}
+                            className="checkbox-type"
+                            onChange={this.handleSubjectChange}
+                            value={this.state.subject}
+                          />
+                          {
+                            moreSubj ?
+                              <a onClick={this.seeMoreSubject}> Less Options </a>
+                            : <a onClick={this.seeMoreSubject}> More Options </a>
+                          }
+                        </Panel>
+                        <Panel header="PRICE" key="5">
+                          <Input.Group compact className="input-price">
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinPrice} value={this.state.minP} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxPrice} value={this.state.maxP} />
+                            </div>
+                            {
+                              priceErr ?
+                                <Text type="danger"> Price must be a valid range of amount </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                        </Panel>
+                        <Panel header="SIZE" key="6">
+                          <Input.Group compact className="input-price">
+                            <Text className="dimension-label"> HEIGHT (inches) </Text>
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinHeight} value={this.state.minH} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxHeight} value={this.state.maxH} />
+                            </div>
+                            {
+                              heightErr ?
+                                <Text type="danger"> Height range must be valid.  </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                          <Input.Group compact className="input-price">
+                            <Text className="dimension-label"> WIDTH (inches) </Text>
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinWidth} value={this.state.minW} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxWidth} value={this.state.maxW} />
+                            </div>
+                            {
+                              widthErr ?
+                                <Text type="danger"> Width range must be valid.  </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                          <Input.Group compact className="input-price">
+                            <Text className="dimension-label"> DEPTH (inches) </Text>
+                            <div className="price-range">
+                              <Input placeholder="MIN" onChange={this.handleMinDepth} value={this.state.minD} />
+                              <Text type="secondary"> ~ </Text>
+                              <Input placeholder="MAX" onChange={this.handleMaxDepth} value={this.state.maxD} />
+                            </div>
+                            {
+                              depthErr ?
+                                <Text type="danger"> Depth range must be valid.  </Text>
+                              : ''
+                            }
+                          </Input.Group>
+                        </Panel>
+                        <Panel header="STATUS" key="7">
+                          <Checkbox.Group
+                            options={['AVAILABLE', 'SOLD', 'HIDDEN']}
+                            className="checkbox-type"
+                            onChange={this.handleStatusChange}
+                          />
+                        </Panel>
+                      </Collapse>
+                      <a className="clear" onClick={this.handleClearFilters}> Clear Filters</a>
                     </Panel>
                   </Collapse>
-                  <a className="clear" onClick={this.handleClearFilters}> Clear Filters</a>
-                </Panel>
-              </Collapse>
-            </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={18} xxl={18} className="col-items">
-              {
-                isEmpty ?
-                  <Empty />
-                :
-                  <List
-                    loading={isFetching}
-                    className="products"
-                    dataSource={products}
-                    renderItem={info => (
-                      <List.Item>
-                        <Card
-                          loading={isFetching}
-                          className="product"
-                          hoverable
-                          onClick={() => {this.props.changeActiveProduct(info)}}
-                          size="small"
-                          key={info._id}
-                          cover={
-                            <img
-                              alt="example"
-                              src={info.images[0].publicURL}
-                            />
-                          }
-                        >
-                          <Text strong>{info.title}</Text>
-                          <br />
-                          <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
-                          <br />
-                          <Text type="secondary">{info.artform}</Text>
-                          <br />
-                          <Text strong> PHP {info.price} </Text>
-                        </Card>
-                      </List.Item>
-                    )}
-                  />
-              }
-            </Col>
-          </Row>
-        </div>
-        <Button className="btn-afx" icon="plus" shape="circle" onClick={this.toggleAddDrawer} />
-        <Pagination
-          current={page}
-          total={total}
-          pageSize={limit}
-          hideOnSinglePage
-          pageSizeOptions={['12', '24', '36', '48']}
-          showSizeChanger
-          onChange={p => this.props.changeQueryPage(p)}
-          onShowSizeChange={(_, size) => size !== limit ? this.props.changeQueryLimit(size) : null}
-        />
-        <Drawer
-          className="list-art-drawer"
-          title="List an Artwork"
-          visible={this.state.showAddDrawer}
-          onClose={this.toggleAddDrawer}
-          destroyOnClose
-          closable
-        >
-          <ListArtwork />
-        </Drawer>
-        <Modal
-          className="active-product-modal"
-          visible={this.props.activeProduct._id !== undefined}
-          footer={null}
-          onCancel={this.closeCardModal}
-          destroyOnClose
-        >
-          <ViewProduct />
-        </Modal>
-        <Drawer
-          className="list-art-drawer"
-          title="Update Artwork"
-          visible={this.props.selectedProduct._id !== undefined}
-          onClose={() => this.props.updateDrawer({})}
-          destroyOnClose
-          closable
-        >
-          <ListArtwork isUpdate />
-        </Drawer>
+                </Col>
+                <Col xs={24} sm={24} md={24} lg={24} xl={18} xxl={18} className="col-items">
+                  {
+                    isEmpty ?
+                      <Empty />
+                    :
+                      <List
+                        loading={isFetching}
+                        className="products"
+                        dataSource={products}
+                        renderItem={info => (
+                          <List.Item>
+                            <Card
+                              loading={isFetching}
+                              className="product"
+                              hoverable
+                              onClick={() => {this.props.changeActiveProduct(info)}}
+                              size="small"
+                              key={info._id}
+                              cover={
+                                <img
+                                  alt="example"
+                                  src={info.images[0].publicURL}
+                                />
+                              }
+                            >
+                              <Text strong>{info.title}</Text>
+                              <br />
+                              <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
+                              <br />
+                              <Text type="secondary">{info.artform}</Text>
+                              <br />
+                              <Text strong> PHP {info.price} </Text>
+                            </Card>
+                          </List.Item>
+                        )}
+                      />
+                  }
+                </Col>
+              </Row>
+            </div>
+            <Button className="btn-afx" icon="plus" shape="circle" onClick={this.toggleAddDrawer} />
+            <Pagination
+              current={page}
+              total={total}
+              pageSize={limit}
+              hideOnSinglePage
+              pageSizeOptions={['12', '24', '36', '48']}
+              showSizeChanger
+              onChange={p => this.props.changeQueryPage(p)}
+              onShowSizeChange={(_, size) => size !== limit ? this.props.changeQueryLimit(size) : null}
+            />
+            <Drawer
+              className="list-art-drawer"
+              title="List an Artwork"
+              visible={this.state.showAddDrawer}
+              onClose={this.toggleAddDrawer}
+              destroyOnClose
+              closable
+            >
+              <ListArtwork />
+            </Drawer>
+            <Modal
+              className="active-product-modal"
+              visible={this.props.activeProduct._id !== undefined}
+              footer={null}
+              onCancel={this.closeCardModal}
+              destroyOnClose
+            >
+              <ViewProduct />
+            </Modal>
+            <Drawer
+              className="list-art-drawer"
+              title="Update Artwork"
+              visible={this.props.update.selectedProduct._id !== undefined}
+              onClose={() => this.props.updateDrawer({})}
+              destroyOnClose
+              closable
+            >
+              <ListArtwork isUpdate />
+            </Drawer>
+          </div>
+        }
       </div>
     );
   }
@@ -604,8 +621,10 @@ Products.propTypes = {
   activeProduct: PropTypes.shape({
     _id: PropTypes.string,
   }).isRequired,
-  selectedProduct: PropTypes.shape({
-    _id: PropTypes.string,
+  update: PropTypes.shape({
+    selectedProduct: PropTypes.shape({
+      _id: PropTypes.string,
+    }).isRequired,
   }).isRequired,
   updateDrawer: PropTypes.func.isRequired,
 };
@@ -616,7 +635,7 @@ Products.defaultProps = {
 const mapStateToProps = (state) => {
   const { fetch, update } = state.product;
   const { profile } = state.user;
-  return { ...fetch, ...update, profile };
+  return { ...fetch, update, profile };
 };
 
 const mapDispatchToProps = {

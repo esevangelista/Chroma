@@ -11,7 +11,7 @@ class StoreMain extends Component {
     return (
       <Content>
         <Layout>
-          <Content className="site-content" style={{ 'marginTop': '80px' }}>
+          <Content className="site-content">
             <Switch>
               <Route exact path="/my-store" component={Gallery} />
               <Route exact path="/my-store/products" component={Products} />

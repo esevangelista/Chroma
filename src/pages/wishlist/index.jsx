@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Layout, Spin, Icon } from 'antd';
@@ -16,13 +16,13 @@ class Wishlist extends Component {
     this.props.checkUserSession();
   }
   render() {
-    const { isGettingSession } = this.props;
+    const { isGettingSession, profile } = this.props;
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {
           isGettingSession ?
             <Spin indicator={antIcon} style={{ position: 'absolute', top: '50%' }} />
-          :
+          : !isGettingSession && profile && profile._id ?
             <Layout>
               <Header {...this.props} />
               <Content className="site-content art-site-content">
@@ -32,6 +32,7 @@ class Wishlist extends Component {
               </Content>
               <Footer />
             </Layout>
+          : <Redirect to="/" />
         }
       </div>
     );
@@ -41,6 +42,9 @@ class Wishlist extends Component {
 Wishlist.propTypes = {
   checkUserSession: PropTypes.func.isRequired,
   isGettingSession: PropTypes.bool.isRequired,
+  profile: PropTypes.shape({
+    _id: PropTypes.string,
+  }).isRequired,
 };
 
 const mapStateToProps = state => state.user;

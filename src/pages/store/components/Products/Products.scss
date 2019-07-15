@@ -1,9 +1,23 @@
 @import 'src/styles/colors';
 @import 'src/styles/devices';
 
+.loader {
+  margin: 32px 0;
+}
+
 .products-main-container {
   .ant-pagination {
     float: right;
+    margin: 16px 0;
+    .ant-pagination-options {
+      .ant-pagination-options-size-changer {
+        .ant-select-selection {
+          &:hover, &:active, &:focus-within{
+            border-color: $chroma-red;
+          }
+        }
+      }
+    }
     .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
       &:hover, &:focus {
         border-color: $chroma-red;
@@ -32,6 +46,16 @@
   .products-container {
     padding: 32px 32px;
     align-items: flex-start;
+    .breadcrumb {
+      margin-bottom: 8px;
+      span {
+        .ant-breadcrumb-link a {
+          &:hover {
+            color: $chroma-red;
+          }
+        }
+      }
+    }
     .search {
       .ant-btn {
         background: $chroma-red;
@@ -40,9 +64,9 @@
     }
     .search-tags {
       margin: 4px 4px;
-      font-size: 14px;
-      background: $gray-9;
-      color: $white;
+      font-size: 12px;
+      background: $gray-4;
+      color: $gray-8;
     }
     .filter-content {
       .products {
@@ -59,13 +83,12 @@
         }
       }
       .collapse-filter {
-        // background: $gray-4;
         background: transparent;
-        margin: 16px 16px 0 16px;
+        margin: 32px 0 16px 0;
         border-radius: 0;
 
         .ant-collapse-item {
-          border: none;
+          // border: none;
           .ant-collapse-header {
             font-size: 16px;
             font-family: 'Sailec-Light';
@@ -78,6 +101,13 @@
             font-size: 16px;
             font-weight: 700;
           }
+          .ant-collapse-header {
+            font-size: 20px;
+            font-family: 'Sailec-Bold';
+            color: $gray-8;
+            text-align: left;
+            background: $gray-4;
+          }
         }
         .collapse-inner {
           background: transparent;
@@ -86,8 +116,13 @@
           .ant-collapse-item {
             border-bottom: 1px solid #d9d9d9;
             .ant-collapse-header {
+              font-size: 16px;
+              font-family: 'Sailec-Light';
               padding-left: 8px;
               font-weight: 600;
+              color: $gray-8;
+              background: transparent;
+
             }
           }
           .radio-type {
@@ -160,7 +195,7 @@
 @include for-phone-only {
   .products-main-container {
      .products-container{
-      padding: 0 16px;
+      padding: 16px 16px;
       .products {
         column-count: 1;
       }
@@ -168,13 +203,19 @@
   }
   .active-product-modal {
     width: 100% !important;
+    .ant-modal-content {
+      .ant-modal-body {
+        padding: 24px 24px;
+      }
+    }
   }
 }
 
 @include for-tablet-portrait-down {
   .products-main-container {
     .products-container{
-      padding: 0 0;
+      padding: 16px 16px;     
+      // padding: 0 0;
       .products {
         column-count: 2;
       }
@@ -182,13 +223,19 @@
   }
   .active-product-modal {
     width: 100% !important;
+    .ant-modal-content {
+      .ant-modal-body {
+        padding: 24px 24px;
+      }
+    }
   }
 }
 
 @include for-tablet-portrait-up {
   .products-main-container {
     .products-container{
-      padding: 0 0;
+      padding: 16px 16px;
+      // padding: 0 0;
       .products {
         column-count: 2;
       }
@@ -224,7 +271,7 @@
   }
   .products-main-container {
     .products-container {
-      padding: 32px 32px;
+      padding: 32px 128px;
       .products {
         column-count: 4;
       }

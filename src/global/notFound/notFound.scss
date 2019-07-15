@@ -1,0 +1,34 @@
+@import "src/styles/colors";
+
+.not-found {  
+  // align-items: center;
+  // background: $dead-grey;
+  // display: block;
+  text-align: center;
+  .ant-row-flex {
+    height: 75vh;
+    .ant-col {
+      top: 50%;
+    }
+  }
+  .page-title {
+    font-family: 'Sailec-Bold', sans-serif;
+    font-size: 4em;
+    line-height: 80px;
+    margin-bottom: 0;
+  }
+  .sub-title {
+    margin-top: 8px;
+    margin-bottom: 32px;
+    color: $grey;
+  }
+  .go-back-btn {
+    max-width: 200px;
+    background: $chroma-red;
+    border-color: $dead-grey;
+    &:hover {
+      background: $chroma-red;
+      border-color: $dead-grey;
+    }
+  }
+}
