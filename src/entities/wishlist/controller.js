@@ -36,7 +36,7 @@ export const getWishlist = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: 'Successfully fetched your wishlist',
-      wishlist: wishlist[0].products,
+      wishlist: wishlist[0].products.filter(p => p.status === 'AVAILABLE'),
       pagination,
     });
   } catch (err) {

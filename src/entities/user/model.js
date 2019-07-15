@@ -6,10 +6,6 @@ import Cart from '../cart/model';
 import Wishlist from '../wishlist/model';
 import db from '../../db';
 
-/* @TODO
--> location (country,city/municipality)
--> currency (USD or PH Peso)
-*/
 const userSchema = new Schema({
   email: {
     type: String,
@@ -66,6 +62,18 @@ const userSchema = new Schema({
     ref: 'Image',
     // default:
   },
+  location: {
+    zipcode: String,
+    city: String,
+    country: String,
+    region: String,
+    street: String,
+    province: String,
+    brgy: String,
+    subdivision: String,
+    housenum: String,
+  },
+  mobile: String,
 }, {
   timestamps: true,
   toObject: { virtuals: true },

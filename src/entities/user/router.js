@@ -10,6 +10,10 @@ router
   .post(alreadyExists, passwordStrengthCheck, userController.addUser)
   .get(userController.getUsers);
 
+router
+  .route('/artists')
+  .get(userController.getArtists);
+
 
 router
   .route('/users/:_id')
@@ -21,6 +25,14 @@ router
   )
   .get(userController.getUser);
 
+router
+  .route('/change-email/:_id')
+  .put(
+    isVerifiedID,
+    isAuthenticated,
+    isAuthorized,
+    userController.changeEmail,
+  );
 router
   .route('/verify-account/:confirmToken')
   .put(userController.verifyAccount);
@@ -47,7 +59,7 @@ router
   );
 
 router
-  .route('/activate-artist/:_id')
+  .route('/change-account-type/:_id')
   .put(
     isVerifiedID,
     isAuthenticated,
@@ -61,7 +73,7 @@ router
     isVerifiedID,
     isAuthenticated,
     isAuthorized,
-    artistCheck,
+    // artistCheck,
     userController.updateArtistBio,
   );
 export default router;

@@ -22,6 +22,9 @@ export const getArtwork = async (req, res) => {
     const { _id } = req.params;
     if (_id) {
       const artwork = await Artwork.findById(_id).populate(['artist', 'images']);
+      if (!artwork) {
+        return res.json(new BaseError(404, 'Not found'));
+      }
       delete artwork.artist.password;
       return res.status(200).json({
         success: true,
