@@ -11,43 +11,44 @@
   .hero-extension img {
     height: 48px; }
 
-.site-content a.more {
-  color: #CA0000;
-  font-size: 20px;
-  font-weight: 600;
-  float: right;
-  margin-top: 16px;
-  margin-right: 16px;
-  text-decoration: underline; }
-
-.site-content .category-label {
-  font-family: 'Sailec-Bold';
-  font-weight: bolder;
-  font-size: 32px; }
-
-.site-content .categories {
-  margin: 32px 0; }
-  .site-content .categories a, .site-content .categories a:visited, .site-content .categories a:hover, .site-content .categories a:active {
-    text-decoration: none !important; }
-  .site-content .categories a:hover .container {
-    transform: translateY(2px); }
-  .site-content .categories a:hover p {
-    color: #CA0000; }
-  .site-content .categories .container {
-    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.15);
-    background: #fff;
-    padding: 16px 16px;
-    margin: 16px 16px; }
-    .site-content .categories .container img {
-      width: 100%;
-      height: 100%; }
-    .site-content .categories .container p {
-      margin: 8px 0 0 0;
-      font-size: 18px;
-      font-family: 'Sailer-Regular';
-      font-weight: 500;
-      letter-spacing: 1px;
-      color: black; }
+.landingg {
+  min-height: 0 !important;
+  margin-top: 32px; }
+  .landingg a.more {
+    color: #CA0000;
+    font-size: 20px;
+    font-weight: 600;
+    float: right;
+    margin-top: 16px;
+    margin-right: 16px;
+    text-decoration: underline; }
+  .landingg .category-label {
+    font-family: 'Sailec-Bold';
+    font-weight: bolder;
+    font-size: 32px; }
+  .landingg .categories {
+    margin: 32px 0; }
+    .landingg .categories a, .landingg .categories a:visited, .landingg .categories a:hover, .landingg .categories a:active {
+      text-decoration: none !important; }
+    .landingg .categories a:hover .container {
+      transform: translateY(2px); }
+    .landingg .categories a:hover p {
+      color: #CA0000; }
+    .landingg .categories .container {
+      box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.15);
+      background: #fff;
+      padding: 16px 16px;
+      margin: 16px 16px; }
+      .landingg .categories .container img {
+        width: 100%;
+        height: 100%; }
+      .landingg .categories .container p {
+        margin: 8px 0 0 0;
+        font-size: 18px;
+        font-family: 'Sailer-Regular';
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: black; }
 
 .banner {
   background-color: #fff;

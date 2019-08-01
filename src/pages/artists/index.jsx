@@ -23,7 +23,7 @@ class Artist extends Component {
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         {
           isGettingSession ?
-            <Spin indicator={antIcon} style={{ margin: '32px 0', position: 'absolute', left: '50%' }} />
+            <Spin indicator={antIcon} style={{ margin: '32px 0', position: 'absolute', top: '50%', left: '50%' }} />
           :
             <Layout>
               <Header {...this.props} />

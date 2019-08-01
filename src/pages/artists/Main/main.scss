@@ -18,7 +18,14 @@
         }
       }
     }
-    .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+    .ant-pagination-disabled {
+      a {
+        &:hover, &:active, &:focus {
+          color: $gray-4 !important;
+          }
+      }
+    }
+    .ant-pagination-prev, .ant-pagination-next {
       &:hover, &:focus {
         border-color: $chroma-red;
       }
@@ -267,8 +274,8 @@
           .avatar-container {
             .info {
               .ant-avatar {
-                width: 80px !important;
-                height: 80px !important;
+                // width: 80px !important;
+                // height: 80px !important;
               }
             }
             .artwork-panel {

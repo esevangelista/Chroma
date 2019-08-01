@@ -164,9 +164,6 @@ class ProfileForm extends Component {
                 {getFieldDecorator('brgy', { initialValue: initialValue.location ? initialValue.location.brgy : null })(<Input placeholder="e.g. Gomez" />)}
               </Form.Item>
             </div>
-            <Form.Item label="Country">
-              <Select disabled defaultValue="Philippines" />
-            </Form.Item>
             <Form.Item label="Region">
               {getFieldDecorator('region', { initialValue: initialValue.location ? initialValue.location.region : undefined })(<Select placeholder="Choose your region" onChange={this.handleRegionChange}>{ regions.map(r => <Option key={r.key} value={r.key}> {r.long} ({r.name}) </Option>)}</Select>)}
             </Form.Item>
@@ -175,6 +172,15 @@ class ProfileForm extends Component {
             </Form.Item>
             <Form.Item label="Town/City">
               {getFieldDecorator('city', { initialValue: initialValue.location ? initialValue.location.city : undefined })(<Select showSearch disabled={filteredCities.length === 0} placeholder="Choose your city">{filteredCities.map(c => <Option key={c.name} value={c.name}> {c.name} </Option>)}</Select>)}
+            </Form.Item>
+            <Form.Item label="Landmarks">
+              {getFieldDecorator('landmarks', { initialValue: profile.location ? profile.location.landmarks : undefined })(<Input.TextArea autosize={{ minRows: 2, max: 7 }} />)}
+            </Form.Item>
+            <Form.Item label="Mobile Number">
+              {getFieldDecorator('mobnum', {
+                initialValue: profile.mobile ? profile.mobile : undefined,
+                rules: [{ pattern: new RegExp(/^(09|\+639)\d{9}$/), message: 'Invalid mobile number' }],
+              })(<Input placeholder="e.g. 09215688208" />)}
             </Form.Item>
           </div>
           <Form.Item>

@@ -20,6 +20,7 @@ import {
   Pagination,
   Spin,
 } from 'antd';
+import qs from 'qs';
 import {
   getArtRequest,
   handleQueryType,
@@ -146,7 +147,7 @@ class ArtMain extends Component {
     if (isNaN(minH) || minH < 0) await this.setState({ heightErr: true });
     else {
       await this.setState({ heightErr: false });
-      this.handleHeightChange();
+      // this.handleHeightChange();
     }
   }
   async handleMaxHeight(e) {
@@ -155,7 +156,7 @@ class ArtMain extends Component {
     if (isNaN(maxH) || maxH < 0) await this.setState({ heightErr: true });
     else {
       await this.setState({ heightErr: false });
-      this.handleHeightChange();
+      // this.handleHeightChange();
     }
   }
   async handleHeightChange() {
@@ -186,7 +187,7 @@ class ArtMain extends Component {
     if (isNaN(minW) || minW < 0) await this.setState({ widthErr: true });
     else {
       await this.setState({ widthErr: false });
-      this.handleWidthChange();
+      // this.handleWidthChange();
     }
   }
   async handleMaxWidth(e) {
@@ -195,7 +196,7 @@ class ArtMain extends Component {
     if (isNaN(maxW) || maxW < 0) await this.setState({ widthErr: true });
     else {
       await this.setState({ widthErr: false });
-      this.handleWidthChange();
+      // this.handleWidthChange();
     }
   }
   async handleWidthChange() {
@@ -226,7 +227,7 @@ class ArtMain extends Component {
     if (isNaN(minD) || minD < 0) await this.setState({ depthErr: true });
     else {
       await this.setState({ depthErr: false });
-      this.handleDepthChange();
+      // this.handleDepthChange();
     }
   }
   async handleMaxDepth(e) {
@@ -235,7 +236,7 @@ class ArtMain extends Component {
     if (isNaN(maxD) || maxD < 0) await this.setState({ depthErr: true });
     else {
       await this.setState({ depthErr: false });
-      this.handleDepthChange();
+      // this.handleDepthChange();
     }
   }
   async handleDepthChange() {
@@ -267,7 +268,7 @@ class ArtMain extends Component {
     if (isNaN(minPrice) || minPrice < 0) await this.setState({ priceErr: true });
     else {
       await this.setState({ priceErr: false });
-      this.handlePriceChange();
+      // this.handlePriceChange();
     }
   }
   async handleMaxPrice(e) {
@@ -276,7 +277,7 @@ class ArtMain extends Component {
     if (isNaN(maxPrice) || maxPrice < 0) await this.setState({ priceErr: true });
     else {
       await this.setState({ priceErr: false });
-      this.handlePriceChange();
+      // this.handlePriceChange();
     }
   }
   async handlePriceChange() {
@@ -447,9 +448,9 @@ class ArtMain extends Component {
                         <Panel header="PRICE" key="5">
                           <Input.Group compact className="input-price">
                             <div className="price-range">
-                              <Input placeholder="MIN" onChange={this.handleMinPrice} value={this.state.minP} />
+                              <Input placeholder="MIN" onChange={this.handleMinPrice} onPressEnter={this.handlePriceChange} value={this.state.minP} />
                               <Text type="secondary"> ~ </Text>
-                              <Input placeholder="MAX" onChange={this.handleMaxPrice} value={this.state.maxP} />
+                              <Input placeholder="MAX" onChange={this.handleMaxPrice} onPressEnter={this.handlePriceChange} value={this.state.maxP} />
                             </div>
                             {
                               priceErr ?
@@ -462,9 +463,9 @@ class ArtMain extends Component {
                           <Input.Group compact className="input-price">
                             <Text className="dimension-label"> HEIGHT (inches) </Text>
                             <div className="price-range">
-                              <Input placeholder="MIN" onChange={this.handleMinHeight} value={this.state.minH} />
+                              <Input placeholder="MIN" onChange={this.handleMinHeight} onPressEnter={this.handleHeightChange} value={this.state.minH} />
                               <Text type="secondary"> ~ </Text>
-                              <Input placeholder="MAX" onChange={this.handleMaxHeight} value={this.state.maxH} />
+                              <Input placeholder="MAX" onChange={this.handleMaxHeight} onPressEnter={this.handleHeightChange}value={this.state.maxH} />
                             </div>
                             {
                               heightErr ?
@@ -475,9 +476,9 @@ class ArtMain extends Component {
                           <Input.Group compact className="input-price">
                             <Text className="dimension-label"> WIDTH (inches) </Text>
                             <div className="price-range">
-                              <Input placeholder="MIN" onChange={this.handleMinWidth} value={this.state.minW} />
+                              <Input placeholder="MIN" onChange={this.handleMinWidth} onPressEnter={this.handleWidthChange} value={this.state.minW} />
                               <Text type="secondary"> ~ </Text>
-                              <Input placeholder="MAX" onChange={this.handleMaxWidth} value={this.state.maxW} />
+                              <Input placeholder="MAX" onChange={this.handleMaxWidth} onPressEnter={this.handleWidthChange} value={this.state.maxW} />
                             </div>
                             {
                               widthErr ?
@@ -488,9 +489,9 @@ class ArtMain extends Component {
                           <Input.Group compact className="input-price">
                             <Text className="dimension-label"> DEPTH (inches) </Text>
                             <div className="price-range">
-                              <Input placeholder="MIN" onChange={this.handleMinDepth} value={this.state.minD} />
+                              <Input placeholder="MIN" onChange={this.handleMinDepth} onPressEnter={this.handleDepthChange} value={this.state.minD} />
                               <Text type="secondary"> ~ </Text>
-                              <Input placeholder="MAX" onChange={this.handleMaxDepth} value={this.state.maxD} />
+                              <Input placeholder="MAX" onChange={this.handleMaxDepth} onPressEnter={this.handleDepthChange} value={this.state.maxD} />
                             </div>
                             {
                               depthErr ?
@@ -561,7 +562,6 @@ class ArtMain extends Component {
                 </Col>
               </Row>
             </div>
-            <Button className="btn-afx" icon="arrow-right" shape="circle" onClick={() => console.log('checkout')} />
             <Pagination
               current={page}
               total={total}

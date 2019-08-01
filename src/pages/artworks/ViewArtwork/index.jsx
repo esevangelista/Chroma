@@ -109,20 +109,22 @@ class ViewArtwork extends Component {
                     <li><Text> Medium: {medium.map(m => <Text code key={m}> {m} </Text>)} </Text></li>
                     <li><Text> Subject: {subject.map(s => <Text code key={s}> {s} </Text>)} </Text></li>
                   </ul>
-                  <Text id="qty-label"> QTY </Text>
                   {
                     quantity > 1 ?
-                      <Select
-                        showSearch
-                        value={this.state.qty}
-                        onChange={this.qtyChange}
-                        id="qty-selector"
-                      >
-                        {
-                          [...Array(quantity).keys()].map(i =>
-                            <Option key={i} value={i + 1}> {i + 1} </Option>)
-                        }
-                      </Select>
+                      <div>
+                        <Text id="qty-label"> QTY </Text>
+                        <Select
+                          showSearch
+                          value={this.state.qty}
+                          onChange={this.qtyChange}
+                          id="qty-selector"
+                        >
+                          {
+                            [...Array(quantity).keys()].map(i =>
+                              <Option key={i} value={i + 1}> {i + 1} </Option>)
+                          }
+                        </Select>
+                      </div>
                     : ''
                   }
                   <br /><Text strong id="price"> <span>&#8369;</span> {price} </Text><br />

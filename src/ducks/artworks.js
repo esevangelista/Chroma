@@ -21,6 +21,11 @@ export const HANDLE_QUERY_PAGE = 'HANDLE_QUERY_PAGE';
 export const GET_ACTIVE_ART_REQUEST = 'GET_ACTIVE_ART_REQUEST';
 export const GET_ACTIVE_ART_SUCCESS = 'GET_ACTIVE_ART_SUCCESS';
 export const GET_ACTIVE_ART_FAILED = 'GET_ACTIVE_ART_FAILED';
+export const HANDLE_ALL_QUERY = 'HANDLE_ALL_QUERY';
+
+export function handleAllQuery(query) {
+  return { type: HANDLE_ALL_QUERY, query };
+}
 
 export function getArtRequest() {
   return { type: GET_ART_REQUEST };
@@ -118,6 +123,15 @@ const initialFetchState = {
 function fetchReducer(state = initialFetchState, action) {
   const { type } = action;
   switch (type) {
+    // case HANDLE_ALL_QUERY:
+    //   return {
+    //     ...state,
+    //     query: {
+    //       ...state.query,
+    //       ...action.query,
+    //       page: 1,
+    //     }
+    //   };
     case GET_ART_REQUEST:
       return {
         ...state,
@@ -225,7 +239,7 @@ function fetchReducer(state = initialFetchState, action) {
     case REMOVE_ALL_FILTERS:
       return {
         ...state,
-        query: { status: ['AVAILABLE'],},
+        query: { status: ['AVAILABLE'] },
       };
     case HANDLE_QUERY_LIMIT:
       return {

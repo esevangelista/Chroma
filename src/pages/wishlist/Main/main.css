@@ -3,7 +3,7 @@
   .art-main-container .art-container .ant-spin-spinning {
     position: relative;
     left: 50%; }
-  .art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container {
+  .art-main-container .art-container .wishlist {
     margin-top: 16px; }
     .art-main-container .art-container .wishlist .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item {
       display: inline-flex;

@@ -1,8 +1,14 @@
+.art-main-container #btn-afx:hover {
+  background: #CA0000;
+  color: #fff; }
+
 .art-main-container .ant-pagination {
   float: right;
   margin: 16px 0; }
   .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
     border-color: #CA0000; }
+  .art-main-container .ant-pagination .ant-pagination-disabled a:hover, .art-main-container .ant-pagination .ant-pagination-disabled a:active, .art-main-container .ant-pagination .ant-pagination-disabled a:focus {
+    color: #e8e8e8 !important; }
   .art-main-container .ant-pagination .ant-pagination-item:hover, .art-main-container .ant-pagination .ant-pagination-item:focus, .art-main-container .ant-pagination .ant-pagination-prev:hover, .art-main-container .ant-pagination .ant-pagination-prev:focus, .art-main-container .ant-pagination .ant-pagination-next:hover, .art-main-container .ant-pagination .ant-pagination-next:focus {
     border-color: #CA0000; }
   .art-main-container .ant-pagination .ant-pagination-item a:hover, .art-main-container .ant-pagination .ant-pagination-prev a:hover, .art-main-container .ant-pagination .ant-pagination-next a:hover {

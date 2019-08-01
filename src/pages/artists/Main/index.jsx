@@ -247,7 +247,7 @@ class Main extends Component {
               current={page}
               total={total}
               pageSize={limit}
-              hideOnSinglePage
+              // hideOnSinglePage
               className="paginate"
               pageSizeOptions={['12', '24', '36', '48']}
               showSizeChanger

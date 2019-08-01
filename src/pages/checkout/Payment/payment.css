@@ -1,0 +1,41 @@
+.payment-container .checkout-steps {
+  margin-top: 32px;
+  width: 75%; }
+  @media only screen and (max-width: 480px) {
+    .payment-container .checkout-steps {
+      display: none !important; } }
+  .payment-container .checkout-steps .ant-steps-item .ant-steps-item-icon {
+    display: none; }
+  .payment-container .checkout-steps .ant-steps-item-finish {
+    color: #CA0000; }
+  .payment-container .checkout-steps .ant-steps-item-error .ant-steps-item-content .ant-steps-item-title {
+    color: #CA0000;
+    font-weight: 700; }
+
+.payment-container .payment-main-container {
+  margin: 32px 0;
+  padding: 0 16px; }
+  .payment-container .payment-main-container #label {
+    font-family: 'Sailec-Light';
+    font-weight: 700;
+    color: #595959;
+    font-size: 24px; }
+  .payment-container .payment-main-container .collapse-payment {
+    padding: 16px 32px; }
+  .payment-container .payment-main-container .form-button {
+    max-width: 100%;
+    width: 100%;
+    background: #CA0000;
+    border-color: #CA0000;
+    font-size: 16px;
+    margin: 16px 0; }
+  .payment-container .payment-main-container ol {
+    font-size: 16px;
+    font-family: sans-serif;
+    color: #595959;
+    padding: 16px 32px; }
+    .payment-container .payment-main-container ol li {
+      margin: 12px 0; }
+
+.payment-container .cart-content .del-info {
+  font-size: 14px; }

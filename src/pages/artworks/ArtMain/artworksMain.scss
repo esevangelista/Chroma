@@ -2,6 +2,12 @@
 @import 'src/styles/devices';
 
 .art-main-container {
+  #btn-afx {
+    &:hover {
+      background: $chroma-red;
+      color: $white;
+    }
+  }
   .ant-pagination {
     float: right;
     margin: 16px 0;
@@ -12,6 +18,13 @@
             border-color: $chroma-red;
           }
         }
+      }
+    }
+    .ant-pagination-disabled {
+      a {
+        &:hover, &:active, &:focus {
+          color: $gray-4 !important;
+          }
       }
     }
     .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {

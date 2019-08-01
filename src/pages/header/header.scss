@@ -77,7 +77,6 @@ $header-height: 80px;
     top: 0;
     height: $header-height;
     padding: 0 16px;
-
     &.logo-container {
       flex-grow: 1;
 
@@ -145,6 +144,7 @@ $header-height: 80px;
       color: $chroma-red;
     }
   }
+
   @include for-tablet-landscape-up {
     .ant-menu-item {
       display: none;
@@ -267,3 +267,15 @@ $header-height: 80px;
       color: $chroma-red;
     }
   }
+
+
+@include for-phone-only {
+  .site-header {
+    .ant-menu-item { 
+      &.icons {
+        padding: 0 10px;
+      }
+      
+    }
+  }
+}

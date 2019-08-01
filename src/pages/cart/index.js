@@ -96,7 +96,7 @@ class Cart extends Component {
                     <Text className="label"> SUBTOTAL </Text>
                     <Text strong className="value"> <span>&#8369;</span> {total} </Text>
                   </div>
-                  <Button id="btn-checkout" type="primary"> CHECKOUT </Button>
+                  <Button disabled={products.length === 0} id="btn-checkout" type="primary" href="/checkout/shipping"> CHECKOUT </Button>
                 </div>
               </div>
             : <Spin />

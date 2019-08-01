@@ -147,3 +147,7 @@
             font-size: 16px; }
   .ant-drawer-content-wrapper .ant-drawer-close {
     color: #CA0000; }
+
+@media only screen and (max-width: 480px) {
+  .site-header .ant-menu-item.icons {
+    padding: 0 10px; } }

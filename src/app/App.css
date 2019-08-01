@@ -9,7 +9,7 @@ body {
   flex-direction: column; }
 
 .ant-layout-content {
-  min-height: 75vh !important; }
+  min-height: 100vh !important; }
 
 .site-main.site-main {
   flex: 1 0 auto; }

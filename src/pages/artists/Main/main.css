@@ -8,11 +8,13 @@
     margin: 16px 0; }
     .artists-container .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .artists-container .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .artists-container .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
       border-color: #CA0000; }
-    .artists-container .paginate .ant-pagination-item:hover, .artists-container .paginate .ant-pagination-item:focus, .artists-container .paginate .ant-pagination-prev:hover, .artists-container .paginate .ant-pagination-prev:focus, .artists-container .paginate .ant-pagination-next:hover, .artists-container .paginate .ant-pagination-next:focus {
+    .artists-container .paginate .ant-pagination-disabled a:hover, .artists-container .paginate .ant-pagination-disabled a:active, .artists-container .paginate .ant-pagination-disabled a:focus {
+      color: #e8e8e8 !important; }
+    .artists-container .paginate .ant-pagination-prev:hover, .artists-container .paginate .ant-pagination-prev:focus, .artists-container .paginate .ant-pagination-next:hover, .artists-container .paginate .ant-pagination-next:focus {
       border-color: #CA0000; }
-    .artists-container .paginate .ant-pagination-item a:hover, .artists-container .paginate .ant-pagination-prev a:hover, .artists-container .paginate .ant-pagination-next a:hover {
+    .artists-container .paginate .ant-pagination-prev a:hover, .artists-container .paginate .ant-pagination-next a:hover {
       color: #CA0000; }
-    .artists-container .paginate .ant-pagination-item .ant-pagination-item-link:hover, .artists-container .paginate .ant-pagination-prev .ant-pagination-item-link:hover, .artists-container .paginate .ant-pagination-next .ant-pagination-item-link:hover {
+    .artists-container .paginate .ant-pagination-prev .ant-pagination-item-link:hover, .artists-container .paginate .ant-pagination-next .ant-pagination-item-link:hover {
       border-color: #dde2e8; }
     .artists-container .paginate .ant-pagination-item-active {
       border-color: #CA0000; }
@@ -148,9 +150,6 @@
     display: none; }
   .artists-container .content .col-artist {
     padding-left: 16px; }
-    .artists-container .content .col-artist .artist-card .avatar-container .info .ant-avatar {
-      width: 80px !important;
-      height: 80px !important; }
     .artists-container .content .col-artist .artist-card .avatar-container .artwork-panel .arts {
       width: 60px;
       height: 60px; } }

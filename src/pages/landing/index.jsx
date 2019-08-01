@@ -96,7 +96,7 @@ class Landing extends Component {
             </p>
           </div>
         </Carousel>
-        <Content className="site-content">
+        <div className="site-content landingg">
           <Row>
             <Col sm={24} md={12} lg={12} > <h2 className="category-label"> Shop art by form </h2> </Col>
             <Col span={12}> <a href="/"  className="more"> More Options </a></Col>
@@ -132,7 +132,7 @@ class Landing extends Component {
             }
           </Carousel>
           <a href="/"  className="active-on-mobile more-mobile"> More Options </a>
-        </Content>
+        </div>
         <section className="banner">
           <h3> Interested in selling your artworks? </h3>
           <Button className="btn-mor"> More info </Button>

@@ -82,7 +82,7 @@ class View extends Component {
                   : ''
                 }
                 {
-                  links ?
+                  hasLinks ?
                     <Panel className="links-panel" header="Social Links" key={bio ? '2' : '1'}>
                     {links.fb ? <a href={links.fb} target="_blank" rel="noopener noreferrer"> <Icon type="facebook" /></a> : ''}
                     {links.twitter ? <a href={links.twitter} target="_blank" rel="noopener noreferrer"> <Icon type="twitter" /></a> : ''}

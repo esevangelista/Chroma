@@ -8,15 +8,21 @@ import artworks from './artworks';
 import cart from './cart';
 import wishlist from './wishlist';
 import artists from './artists';
+import orders from './orders';
+import transactions from './transactions';
+import notifications from './notifications';
 
 const appReducer = combineReducers({
   router: routerReducer,
   auth,
   user,
+  notifications,
   cart,
+  orders,
   wishlist,
   feedback,
   product,
+  transactions,
   artworks,
   artists,
 });

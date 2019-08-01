@@ -8,6 +8,7 @@ import './header.css';
 import LoginForm from '../login/';
 import { logoutRequest } from '../../ducks/auth';
 import Cart from '../cart/';
+import Notifications from '../notifications/';
 
 const { SubMenu } = Menu;
 
@@ -64,33 +65,39 @@ class Header extends Component {
               <SubMenu className="show-on-desktop submenu-store" key="3.5.0" title="Store">
                 <Menu.ItemGroup key="group">
                   <Menu.Item key="3.5.1"><Link to="/my-store"> Overview </Link></Menu.Item>
-                  <Menu.Item key="3.5.2"><Link to="/my-store"> Transactions </Link></Menu.Item>
+                  <Menu.Item key="3.5.2"><Link to="/my-store/transactions"> Transactions </Link></Menu.Item>
                   <Menu.Item key="3.5.3"><Link to="/my-store/products"> My Artworks </Link></Menu.Item>
                   <Menu.Item key="3.5.4"><Link to="/my-store"> Feedback </Link></Menu.Item>
                 </Menu.ItemGroup>
               </SubMenu>
             : ''
           }
-          <Menu.Item key="5">
+          <Menu.Item key="5" className="icons">
             {
               !isGettingSession && profile && profile._id ?
                 <Cart />
               : <LoginForm isCartIcon />
             }
           </Menu.Item>
+          {
+            !isGettingSession && profile && profile._id ?
+              <Menu.Item key="notif" className="icons"><Notifications /></Menu.Item>
+              : <Menu.Item className="show-on-desktop"><LoginForm isBellIcon /></Menu.Item>
+          }
           { !isGettingSession && profile && profile._id ?
             <SubMenu className="show-on-desktop submenu-user" key="6" title={<Icon type="user" />}>
               <Menu.ItemGroup key="user-group">
                 <Menu.Item key="6.1"><Link to="/account/profile"> Profile </Link></Menu.Item>
                 <Menu.Item key="6.2"><Link to="/wishlist"> Wishlist </Link></Menu.Item>
-                <Menu.Item key="6.3"><Link to="/account/settings"> Settings </Link></Menu.Item>
-                <Menu.Item key="6.4"><a onClick={this.logout}> Logout </a></Menu.Item>
+                <Menu.Item key="6.3"><Link to="/orders"> My Orders </Link></Menu.Item>
+                <Menu.Item key="6.4"><Link to="/account/settings"> Settings </Link></Menu.Item>
+                <Menu.Item key="6.5"><a onClick={this.logout}> Logout </a></Menu.Item>
               </Menu.ItemGroup>
             </SubMenu>
             :
-            <LoginForm />
+            <Menu.Item className="show-on-desktop"><LoginForm /></Menu.Item>
           }
-          <Menu.Item key="7" className="hide-on-desktop">
+          <Menu.Item key="7" className="hide-on-desktop icons">
             <Button id="btn-drawer" onClick={this.showDrawer} >
               <Icon type="menu-unfold" />
             </Button>
@@ -107,14 +114,14 @@ class Header extends Component {
                     <Menu.Item key="artist"><Link to="/artists">Artists</Link></Menu.Item>
                     <Menu.Item key="mobile-profile"><Link to="/account/profile">Profile</Link></Menu.Item>
                     <Menu.Item key="wishlist"><Link to="/wishlist">Wishlist</Link></Menu.Item>
-                    <Menu.Item key="order"><Link to="/">Orders</Link></Menu.Item>
+                    <Menu.Item key="order"><Link to="/orders">My Orders</Link></Menu.Item>
                     <Menu.Item key="inbox"><Link to="/">Inbox</Link></Menu.Item>
                     {
                       profile && profile.isArtist ?
                         <SubMenu title="My Store" key="sub-store">
                           <Menu.ItemGroup key="store-group">
                             <Menu.Item key="over"><Link to="/my-store"> Overview </Link></Menu.Item>
-                            <Menu.Item key="trans"><Link to="/my-store"> Transactions </Link></Menu.Item>
+                            <Menu.Item key="trans"><Link to="/my-store/transactions"> Transactions </Link></Menu.Item>
                             <Menu.Item key="products"><Link to="/my-store/products"> My Artworks </Link></Menu.Item>
                             <Menu.Item key="feed"><Link to="/my-store"> Feedback </Link></Menu.Item>
                           </Menu.ItemGroup>

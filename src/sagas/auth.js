@@ -1,6 +1,7 @@
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
+import { CometChat } from '@cometchat-pro/chat';
 import {
   LOGIN_REQUEST,
   LOGOUT_REQUEST,
@@ -18,6 +19,7 @@ import {
 import { alertDisplay } from '../ducks/feedback';
 import { postRequestService, putRequestService } from '../api/apiRequest';
 
+const apiKey = 'cc5496065bfe7d67d2cf1f1f442e83853d07cdc8';
 export function* loginFlow(action) {
   try {
     const response = yield call(postRequestService, '/login', action.data);
@@ -25,6 +27,14 @@ export function* loginFlow(action) {
     if (success) {
       yield put(loginSuccess(response.data.message));
       yield put(push('/'));
+      // CometChat.login(user._id, apiKey).then(
+      //   user => {
+      //     console.log("Login Successful:", { user });    
+      //   },
+      //   error => {
+      //     console.log("Login failed with exception:", { error });    
+      //   },
+      // );
     } else {
       yield put(loginFailed(response.data.message));
     }

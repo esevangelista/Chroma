@@ -21,7 +21,7 @@ class ViewArtist extends Component {
       <div>
         {
           isFetching ?
-            <Spin indicator={antIcon} style={{ position: 'absolute', top: '50%' }} />
+            <Spin indicator={antIcon} style={{ position: 'absolute', left: '50%', top: '50%' }} />
           : error ?
             <NotFound />
           : <Content match={this.props.match} />

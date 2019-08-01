@@ -21,7 +21,7 @@ import {
 import { fetchWishlistRequest } from '../ducks/wishlist';
 
 export const getQuery = state => state.artists.query;
-
+export const getUser = state => state.user.profile;
 export function* fetchArtists() {
   try {
     const query = yield select(getQuery);
@@ -45,8 +45,9 @@ export function* getArtist(action) {
     const response = yield call(getRequestService, `/users/${_id}`);
     const { success, user, message } = response.data;
     if (success) {
+      const me = yield select(getUser);
+      if (me && me._id) yield put(fetchWishlistRequest());
       yield put(getArtistSuccess(user));
-      yield put(fetchWishlistRequest());
     } else yield put(getArtistFailed(message));
   } catch (err) {
     const { message } = err.response.data;

@@ -18,6 +18,7 @@ import {
   REMOVE_ALL_FILTERS,
   HANDLE_QUERY_LIMIT,
   HANDLE_QUERY_PAGE,
+  // handleAllQuery,
   getArtRequest,
   getArtSuccess,
   getArtFailed,
@@ -29,10 +30,16 @@ import { fetchWishlistRequest } from '../ducks/wishlist';
 export const getQuery = state => state.artworks.fetch.query;
 export const getActiveArtwork = state => state.artworks.fetch.activeArtwork;
 export const getSearch = state => state.router.location.search;
-
+export const getUser = state => state.user.profile;
 export function* getArtworks() {
   try {
     const query = yield select(getQuery);
+    // const queryParams = yield select(getSearch);
+    // const q = qs.parse(queryParams, { ignoreQueryPrefix: true });
+    // if (q) {
+    //   query = { ...q, ...query };
+    //   yield put(handleAllQuery(query));
+    // }
     const response = yield call(getRequestService, `/artwork?${qs.stringify(query)}`);
     const { data } = response;
     const { success } = data;
@@ -40,7 +47,8 @@ export function* getArtworks() {
       yield put(getArtFailed(data.message || 'Something went wrong.'));
     } else {
       const { artworks, pagination, message } = data;
-      yield put(fetchWishlistRequest());
+      const user = yield select(getUser);
+      if (user && user._id) yield put(fetchWishlistRequest());
       yield put(getArtSuccess(artworks, pagination, message));
     }
   } catch (err) {

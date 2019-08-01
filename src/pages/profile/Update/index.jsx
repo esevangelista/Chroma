@@ -14,7 +14,7 @@ class Update extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: '2',
+      current: '1',
     };
     this.handleMenuClick = this.handleMenuClick.bind(this);
   }
@@ -28,7 +28,7 @@ class Update extends Component {
     return (
       <Content className="update-container">
         <Menu
-          defaultSelectedKeys={['2']}
+          defaultSelectedKeys={['1']}
           mode="horizontal"
           onClick={this.handleMenuClick}
           className="menu"
