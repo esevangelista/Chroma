@@ -11,7 +11,7 @@ const imageSchema = new Schema({
   },
   folder: {
     type: String,
-    enum: ['ARTWORKS', 'USERS', 'OTHERS'],
+    enum: ['ARTWORKS', 'USERS', 'PAYMENT', 'SHIPPING', 'OTHERS'],
     required: [true, 'Missing filename'],
   },
   filename: {

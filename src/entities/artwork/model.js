@@ -57,7 +57,7 @@ const artworkSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['IN-STOCK', 'SOLD', 'HIDDEN', 'AVAILABLE'],
+    enum: ['IN-STOCK', 'SOLD', 'HIDDEN', 'RESERVED', 'AVAILABLE'],
     required: [true, 'Missing status'],
     default: 'AVAILABLE',
   },

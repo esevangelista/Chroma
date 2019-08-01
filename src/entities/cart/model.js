@@ -25,7 +25,7 @@ const cartSchema = new Schema({
 
 cartSchema.virtual('quantity').get(function getQuantity() {
   let sum = 0;
-  for(const val of this.tally.values()) sum += val;
+  for (const val of this.tally.values()) sum += val;
   return sum;
 });
 

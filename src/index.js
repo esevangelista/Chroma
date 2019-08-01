@@ -3,8 +3,10 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import store from 'connect-mongo';
 import cors from 'cors';
+import cron from 'node-cron';
 import db from './db';
 import router from './router';
+import { updateOverdueTransactions } from './utils/overdueChecker';
 
 const app = express();
 
@@ -30,6 +32,9 @@ app.use(session({
 app.use('/api', router);
 app.use('*', (req, res) => res.redirect('/'));
 
+cron.schedule('0 0 19 * 0-7', function () {
+  updateOverdueTransactions();
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

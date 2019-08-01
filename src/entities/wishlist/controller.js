@@ -23,10 +23,19 @@ export const getWishlist = async (req, res) => {
     const options = {
       limit: +req.query.limit || 12,
       page: +req.query.page || 1,
-      populate: ['products', {
-        path: 'products',
-        populate: { path: 'images' },
-      }],
+      populate: ['products',
+        {
+          path: 'products',
+          populate: { path: 'images' },
+        },
+        {
+          path: 'products',
+          populate: {
+            path: 'artist',
+            select: ['firstName', 'lastName', 'email', '_id'],
+          },
+        },
+      ],
       sort: req.query.sort ? req.query.sort : { title: 1 },
     };
     const data = await Wishlist.paginate({ ownedBy }, options);

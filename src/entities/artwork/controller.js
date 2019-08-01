@@ -21,7 +21,13 @@ export const getArtwork = async (req, res) => {
   try {
     const { _id } = req.params;
     if (_id) {
-      const artwork = await Artwork.findById(_id).populate(['artist', 'images']);
+      const artwork = await Artwork.findById(_id).populate([
+        {
+          path: 'artist',
+          select: ['firstName', 'lastName', 'email', '_id'],
+        },
+        'images',
+      ]);
       if (!artwork) {
         return res.json(new BaseError(404, 'Not found'));
       }
@@ -88,13 +94,19 @@ export const getArtworks = async (req, res) => {
     const options = {
       limit: +req.query.limit || 12,
       page: +req.query.page || 1,
-      populate: ['artist', 'images'],
+      populate: [
+        {
+          path: 'artist',
+          select: ['firstName', 'lastName', 'email', '_id'],
+        },
+        'images',
+      ],
       sort: req.query.sort ? req.query.sort : { title: 1 },
     };
     const data = await Artwork.paginate(query, options);
     const artworks = data.docs;
     delete data.docs;
-    const pagination = { ...data, limit: req.query.limit || 12};
+    const pagination = { ...data, limit: req.query.limit || 12 };
     return res.status(200).json({
       success: true,
       message: 'Successfully retrieved artworks',

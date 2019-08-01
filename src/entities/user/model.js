@@ -63,15 +63,14 @@ const userSchema = new Schema({
     // default:
   },
   location: {
-    zipcode: String,
     city: String,
-    country: String,
     region: String,
     street: String,
     province: String,
     brgy: String,
     subdivision: String,
     housenum: String,
+    landmarks: String,
   },
   mobile: String,
 }, {

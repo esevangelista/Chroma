@@ -250,6 +250,8 @@ export const updateArtistBio = async (req, res) => {
       street,
       region,
       province,
+      landmarks,
+      mobnum,
       city,
     } = req.body;
     const user = await User.findById(_id).populate('image');
@@ -270,6 +272,8 @@ export const updateArtistBio = async (req, res) => {
     user.location.region = region || '';
     user.location.province = province || '';
     user.location.city = city || '';
+    user.location.landmarks = landmarks || '';
+    user.mobile = mobnum || '';
     await user.save();
     delete user.password;
     req.session.user = user;
