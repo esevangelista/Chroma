@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, Drawer, Button, Row } from 'antd';
+import { Layout, Menu, Icon, Drawer, Button, Row, Badge } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../global/logo';
 import './header.css';
 import LoginForm from '../login/';
 import { logoutRequest } from '../../ducks/auth';
 import Cart from '../cart/';
+import Chat from '../chat/';
 import Notifications from '../notifications/';
 
 const { SubMenu } = Menu;
@@ -29,7 +30,7 @@ class Header extends Component {
     });
   };
 
-  logout = () => {
+  logout = async () => {
     this.props.logoutRequest();
   }
   showDrawer = () => {
@@ -39,6 +40,7 @@ class Header extends Component {
   };
 
   render() {
+    const { unread } = this.props; 
     const { profile, isGettingSession } = this.props.user;
     const userNav = (
       <Menu>
@@ -84,6 +86,14 @@ class Header extends Component {
               <Menu.Item key="notif" className="icons"><Notifications /></Menu.Item>
               : <Menu.Item className="show-on-desktop"><LoginForm isBellIcon /></Menu.Item>
           }
+          <Menu.Item key="msg" className="show-on-desktop">
+            {
+              !isGettingSession && profile && profile._id ?
+                <Chat />
+              : <LoginForm isMsgIcon />
+            }
+          </Menu.Item>
+
           { !isGettingSession && profile && profile._id ?
             <SubMenu className="show-on-desktop submenu-user" key="6" title={<Icon type="user" />}>
               <Menu.ItemGroup key="user-group">
@@ -98,9 +108,11 @@ class Header extends Component {
             <Menu.Item className="show-on-desktop"><LoginForm /></Menu.Item>
           }
           <Menu.Item key="7" className="hide-on-desktop icons">
-            <Button id="btn-drawer" onClick={this.showDrawer} >
-              <Icon type="menu-unfold" />
-            </Button>
+            <Badge dot={!!unread}>
+              <Button id="btn-drawer" onClick={this.showDrawer} >
+                <Icon type="menu-unfold" />
+              </Button>
+            </Badge>
             <Drawer
               placement="left"
               onClose={this.onClose}
@@ -115,7 +127,7 @@ class Header extends Component {
                     <Menu.Item key="mobile-profile"><Link to="/account/profile">Profile</Link></Menu.Item>
                     <Menu.Item key="wishlist"><Link to="/wishlist">Wishlist</Link></Menu.Item>
                     <Menu.Item key="order"><Link to="/orders">My Orders</Link></Menu.Item>
-                    <Menu.Item key="inbox"><Link to="/">Inbox</Link></Menu.Item>
+                    <Menu.Item key="inbox"><Badge count={unread || 0} offset={[8,0]}><Link to="/messages">Messages</Link></Badge></Menu.Item>
                     {
                       profile && profile.isArtist ?
                         <SubMenu title="My Store" key="sub-store">
@@ -161,7 +173,8 @@ Header.defaultProps = {
 const mapStateToProps = (state) => {
   const { error, isFetching } = state.auth.logout;
   const { user } = state;
-  return { error, isFetching, user };
+  const { unread } = state.chat;
+  return { error, isFetching, user, unread };
 };
 
 export default connect(mapStateToProps, { logoutRequest })(Header);

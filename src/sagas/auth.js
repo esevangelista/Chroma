@@ -17,24 +17,24 @@ import {
   confirmEmailFailed,
 } from '../ducks/auth';
 import { alertDisplay } from '../ducks/feedback';
-import { postRequestService, putRequestService } from '../api/apiRequest';
+import { postRequestService, putRequestService, ccRequest } from '../api/apiRequest';
 
-const apiKey = 'cc5496065bfe7d67d2cf1f1f442e83853d07cdc8';
+const apiKey = 'c1b0d0cdc1c30c162982192c0842b8470975e453';
 export function* loginFlow(action) {
   try {
     const response = yield call(postRequestService, '/login', action.data);
     const { success, user } = response.data;
     if (success) {
+      CometChat.login(user._id, apiKey).then(
+        User => {
+          console.log("Login Successful:", { User });
+        },
+        error => {
+          console.log("Login failed with exception:", { error });
+        },
+      );
       yield put(loginSuccess(response.data.message));
       yield put(push('/'));
-      // CometChat.login(user._id, apiKey).then(
-      //   user => {
-      //     console.log("Login Successful:", { user });    
-      //   },
-      //   error => {
-      //     console.log("Login failed with exception:", { error });    
-      //   },
-      // );
     } else {
       yield put(loginFailed(response.data.message));
     }
@@ -51,6 +51,10 @@ export function* logoutFlow() {
     if (success) {
       yield put(logoutSuccess());
       yield put(push('/'));
+      CometChat.logout().then(
+        console.log('Logout completed successfully'),
+        error => console.log('Logout failed with exception:', { error }),
+      );
     } else {
       yield put(logoutFailed(response.data.message));
     }
@@ -76,11 +80,30 @@ export function* registerFlow(action) {
 export function* confirmEmailFlow(action) {
   try {
     const response = yield call(putRequestService, `/verify-account/${action.data}`);
-    const { success, message } = response.data;
+    const { success, message, u } = response.data;
     if (success) {
-      yield put(confirmEmailSuccess(message));
-      yield put(push('/'));
-      yield put(alertDisplay({ alertType: 'success', message }));
+      const apiKey = 'c1b0d0cdc1c30c162982192c0842b8470975e453';
+      const APP_ID = '60893392e15857';
+      const res = yield call(ccRequest, {
+        method: 'POST',
+        url: 'https://api.cometchat.com/v1.8/users',
+        headers: {
+          appid: APP_ID,
+          apikey: apiKey,
+          'content-type': 'application/json',
+          accept: 'application/json',
+        },
+        body: `{uid: ${u.id}, name: ${u.firstName}${u.lastName} }`,
+      });
+      if (res.status === 200) {
+        yield put(confirmEmailSuccess(message));
+        yield put(push('/'));
+        yield put(alertDisplay({ alertType: 'success', message }));
+      } else {
+        yield put(confirmEmailFailed(message));
+        yield put(push('/'));
+        yield put(alertDisplay({ alertType: 'error', message: res.statusText }));
+      }
     } else {
       yield put(confirmEmailFailed(message));
       yield put(push('/notfound'));

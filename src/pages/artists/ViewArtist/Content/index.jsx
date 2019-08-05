@@ -57,7 +57,7 @@ class Content extends Component {
           <Avatar src={image.publicURL} size={100} id="dp" />
           : <Avatar size={100} style={{ fontSize: '60px', color: 'white', backgroundColor: '#CA0000' }}>{def}</Avatar>
         }
-        <p id="name"> {firstName} {lastName} </p>
+        <p id="name"> {firstName} {lastName} <a style={{ color: '#CA0000' }} href={`/messages/${profile._id}`}> <Icon type="message" /></a></p>
         {loc(location) ? <span id="location"><Icon type="environment" theme="filled" /> {loc(location)} </span> : ''}
         <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.state.current]} className="profile-menu">
           {isArtist ? <Menu.Item key="1"> Artworks </Menu.Item> : ''}

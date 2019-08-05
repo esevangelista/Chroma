@@ -9,6 +9,7 @@ import artistSagas from './artists';
 import orderSagas from './orders';
 import transactionSagas from './transactions';
 import notifSagas from './notifications';
+import chatSagas from './chat';
 
 export default function* rootSaga() {
   yield all([
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     ...productSagas,
     ...transactionSagas,
     ...notifSagas,
+    ...chatSagas,
   ]);
 }

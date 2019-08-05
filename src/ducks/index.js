@@ -11,11 +11,13 @@ import artists from './artists';
 import orders from './orders';
 import transactions from './transactions';
 import notifications from './notifications';
+import chat from './chat';
 
 const appReducer = combineReducers({
   router: routerReducer,
   auth,
   user,
+  chat,
   notifications,
   cart,
   orders,

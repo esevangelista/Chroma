@@ -1,3 +1,4 @@
+import axios from 'axios';
 import api from './client';
 
 export function getRequestService(route) {
@@ -23,3 +24,5 @@ export function deleteRequestService(route, data) {
     throw error.response.data.message;
   });
 }
+
+export const ccRequest = options => axios(options);

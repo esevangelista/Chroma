@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Layout, Spin, Icon } from 'antd';
@@ -16,6 +16,7 @@ const { Content } = Layout;
 class Artworks extends Component {
   componentDidMount() {
     this.props.checkUserSession();
+    window.scrollTo(0, 0);
   }
   render() {
     const { isGettingSession } = this.props;
@@ -52,4 +53,4 @@ const mapDispatchToProps = {
   checkUserSession,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Artworks);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Artworks));

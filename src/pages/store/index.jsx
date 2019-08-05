@@ -14,6 +14,7 @@ const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 class Store extends Component {
   componentDidMount() {
     this.props.checkUserSession();
+    window.scrollTo(0, 0);
   }
   render() {
     const { isGettingSession, profile } = this.props;

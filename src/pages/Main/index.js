@@ -14,6 +14,7 @@ const { Content } = Layout;
 class Main extends Component {
   componentDidMount() {
     this.props.checkUserSession();
+    window.scrollTo(0, 0);
   }
   render() {
     return (

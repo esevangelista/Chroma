@@ -50,7 +50,7 @@ class LoginForm extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { isFetching, error, isMobile, visible, isCartIcon, isBellIcon } = this.props;
+    const { isFetching, error, isMobile, visible, isCartIcon, isBellIcon, isMsgIcon } = this.props;
     const { registerIsVisible } = this.state;
     return (
       <div>
@@ -58,7 +58,7 @@ class LoginForm extends Component {
           isMobile ?
             <a onClick={this.toggleModal}> Join/Login </a>
           :
-            <Button onClick={this.toggleModal} className="popover" id="btn-user"><Icon type={isCartIcon ? "shopping" : isBellIcon ? "bell" : "user"} /></Button>
+            <Button onClick={this.toggleModal} className="popover" id="btn-user"><Icon type={isCartIcon ? "shopping" : isBellIcon ? "bell" : isMsgIcon ? 'message' : "user"} /></Button>
         }
         <Modal
           className="login-modal"

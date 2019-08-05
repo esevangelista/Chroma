@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Layout, Spin, Icon } from 'antd';
@@ -14,6 +14,7 @@ const { Content } = Layout;
 class Wishlist extends Component {
   componentDidMount() {
     this.props.checkUserSession();
+    window.scrollTo(0, 0);
   }
   render() {
     const { isGettingSession, profile } = this.props;
@@ -53,4 +54,4 @@ const mapDispatchToProps = {
   checkUserSession,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Wishlist);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Wishlist));

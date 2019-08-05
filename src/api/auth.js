@@ -8,3 +8,4 @@ export const logout = () =>
 
 export const getSession = () =>
   axios.post('/api/session');
+

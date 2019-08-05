@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 import { Spin, Icon, Layout } from 'antd';
 import { connect } from 'react-redux';
 import Header from '../header/';
-import Footer from '../../global/footer/';
-import Shipping from './Shipping/';
-import Payment from './Payment/';
+import Main from './Main/';
 import { checkUserSession } from '../../ducks/users';
+import Conversation from './Conversation/';
+// import Web from './Web/';
+import './index.css';
 
 const { Content } = Layout;
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
-class Checkout extends Component {
+class Messages extends Component {
   componentDidMount() {
     this.props.checkUserSession();
-    window.scrollTo(0, 0);
   }
   render() {
     const { isGettingSession, profile } = this.props;
@@ -26,15 +26,19 @@ class Checkout extends Component {
             <Spin indicator={antIcon} style={{ position: 'absolute', top: '50%', left: '50%' }} />
           :
             profile && profile._id ?
-              <Layout>
+              <Layout className="msngr">
                 <Header {...this.props} />
-                <Content className="site-content art-site-content">
+                <Content className="mobile site-content art-site-content">
                   <Switch>
-                    <Route path="/checkout/shipping" component={Shipping} {...this.props} />
-                    <Route path="/checkout/payment" component={Payment} {...this.props} />
+                    <Route exact path="/messages" component={Main} {...this.props} />
+                    <Route path="/messages/:uid" component={Conversation} {...this.props} />
                   </Switch>
                 </Content>
-                <Footer />
+                <Content className="web-view site-content art-site-content">
+                  <Switch>
+                    <Route path="/(messages|messages/:uid)/" component={Main} {...this.props} />
+                  </Switch>
+                </Content>
               </Layout>
             : <Redirect to="/" />
         }
@@ -43,7 +47,7 @@ class Checkout extends Component {
   }
 }
 
-Checkout.propTypes = {
+Messages.propTypes = {
   checkUserSession: PropTypes.func.isRequired,
   isGettingSession: PropTypes.bool.isRequired,
   profile: PropTypes.shape({
@@ -57,4 +61,4 @@ const mapDispatchToProps = {
   checkUserSession,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Checkout));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Messages));
