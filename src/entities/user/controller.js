@@ -213,8 +213,8 @@ export const verifyAccount = async (req, res) => {
     if (!user) {
       return res.json(new BaseError(400, 'Invalid confirmation token.'));
     }
-    await User.findByIdAndUpdate(user._id, { emailVerified: true }).exec();
-    return res.json({ success: true, message: 'Your email is now confirmed.' });
+    const u = await User.findByIdAndUpdate(user._id, { emailVerified: true }, {new: true }).exec();
+    return res.json({ success: true, message: 'Your email is now confirmed.', u });
   } catch (error) {
     return res.json(new InternalServerError(error));
   }
