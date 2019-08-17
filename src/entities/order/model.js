@@ -81,6 +81,10 @@ const orderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Image',
   },
+  review: {
+    type: Schema.Types.ObjectId,
+    ref: 'Review',
+  },
 }, {
   timestamps: true,
   toObject: { virtuals: true },
@@ -91,11 +95,11 @@ orderSchema.post('save', async function updateProd() {
     const a = await Artwork.findOne({ _id: p }).select('quantity');
     const quantity = a.quantity - this.tally.get(p.toString());
     const status = quantity === 0 ? 'SOLD' : 'AVAILABLE';
-    await Artwork.updateOne(
+    await Artwork.findByIdAndUpdate(
       { _id: p },
       { quantity, status },
     );
-    await Cart.updateOne({ ownedBy: this.ownedBy }, { products: [], tally: {} });
+    await Cart.findOneAndUpdate({ ownedBy: this.ownedBy }, { products: [], tally: {} });
   }));
 });
 

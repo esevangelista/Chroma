@@ -7,9 +7,11 @@ import cartRouter from './entities/cart/router';
 import wishlistRouter from './entities/wishlist/router';
 import orderRouter from './entities/order/router';
 import notificationRouter from './entities/notifications/router';
+import adminRouter from './entities/admin/router';
 
 const router = Router();
 
+router.use(adminRouter);
 router.use(authRouter);
 router.use(userRouter);
 router.use(passwordResetRouter);

@@ -15,7 +15,7 @@ const adjustStocks = async (products, tally) => {
   await Promise.all(products.map(p =>
     Artwork.findByIdAndUpdate(
       { _id: p._id },
-      { $inc: { quantity: tally.get(p._id.toString()) } },
+      { $inc: { quantity: tally.get(p._id.toString()) }, status: 'AVAILABLE' },
     )));
 };
 

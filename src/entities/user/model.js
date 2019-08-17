@@ -4,6 +4,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 import validator from 'validator';
 import Cart from '../cart/model';
 import Wishlist from '../wishlist/model';
+import Order from '../order/model';
 import db from '../../db';
 
 const userSchema = new Schema({
@@ -72,6 +73,7 @@ const userSchema = new Schema({
     housenum: String,
     landmarks: String,
   },
+  rating: Number,
   mobile: String,
 }, {
   timestamps: true,

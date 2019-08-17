@@ -76,7 +76,7 @@ export const getArtworks = async (req, res) => {
     }
     if (maxHeight || minHeight) {
       if (maxHeight) query['dimensions.height'] = { ...query['dimensions.height'], $lte: maxHeight };
-      if (minHeight) query['dimensions.height'] = { ...query['dimensions.height'], $gte: minHeight};
+      if (minHeight) query['dimensions.height'] = { ...query['dimensions.height'], $gte: minHeight };
     }
     if (maxWidth || minWidth) {
       if (maxWidth) query['dimensions.width'] = { ...query['dimensions.width'], $lte: maxWidth };

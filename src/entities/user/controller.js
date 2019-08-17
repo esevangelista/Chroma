@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import escapeStringRegexp from 'escape-string-regexp';
 import User from './model';
+import Order from '../order/model';
 import Artwork from '../artwork/model';
 import { BaseError, InternalServerError } from '../../utils/systemErrors';
 import { generateToken } from '../../utils/generateToken';
@@ -11,7 +12,7 @@ import config from '../../config';
 
 export const getArtists = async (req, res) => {
   try {
-    const { name, region, province, city, artform } = req.query;
+    const { name, region, province, city, artform, rate } = req.query;
     const query = { isArtist: true };
     if (name) {
       query.$or = [
@@ -22,11 +23,11 @@ export const getArtists = async (req, res) => {
     if (region) query['location.region'] = new RegExp(region, 'i');
     if (province) query['location.province'] = new RegExp(province, 'i');
     if (city) query['location.city'] = new RegExp(city, 'i');
-
+    if (rate && parseInt(rate) !== 0) query['rating'] = { $gte: parseInt(rate), $lt: Math.floor(parseInt(rate) + 1) };
     const options = {
       limit: +req.query.limit || 12,
       page: +req.query.page || 1,
-      select: ['location', 'firstName', 'lastName', 'image'],
+      select: ['location', 'firstName', 'lastName', 'image', 'rating'],
       populate: ['image'],
       sort: 'name',
     };
@@ -115,10 +116,17 @@ export const getUsers = async (req, res) => {
 
 export const getUser = async (req, res) => {
   try {
-    const user = await User.findOne({ _id: req.params._id }).populate('image').select('-password');
+    let user = await User.findOne({ _id: req.params._id }).populate('image').select('-password').exec();
     if (!user) {
       return res.json(new BaseError(404, 'User not found'));
     }
+    let reviews = await Order.find({ seller: user._id, status: 'COMPLETED' })
+      .select(['review', 'ownedBy'])
+      .sort('-review.createdAt')
+      .populate(['review', { path: 'ownedBy', select: ['firstName', 'lastName', 'image'], populate: 'image' }])
+      .exec();
+    reviews = reviews.filter(p => p.review);
+    user = { ...user._doc, reviews };
     return res.status(200).json({
       success: true,
       message: 'Successfully fetched user info',
@@ -193,7 +201,8 @@ export const changeEmail = async (req, res) => {
     const { email } = req.body;
     const confirmToken = await generateToken(20);
     sendConfirmYourAccountEmail(email, confirmToken, config.urls.client);
-    await User.findByIdAndUpdate(_id, { email, confirmToken, emailVerified: false }, { new: true });
+    const user = await User.findByIdAndUpdate(_id, { email, confirmToken, emailVerified: false }, { new: true });
+    req.session.user = user;
     return res.status(200).json({
       success: true,
       message: 'Please check your email for instructions.',
@@ -213,7 +222,8 @@ export const verifyAccount = async (req, res) => {
     if (!user) {
       return res.json(new BaseError(400, 'Invalid confirmation token.'));
     }
-    const u = await User.findByIdAndUpdate(user._id, { emailVerified: true }, {new: true }).exec();
+    const u = await User.findByIdAndUpdate(user._id, { emailVerified: true }, { new: true }).exec();
+    req.session.user = u;
     return res.json({ success: true, message: 'Your email is now confirmed.', u });
   } catch (error) {
     return res.json(new InternalServerError(error));
@@ -224,7 +234,8 @@ export const uploadProfile = async (req, res) => {
   try {
     const { _id } = req.params;
     const image = await addImage(req.files[0]);
-    await User.findByIdAndUpdate(_id, { image: image._id });
+    const user = await User.findByIdAndUpdate(_id, { image: image._id });
+    req.session.user = user;
     return res.status(200).json({
       success: true,
       message: 'User profile image updated.',

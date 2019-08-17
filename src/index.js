@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import store from 'connect-mongo';
+import * as favicon from 'serve-favicon';
+import path from 'path';
 import cors from 'cors';
 import cron from 'node-cron';
 import db from './db';
@@ -30,11 +32,13 @@ app.use(session({
   expiration: 86400000,
 }));
 app.use('/api', router);
-app.use('*', (req, res) => res.redirect('/'));
+// app.use('*', (req, res) => res.redirect('/'));
 
-cron.schedule('0 0 19 * 0-7', function () {
+cron.schedule('0 0 19 * 0-7', () => {
   updateOverdueTransactions();
 });
+// app.use('/', express.static(path.join(__dirname, '../build')));
+// app.use(favicon(path.join(__dirname, '../build', 'chroma.ico')));
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

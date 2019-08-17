@@ -55,4 +55,22 @@ router
     orderController.cancelOrder,
   );
 
+router
+  .route('/order-review/:_id')
+  .post(
+    isAuthenticated,
+    orderController.addReview,
+  )
+  .put(
+    isAuthenticated,
+    orderController.updateReview,
+  );
+
+router
+  .route('/overview/:_id')
+  .get(
+    isAuthenticated,
+    orderController.getOverview,
+  );
+
 export default router;

@@ -1,5 +1,7 @@
 import Order from './model';
+import Review from './review';
 import Artwork from '../artwork/model';
+import User from '../user/model';
 import { BaseError, InternalServerError } from '../../utils/systemErrors';
 import { getTotal } from '../../utils/cart';
 import { addImage } from '../../services/cloud-storage/index';
@@ -75,6 +77,7 @@ export const getOrders = async (req, res) => {
           select: ['firstName', 'lastName', 'email', '_id'],
         },
         'products',
+        'review',
         'proofOfPayment',
         'shippingReceipt',
         {
@@ -103,6 +106,39 @@ export const getOrders = async (req, res) => {
   }
 };
 
+export const getOverview = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const transactions = await Order.find({ seller: _id }).populate(['review']);
+    const stats = { all: transactions.length };
+    const withReview = transactions.filter(t => t.review);
+    const reviews = withReview.map(p => p.review);
+    stats.one = reviews.filter(p => Math.floor(p.rating) === 1).length;
+    stats.two = reviews.filter(p => Math.floor(p.rating) === 2).length;
+    stats.three = reviews.filter(p => Math.floor(p.rating) === 3).length;
+    stats.four = reviews.filter(p => Math.floor(p.rating) === 4).length;
+    stats.five = reviews.filter(p => Math.floor(p.rating) === 5).length;
+    const completed = transactions.filter(p => p.status === 'COMPLETED');
+    stats.totalProfit = completed.reduce((a, b) => a + (b.balance || 0), 0);
+    stats.completed = completed.length || 0;
+    stats.shipped = transactions.filter(p => p.status === 'SHIPPED').length || 0;
+    stats.reserved = transactions.filter(p => p.status === 'RESERVED').length || 0;
+    stats.pending = transactions.filter(p => p.status === 'PENDING').length || 0;
+    stats.canceled = transactions.filter(p => p.status === 'CANCELED').length || 0;
+    stats.overallRating = req.session.user.rating;
+    const art = await Artwork.find({ artist: _id });
+    stats.artCount = art.length;
+    stats.artSold = art.filter(p => p.status === 'SOLD').length;
+    stats.artAvailable = art.filter(p => p.status === 'AVAILABLE').length;
+    return res.status(200).json({
+      success: true,
+      message: 'Successfully fetched information.',
+      stats,
+    });
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};
 export const getTransactions = async (req, res) => {
   try {
     const { seller } = req.params;
@@ -117,6 +153,7 @@ export const getTransactions = async (req, res) => {
           select: ['firstName', 'lastName', 'email', '_id'],
         },
         'proofOfPayment',
+        'review',
         'shippingReceipt',
         {
           path: 'products',
@@ -191,7 +228,7 @@ export const cancelOrder = async (req, res) => {
       await Promise.all(products.map(p =>
         Artwork.findByIdAndUpdate(
           { _id: p._id },
-          { $inc: { quantity: tally.get(p._id.toString()) } },
+          { $inc: { quantity: tally.get(p._id.toString()) }, status: 'AVAILABLE' },
         )));
       await Order.findByIdAndUpdate(_id, { status: 'CANCELED', dateCanceled: new Date() });
       await createNotification(order.seller, `${req.session.user.firstName} ${req.session.user.lastName} canceled #${order._id}`, '/my-store/transactions');
@@ -205,6 +242,50 @@ export const cancelOrder = async (req, res) => {
   }
 };
 
+export const addReview = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const { rating, review } = req.body;
+    const order = await Order.findById({ _id });
+    if (order.status === 'COMPLETED') {
+      let newReview = new Review({ rating, review });
+      newReview = await newReview.save();
+      await Order.findByIdAndUpdate({ _id }, { review: newReview._id });
+      await createNotification(order.seller, `${req.session.user.firstName} ${req.session.user.lastName} wrote you a review for order #${order._id}`, '/profile#review');
+      let arr = await Order.find({ seller: order.seller, status: 'COMPLETED' }).select('review').populate('review', 'rating');
+      arr = arr.filter(r => r.review).map(f => f.review.rating);
+      const average = arr.reduce((p, c) => p + c, 0) / arr.length;
+      await User.findByIdAndUpdate({ _id: order.seller }, { rating: average });
+      return res.status(200).json({
+        success: 200,
+        message: 'Review submitted.',
+      });
+    }
+    return res.json(new BaseError(403, 'Forbidden'));
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};
+
+export const updateReview = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const { rating, review } = req.body;
+    await Review.findByIdAndUpdate({ _id }, { rating, review });
+    const order = await Order.findOne({ review: _id, status: 'COMPLETED' });
+    let arr = await Order.find({ seller: order.seller, status: 'COMPLETED' }).select('review').populate('review', 'rating');
+    arr = arr.filter(r => r.review).map(f => f.review.rating);
+    const average = arr.reduce((p, c) => p + c, 0) / arr.length;
+    await User.findByIdAndUpdate({ _id: order.seller }, { rating: average });
+    await createNotification(order.seller, `${req.session.user.firstName} ${req.session.user.lastName} edit his/her review for order #${order._id}`, '/profile#review');
+    return res.status(200).json({
+      success: 200,
+      message: 'Review updated',
+    });
+  } catch (err) {
+    return res.json(new InternalServerError(err));
+  }
+};
 
 export const uploadShippingReceipt = async (req, res) => {
   try {

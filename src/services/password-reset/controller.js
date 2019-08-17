@@ -47,7 +47,7 @@ export const verifyResetToken = async (req, res) => {
         .status(200)
         .json({
           success: true,
-          message: 'Verified',
+          message: 'Password reset token verified.',
           valid: true,
         });
   } catch (err) {
@@ -65,7 +65,7 @@ export const resetPassword = async (req, res) => {
       .exec();
 
     if (!pwReset) {
-      return res.json(new BaseError(401, 'Invalid reset token.'));
+      return res.json(new BaseError(401, 'Invalid reset token. Token may have expired.'));
     }
     await PasswordReset.findOneAndRemove({ token: req.params.token });
     const user = await User.findOne({ _id: pwReset.user._id }).exec();
@@ -74,7 +74,7 @@ export const resetPassword = async (req, res) => {
     await user.save();
     return res.json({
       success: true,
-      message: 'Password updated.',
+      message: 'Password updated. You may now login in your account.',
     });
   } catch (err) {
     return res.json(new InternalServerError(err));
