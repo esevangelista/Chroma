@@ -21,21 +21,18 @@ body {
 .site-content.site-content,
 .site-footer.site-footer {
   padding: 0 60px; }
-
-@media only screen and (max-width: 767px) and (min-width: 481px) {
-  .site-header.site-header,
-  .site-content.site-content,
-  .site-footer.site-footer {
-    padding: 0 40px; } }
-
-@media only screen and (max-width: 480px) {
-  .site-header.site-header,
-  .site-content.site-content,
-  .site-footer.site-footer {
-    padding: 0 10px; } }
-
-@media only screen and (min-width: 992px) {
-  .site-header.site-header,
-  .site-content.site-content,
-  .site-footer.site-footer {
-    padding: 0 80px; } }
+  @media only screen and (max-width: 767px) and (min-width: 481px) {
+    .site-header.site-header,
+    .site-content.site-content,
+    .site-footer.site-footer {
+      padding: 0 40px; } }
+  @media only screen and (max-width: 480px) {
+    .site-header.site-header,
+    .site-content.site-content,
+    .site-footer.site-footer {
+      padding: 0 10px; } }
+  @media only screen and (min-width: 992px) {
+    .site-header.site-header,
+    .site-content.site-content,
+    .site-footer.site-footer {
+      padding: 0 80px; } }

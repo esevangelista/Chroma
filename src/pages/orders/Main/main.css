@@ -1,105 +1,78 @@
 .orders-container {
   padding: 16px 16px;
   margin: 16px 0; }
-
-.orders-container .order-header #label {
-  color: #595959;
-  font-size: 24px;
-  font-family: 'Sailec-Regular';
-  font-weight: 600; }
-
-.orders-container .order-header .ant-select {
-  width: 100%;
-  margin: 8px 0; }
-
-.orders-container .order-header .ant-select .ant-select-selection {
-  border-radius: 0;
-  border: none;
-  background: #e8e8e8; }
-
-.orders-container .order-header .ant-select-enabled .ant-select-focused .ant-select-selection, .orders-container .order-header .ant-select-enabled .ant-select-selection:focus, .orders-container .order-header .ant-select-enabled .ant-select-selection:active {
-  box-shadow: 0 0 0 2px rgba(202, 0, 0, 0.1); }
-
-.orders-container .order-content {
-  margin: 24px 0; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-header .ant-row-flex {
-  color: #595959; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content {
-  background: #f8f8f8; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items {
-  margin: 16px 0; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .head {
-  text-align: center; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .head #label-summary {
-  color: #595959;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: 'Sailec-Light'; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .head a {
-  color: #CA0000; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container {
-  text-align: left;
-  margin: 16px 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e8e8e8; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container .thumbnail {
-  width: 100%; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container .text {
-  font-size: 12px; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container .info {
-  font-size: 12px;
-  padding: 0 8px; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container {
-  width: 100%;
-  display: inline-block;
-  font-size: 12px; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container .checkout-info .label {
-  float: left;
-  margin-bottom: 2px; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container .checkout-info .value {
-  float: right;
-  margin-bottom: 2px; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container .checkout-info .grandtotal {
-  font-size: 14px; }
-
-.orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .manage-order {
-  margin: 16px 0; }
-
-.orders-container .order-content .order-body .order-main .paginate {
-  float: right;
-  margin: 16px 0; }
-
-.orders-container .order-content .order-body .order-main .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
-  border-color: #CA0000; }
-
-.orders-container .order-content .order-body .order-main .paginate .ant-pagination-disabled a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-disabled a:active, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-disabled a:focus {
-  color: #e8e8e8 !important; }
-
-.orders-container .order-content .order-body .order-main .paginate .ant-pagination-item a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-prev a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-next a:hover {
-  color: #CA0000; }
-
-.orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active {
-  border-color: #CA0000; }
-
-.orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a {
-  color: #CA0000; }
-
-.orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a:link, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a:focus {
-  color: #CA0000; }
+  .orders-container .order-header #label {
+    color: #595959;
+    font-size: 24px;
+    font-family: 'Sailec-Regular';
+    font-weight: 600; }
+  .orders-container .order-header .ant-select {
+    width: 100%;
+    margin: 8px 0; }
+    .orders-container .order-header .ant-select .ant-select-selection {
+      border-radius: 0;
+      border: none;
+      background: #e8e8e8; }
+  .orders-container .order-header .ant-select-enabled .ant-select-focused .ant-select-selection, .orders-container .order-header .ant-select-enabled .ant-select-selection:focus, .orders-container .order-header .ant-select-enabled .ant-select-selection:active {
+    box-shadow: 0 0 0 2px rgba(202, 0, 0, 0.1); }
+  .orders-container .order-content {
+    margin: 24px 0; }
+    .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-header .ant-row-flex {
+      color: #595959; }
+    .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content {
+      background: #f8f8f8; }
+      .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items {
+        margin: 16px 0; }
+        .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .head {
+          text-align: center; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .head #label-summary {
+            color: #595959;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Sailec-Light'; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .head a {
+            color: #CA0000; }
+        .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container {
+          text-align: left;
+          margin: 16px 0;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #e8e8e8; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container .thumbnail {
+            width: 100%; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container .text {
+            font-size: 12px; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .item-container .info {
+            font-size: 12px;
+            padding: 0 8px; }
+        .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container {
+          width: 100%;
+          display: inline-block;
+          font-size: 12px; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container .checkout-info .label {
+            float: left;
+            margin-bottom: 2px; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container .checkout-info .value {
+            float: right;
+            margin-bottom: 2px; }
+          .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .invoice-items .checkout-container .checkout-info .grandtotal {
+            font-size: 14px; }
+      .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container .manage-order {
+        margin: 16px 0; }
+    .orders-container .order-content .order-body .order-main .paginate {
+      float: right;
+      margin: 16px 0; }
+      .orders-container .order-content .order-body .order-main .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
+        border-color: #CA0000; }
+      .orders-container .order-content .order-body .order-main .paginate .ant-pagination-disabled a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-disabled a:active, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-disabled a:focus {
+        color: #e8e8e8 !important; }
+      .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-prev a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-next a:hover {
+        color: #CA0000; }
+      .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active {
+        border-color: #CA0000; }
+        .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a {
+          color: #CA0000; }
+          .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a:hover, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a:link, .orders-container .order-content .order-body .order-main .paginate .ant-pagination-item-active a:focus {
+            color: #CA0000; }
 
 @media only screen and (min-width: 768px) {
   .orders-container .order-header .ant-select {
@@ -109,9 +82,9 @@
 @media (min-width: 1200px) {
   .orders-container {
     padding: 32px 32px; }
-  .orders-container .order-header .ant-select {
-    width: 30%;
-    float: unset;
-    margin-left: 32px; }
-  .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container {
-    padding: 32px 32px; } }
+    .orders-container .order-header .ant-select {
+      width: 30%;
+      float: unset;
+      margin-left: 32px; }
+    .orders-container .order-content .order-body .order-main .order-collapse .ant-collapse-item .ant-collapse-content .ant-collapse-content-box .expanded-row-container {
+      padding: 32px 32px; } }

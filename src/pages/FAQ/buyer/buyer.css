@@ -1,20 +1,15 @@
 .buyer-faq {
   margin: 32px 0; }
-
-@media only screen and (min-width: 992px) {
-  .buyer-faq {
-    padding: 0 32px; } }
-
-@media (min-width: 1200px) {
-  .buyer-faq {
-    padding: 0 64px; } }
-
-@media (min-width: 1800px) {
-  .buyer-faq {
-    padding: 0 120px; } }
-
-.buyer-faq #title {
-  color: #595959; }
-
-.buyer-faq .section {
-  margin-bottom: 48px; }
+  @media only screen and (min-width: 992px) {
+    .buyer-faq {
+      padding: 0 32px; } }
+  @media (min-width: 1200px) {
+    .buyer-faq {
+      padding: 0 64px; } }
+  @media (min-width: 1800px) {
+    .buyer-faq {
+      padding: 0 120px; } }
+  .buyer-faq #title {
+    color: #595959; }
+  .buyer-faq .section {
+    margin-bottom: 48px; }

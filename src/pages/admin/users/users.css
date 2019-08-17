@@ -1,89 +1,65 @@
 .users-content .filters {
   margin: 24px 0; }
-
-.users-content .filters .ant-col #main-label {
-  font-size: 24px; }
-
-.users-content .filters .ant-col .acc-type {
-  width: 100% !important; }
-
-.users-content .filters .ant-col .ant-select {
-  width: 40%; }
-
-.users-content .filters .ant-col .ant-select-enabled .ant-select-focused .ant-select-selection, .users-content .filters .ant-col .ant-select-enabled .ant-select-selection:focus, .users-content .filters .ant-col .ant-select-enabled .ant-select-selection:active {
-  box-shadow: 0 0 0 2px rgba(202, 0, 0, 0.1); }
-
-.users-content .filters .ant-col .ant-input-group {
-  width: 100%;
-  display: flex; }
-
-.users-content .filters .ant-col .ant-input-group .ant-input-search {
-  width: 100%; }
-
-.users-content .filters .ant-col .ant-input-group .ant-input-search .ant-input-wrapper .ant-input-group-addon {
-  width: unset; }
-
-.users-content .filters .ant-col .ant-input-group .ant-input-search .ant-input-wrapper .ant-input-group-addon .ant-btn {
-  background: #CA0000;
-  border-color: #f8f8f8; }
-
-.users-content .filters .ant-col a {
-  color: #CA0000;
-  font-size: 16px;
-  font-family: 'Sailec-Light';
-  font-weight: 550; }
-
-.users-content .filters .ant-col a:hover {
-  text-decoration: underline; }
+  .users-content .filters .ant-col #main-label {
+    font-size: 24px; }
+  .users-content .filters .ant-col .acc-type {
+    width: 100% !important; }
+  .users-content .filters .ant-col .ant-select {
+    width: 40%; }
+  .users-content .filters .ant-col .ant-select-enabled .ant-select-focused .ant-select-selection, .users-content .filters .ant-col .ant-select-enabled .ant-select-selection:focus, .users-content .filters .ant-col .ant-select-enabled .ant-select-selection:active {
+    box-shadow: 0 0 0 2px rgba(202, 0, 0, 0.1); }
+  .users-content .filters .ant-col .ant-input-group {
+    width: 100%;
+    display: flex; }
+    .users-content .filters .ant-col .ant-input-group .ant-input-search {
+      width: 100%; }
+      .users-content .filters .ant-col .ant-input-group .ant-input-search .ant-input-wrapper .ant-input-group-addon {
+        width: unset; }
+        .users-content .filters .ant-col .ant-input-group .ant-input-search .ant-input-wrapper .ant-input-group-addon .ant-btn {
+          background: #CA0000;
+          border-color: #f8f8f8; }
+  .users-content .filters .ant-col a {
+    color: #CA0000;
+    font-size: 16px;
+    font-family: 'Sailec-Light';
+    font-weight: 550; }
+    .users-content .filters .ant-col a:hover {
+      text-decoration: underline; }
 
 .users-content .users-container .ant-table-wrapper {
   margin-top: 32px; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin .ant-spin-dot-spin .ant-spin-dot-item {
-  background: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-filters .ant-table-filter-selected {
-  color: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-sorters:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-actions:hover {
-  background: #f8f8f8; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-sorters .ant-table-header-column .ant-table-column-sorters .ant-table-column-sorter .on, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-actions .ant-table-header-column .ant-table-column-sorters .ant-table-column-sorter .on {
-  color: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-tbody .ant-table-row td a {
-  color: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
-  border-color: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-disabled a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-disabled a:active, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-disabled a:focus {
-  color: #e8e8e8 !important; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-prev a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-next a:hover {
-  color: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active {
-  border-color: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a {
-  color: #CA0000; }
-
-.users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a:link, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a:focus {
-  color: #CA0000; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin .ant-spin-dot-spin .ant-spin-dot-item {
+    background: #CA0000; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-filters .ant-table-filter-selected {
+    color: #CA0000; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-sorters:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-actions:hover {
+    background: #f8f8f8; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-sorters .ant-table-header-column .ant-table-column-sorters .ant-table-column-sorter .on, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-thead tr .ant-table-column-has-actions .ant-table-header-column .ant-table-column-sorters .ant-table-column-sorter .on {
+    color: #CA0000; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-table .ant-table-content .ant-table-body table .ant-table-tbody .ant-table-row td a {
+    color: #CA0000; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
+    border-color: #CA0000; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-disabled a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-disabled a:active, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-disabled a:focus {
+    color: #e8e8e8 !important; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-prev a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-next a:hover {
+    color: #CA0000; }
+  .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active {
+    border-color: #CA0000; }
+    .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a {
+      color: #CA0000; }
+      .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a:hover, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a:link, .users-content .users-container .ant-table-wrapper .ant-spin-nested-loading .ant-spin-container .ant-pagination .ant-pagination-item-active a:focus {
+        color: #CA0000; }
 
 .ant-dropdown .ant-table-filter-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected {
   background: #f8f8f8;
   color: #CA0000; }
-
-.ant-dropdown .ant-table-filter-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected .ant-radio-wrapper-checked .ant-radio-checked .ant-radio-inner {
-  border-color: #CA0000; }
-
-.ant-dropdown .ant-table-filter-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected .ant-radio-wrapper-checked .ant-radio-checked .ant-radio-inner:after {
-  background-color: #CA0000; }
-
-.ant-dropdown .ant-table-filter-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected .ant-radio-wrapper-checked .ant-radio-checked:after {
-  border-color: #CA0000; }
+  .ant-dropdown .ant-table-filter-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected .ant-radio-wrapper-checked .ant-radio-checked .ant-radio-inner {
+    border-color: #CA0000; }
+    .ant-dropdown .ant-table-filter-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected .ant-radio-wrapper-checked .ant-radio-checked .ant-radio-inner:after {
+      background-color: #CA0000; }
+  .ant-dropdown .ant-table-filter-dropdown .ant-dropdown-menu .ant-dropdown-menu-item-selected .ant-radio-wrapper-checked .ant-radio-checked:after {
+    border-color: #CA0000; }
 
 .ant-dropdown .ant-table-filter-dropdown .ant-table-filter-dropdown-btns a {
   color: #CA0000; }

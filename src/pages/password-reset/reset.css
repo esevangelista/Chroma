@@ -5,30 +5,24 @@
   left: 0;
   background: transparent;
   transition: all 300ms ease-in-out; }
-
-.forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="null"] {
-  width: 0;
-  background: red; }
-
-.forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="0"] {
-  width: 5%;
-  background: #f20168; }
-
-.forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="1"] {
-  width: 25%;
-  background: #f20168; }
-
-.forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="2"] {
-  width: 50%;
-  background: #fc0; }
-
-.forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="3"] {
-  width: 75%;
-  background: #0bd564; }
-
-.forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="4"] {
-  width: 100%;
-  background: #0bd564; }
+  .forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="null"] {
+    width: 0;
+    background: red; }
+  .forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="0"] {
+    width: 5%;
+    background: #f20168; }
+  .forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="1"] {
+    width: 25%;
+    background: #f20168; }
+  .forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="2"] {
+    width: 50%;
+    background: #fc0; }
+  .forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="3"] {
+    width: 75%;
+    background: #0bd564; }
+  .forgot-main .forgot-body .forgot-container .form .password-field .meter[data-score="4"] {
+    width: 100%;
+    background: #0bd564; }
 
 @media only screen and (max-width: 480px) {
   .forgot-main .forgot-body .forgot-container .form .password-field .strength-feedback {

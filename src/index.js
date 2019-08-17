@@ -9,7 +9,6 @@ import { CometChat } from '@cometchat-pro/chat';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
-import './i18n';
 
 const APP_ID = '60893392e15857';
 

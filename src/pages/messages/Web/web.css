@@ -11,79 +11,64 @@
   margin-top: 75px;
   margin-bottom: 24px;
   padding: 0 24px; }
-
-@media (min-width: 1800px) {
-  .web-convo .convo-container .convo-content {
-    padding: 0 56px; } }
-
-.web-convo .convo-container .convo-content .has-messages {
-  min-height: 79.77839vh !important; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  margin: 16px 0; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs #time-label {
-  margin-top: 16px;
-  font-size: 14px; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .msg-me {
-  width: 60%;
-  float: right;
-  margin: 4px 0; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .msg-me div {
-  float: right;
-  display: inline-grid;
-  text-align: left;
-  background: #CA0000;
-  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
-  padding: 12px;
-  border-radius: 10px; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .msg-me div #msg {
-  color: #fff; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .for-me {
-  width: 60%;
-  float: left;
-  margin: 4px 0; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .for-me div {
-  text-align: left;
-  background: #f8f8f8;
-  float: left;
-  display: inline-grid;
-  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
-  padding: 12px;
-  border-radius: 10px; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .for-me div #msg {
-  color: #595959; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .loader {
-  width: 60%;
-  float: right;
-  margin-top: 8px; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .loader div {
-  text-align: right;
-  float: right;
-  background: #CA0000;
-  border-radius: 50%; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs .loader div i {
-  padding: 8px;
-  color: #fff;
-  font-weight: 600; }
-
-.web-convo .convo-container .convo-content .has-messages .grp-msgs:last-of-type {
-  margin-bottom: 8vh !important; }
-
-.web-convo .convo-container .convo-content .no-msg {
-  min-height: 79.77839vh !important; }
+  @media (min-width: 1800px) {
+    .web-convo .convo-container .convo-content {
+      padding: 0 56px; } }
+  .web-convo .convo-container .convo-content .has-messages {
+    min-height: 79.77839vh !important; }
+    .web-convo .convo-container .convo-content .has-messages .grp-msgs {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      margin: 16px 0; }
+      .web-convo .convo-container .convo-content .has-messages .grp-msgs #time-label {
+        margin-top: 16px;
+        font-size: 14px; }
+      .web-convo .convo-container .convo-content .has-messages .grp-msgs .msg-me {
+        width: 60%;
+        float: right;
+        margin: 4px 0; }
+        .web-convo .convo-container .convo-content .has-messages .grp-msgs .msg-me div {
+          float: right;
+          display: inline-grid;
+          text-align: left;
+          background: #CA0000;
+          box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
+          padding: 12px;
+          border-radius: 10px; }
+          .web-convo .convo-container .convo-content .has-messages .grp-msgs .msg-me div #msg {
+            color: #fff; }
+      .web-convo .convo-container .convo-content .has-messages .grp-msgs .for-me {
+        width: 60%;
+        float: left;
+        margin: 4px 0; }
+        .web-convo .convo-container .convo-content .has-messages .grp-msgs .for-me div {
+          text-align: left;
+          background: #f8f8f8;
+          float: left;
+          display: inline-grid;
+          box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
+          padding: 12px;
+          border-radius: 10px; }
+          .web-convo .convo-container .convo-content .has-messages .grp-msgs .for-me div #msg {
+            color: #595959; }
+      .web-convo .convo-container .convo-content .has-messages .grp-msgs .loader {
+        width: 60%;
+        float: right;
+        margin-top: 8px; }
+        .web-convo .convo-container .convo-content .has-messages .grp-msgs .loader div {
+          text-align: right;
+          float: right;
+          background: #CA0000;
+          border-radius: 50%; }
+          .web-convo .convo-container .convo-content .has-messages .grp-msgs .loader div i {
+            padding: 8px;
+            color: #fff;
+            font-weight: 600; }
+      .web-convo .convo-container .convo-content .has-messages .grp-msgs:last-of-type {
+        margin-bottom: 8vh !important; }
+  .web-convo .convo-container .convo-content .no-msg {
+    min-height: 79.77839vh !important; }
 
 .web-convo .convo-container .convo-action {
   border-top: 1px solid #f8f8f8;
@@ -94,64 +79,50 @@
   width: 100%;
   min-height: 32px;
   padding: 8px 8px; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea-mobile {
-  min-height: 24px !important;
-  border-radius: 8px; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea-mobile:focus {
-  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07); }
-
-@media only screen and (min-width: 992px) {
   .web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea-mobile {
-    display: none; } }
-
-.web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea {
-  display: none; }
-
-@media only screen and (min-width: 992px) {
+    min-height: 24px !important;
+    border-radius: 8px; }
+    .web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea-mobile:focus {
+      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07); }
+    @media only screen and (min-width: 992px) {
+      .web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea-mobile {
+        display: none; } }
   .web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea {
-    border-radius: 8px;
-    height: auto;
-    display: inline-block; }
-  .web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea:focus {
-    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07); } }
-
-.web-convo .convo-container .convo-action .ant-row-flex .file-upload {
-  background: #fff;
-  padding: 8px;
-  border-radius: 8px; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .file-upload #ppclip {
-  color: #CA0000; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .file-upload #trash {
-  margin-left: 12px;
-  color: #595959;
-  font-size: 14px;
-  cursor: pointer; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .file-upload .ant-typography {
-  color: #ad4e00; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .upl {
-  text-align: center; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .upl .ant-upload i {
-  font-size: 1.3rem;
-  color: #CA0000; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .send-btn {
-  text-align: center; }
-
-.web-convo .convo-container .convo-action .ant-row-flex .send-btn #send {
-  font-size: 1.3rem;
-  cursor: pointer;
-  color: #CA0000; }
+    display: none; }
+    @media only screen and (min-width: 992px) {
+      .web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea {
+        border-radius: 8px;
+        height: auto;
+        display: inline-block; }
+        .web-convo .convo-container .convo-action .ant-row-flex .ant-col #txtarea:focus {
+          box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07); } }
+  .web-convo .convo-container .convo-action .ant-row-flex .file-upload {
+    background: #fff;
+    padding: 8px;
+    border-radius: 8px; }
+    .web-convo .convo-container .convo-action .ant-row-flex .file-upload #ppclip {
+      color: #CA0000; }
+    .web-convo .convo-container .convo-action .ant-row-flex .file-upload #trash {
+      margin-left: 12px;
+      color: #595959;
+      font-size: 14px;
+      cursor: pointer; }
+    .web-convo .convo-container .convo-action .ant-row-flex .file-upload .ant-typography {
+      color: #ad4e00; }
+  .web-convo .convo-container .convo-action .ant-row-flex .upl {
+    text-align: center; }
+    .web-convo .convo-container .convo-action .ant-row-flex .upl .ant-upload i {
+      font-size: 1.3rem;
+      color: #CA0000; }
+  .web-convo .convo-container .convo-action .ant-row-flex .send-btn {
+    text-align: center; }
+    .web-convo .convo-container .convo-action .ant-row-flex .send-btn #send {
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: #CA0000; }
 
 .web-convo .ant-skeleton {
   padding: 16px 24px; }
-
-@media (min-width: 1800px) {
-  .web-convo .ant-skeleton {
-    padding: 16px 48px; } }
+  @media (min-width: 1800px) {
+    .web-convo .ant-skeleton {
+      padding: 16px 48px; } }

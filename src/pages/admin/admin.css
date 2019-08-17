@@ -2,10 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center; }
-
-.admin-main .anticon-loading {
-  color: #fff;
-  font-size: 32px; }
+  .admin-main .anticon-loading {
+    color: #fff;
+    font-size: 32px; }
 
 .admin-login {
   width: 100%;

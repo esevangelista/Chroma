@@ -1,56 +1,42 @@
 .reviews-container {
   padding: 0 16px;
   text-align: left; }
-
-@media only screen and (min-width: 992px) {
-  .reviews-container {
-    padding: 0 32px; } }
-
-@media (min-width: 1800px) {
-  .reviews-container {
-    padding: 0 64px; } }
-
-.reviews-container .ant-row-flex .ant-col .ant-statistic .ant-statistic-content .ant-statistic-content-prefix {
-  color: #CA0000;
-  font-size: 20px; }
-
-.reviews-container .ant-row-flex .ant-col .ant-statistic .ant-statistic-content .ant-statistic-content-value {
-  font-family: 'Sailec-Light';
-  color: #595959;
-  font-weight: 700; }
-
-.reviews-container .ant-row-flex .ant-col .ant-select {
-  float: right;
-  width: 100%;
-  margin-bottom: 8px; }
-
-.reviews-container .ant-row-flex .ant-col .ant-select .ant-select-selection {
-  border-radius: 0;
-  border: none;
-  background: #e8e8e8; }
-
-.reviews-container .ant-list {
-  margin-top: 16px;
-  margin-bottom: 32px; }
-
-.reviews-container .ant-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-description .content .ant-rate {
-  color: #CA0000;
-  margin: 8px 0; }
-
-.reviews-container .ant-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-description .content .ant-typography a {
-  color: #CA0000; }
-
-.reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-disabled a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-disabled a:active, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-disabled a:focus {
-  color: #e8e8e8 !important; }
-
-.reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-prev a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-next a:hover {
-  color: #CA0000; }
-
-.reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active {
-  border-color: #CA0000; }
-
-.reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a {
-  color: #CA0000; }
-
-.reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a:link, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a:focus {
-  color: #CA0000; }
+  @media only screen and (min-width: 992px) {
+    .reviews-container {
+      padding: 0 32px; } }
+  @media (min-width: 1800px) {
+    .reviews-container {
+      padding: 0 64px; } }
+  .reviews-container .ant-row-flex .ant-col .ant-statistic .ant-statistic-content .ant-statistic-content-prefix {
+    color: #CA0000;
+    font-size: 20px; }
+  .reviews-container .ant-row-flex .ant-col .ant-statistic .ant-statistic-content .ant-statistic-content-value {
+    font-family: 'Sailec-Light';
+    color: #595959;
+    font-weight: 700; }
+  .reviews-container .ant-row-flex .ant-col .ant-select {
+    float: right;
+    width: 100%;
+    margin-bottom: 8px; }
+    .reviews-container .ant-row-flex .ant-col .ant-select .ant-select-selection {
+      border-radius: 0;
+      border: none;
+      background: #e8e8e8; }
+  .reviews-container .ant-list {
+    margin-top: 16px;
+    margin-bottom: 32px; }
+    .reviews-container .ant-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-description .content .ant-rate {
+      color: #CA0000;
+      margin: 8px 0; }
+    .reviews-container .ant-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-description .content .ant-typography a {
+      color: #CA0000; }
+    .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-disabled a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-disabled a:active, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-disabled a:focus {
+      color: #e8e8e8 !important; }
+    .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-prev a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-next a:hover {
+      color: #CA0000; }
+    .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active {
+      border-color: #CA0000; }
+      .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a {
+        color: #CA0000; }
+        .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a:hover, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a:link, .reviews-container .ant-list .ant-list-pagination .ant-pagination .ant-pagination-item-active a:focus {
+          color: #CA0000; }
