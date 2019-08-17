@@ -37,8 +37,8 @@ app.use('/api', router);
 cron.schedule('0 0 19 * 0-7', () => {
   updateOverdueTransactions();
 });
-// app.use('/', express.static(path.join(__dirname, '../build')));
-// app.use(favicon(path.join(__dirname, '../build', 'chroma.ico')));
+app.use('/', express.static(path.join(__dirname, '../build')));
+app.use(favicon(path.join(__dirname, '../build', 'chroma.ico')));
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

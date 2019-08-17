@@ -147,17 +147,17 @@ export const updateArtwork = async (req, res) => {
   }
 };
 
-export const deleteArtwork = async (req, res) => {
-  try {
-    const { _id } = req.params;
-    return res.status(200).json({
-      success: true,
-      message: 'Successfully deleted artwork',
-    });
-  } catch (err) {
-    return res.json(new InternalServerError(err));
-  }
-};
+// export const deleteArtwork = async (req, res) => {
+//   try {
+//     const { _id } = req.params;
+//     return res.status(200).json({
+//       success: true,
+//       message: 'Successfully deleted artwork',
+//     });
+//   } catch (err) {
+//     return res.json(new InternalServerError(err));
+//   }
+// };
 
 // export const updateImages = async (req, res) => {
 //   try {

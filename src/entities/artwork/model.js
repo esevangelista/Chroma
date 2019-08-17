@@ -80,7 +80,7 @@ const artworkSchema = new Schema({
   toObject: { virtuals: true },
 });
 
-artworkSchema.pre('remove', async function (next) {
+artworkSchema.pre('remove', async (next) => {
   if (this.images) {
     await Promise.all(this.images.map(i => Image.findByIdAndRemove({ _id: i._id })));
   }

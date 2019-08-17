@@ -1,5 +1,4 @@
-import Cart from '../entities/cart/model';
-import { BaseError, InternalServerError } from '../utils/systemErrors';
+import { BaseError } from '../utils/systemErrors';
 
 
 export const isAuthorized = async (req, res, next) => {

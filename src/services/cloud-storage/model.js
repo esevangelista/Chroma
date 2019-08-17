@@ -24,7 +24,7 @@ const imageSchema = new Schema({
   timestamps: true,
 });
 
-imageSchema.post('remove', function (next) {
+imageSchema.post('remove', (next) => {
   if (this.publicURL) deleteFile(this);
   return next();
 });

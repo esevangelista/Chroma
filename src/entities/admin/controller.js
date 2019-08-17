@@ -51,7 +51,15 @@ export const isAdmin = async (req, res, next) => {
 
 export const getUsers = async (req, res) => {
   try {
-    const { province, city, rating, region, isArtist, category, search } = req.query;
+    const {
+      province,
+      city,
+      rating,
+      region,
+      isArtist,
+      category,
+      search,
+    } = req.query;
     const query = {};
     if (isArtist) query.isArtist = isArtist;
     if (category === 'name') {

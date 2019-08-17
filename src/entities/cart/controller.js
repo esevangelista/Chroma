@@ -1,5 +1,5 @@
 import Cart from './model';
-import { BaseError, InternalServerError } from '../../utils/systemErrors';
+import { InternalServerError } from '../../utils/systemErrors';
 import { getSubtotal } from '../../utils/cart';
 
 export const getCart = async (req, res) => {

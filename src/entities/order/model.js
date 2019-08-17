@@ -91,7 +91,7 @@ const orderSchema = new Schema({
 });
 
 orderSchema.post('save', async function updateProd() {
-  await Promise.all(this.products.map(async p => {
+  await Promise.all(this.products.map(async (p) => {
     const a = await Artwork.findOne({ _id: p }).select('quantity');
     const quantity = a.quantity - this.tally.get(p.toString());
     const status = quantity === 0 ? 'SOLD' : 'AVAILABLE';

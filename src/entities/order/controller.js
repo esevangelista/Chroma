@@ -7,12 +7,11 @@ import { getTotal } from '../../utils/cart';
 import { addImage } from '../../services/cloud-storage/index';
 import { createNotification } from '../notifications/controller';
 
-const groupBy = function(xs, key) {
-  return xs.reduce(function(rv, x) {
+const groupBy = (xs, key) =>
+  xs.reduce((rv, x) => {
     (rv[x[key]] = rv[x[key]] || []).push(x);
     return rv;
   }, {});
-};
 
 export const addOrder = async (req, res) => {
   try {

@@ -12,7 +12,14 @@ import config from '../../config';
 
 export const getArtists = async (req, res) => {
   try {
-    const { name, region, province, city, artform, rate } = req.query;
+    const {
+      name,
+      region,
+      province,
+      city,
+      artform,
+      rate,
+    } = req.query;
     const query = { isArtist: true };
     if (name) {
       query.$or = [
@@ -23,7 +30,7 @@ export const getArtists = async (req, res) => {
     if (region) query['location.region'] = new RegExp(region, 'i');
     if (province) query['location.province'] = new RegExp(province, 'i');
     if (city) query['location.city'] = new RegExp(city, 'i');
-    if (rate && parseInt(rate) !== 0) query['rating'] = { $gte: parseInt(rate), $lt: Math.floor(parseInt(rate) + 1) };
+    if (rate && parseInt(rate) !== 0) query.rating = { $gte: parseInt(rate), $lt: Math.floor(parseInt(rate) + 1) };
     const options = {
       limit: +req.query.limit || 12,
       page: +req.query.page || 1,

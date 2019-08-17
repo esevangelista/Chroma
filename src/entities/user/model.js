@@ -4,7 +4,6 @@ import uniqueValidator from 'mongoose-unique-validator';
 import validator from 'validator';
 import Cart from '../cart/model';
 import Wishlist from '../wishlist/model';
-import Order from '../order/model';
 import db from '../../db';
 
 const userSchema = new Schema({
@@ -80,7 +79,7 @@ const userSchema = new Schema({
   toObject: { virtuals: true },
 });
 
-userSchema.post('save', async function (user) {
+userSchema.post('save', async (user) => {
   const cart = new Cart({ ownedBy: user._id });
   await cart.save();
   const wishlist = new Wishlist({ ownedBy: user._id });

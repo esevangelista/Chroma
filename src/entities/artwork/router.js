@@ -14,9 +14,7 @@ router
     validateArtwork,
     artworkController.addArtwork,
   )
-  .get(
-    artworkController.getArtworks,
-  );
+  .get(artworkController.getArtworks);
 
 
 router
@@ -45,10 +43,5 @@ router
     isArtist,
     canEdit,
     artworkController.updateArtwork,
-  )
-  .delete(
-    isAuthenticated,
-    isArtist,
-    artworkController.deleteArtwork,
   );
 export default router;
