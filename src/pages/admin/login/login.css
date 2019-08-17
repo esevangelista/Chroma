@@ -1,0 +1,35 @@
+.admin-login-container {
+  text-align: center;
+  box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.15);
+  background-color: rgba(248, 248, 248, 0.85);
+  width: 70%;
+  padding: 16px 24px; }
+
+@media only screen and (max-width: 480px) {
+  .admin-login-container {
+    width: 90%;
+    padding: 16px 24px; } }
+
+@media only screen and (min-width: 992px) {
+  .admin-login-container {
+    width: 40%; } }
+
+@media (min-width: 1800px) {
+  .admin-login-container {
+    width: 35%; } }
+
+.admin-login-container a .logo {
+  max-width: 250px;
+  margin-top: 16px; }
+
+.admin-login-container .form {
+  margin: 32px 0 24px 0; }
+
+.admin-login-container .form .ant-form-item {
+  margin-bottom: 16px; }
+
+.admin-login-container .form .login-button {
+  background: #CA0000;
+  border-color: #CA0000;
+  font-size: 16px;
+  font-family: 'Sailec-Regular'; }

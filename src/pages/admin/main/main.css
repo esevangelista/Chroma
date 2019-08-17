@@ -1,0 +1,44 @@
+.admin-users-content .ant-layout-sider {
+  background: #152230;
+  height: 100vh; }
+
+.admin-users-content .ant-layout-sider .ant-layout-sider-children .ant-menu {
+  background: #152230;
+  margin: 60px 0 32px 0; }
+
+.admin-users-content .ant-layout-sider .ant-layout-sider-children .ant-menu .ant-menu-item-selected {
+  background: #f8f8f8;
+  display: flex; }
+
+.admin-users-content .ant-layout-sider .ant-layout-sider-children .ant-menu .ant-menu-item-selected a {
+  color: #CA0000 !important;
+  display: flex;
+  align-items: center; }
+
+.admin-users-content .ant-layout-sider .ant-layout-sider-children .ant-menu .ant-menu-item {
+  color: #fff; }
+
+.admin-users-content .ant-layout .ant-layout-header {
+  display: flex;
+  align-items: center;
+  background: #f8f8f8; }
+
+.admin-users-content .ant-layout .ant-layout-header .trigger {
+  margin-right: 16px; }
+
+.admin-users-content .ant-layout .ant-layout-header a {
+  display: flex;
+  align-items: center;
+  color: #595959; }
+
+.admin-users-content .ant-layout .ant-layout-header .logout {
+  color: #595959;
+  position: absolute;
+  right: 50px; }
+
+.admin-users-content .ant-layout .ant-layout-header .logout:hover {
+  text-decoration: underline; }
+
+.admin-users-content .ant-layout .ant-layout-content {
+  background: #fff;
+  padding: 16px 50px; }

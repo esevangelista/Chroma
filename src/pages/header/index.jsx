@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, Drawer, Button, Row, Badge } from 'antd';
+import { Layout, Menu, Icon, Drawer, Button, Badge } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../global/logo';
 import './header.css';
@@ -40,14 +40,8 @@ class Header extends Component {
   };
 
   render() {
-    const { unread } = this.props; 
+    const { unread } = this.props;
     const { profile, isGettingSession } = this.props.user;
-    const userNav = (
-      <Menu>
-        <Menu.Item><a href="/account/profile"> Profile </a></Menu.Item>
-        <Menu.Item><a onClick={this.logout}> Logout </a></Menu.Item>
-      </Menu>
-    );
     return (
       <Layout.Header className="site-header">
         <Menu mode="horizontal" >
@@ -69,7 +63,6 @@ class Header extends Component {
                   <Menu.Item key="3.5.1"><Link to="/my-store"> Overview </Link></Menu.Item>
                   <Menu.Item key="3.5.2"><Link to="/my-store/transactions"> Transactions </Link></Menu.Item>
                   <Menu.Item key="3.5.3"><Link to="/my-store/products"> My Artworks </Link></Menu.Item>
-                  <Menu.Item key="3.5.4"><Link to="/my-store"> Feedback </Link></Menu.Item>
                 </Menu.ItemGroup>
               </SubMenu>
             : ''
@@ -127,6 +120,7 @@ class Header extends Component {
                     <Menu.Item key="mobile-profile"><Link to="/account/profile">Profile</Link></Menu.Item>
                     <Menu.Item key="wishlist"><Link to="/wishlist">Wishlist</Link></Menu.Item>
                     <Menu.Item key="order"><Link to="/orders">My Orders</Link></Menu.Item>
+                    <Menu.Item key="setting"><Link to="/account/settings">My Account</Link></Menu.Item>
                     <Menu.Item key="inbox"><Badge count={unread || 0} offset={[8,0]}><Link to="/messages">Messages</Link></Badge></Menu.Item>
                     {
                       profile && profile.isArtist ?
@@ -135,7 +129,6 @@ class Header extends Component {
                             <Menu.Item key="over"><Link to="/my-store"> Overview </Link></Menu.Item>
                             <Menu.Item key="trans"><Link to="/my-store/transactions"> Transactions </Link></Menu.Item>
                             <Menu.Item key="products"><Link to="/my-store/products"> My Artworks </Link></Menu.Item>
-                            <Menu.Item key="feed"><Link to="/my-store"> Feedback </Link></Menu.Item>
                           </Menu.ItemGroup>
                         </SubMenu>
                       : ''
@@ -144,14 +137,12 @@ class Header extends Component {
                     <Menu.Item key="logoutt"><a onClick={this.logout}> Logout </a></Menu.Item>
                   </Menu>
                 :
-                  <div>
-                    <p>Artworks</p>
-                    <p>Artists</p>
-                    <p>FAQs</p>
-                    <Row><LoginForm isMobile /></Row>
-                  </div>
+                  <Menu defaultSelectedKeys={[]} className="mobile-menu" mode="inline">
+                    <Menu.Item key="artt"><Link to="/artworks">Artworks</Link></Menu.Item>
+                    <Menu.Item key="artists"><Link to="/artists">Artists</Link></Menu.Item>
+                    <Menu.Item key="loginn"><LoginForm isMobile /></Menu.Item>
+                  </Menu>
               }
-
             </Drawer>
           </Menu.Item>
         </Menu>

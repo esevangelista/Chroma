@@ -62,7 +62,7 @@ class Main extends Component {
       filteredCities: [],
     };
     this.searchChange = this.searchChange.bind(this);
-    this.handleRegionChange = this.handleRegionChange.bind(this);
+    // this.handleRegionChange = this.handleRegionChange.bind(this);
     this.handleProvinceChange = this.handleProvinceChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
   }
@@ -70,10 +70,8 @@ class Main extends Component {
   async componentDidMount() {
     await this.props.fetchArtistsRequest();
     if (this.props.query) {
-      if (this.props.query.region) {
+      if (this.props.query.province) {
         this.setState({
-          filteredProvinces: provinces.filter(pr =>
-            pr.region === this.props.query.region),
           filteredCities: cities.filter(pr =>
             pr.province === this.props.query.province),
         });
@@ -98,14 +96,14 @@ class Main extends Component {
       city,
     });
   }
-  handleRegionChange = (e) => {
-    this.setState({ filteredProvinces: provinces.filter(p => p.region === e) });
-    this.props.artistQueryLocation({
-      region: e,
-      province: '',
-      city: '',
-    });
-  }
+  // handleRegionChange = (e) => {
+  //   this.setState({ filteredProvinces: provinces.filter(p => p.region === e) });
+  //   this.props.artistQueryLocation({
+  //     region: e,
+  //     province: '',
+  //     city: '',
+  //   });
+  // }
   searchChange = e => this.setState({ search: e.target.value });
   render() {
     const { isFetching, query, artists } = this.props;
@@ -131,10 +129,6 @@ class Main extends Component {
                   <Rate allowClear value={query.rate || 0} onChange={(rate) => this.props.artistQueryRate(rate)} />
                 </div>
                 <div className="location">
-                  <span id="region"> Region </span>
-                  <Select size="small" onSelect={this.handleRegionChange} defaultValue={query.region} >
-                    {regions.map(r => <Option key={r.key} value={r.key}> {r.long} ({r.name}) </Option>)}
-                  </Select>
                   <span id="province"> Province/Area </span>
                   <Select size="small" showSearch defaultValue={formatProvince} onSelect={this.handleProvinceChange}>
                     {filteredProvinces.map(p => <Option key={p.name} value={p.name}> {p.name} </Option>)}
@@ -224,8 +218,9 @@ class Main extends Component {
                             </Link>
                             <div className="brief-info">
                               <span id="name"> {artist.firstName} {artist.lastName}</span><br />
-                              {loc(artist.location) ? <span id="location"><Icon type="environment" theme="filled" /> {loc(artist.location)} </span> : ''}
-                            </div>
+                              {loc(artist.location) ? <span id="location"><Icon type="environment" theme="filled" /> {loc(artist.location)} </span> : ''}<br />
+                              {artist.rating ? <Rate disabled defaultValue={artist.rating} style={{ color: '#CA0000'}} /> : ''}
+                          </div>
                           </Col>
                           {
                             artist.artworks.length !== 0 ?

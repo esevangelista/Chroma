@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-// import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Row, Col, Carousel, Layout, Button } from 'antd';
+import { handleQueryType } from '../../ducks/artworks';
 import './landing.css';
 
 
@@ -37,7 +39,7 @@ const data = [
 class Landing extends Component {
   render() {
     return (
-      <Content>
+      <Content className="landing-content">
         <Row gutter={{ md: 16, lg: 8 }} className="hero-extension">
           <Col span={8}>
             <img src="/icons/exploration.svg" alt="explore" />
@@ -60,10 +62,10 @@ class Landing extends Component {
           <Col span={8} >
             <img src="/icons/support.svg" alt="commission" />
             <h3>
-              Commission
+              Promote
             </h3>
             <p>
-              Hit two birds with one stone by transforming your idea into art and supporting independent artists within the Philippines.
+              Support and help independent Filipino artists promote their works.
             </p>
           </Col>
         </Row>
@@ -96,22 +98,22 @@ class Landing extends Component {
             </p>
           </div>
         </Carousel>
-        <div className="site-content landingg">
+        <div className="landingg">
           <Row>
             <Col sm={24} md={12} lg={12} > <h2 className="category-label"> Shop art by form </h2> </Col>
-            <Col span={12}> <a href="/"  className="more"> More Options </a></Col>
+            <Col span={12}> <a href="/artworks" className="more"> More Options </a></Col>
           </Row>
-          <Row type="flex" justify="space-between"  className="categories">
+          <Row type="flex" justify="space-between" className="categories">
             {
               data.map(item => (
-                    <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} >
-                      <Link to="/">
-                        <div className="container">
-                          <img alt={item.title} src={item.attachment}/>
-                          <p> {item.title} </p>
-                        </div>
-                      </Link>
-                    </Col>
+                <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} onClick={() => this.props.handleQueryType(item.title.toUpperCase())}>
+                  <Link to="/artworks">
+                    <div className="container">
+                      <img alt={item.title} src={item.attachment} />
+                      <p> {item.title} </p>
+                    </div>
+                  </Link>
+                </Col>
                 ),
               )
             }
@@ -119,27 +121,32 @@ class Landing extends Component {
           <Carousel className="active-on-mobile cat-slider" autoplay>
             {
               data.map(item => (
-                    <Col xs={24} sm={12} md={8} lg={8} xl={4} >
+                    <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} >
                       <Link to="/">
-                        <div  key={item.title} className="container">
+                        <div key={item.title} className="container">
                           <img alt={item.title} src={item.attachment}/>
                           <p> {item.title} </p>
                         </div>
                       </Link>
                     </Col>
-                ),
+                )
               )
             }
           </Carousel>
-          <a href="/"  className="active-on-mobile more-mobile"> More Options </a>
+          <a href="/artworks" className="active-on-mobile more-mobile"> More Options </a>
         </div>
         <section className="banner">
           <h3> Interested in selling your artworks? </h3>
-          <Button className="btn-mor"> More info </Button>
+          <Link to="/FAQs/artists/getting-started"><Button className="btn-mor"> More info </Button></Link>
         </section>
       </Content>
     );
   }
 }
+Landing.propTypes = {
+  handleQueryType: PropTypes.func.isRequired,
+};
 
-export default Landing;
+const mapStateToProps = state => state.artworks;
+const mapDispatchToProps = { handleQueryType };
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

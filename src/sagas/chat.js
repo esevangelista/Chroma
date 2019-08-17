@@ -1,11 +1,7 @@
 import { takeLatest } from 'redux-saga';
 import { all, call, put, select } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
-import groupByTime from 'group-by-time';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
-import qs from 'qs';
-import { CometChat } from '@cometchat-pro/chat';
 import {
   FETCH_UNREAD_COUNT_REQUEST,
   fetchUnreadCountSuccess,

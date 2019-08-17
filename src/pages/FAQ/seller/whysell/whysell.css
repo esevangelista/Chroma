@@ -1,0 +1,38 @@
+.seller-faq-why {
+  margin: 32px 0; }
+
+@media only screen and (min-width: 992px) {
+  .seller-faq-why {
+    padding: 0 32px; } }
+
+@media (min-width: 1200px) {
+  .seller-faq-why {
+    padding: 0 64px; } }
+
+@media (min-width: 1800px) {
+  .seller-faq-why {
+    padding: 0 120px; } }
+
+.seller-faq-why .routes {
+  margin-bottom: 16px; }
+
+.seller-faq-why .routes span .ant-breadcrumb-link a:hover {
+  color: #CA0000; }
+
+.seller-faq-why #title {
+  color: #595959; }
+
+.seller-faq-why #para, .seller-faq-why #what, .seller-faq-why .list li {
+  color: #595959; }
+
+.seller-faq-why li {
+  margin-top: 8px; }
+
+.seller-faq-why .list {
+  margin-top: 8px; }
+
+.seller-faq-why #more-on a {
+  color: #CA0000; }
+
+.seller-faq-why #more-on a:hover {
+  text-decoration: underline; }

@@ -28,12 +28,12 @@ class Pending extends Component {
         <Timeline className="timeline">
           <Timeline.Item color="green">
             {new Date(order.datePurchased).toLocaleString('en-US', options)} <br />
-            {order.ownedBy.firstName} {order.ownedBy.lastName} placed an order <br />
+            {order.ownedBy.firstName} {order.ownedBy.lastName} placed an order
           </Timeline.Item>
         </Timeline>
         <div className="whatsnext">
           <Text strong> What's next? </Text><br />
-          <Text type="secondary">Send the necessary info (bank, account number, account name) to {order.ownedBy.firstName}. </Text>
+          <Text type="secondary">Send the necessary info (bank, account number, account name) to {order.ownedBy.firstName} <a href={`/messages/${order.ownedBy._id}`} target="_blank" rel="noopener noreferrer" style={{ color: '#CA0000'}} > here </a>.</Text>
           <Text type="secondary">
             Once {order.ownedBy.firstName} transferred the payment and uploaded a copy of the proof of payment,
             ship the items and update this record.

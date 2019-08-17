@@ -35,6 +35,7 @@ export function* loginFlow(action) {
       );
       yield put(loginSuccess(response.data.message));
       yield put(push('/'));
+      yield put(alertDisplay({ alertType: 'success', message: `Welcome, ${user.firstName}!` }));
     } else {
       yield put(loginFailed(response.data.message));
     }
@@ -67,9 +68,11 @@ export function* logoutFlow() {
 export function* registerFlow(action) {
   try {
     const response = yield call(postRequestService, '/users', action.data);
-    const { success } = response.data;
+    const { success, message } = response.data;
     if (success) {
       yield put(registerSuccess(response.data.message));
+    } else {
+      yield put(registerFailed(message));
     }
   } catch (err) {
     const { message } = err.response.data;
@@ -82,7 +85,6 @@ export function* confirmEmailFlow(action) {
     const response = yield call(putRequestService, `/verify-account/${action.data}`);
     const { success, message, u } = response.data;
     if (success) {
-      const apiKey = 'c1b0d0cdc1c30c162982192c0842b8470975e453';
       const APP_ID = '60893392e15857';
       const res = yield call(ccRequest, {
         method: 'POST',

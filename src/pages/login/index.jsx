@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Form, Icon, Input, Button, Alert, Modal } from 'antd';
 import { loginRequest, alertClear, handleLoginModal } from '../../ducks/auth';
 import RegForm from '../register/';
@@ -112,9 +113,9 @@ class LoginForm extends Component {
                   <Button loading={isFetching} type="primary" htmlType="submit" className="login-form-button">
                     Log in
                   </Button>
-                  <a className="login-form-forgot" onClick={this.showRegister}>
-                    Forgot password?
-                  </a>
+                  <Link to="/forgot-password" className="login-form-forgot">
+                      Forgot password?
+                  </Link>
                   <a onClick={this.showRegister} className="btn-switch-form">Create an account</a>
                 </Form.Item>
               </Form>

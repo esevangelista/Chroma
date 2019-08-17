@@ -136,7 +136,7 @@ class ListArtwork extends Component {
     this.props.form.resetFields();
   }
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const { getFieldDecorator, getFieldValue } = this.props.form;
     const { isUpdate } = this.props;
     const { selectedProduct } = this.props.update;
     const {
@@ -315,7 +315,7 @@ class ListArtwork extends Component {
           isUpdate ?
             <Form.Item label="Status">
               {getFieldDecorator('status', {
-                initialValue: isUpdate ? selectedProduct.status : 'AVAILABLE',
+                initialValue: isUpdate ? selectedProduct.status : getFieldValue('quantity') > 0 ? 'AVAILABLE' : 'SOLD',
                 rules: [{ required: true }],
               })(
                 <Radio.Group>

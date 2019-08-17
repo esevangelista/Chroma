@@ -9,6 +9,8 @@ import {
   ORDER_QUERY,
   HANDLE_NEW_ORDER,
   UPLOAD_PROOF_OF_PAYMENT_REQUEST,
+  ADD_REVIEW_REQUEST,
+  EDIT_REVIEW_REQUEST,
   uploadProofOfPaymentSuccess,
   uploadProofOfPaymentFailed,
   addOrderSuccess,
@@ -17,6 +19,10 @@ import {
   fetchOrdersFailed,
   cancelOrderSuccess,
   cancelOrderFailed,
+  addReviewSuccess,
+  addReviewFailed,
+  editReviewSuccess,
+  editReviewFailed,
 } from '../ducks/orders';
 import { alertDisplay } from '../ducks/feedback';
 import { postRequestService, getRequestService, putRequestService } from '../api/apiRequest';
@@ -111,6 +117,45 @@ export function* cancelOrder(action) {
     yield put(cancelOrderFailed(message));
   }
 }
+export function* addReview(action) {
+  try {
+    const response = yield call(postRequestService, `/order-review/${action._id}`, action.data);
+    const { success, message } = response.data;
+    if (success) {
+      yield put(addReviewSuccess(message));
+      yield put(push('/orders'));
+      yield put(alertDisplay({ alertType: 'success', message }));
+    } else {
+      yield put(addReviewFailed(message));
+      yield put(push('/orders'));
+      yield put(alertDisplay({ alertType: 'error', message }));
+    }
+  } catch (err) {
+    const { message } = err.response.data;
+    yield put(addReviewFailed(message));
+    yield put(push('/orders'));
+    yield put(alertDisplay({ alertType: 'error', message }));
+  }
+}
+
+export function* editReview(action) {
+  try {
+    const response = yield call(putRequestService, `/order-review/${action._id}`, action.data);
+    const { success, message } = response.data;
+    if (success) {
+      yield put(editReviewSuccess(message));
+      yield put(alertDisplay({ alertType: 'success', message }));
+    } else {
+      yield put(editReviewFailed(message));
+      yield put(alertDisplay({ alertType: 'error', message }));
+    }
+  } catch (err) {
+    const { message } = err.response.data;
+    yield put(editReviewFailed(message));
+    yield put(alertDisplay({ alertType: 'error', message }));
+  }
+}
+
 export function* watchOrderFlow() {
   yield [
     takeLatest(UPLOAD_PROOF_OF_PAYMENT_REQUEST, uploadProof),
@@ -118,6 +163,8 @@ export function* watchOrderFlow() {
     takeLatest(ADD_ORDER_REQUEST, addOrder),
     takeLatest(HANDLE_NEW_ORDER, handleNew),
     takeLatest(CANCEL_ORDER_REQUEST, cancelOrder),
+    takeLatest(ADD_REVIEW_REQUEST, addReview),
+    takeLatest(EDIT_REVIEW_REQUEST, editReview),
   ];
 }
 

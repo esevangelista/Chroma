@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { Layout } from 'antd';
-import Gallery from '../Gallery/';
+import Overview from '../Overview/';
 import Products from '../Products/';
 import Transactions from '../Transactions/';
 
@@ -14,7 +14,7 @@ class StoreMain extends Component {
         <Layout>
           <Content className="site-content">
             <Switch>
-              <Route exact path="/my-store" component={Gallery} />
+              <Route exact path="/my-store" component={Overview} />
               <Route exact path="/my-store/products" component={Products} />
               <Route exact path="/my-store/transactions" component={Transactions} />
             </Switch>

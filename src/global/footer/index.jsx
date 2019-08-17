@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Route, Switch } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import './footer.css';
 
@@ -8,22 +7,22 @@ class FooterContent extends Component {
   render() {
     return (
       <div className="footer">
-        <Row type="flex" justify="center" align="top" className="footer-container">      
+        <Row type="flex" justify="center" align="top" className="footer-container">   
           <Col className="col-container" xs={12} sm={6} md={6} lg={6} xl={4} >
             <h3> Artworks </h3>
-            <a href="/"><p> Form </p></a>
-            <a href="/"><p> Style </p></a>
-            <a href="/"><p> Subject </p></a>
+            <a href="/artworks"><p> Form </p></a>
+            <a href="/artworks"><p> Style </p></a>
+            <a href="/artworks"><p> Subject </p></a>
           </Col>
           <Col className="col-container" xs={12} sm={6} md={6} lg={6} xl={4} >
             <h3> Artists</h3>
-            <a href="/"><p> Artist Search </p></a>
-            <a href="/"><p> Sell on Chroma</p></a>
+            <a href="/artists"><p> Artist Search </p></a>
+            <a href="/FAQs/artists/why-sell"><p> Sell on Chroma</p></a>
           </Col>
           <Col className="col-container" xs={12} sm={6} md={6} lg={6} xl={4}>
             <h3> FAQs</h3>
-            <a href="/"><p> For Artists </p></a>
-            <a href="/"><p> For Art Buyers </p></a>
+            <a href="/FAQs/artists"><p> For Artists </p></a>
+            <a href="/FAQs/art-buyers"><p> For Art Buyers </p></a>
           </Col>
           <Col className="col-container" xs={12} sm={6} md={6} lg={6} xl={4}>
             <h3> About </h3>

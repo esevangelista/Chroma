@@ -1,8 +1,14 @@
 @import 'src/styles/colors';
 @import 'src/styles/devices';
 
+
+img {
+  pointer-events: none;
+
+}
 .active-art-container {
   padding: 16px 16px;
+  margin-bottom: 32px;
   .content {
     .right-content {
       margin-top: 16px;
@@ -10,6 +16,9 @@
         padding-inline-start: 16px;
         font-family: 'Sailec-Bold';
         font-size: 18px;
+      }
+      #artist {
+        a { color: $chroma-red; }
       }
       #qty-label, #artist, #form {
         font-family: 'Sailec-Bold';
@@ -74,6 +83,9 @@
       }
       .ant-collapse-content {
         text-align: justify;
+        .ant-collapse-content-box {
+          a { color: $chroma-red; }
+        }
       }
     }
   }

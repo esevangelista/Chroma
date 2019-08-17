@@ -4,96 +4,127 @@
 .products-main-container .ant-pagination {
   float: right;
   margin: 16px 0; }
-  .products-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .products-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .products-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
-    border-color: #CA0000; }
-  .products-main-container .ant-pagination .ant-pagination-item:hover, .products-main-container .ant-pagination .ant-pagination-item:focus, .products-main-container .ant-pagination .ant-pagination-prev:hover, .products-main-container .ant-pagination .ant-pagination-prev:focus, .products-main-container .ant-pagination .ant-pagination-next:hover, .products-main-container .ant-pagination .ant-pagination-next:focus {
-    border-color: #CA0000; }
-  .products-main-container .ant-pagination .ant-pagination-item a:hover, .products-main-container .ant-pagination .ant-pagination-prev a:hover, .products-main-container .ant-pagination .ant-pagination-next a:hover {
-    color: #CA0000; }
-  .products-main-container .ant-pagination .ant-pagination-item .ant-pagination-item-link:hover, .products-main-container .ant-pagination .ant-pagination-prev .ant-pagination-item-link:hover, .products-main-container .ant-pagination .ant-pagination-next .ant-pagination-item-link:hover {
-    border-color: #dde2e8; }
-  .products-main-container .ant-pagination .ant-pagination-item-active {
-    border-color: #CA0000; }
-    .products-main-container .ant-pagination .ant-pagination-item-active a {
-      color: #CA0000; }
-      .products-main-container .ant-pagination .ant-pagination-item-active a:hover, .products-main-container .ant-pagination .ant-pagination-item-active a:link, .products-main-container .ant-pagination .ant-pagination-item-active a:focus {
-        color: #CA0000; }
+
+.products-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .products-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .products-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
+  border-color: #CA0000; }
+
+.products-main-container .ant-pagination .ant-pagination-item:hover, .products-main-container .ant-pagination .ant-pagination-item:focus, .products-main-container .ant-pagination .ant-pagination-prev:hover, .products-main-container .ant-pagination .ant-pagination-prev:focus, .products-main-container .ant-pagination .ant-pagination-next:hover, .products-main-container .ant-pagination .ant-pagination-next:focus {
+  border-color: #CA0000; }
+
+.products-main-container .ant-pagination .ant-pagination-item a:hover, .products-main-container .ant-pagination .ant-pagination-prev a:hover, .products-main-container .ant-pagination .ant-pagination-next a:hover {
+  color: #CA0000; }
+
+.products-main-container .ant-pagination .ant-pagination-item .ant-pagination-item-link:hover, .products-main-container .ant-pagination .ant-pagination-prev .ant-pagination-item-link:hover, .products-main-container .ant-pagination .ant-pagination-next .ant-pagination-item-link:hover {
+  border-color: #dde2e8; }
+
+.products-main-container .ant-pagination .ant-pagination-item-active {
+  border-color: #CA0000; }
+
+.products-main-container .ant-pagination .ant-pagination-item-active a {
+  color: #CA0000; }
+
+.products-main-container .ant-pagination .ant-pagination-item-active a:hover, .products-main-container .ant-pagination .ant-pagination-item-active a:link, .products-main-container .ant-pagination .ant-pagination-item-active a:focus {
+  color: #CA0000; }
 
 .products-main-container .products-container {
   padding: 32px 32px;
   align-items: flex-start; }
-  .products-main-container .products-container .breadcrumb {
-    margin-bottom: 8px; }
-    .products-main-container .products-container .breadcrumb span .ant-breadcrumb-link a:hover {
-      color: #CA0000; }
-  .products-main-container .products-container .search .ant-btn {
-    background: #CA0000;
-    border-color: #CA0000; }
-  .products-main-container .products-container .search-tags {
-    margin: 4px 4px;
-    font-size: 12px;
-    background: #e8e8e8;
-    color: #595959; }
-  .products-main-container .products-container .filter-content .products .ant-spin-nested-loading {
-    position: unset; }
-  .products-main-container .products-container .filter-content .products .ant-list-item {
-    display: inline-flex;
-    border-bottom: none; }
-  .products-main-container .products-container .filter-content .products .product {
-    padding-top: 0px;
-    margin: 16px 8px; }
-  .products-main-container .products-container .filter-content .collapse-filter {
-    background: transparent;
-    margin: 32px 0 16px 0;
-    border-radius: 0; }
-    .products-main-container .products-container .filter-content .collapse-filter .ant-collapse-item .ant-collapse-header {
-      font-size: 16px;
-      font-family: 'Sailec-Light'; }
-    .products-main-container .products-container .filter-content .collapse-filter .filter-panel .clear {
-      color: #CA0000;
-      font-size: 16px;
-      font-weight: 700; }
-      .products-main-container .products-container .filter-content .collapse-filter .filter-panel .clear:hover {
-        text-decoration: underline; }
-    .products-main-container .products-container .filter-content .collapse-filter .filter-panel .ant-collapse-header {
-      font-size: 20px;
-      font-family: 'Sailec-Bold';
-      color: #595959;
-      text-align: left;
-      background: #e8e8e8; }
-    .products-main-container .products-container .filter-content .collapse-filter .collapse-inner {
-      background: transparent;
-      border-radius: 0;
-      margin-bottom: 16px; }
-      .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .ant-collapse-item {
-        border-bottom: 1px solid #d9d9d9; }
-        .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .ant-collapse-item .ant-collapse-header {
-          font-size: 16px;
-          font-family: 'Sailec-Light';
-          padding-left: 8px;
-          font-weight: 600;
-          color: #595959;
-          background: transparent; }
-      .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .radio-type {
-        display: grid; }
-        .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .radio-type .ant-radio-inner:after {
-          background: #CA0000; }
-        .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .radio-type .ant-radio-checked .ant-radio-inner {
-          border-color: #CA0000; }
-      .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .checkbox-type {
-        display: grid; }
-        .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .checkbox-type .ant-checkbox-checked .ant-checkbox-inner {
-          border-color: #CA0000;
-          background: #CA0000; }
-      .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .input-price .dimension-label {
-        padding: 8px 0; }
-      .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .input-price .price-range {
-        display: flex; }
-      .products-main-container .products-container .filter-content .collapse-filter .collapse-inner .input-price .ant-input {
-        margin: 0 8px;
-        text-align: center; }
-      .products-main-container .products-container .filter-content .collapse-filter .collapse-inner a {
-        color: #CA0000; }
+
+.products-main-container .products-container .breadcrumb {
+  margin-bottom: 8px; }
+
+.products-main-container .products-container .breadcrumb span .ant-breadcrumb-link a:hover {
+  color: #CA0000; }
+
+.products-main-container .products-container .search .ant-btn {
+  background: #CA0000;
+  border-color: #CA0000; }
+
+.products-main-container .products-container .search-tags {
+  margin: 4px 4px;
+  font-size: 12px;
+  background: #e8e8e8;
+  color: #595959; }
+
+.products-main-container .products-container .filter-content .products .ant-spin-nested-loading {
+  position: unset; }
+
+.products-main-container .products-container .filter-content .products .ant-list-item {
+  display: inline-flex;
+  border-bottom: none; }
+
+.products-main-container .products-container .filter-content .products .product {
+  padding-top: 0px;
+  margin: 16px 8px; }
+
+.products-main-container .products-container .filter-content .collapse-filter {
+  background: transparent;
+  margin: 32px 0 16px 0;
+  border-radius: 0; }
+
+.products-main-container .products-container .filter-content .collapse-filter .ant-collapse-item .ant-collapse-header {
+  font-size: 16px;
+  font-family: 'Sailec-Light'; }
+
+.products-main-container .products-container .filter-content .collapse-filter .filter-panel .clear {
+  color: #CA0000;
+  font-size: 16px;
+  font-weight: 700; }
+
+.products-main-container .products-container .filter-content .collapse-filter .filter-panel .clear:hover {
+  text-decoration: underline; }
+
+.products-main-container .products-container .filter-content .collapse-filter .filter-panel .ant-collapse-header {
+  font-size: 20px;
+  font-family: 'Sailec-Bold';
+  color: #595959;
+  text-align: left;
+  background: #e8e8e8; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner {
+  background: transparent;
+  border-radius: 0;
+  margin-bottom: 16px; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .ant-collapse-item {
+  border-bottom: 1px solid #d9d9d9; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .ant-collapse-item .ant-collapse-header {
+  font-size: 16px;
+  font-family: 'Sailec-Light';
+  padding-left: 8px;
+  font-weight: 600;
+  color: #595959;
+  background: transparent; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .radio-type {
+  display: grid; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .radio-type .ant-radio-inner:after {
+  background: #CA0000; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .radio-type .ant-radio-checked .ant-radio-inner {
+  border-color: #CA0000; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .checkbox-type {
+  display: grid; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .checkbox-type .ant-checkbox-checked .ant-checkbox-inner {
+  border-color: #CA0000;
+  background: #CA0000; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .input-price .dimension-label {
+  padding: 8px 0; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .input-price .price-range {
+  display: flex; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner .input-price .ant-input {
+  margin: 0 8px;
+  text-align: center; }
+
+.products-main-container .products-container .filter-content .collapse-filter .collapse-inner a {
+  color: #CA0000; }
 
 .products-main-container .btn-afx {
   border-color: #CA0000;
@@ -110,37 +141,39 @@
 .ant-drawer-content-wrapper {
   width: 100% !important;
   max-width: 100%; }
-  .ant-drawer-content-wrapper .ant-drawer-body {
-    padding: 16px 32px; }
-  .ant-drawer-content-wrapper .ant-drawer-title {
-    font-family: 'Sailec-Regular';
-    color: #152230; }
+
+.ant-drawer-content-wrapper .ant-drawer-body {
+  padding: 16px 32px; }
+
+.ant-drawer-content-wrapper .ant-drawer-title {
+  font-family: 'Sailec-Regular';
+  color: #152230; }
 
 @media only screen and (max-width: 480px) {
   .products-main-container .products-container {
     padding: 16px 16px; }
-    .products-main-container .products-container .products {
-      column-count: 1; }
+  .products-main-container .products-container .products {
+    column-count: 1; }
   .active-product-modal {
     width: 100% !important; }
-    .active-product-modal .ant-modal-content .ant-modal-body {
-      padding: 24px 24px; } }
+  .active-product-modal .ant-modal-content .ant-modal-body {
+    padding: 24px 24px; } }
 
 @media only screen and (max-width: 767px) and (min-width: 481px) {
   .products-main-container .products-container {
     padding: 16px 16px; }
-    .products-main-container .products-container .products {
-      column-count: 2; }
+  .products-main-container .products-container .products {
+    column-count: 2; }
   .active-product-modal {
     width: 100% !important; }
-    .active-product-modal .ant-modal-content .ant-modal-body {
-      padding: 24px 24px; } }
+  .active-product-modal .ant-modal-content .ant-modal-body {
+    padding: 24px 24px; } }
 
 @media only screen and (min-width: 768px) {
   .products-main-container .products-container {
     padding: 16px 16px; }
-    .products-main-container .products-container .products {
-      column-count: 2; }
+  .products-main-container .products-container .products {
+    column-count: 2; }
   .ant-drawer-content-wrapper {
     width: 60% !important;
     max-width: 60%; }
@@ -150,8 +183,8 @@
 @media (min-width: 1200px) {
   .products-main-container .products-container {
     padding: 32px 32px; }
-    .products-main-container .products-container .products {
-      column-count: 3; }
+  .products-main-container .products-container .products {
+    column-count: 3; }
   .active-product-modal {
     width: 80% !important; } }
 
@@ -160,5 +193,5 @@
     width: 80% !important; }
   .products-main-container .products-container {
     padding: 32px 128px; }
-    .products-main-container .products-container .products {
-      column-count: 4; } }
+  .products-main-container .products-container .products {
+    column-count: 4; } }

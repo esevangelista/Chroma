@@ -10,9 +10,11 @@ import orderSagas from './orders';
 import transactionSagas from './transactions';
 import notifSagas from './notifications';
 import chatSagas from './chat';
+import adminSagas from './admin';
 
 export default function* rootSaga() {
   yield all([
+    ...adminSagas,
     ...authSagas,
     ...userSagas,
     ...wishlistSagas,

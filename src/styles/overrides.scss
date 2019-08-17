@@ -17,7 +17,16 @@ $transparent-white: rgba(255, 255, 255, 0.2);
 .ant-menu {
   font-family: 'Sailec-Regular', sans-serif;
 }
-
+.ant-spin-spinning {
+  .anticon-loading {
+    color: $chroma-red;
+  }
+  .ant-spin-dot-spin {
+    .ant-spin-dot-item {
+      background: $chroma-red;
+    }
+  }
+}
 // -- Sidebar
 .ant-input {
   border-radius: 0;
@@ -407,8 +416,11 @@ $transparent-white: rgba(255, 255, 255, 0.2);
 // Alert
 .ant-alert {
   font-family: 'Sailec-Regular', sans-serif;
-  color: $white;
-
+  color: $gray-8;
+  .ant-alert-message {
+    color: $gray-8;
+    font-weight: 600;
+  }
   &.alert-fixed {
     align-items: center;
     animation: bounce 1s ease forwards;
@@ -432,7 +444,7 @@ $transparent-white: rgba(255, 255, 255, 0.2);
     }
   }
   &.ant-alert-error {
-    background: $error;
+    // background: $error;
   }
   &.ant-alert-warning {
     background: $warning;

@@ -1,0 +1,21 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.buyer-faq {
+  margin: 32px 0;
+  @include for-tablet-landscape-up {
+    padding: 0 32px;
+  }
+  @include for-desktop-up {
+    padding: 0 64px;
+  }
+  @include for-big-desktop-up {
+    padding: 0 120px;
+  }
+  #title {
+    color: $gray-8;
+  }
+  .section {
+    margin-bottom: 48px;
+  }
+}

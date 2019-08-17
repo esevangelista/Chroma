@@ -8,6 +8,7 @@ import Footer from '../../global/footer/';
 import ArtMain from './ArtMain/';
 import ViewArtwork from './ViewArtwork';
 import { checkUserSession } from '../../ducks/users';
+import { cleanFilter } from '../../ducks/artworks';
 import './artworks.css';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
@@ -16,7 +17,9 @@ const { Content } = Layout;
 class Artworks extends Component {
   componentDidMount() {
     this.props.checkUserSession();
-    window.scrollTo(0, 0);
+  }
+  componentWillUnmount() {
+    this.props.cleanFilter();
   }
   render() {
     const { isGettingSession } = this.props;
@@ -45,12 +48,14 @@ class Artworks extends Component {
 Artworks.propTypes = {
   checkUserSession: PropTypes.func.isRequired,
   isGettingSession: PropTypes.bool.isRequired,
+  cleanFilter: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => state.user;
 
 const mapDispatchToProps = {
   checkUserSession,
+  cleanFilter,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Artworks));

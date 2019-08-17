@@ -21,6 +21,21 @@ export const COMPLETE_ORDER_REQUEST = 'COMPLETE_ORDER_REQUEST';
 export const COMPLETE_ORDER_SUCCESS = 'COMPLETE_ORDER_SUCCESS';
 export const COMPLETE_ORDER_FAILED = 'COMPLETE_ORDER_FAILED';
 
+export const GET_OVERVIEW_REQUEST = 'GET_OVERVIEW_REQUEST';
+export const GET_OVERVIEW_SUCCESS = 'GET_OVERVIEW_SUCCESS';
+export const GET_OVERVIEW_FAILED = 'GET_OVERVIEW_FAILED';
+
+export function getOverviewRequest() {
+  return { type: GET_OVERVIEW_REQUEST };
+}
+
+export function getOverviewSuccess(info) {
+  return { type: GET_OVERVIEW_SUCCESS, info };
+}
+
+export function getOverviewFailed(message) {
+  return { type: GET_OVERVIEW_FAILED, message };
+}
 export function completeOrderRequest(_id, data) {
   return { type: COMPLETE_ORDER_REQUEST, _id, data };
 }
@@ -92,6 +107,7 @@ const initialState = {
   transactions: [],
   query: {},
   active: null,
+  overview: {},
   isFetching: false,
   message: '',
   error: false,
@@ -201,6 +217,24 @@ export default function transactionReducer(state = initialState, action) {
         message: action.message,
       };
     case COMPLETE_ORDER_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+        message: action.message,
+      };
+    case GET_OVERVIEW_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case GET_OVERVIEW_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        overview: action.info,
+      };
+    case GET_OVERVIEW_FAILED:
       return {
         ...state,
         isFetching: false,

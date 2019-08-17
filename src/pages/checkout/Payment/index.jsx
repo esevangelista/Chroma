@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Row, Col, Spin, Collapse, Checkbox, Button, Icon, Steps, Typography } from 'antd';
-import { handleNewOrder, addOrderRequest } from '../../../ducks/orders';
+import { addOrderRequest } from '../../../ducks/orders';
 import './payment.css';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
@@ -119,37 +119,22 @@ class Payment extends Component {
                         </li>
                         <li>
                           Items in your invoice are reserved
-                          under your account only until 7:00pm of {monthNames[deadline.getMonth()]} {deadline.getDate()}, {deadline.getFullYear()} 
+                          under your account only until 7:00pm of {monthNames[deadline.getMonth()]} {deadline.getDate()}, {deadline.getFullYear()}.  
                           We accept online and mobile transfers!
                         </li>
                         <li>
-                          If you haven't sent us proof of payment before 7:00pm of {monthNames[deadline.getMonth()]} {deadline.getDate()}, {deadline.getFullYear()} ,
-                            your reservation will automatically be cancelled.
+                          If you haven't sent the seller your proof of payment before 7:00pm of {monthNames[deadline.getMonth()]} {deadline.getDate()}, {deadline.getFullYear()} ,
+                            your reservation will be automatically cancelled.
                         </li>
                         <li>
-                          To provide proof of payment, simply reply to the invoice message
-                          with a clear scanned copy of your deposit slip.
-                          A photo works, too! Just make sure it's clear.
+                          To provide proof of payment, select the order in the orders page and upload
+                          a clear photo of your deposit slip.
                           TIP: Keep the hard copy, just in case.
                           For online or mobile transfers, simply reply
-                          to the invoice e-mail with a screenshot of your transaction.
+                          to the attach the a screenshot of your transaction.
                         </li>
-                        {
-                        // <li>
-                        //   Once we've received a clear copy of your proof of payment,
-                        //   our Finance Team will review and
-                        //   validate your payment within 1-2 business days
-                        //   (excluding weekends and holidays).
-                        //   Please note that interbank transfers
-                        //   will be validated within 2-3 business days.
-                        // </li>
-                        }
                         <li>
-                          When we've received & validated your proof of payment
-                          before your deadline, you shall get an Order
-                          Acknowledgement message shortly.
-                          This means you've sealed the deal,
-                          and your items are officially yours.
+                          Once the seller received your proof of payment, kindly wait for the seller to ship and upload tracking details. You may check the status of your order/s at the orders page.
                         </li>
                       </ol>
                       <Button type="primary" onClick={() => this.props.addOrderRequest()}className="form-button">

@@ -80,7 +80,7 @@ class ProfileForm extends Component {
     });
   }
   render() {
-    const { profile, form, isGettingSession, error, message } = this.props;
+    const { profile, form, isGettingSession, error } = this.props;
     const { filteredProvinces, filteredCities } = this.state;
     const { getFieldDecorator, getFieldValue, setFieldsValue } = form;
     const initialValue = profile;
@@ -103,8 +103,8 @@ class ProfileForm extends Component {
     return (
       <div className="acc-form-container">
         {
-          message ?
-            <Alert className="alert-reg" banner closable message={message} type={error === true ? 'error' : 'success'} />
+          this.props.message ?
+            <Alert className="alert-reg" banner closable message={this.props.message} type={error === true ? 'error' : 'success'} />
           : ''
         }
         <Form onSubmit={this.handleSubmit} colon={false} className="acc-form">

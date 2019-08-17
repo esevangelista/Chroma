@@ -193,7 +193,7 @@ class Transactions extends Component {
           </Breadcrumb>
           <div className="order-header">
             <span id="label"> My Orders </span>
-            <Search className="search" value={this.state.name} onChange={this.handleNameChange} allowClear onSearch={this.handleSearchName} placeholder="Customer name e.g John" allowClear enterButton />
+            <Search className="search" value={this.state.name} onChange={this.handleNameChange} allowClear onSearch={this.handleSearchName} placeholder="Customer name e.g John" enterButton />
             <Select placeholder="Order Status" value={query.status || ''} onSelect={this.handleSelectStatus}>
               <Option value="">All </Option>
               <Option value="PENDING">Pending </Option>

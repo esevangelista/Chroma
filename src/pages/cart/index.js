@@ -31,7 +31,7 @@ class Cart extends Component {
     this.props.updateCartRequest(products, tally);
   }
   render() {
-    const { isFetching, products, total, tally, quantity } = this.props;
+    const { isFetching, products, total, tally } = this.props;
     return (
       <div className="cart-container">
         <Button id="btn-drawer" onClick={this.toggleDrawer} >
@@ -114,7 +114,6 @@ Cart.propTypes = {
     _id: PropTypes.string,
   })),
   total: PropTypes.number,
-  quantity: PropTypes.number,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   message: PropTypes.string,

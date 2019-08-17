@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import Header from '../header/';
 import Footer from '../../global/footer/';
 import { checkUserSession } from '../../ducks/users';
+import { handleTransactionsQuery } from '../../ducks/transactions';
+import { clearFilter } from '../../ducks/products';
 import StoreMain from './components/Main/';
 
 const { Content } = Layout;
@@ -15,6 +17,10 @@ class Store extends Component {
   componentDidMount() {
     this.props.checkUserSession();
     window.scrollTo(0, 0);
+  }
+  componentWillUnmount() {
+    this.props.handleTransactionsQuery({});
+    this.props.clearFilter({});
   }
   render() {
     const { isGettingSession, profile } = this.props;
@@ -29,7 +35,7 @@ class Store extends Component {
                 <Header {...this.props} />
                 <Content className="art-site-content">
                   <Switch>
-                    <Route path="/(my-store|my-store/transactions|my-store/products|my-store/feedbacks|my-store/settings)/" component={StoreMain} {...this.props} />
+                    <Route path="/(my-store|my-store/transactions|my-store/products|my-store/settings)/" component={StoreMain} {...this.props} />
                   </Switch>
                 </Content>
                 <Footer />
@@ -43,12 +49,16 @@ class Store extends Component {
 
 Store.propTypes = {
   checkUserSession: PropTypes.func.isRequired,
+  handleTransactionsQuery: PropTypes.func.isRequired,
+  clearFilter: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => state.user;
 
 const mapDispatchToProps = {
   checkUserSession,
+  handleTransactionsQuery,
+  clearFilter,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Store));

@@ -67,9 +67,11 @@ class ViewProduct extends Component {
                   <Text strong id="desc-label"> Artwork Description </Text>
                   <br />
                   <div className="desc">
-                    {
-                      formattedDesc.map(p => <Paragraph> {p} </Paragraph>)
-                    }
+                    <Paragraph ellipsis={{ rows: 15, expandable: true }}>
+                     {
+                      formattedDesc.map(d => <span>{d}<br /></span>)
+                     }
+                    </Paragraph>
                   </div>
                   <div className="btn-opt">
                     <Button icon="edit" id="upd" onClick={() => this.props.updateDrawer(activeProduct)}> Update </Button>

@@ -53,7 +53,7 @@ class Shipped extends Component {
         <Timeline className="timeline" reverse>
           <Timeline.Item color="green">
             {new Date(order.datePurchased).toLocaleString('en-US', options)} <br />
-            <br />You have successfully placed an order <br />
+            You have successfully placed an order <br />
           </Timeline.Item>
           <Timeline.Item color="green">
             {new Date(order.datePaid).toLocaleString('en-US', options)} <br />

@@ -5,16 +5,13 @@ import { push } from 'react-router-redux';
 import {
   FETCH_TRANSACTIONS_REQUEST,
   HANDLE_TRANSACTIONS_QUERY,
-  GET_ACTIVE_TRANSACTION_REQUEST,
-  UPDATE_TRANSACTION_REQUEST,
+  GET_OVERVIEW_REQUEST,
   COMPLETE_ORDER_REQUEST,
   SHIP_ORDER_REQUEST,
   fetchTransactionsSuccess,
   fetchTransactionsFailed,
-  getActiveTransactionSuccess,
-  getActiveTransactionFailed,
-  updateTransactionFailed,
-  updateTransactionSuccess,
+  getOverviewSuccess,
+  getOverviewFailed,
   shipOrderSuccess,
   shipOrderFailed,
   completeOrderSuccess,
@@ -89,6 +86,20 @@ export function* completeOrder(action) {
     yield put(alertDisplay({ alertType: 'error', message }));
   }
 }
+
+export function* getOverview() {
+  try {
+    const _id = yield select(getUserID);
+    const response = yield call(getRequestService, `/overview/${_id}`);
+    const { success, stats, message } = response.data;
+    if (success) yield put(getOverviewSuccess(stats));
+    else yield put(getOverviewFailed(message));
+  } catch (err) {
+    const message = err.response.data;
+    yield put(getOverviewFailed(message));
+    yield put(alertDisplay({ alertType: 'error', message }));
+  }
+}
 export function* watchTransactionFlow() {
   yield [
     takeLatest([
@@ -97,6 +108,7 @@ export function* watchTransactionFlow() {
     ], fetchTransactions),
     takeLatest(SHIP_ORDER_REQUEST, shipOrder),
     takeLatest(COMPLETE_ORDER_REQUEST, completeOrder),
+    takeLatest(GET_OVERVIEW_REQUEST, getOverview),
   ];
 }
 

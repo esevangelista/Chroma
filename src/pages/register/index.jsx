@@ -87,8 +87,7 @@ class RegForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         const { getFieldValue } = this.props.form;
-        const hasAgreed = getFieldValue('agreement');
-        if (hasAgreed && this.state.isPasswordValid) {
+        if (this.state.isPasswordValid) {
           const data = {
             email: getFieldValue('reg@@email'),
             firstName: getFieldValue('reg@@firstname'),
@@ -118,7 +117,7 @@ class RegForm extends Component {
           <h3> Join CHROMA Now! </h3>
           {
             message && message.length > 0 ?
-              <Alert className="alert-reg" banner closable message={error ? 'Something went wrong. Please try again' : 'Please check your email and verify your account.'} type={error ? 'error' : 'success'} />
+              <Alert className="alert-reg" banner closable message={error ? message : 'Please check your email and verify your account.'} type={error ? 'error' : 'success'} />
             :
               ''
           }
@@ -153,7 +152,7 @@ class RegForm extends Component {
               validateFirst: true,
               rules: [
                 { required: true, message: 'Please input your email!' },
-                { type: 'email', message: 'The input is not valid E-mail!' },
+                { type: 'email', message: 'Input is not valid E-mail!' },
               ],
             })(<Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -194,16 +193,6 @@ class RegForm extends Component {
                 placeholder="Password"
                 onChange={this.passwordStrength}
               />,
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator('agreement', {
-              valuePropName: 'checked',
-              initialValue: false,
-            })(
-              <Checkbox>
-                I have read the <a href="">Terms & Agreement</a>
-              </Checkbox>,
             )}
           </Form.Item>
           <Form.Item>

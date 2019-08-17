@@ -1,5 +1,6 @@
 @import 'src/styles/colors';
 @import 'src/styles/devices';
+@import 'src/styles/variables';
 
 .hero-extension {
   padding: 48px 80px 48px 80px;
@@ -21,6 +22,19 @@
 .landingg {
   min-height: 0 !important;
   margin-top: 32px;
+  padding: 0 ($site-padding - 20);
+
+  @include for-tablet-portrait-down {
+    padding: 0 ($site-padding - 40);
+  }
+
+  @include for-phone-only {
+    padding: 0 ($site-padding - 70);
+  }
+
+  @include for-tablet-landscape-up {
+    padding: 0 $site-padding;
+  }
   a.more {
     color: $chroma-red;
     font-size: 20px;
@@ -110,7 +124,7 @@
       display: none;
     }
   }
-  .site-content {
+  .landing-content {
     .categories, a.more {
       display:none;
     }
@@ -215,7 +229,7 @@
     }
   }
 
-  .site-content {
+  .landing-content {
     .categories, a.more {
       display:none;
     }
@@ -325,7 +339,7 @@
       font-size: 36px;
     }
   }
-  .site-content {
+  .landing-content {
     &.categories {
       .cards {
         min-height: 100px;

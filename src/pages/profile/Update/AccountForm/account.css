@@ -5,101 +5,130 @@
 .change-type-modal .ant-modal-content .ant-modal-footer .ant-btn-primary {
   background: #CA0000;
   border-color: #CA0000; }
-  .change-type-modal .ant-modal-content .ant-modal-footer .ant-btn-primary:hover, .change-type-modal .ant-modal-content .ant-modal-footer .ant-btn-primary:focus, .change-type-modal .ant-modal-content .ant-modal-footer .ant-btn-primary:active {
-    background: #CA0000;
-    border-color: #CA0000;
-    color: #fff; }
+
+.change-type-modal .ant-modal-content .ant-modal-footer .ant-btn-primary:hover, .change-type-modal .ant-modal-content .ant-modal-footer .ant-btn-primary:focus, .change-type-modal .ant-modal-content .ant-modal-footer .ant-btn-primary:active {
+  background: #CA0000;
+  border-color: #CA0000;
+  color: #fff; }
 
 .acc-form-container {
   padding: 32px 32px; }
-  .acc-form-container .alert-reg {
-    margin-bottom: 16px;
-    color: #fff; }
-    .acc-form-container .alert-reg .anticon-check-circle {
-      color: #fff; }
-    .acc-form-container .alert-reg .anticon-close-circle {
-      color: #fff !important; }
-  .acc-form-container .menu {
-    margin-top: 16px; }
-  .acc-form-container .acc-form .pw-acc-form-div {
-    margin: 16px 0; }
-    .acc-form-container .acc-form .pw-acc-form-div #pw-label {
-      font-weight: 700; }
-    .acc-form-container .acc-form .pw-acc-form-div #pw-icon {
-      float: right;
-      cursor: pointer; }
-      .acc-form-container .acc-form .pw-acc-form-div #pw-icon:hover {
-        color: #CA0000; }
-    .acc-form-container .acc-form .pw-acc-form-div .pw-button {
-      color: #CA0000;
-      border-color: #CA0000; }
-  .acc-form-container .acc-form .form-button {
-    margin: 16px 0 8px 0;
-    background: #CA0000;
-    border-color: #CA0000;
-    font-size: 16px; }
-  .acc-form-container .acc-form #manage {
-    margin-right: 16px; }
-  .acc-form-container .acc-form #change-acc-type {
-    color: #CA0000;
-    border-color: #CA0000;
-    padding: 4px 8px;
-    font-size: 14px;
-    font-weight: 400; }
-    .acc-form-container .acc-form #change-acc-type:hover {
-      background: #CA0000;
-      color: #fff; }
-  .acc-form-container .acc-form #change-mail {
-    cursor: pointer;
-    color: #CA0000;
-    float: right;
-    margin-bottom: 12px; }
-    .acc-form-container .acc-form #change-mail:hover {
-      text-decoration: underline; }
-  .acc-form-container .acc-form .password-field .meter {
-    position: absolute;
-    width: 0%;
-    height: 4px;
-    left: 0;
-    background: transparent;
-    transition: all 300ms ease-in-out; }
-    .acc-form-container .acc-form .password-field .meter[data-score="null"] {
-      width: 0;
-      background: red; }
-    .acc-form-container .acc-form .password-field .meter[data-score="0"] {
-      width: 5%;
-      background: #f20168; }
-    .acc-form-container .acc-form .password-field .meter[data-score="1"] {
-      width: 25%;
-      background: #f20168; }
-    .acc-form-container .acc-form .password-field .meter[data-score="2"] {
-      width: 50%;
-      background: #fc0; }
-    .acc-form-container .acc-form .password-field .meter[data-score="3"] {
-      width: 75%;
-      background: #0bd564; }
-    .acc-form-container .acc-form .password-field .meter[data-score="4"] {
-      width: 100%;
-      background: #0bd564; }
-  @media only screen and (max-width: 480px) {
-    .acc-form-container .acc-form .password-field .strength-feedback {
-      height: 16px;
-      padding-top: 8px;
-      font-size: 10px;
-      padding-bottom: 16px; } }
+
+.acc-form-container .alert-reg {
+  margin-bottom: 16px;
+  color: #fff; }
+
+.acc-form-container .alert-reg .anticon-check-circle {
+  color: #fff; }
+
+.acc-form-container .alert-reg .anticon-close-circle {
+  color: #fff !important; }
+
+.acc-form-container .menu {
+  margin-top: 16px; }
+
+.acc-form-container .acc-form .pw-acc-form-div {
+  margin: 16px 0; }
+
+.acc-form-container .acc-form .pw-acc-form-div #pw-label {
+  font-weight: 700; }
+
+.acc-form-container .acc-form .pw-acc-form-div #pw-icon {
+  float: right;
+  cursor: pointer; }
+
+.acc-form-container .acc-form .pw-acc-form-div #pw-icon:hover {
+  color: #CA0000; }
+
+.acc-form-container .acc-form .pw-acc-form-div .pw-button {
+  color: #CA0000;
+  border-color: #CA0000; }
+
+.acc-form-container .acc-form .form-button {
+  margin: 16px 0 8px 0;
+  background: #CA0000;
+  border-color: #CA0000;
+  font-size: 16px; }
+
+.acc-form-container .acc-form #manage {
+  margin-right: 16px; }
+
+.acc-form-container .acc-form #change-acc-type {
+  color: #CA0000;
+  border-color: #CA0000;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: 400; }
+
+.acc-form-container .acc-form #change-acc-type:hover {
+  background: #CA0000;
+  color: #fff; }
+
+.acc-form-container .acc-form #change-mail {
+  cursor: pointer;
+  color: #CA0000;
+  float: right;
+  margin-bottom: 12px; }
+
+.acc-form-container .acc-form #change-mail:hover {
+  text-decoration: underline; }
+
+.acc-form-container .acc-form .password-field .meter {
+  position: absolute;
+  width: 0%;
+  height: 4px;
+  left: 0;
+  background: transparent;
+  transition: all 300ms ease-in-out; }
+
+.acc-form-container .acc-form .password-field .meter[data-score="null"] {
+  width: 0;
+  background: red; }
+
+.acc-form-container .acc-form .password-field .meter[data-score="0"] {
+  width: 5%;
+  background: #f20168; }
+
+.acc-form-container .acc-form .password-field .meter[data-score="1"] {
+  width: 25%;
+  background: #f20168; }
+
+.acc-form-container .acc-form .password-field .meter[data-score="2"] {
+  width: 50%;
+  background: #fc0; }
+
+.acc-form-container .acc-form .password-field .meter[data-score="3"] {
+  width: 75%;
+  background: #0bd564; }
+
+.acc-form-container .acc-form .password-field .meter[data-score="4"] {
+  width: 100%;
+  background: #0bd564; }
+
+@media only screen and (max-width: 480px) {
   .acc-form-container .acc-form .password-field .strength-feedback {
     height: 16px;
     padding-top: 8px;
-    font-size: 12px;
-    padding-bottom: 8px; }
-  .acc-form-container .acc-form .password-field .is-validating.has-feedback .ant-form-item-children:after {
-    display: none; }
-  .acc-form-container .acc-form .email-area {
-    margin-bottom: 0 !important; }
-  .acc-form-container .acc-form .ant-form-item {
-    margin-bottom: 16px; }
-    .acc-form-container .acc-form .ant-form-item .ant-form-item-label label {
-      color: #595959; }
+    font-size: 10px;
+    padding-bottom: 16px; } }
+
+.acc-form-container .acc-form .password-field .strength-feedback {
+  height: 16px;
+  padding-top: 8px;
+  font-size: 12px;
+  padding-bottom: 8px; }
+
+.acc-form-container .acc-form .password-field .is-validating.has-feedback .ant-form-item-children:after {
+  display: none; }
+
+.acc-form-container .acc-form .email-area {
+  margin-bottom: 0 !important; }
+
+.acc-form-container .acc-form .ant-form-item {
+  margin-bottom: 16px; }
+
+.acc-form-container .acc-form .ant-form-item .ant-form-item-label label {
+  color: #595959; }
 
 @media only screen and (min-width: 768px) {
   .acc-form-container {

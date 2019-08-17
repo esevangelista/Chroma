@@ -1,0 +1,49 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+
+.seller-faq-main {
+  margin: 32px 0;
+  @include for-tablet-landscape-up {
+    padding: 0 32px;
+  }
+  @include for-desktop-up {
+    padding: 0 64px;
+  }
+  @include for-big-desktop-up {
+    padding: 0 120px;
+  }
+  #title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .ant-list {
+    .ant-spin-nested-loading {
+      .ant-spin-container {
+        .ant-list-items {
+          .ant-list-item {
+            a {
+              width: 100%;
+              .ant-list-item-meta {
+                .ant-list-item-meta-avatar {
+                  .ant-avatar {
+                    color: $gray-8;
+                    background: $dead-grey;
+                  }
+                }
+                .ant-list-item-meta-content {
+                  .ant-list-item-meta-title {
+                    font-size: 16px;
+                  }
+                  .ant-list-item-meta-description {
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

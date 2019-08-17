@@ -42,6 +42,11 @@
     border: 1px solid $pale-grey;
     padding: 16px 16px;
     text-align: justify;
+    .ant-typography {
+      .ant-typography-expand {
+        color: $chroma-red;
+      }
+    }
   }
   #price {
     font-family: 'Sailec-Bold';

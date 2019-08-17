@@ -1,74 +1,93 @@
 .messages-container {
   min-height: 100vh; }
-  @media only screen and (min-width: 992px) {
-    .messages-container {
-      min-height: 0; } }
+
+@media only screen and (min-width: 992px) {
+  .messages-container {
+    min-height: 0; } }
+
+.messages-container .msg-row .col-users .messages-header {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 16px; }
+
+@media only screen and (min-width: 992px) {
   .messages-container .msg-row .col-users .messages-header {
-    width: 100%;
-    margin-bottom: 16px;
-    padding: 16px; }
-    @media only screen and (min-width: 992px) {
-      .messages-container .msg-row .col-users .messages-header {
-        padding: 24px; } }
-    @media (min-width: 1800px) {
-      .messages-container .msg-row .col-users .messages-header {
-        padding: 48px; } }
-    .messages-container .msg-row .col-users .messages-header #label {
-      color: #595959;
-      font-size: 24px;
-      font-family: 'Sailec-Regular';
-      font-weight: 600;
-      float: left; }
-    .messages-container .msg-row .col-users .messages-header #new-icn {
-      cursor: pointer;
-      float: right;
-      font-size: 18px;
-      margin-top: 8px;
-      color: #595959; }
+    padding: 24px; } }
+
+@media (min-width: 1800px) {
+  .messages-container .msg-row .col-users .messages-header {
+    padding: 48px; } }
+
+.messages-container .msg-row .col-users .messages-header #label {
+  color: #595959;
+  font-size: 24px;
+  font-family: 'Sailec-Regular';
+  font-weight: 600;
+  float: left; }
+
+.messages-container .msg-row .col-users .messages-header #new-icn {
+  cursor: pointer;
+  float: right;
+  font-size: 18px;
+  margin-top: 8px;
+  color: #595959; }
+
+.messages-container .msg-row .col-users .msgs-list {
+  padding: 0 16px; }
+
+@media only screen and (min-width: 992px) {
   .messages-container .msg-row .col-users .msgs-list {
-    padding: 0 16px; }
-    @media only screen and (min-width: 992px) {
-      .messages-container .msg-row .col-users .msgs-list {
-        max-height: 82.27147vh;
-        overflow-y: auto;
-        padding: unset; } }
-    @media (min-width: 1800px) {
-      .messages-container .msg-row .col-users .msgs-list {
-        max-height: 75.62327vh;
-        overflow-y: auto;
-        padding: unset; } }
-    .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item {
-      cursor: pointer; }
-      @media only screen and (min-width: 992px) {
-        .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item {
-          padding-left: 24px; } }
-      @media (min-width: 1800px) {
-        .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item {
-          padding-left: 48px; } }
-      .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta {
-        cursor: pointer; }
-        .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-description, .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-title {
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          overflow: hidden;
-          max-width: 200px; }
+    max-height: 82.27147vh;
+    overflow-y: auto;
+    padding: unset; } }
+
+@media (min-width: 1800px) {
+  .messages-container .msg-row .col-users .msgs-list {
+    max-height: 75.62327vh;
+    overflow-y: auto;
+    padding: unset; } }
+
+.messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item {
+  cursor: pointer; }
+
+@media only screen and (min-width: 992px) {
+  .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item {
+    padding-left: 24px; } }
+
+@media (min-width: 1800px) {
+  .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item {
+    padding-left: 48px; } }
+
+.messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta {
+  cursor: pointer; }
+
+.messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-description, .messages-container .msg-row .col-users .msgs-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px; }
+
+.messages-container .msg-row .col-users .ant-skeleton {
+  padding: 0 16px; }
+
+@media only screen and (min-width: 992px) {
   .messages-container .msg-row .col-users .ant-skeleton {
-    padding: 0 16px; }
-    @media only screen and (min-width: 992px) {
-      .messages-container .msg-row .col-users .ant-skeleton {
-        padding: 0 24px; } }
-    @media (min-width: 1800px) {
-      .messages-container .msg-row .col-users .ant-skeleton {
-        padding: 0 48px; } }
+    padding: 0 24px; } }
+
+@media (min-width: 1800px) {
+  .messages-container .msg-row .col-users .ant-skeleton {
+    padding: 0 48px; } }
+
+.messages-container .msg-row .web {
+  display: none; }
+
+@media only screen and (min-width: 992px) {
   .messages-container .msg-row .web {
-    display: none; }
-    @media only screen and (min-width: 992px) {
-      .messages-container .msg-row .web {
-        display: block;
-        border-left: 1px solid #f8f8f8;
-        overflow-y: auto;
-        height: 88.91967vh; }
-        .messages-container .msg-row .web .ant-result .ant-result-title {
-          color: #595959; }
-        .messages-container .msg-row .web .ant-result .ant-result-icon i {
-          color: #CA0000; } }
+    display: block;
+    border-left: 1px solid #f8f8f8;
+    overflow-y: auto;
+    height: 88.91967vh; }
+  .messages-container .msg-row .web .ant-result .ant-result-title {
+    color: #595959; }
+  .messages-container .msg-row .web .ant-result .ant-result-icon i {
+    color: #CA0000; } }

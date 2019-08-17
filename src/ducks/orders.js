@@ -17,6 +17,37 @@ export const CANCEL_ORDER_REQUEST = 'CANCEL_ORDER_REQUEST';
 export const CANCEL_ORDER_SUCCESS = 'CANCEL_ORDER_SUCCESS';
 export const CANCEL_ORDER_FAILED = 'CANCEL_ORDER_FAILED';
 
+export const ADD_REVIEW_REQUEST = 'ADD_REVIEW_REQUEST';
+export const ADD_REVIEW_SUCESS = 'ADD_REVIEW_SUCESS';
+export const ADD_REVIEW_FAILED = 'ADD_REVIEW_FAILED';
+
+export const EDIT_REVIEW_REQUEST = 'EDIT_REVIEW_REQUEST';
+export const EDIT_REVIEW_SUCCESS = 'EDIT_REVIEW_SUCCESS';
+export const EDIT_REVIEW_FAILED = 'EDIT_REVIEW_FAILED';
+
+export function addReviewRequest(_id, data) {
+  return { type: ADD_REVIEW_REQUEST, _id, data };
+}
+
+export function addReviewSuccess(message) {
+  return { type: ADD_REVIEW_SUCESS, message };
+}
+
+export function addReviewFailed(message) {
+  return { type: ADD_REVIEW_FAILED, message };
+}
+
+export function editReviewRequest(_id, data) {
+  return { type: EDIT_REVIEW_REQUEST, _id, data };
+}
+
+export function editReviewSuccess(message) {
+  return { type: EDIT_REVIEW_SUCCESS, message };
+}
+
+export function editReviewFailed(message) {
+  return { type: EDIT_REVIEW_FAILED, message };
+}
 export function cancelOrderRequest(_id) {
   return { type: CANCEL_ORDER_REQUEST, _id };
 }
@@ -170,6 +201,42 @@ export default function orderReducer(state = initialState, action) {
         isFetching: false,
         message: action.message,
         error: true,
+      };
+    case ADD_REVIEW_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case ADD_REVIEW_SUCESS:
+      return {
+        ...state,
+        isFetching: false,
+        message: action.message,
+      };
+    case ADD_REVIEW_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+        message: action.message,
+      };
+    case EDIT_REVIEW_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case EDIT_REVIEW_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        message: action.message,
+      };
+    case EDIT_REVIEW_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+        message: action.message,
       };
     default:
       return state;

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { CometChat } from '@cometchat-pro/chat';
-import { Icon, Upload, Result, message, Row, Col, Tooltip, Avatar, Skeleton, PageHeader, Typography, Badge, Empty, Input } from 'antd';
+import { Icon, Upload, Result, message, Row, Col, Tooltip, Avatar, Skeleton, PageHeader, Typography, Badge, Input } from 'antd';
 import { fetchConvoRequest } from '../../../ducks/chat';
 import './conversation.css';
 
@@ -191,7 +190,7 @@ class Conversation extends Component {
                                         c.type === 'text' ?
                                           c.data.text.split('\n').map(p => p !== '\n' ? <Text id="msg"> {p} <br /></Text> : '')
                                         : c.type === 'file' ?
-                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="Image cannot be displayed" /></a>
+                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="Cannot be displayed" /></a>
                                         : ''
                                       }
                                     </Tooltip>
@@ -205,7 +204,7 @@ class Conversation extends Component {
                                         c.type === 'text' ?
                                           c.data.text.split('\n').map(p => p !== '\n' ? <Text id="msg"> {p} <br /></Text> : '')
                                         : c.type === 'file' ?
-                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="Image cannot be displayed" /></a>
+                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="Cannot be displayed" /></a>
                                         : ''
                                       }
                                     </Tooltip>

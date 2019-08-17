@@ -1,0 +1,43 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+@import 'src/styles/variables';
+
+.ant-layout {
+  .faq-header, .faq-content {
+    padding: 0 ($site-padding - 20);
+
+    @include for-tablet-portrait-down {
+      padding: 0 ($site-padding - 40);
+    }
+
+    @include for-phone-only {
+      padding: 0 ($site-padding - 70);
+    }
+
+    @include for-tablet-landscape-up {
+      padding: 0 $site-padding;
+    }
+  }
+  .faq-header {
+    background: $dead-grey;
+    display: flex;
+    a {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    @include for-tablet-landscape-up {
+      padding: 0 82px;
+    }
+    @include for-desktop-up {
+      padding: 0 144px;
+    }
+    @include for-big-desktop-up {
+      padding: 0 200px;
+    }
+  }
+  .faq-content {
+    background: $white;
+    min-height: 100vh;
+  }
+}

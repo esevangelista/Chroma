@@ -203,7 +203,7 @@ function fetchReducer(state = initialFetchState, action) {
           minHeight: action.dimensions.minH,
           maxHeight: action.dimensions.maxH,
           minWidth: action.dimensions.minW,
-          maxWith: action.dimensions.maxW,
+          maxWidth: action.dimensions.maxW,
           minDepth: action.dimensions.minD,
           maxDepth: action.dimensions.maxD,
           page: 1,

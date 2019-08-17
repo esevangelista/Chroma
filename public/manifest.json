@@ -1,15 +1,31 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16 512x512",
-      "type": "image/x-icon"
-    }
-  ],
+  "short_name": "Chroma",
+  "name": "Chroma",
+  "description": "Online Marketplace for Artworks",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "icons": [
+    {
+     "src": "chroma16.png",
+     "sizes": "16x16",
+     "type": "image/png"
+    },
+    {
+     "src": "chroma32.png",
+     "sizes": "32x32",
+     "type": "image/png"
+    },
+    {
+     "src": "chroma192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    },
+    {
+     "src": "chroma512.png",
+     "sizes": "512x512",
+     "type": "image/png"
+    }
+  ]
 }

@@ -1,0 +1,46 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+
+.seller-faq-why {
+  margin: 32px 0;
+  @include for-tablet-landscape-up {
+    padding: 0 32px;
+  }
+  @include for-desktop-up {
+    padding: 0 64px;
+  }
+  @include for-big-desktop-up {
+    padding: 0 120px;
+  }
+  .routes {
+    margin-bottom: 16px;
+    span {
+      .ant-breadcrumb-link a {
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+    }
+  }
+  #title {
+    color: $gray-8;
+  }
+  #para, #what, .list li {
+    color: $gray-8;
+  }
+  li {
+    margin-top: 8px;
+  }
+  .list {
+    margin-top: 8px;
+  }
+  #more-on {
+    a {
+      color: $chroma-red;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

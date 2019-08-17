@@ -14,9 +14,8 @@ class ViewArtist extends Component {
     const { _id } = this.props.match.params;
     this.props.getArtistRequest(_id);
   }
-  handleMenuClick = e => this.setState({ current: e.key });
   render() {
-    const { isFetching, error, message } = this.props;
+    const { isFetching, error } = this.props;
     return (
       <div>
         {
@@ -24,7 +23,7 @@ class ViewArtist extends Component {
             <Spin indicator={antIcon} style={{ position: 'absolute', left: '50%', top: '50%' }} />
           : error ?
             <NotFound />
-          : <Content match={this.props.match} />
+          : <Content history={this.props.history} match={this.props.match} />
         }
       </div>
     );

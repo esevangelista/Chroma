@@ -1,0 +1,94 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.reviews-container {
+  padding: 0 16px;
+  text-align: left;
+  @include for-tablet-landscape-up {
+    padding: 0 32px;
+  }
+  @include for-big-desktop-up {
+    padding: 0 64px;
+  }
+  .ant-row-flex {
+    .ant-col {
+      .ant-statistic {
+        .ant-statistic-content {
+          .ant-statistic-content-prefix {
+            color: $chroma-red;
+            font-size: 20px;
+          }
+          .ant-statistic-content-value {
+            font-family: 'Sailec-Light';
+            color: $gray-8;
+            font-weight: 700;
+          }
+        }
+      }
+      .ant-select {
+        float: right;
+        width: 100%;
+        margin-bottom: 8px;
+        .ant-select-selection {
+          border-radius: 0;
+          border: none;
+          background: $gray-4;
+        }
+      }
+    }
+  }
+  .ant-list {
+    margin-top: 16px;
+    margin-bottom: 32px;
+    .ant-spin-nested-loading {
+      .ant-spin-container {
+        .ant-list-items {
+          .ant-list-item {
+            .ant-list-item-meta {
+              .ant-list-item-meta-content {
+                .ant-list-item-meta-description {
+                  .content {
+                    .ant-rate {
+                      color: $chroma-red;
+                      margin: 8px 0;
+                    }
+                    .ant-typography {
+                      a { color: $chroma-red; }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .ant-list-pagination {
+      .ant-pagination {
+        .ant-pagination-disabled {
+          a {
+            &:hover, &:active, &:focus {
+              color: $gray-4 !important;
+              }
+          }
+        }
+        .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+          a {
+            &:hover {
+              color: $chroma-red;
+            }
+          }
+        }
+        .ant-pagination-item-active {
+          border-color: $chroma-red;
+          a {
+            color: $chroma-red;
+            &:hover, &:link, &:focus {
+              color: $chroma-red;
+            }
+          }
+        }
+      }
+    }
+  }
+}

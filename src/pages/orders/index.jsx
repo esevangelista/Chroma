@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import Header from '../header/';
 import Footer from '../../global/footer/';
 import { checkUserSession } from '../../ducks/users';
+import { orderQuery } from '../../ducks/orders';
+
 import Main from './Main/';
 
 const { Content } = Layout;
@@ -15,6 +17,9 @@ class Orders extends Component {
   componentDidMount() {
     this.props.checkUserSession();
     window.scrollTo(0, 0);
+  }
+  componentWillUnmount() {
+    this.props.orderQuery({});
   }
   render() {
     const { isGettingSession, profile } = this.props;
@@ -42,6 +47,7 @@ class Orders extends Component {
 }
 
 Orders.propTypes = {
+  orderQuery: PropTypes.func.isRequired,
   checkUserSession: PropTypes.func.isRequired,
   isGettingSession: PropTypes.bool.isRequired,
   profile: PropTypes.shape({
@@ -53,6 +59,7 @@ const mapStateToProps = state => state.user;
 
 const mapDispatchToProps = {
   checkUserSession,
+  orderQuery,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Orders));

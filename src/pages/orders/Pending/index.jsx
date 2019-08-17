@@ -72,6 +72,7 @@ class Pending extends Component {
         <Timeline className="timeline">
           <Timeline.Item color="green">
             {new Date(order.datePurchased).toLocaleString('en-US', options)} <br />
+            You have successfully placed an order
           </Timeline.Item>
         </Timeline>
         <div className="whatsnext">

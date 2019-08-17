@@ -222,11 +222,17 @@ $header-height: 80px;
       color: $chroma-red;
       .mobile-menu {
         margin-top: 16px;
+        .ant-menu-item-selected {
+          background: transparent;
+        }
         .ant-menu-item {
           padding-left: 8px !important;
           a {
             color: $chroma-red;
             font-size: 16px;
+          }
+          &:after {
+            border-right: none;
           }
         }
         .ant-menu-submenu-open {

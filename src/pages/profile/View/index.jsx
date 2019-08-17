@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Icon, Layout, Menu, Avatar, Collapse, Typography } from 'antd';
 import { regions, provinces } from 'philippines';
 import Art from './Art/';
+import Reviews from './Reviews/';
 import './view.css';
 
 const { Content } = Layout;
@@ -31,11 +32,20 @@ class View extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: this.props.profile.isArtist ? '1' : '2',
+      current: this.props.profile.isArtist ? '#art' : '#about-me',
     };
     this.handleMenuClick = this.handleMenuClick.bind(this);
   }
-  handleMenuClick = e => this.setState({ current: e.key });
+  componentWillMount() {
+    const { hash } = this.props.history.location;
+    if (hash && ['#reviews', '#about-me', '#art'].includes(hash)) {
+      this.setState({ current: hash });
+    }
+  }
+  handleMenuClick = e => {
+    this.setState({ current: e.key });
+    this.props.history.replace({ hash: e.key });
+  }
   render() {
     const { profile } = this.props;
     const {
@@ -60,14 +70,14 @@ class View extends Component {
         <p id="name"> {firstName} {lastName} </p>
         {loc(location) ? <span id="location"><Icon type="environment" theme="filled" /> {loc(location)} </span> : ''}
         <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.state.current]} className="profile-menu">
-          {isArtist ? <Menu.Item key="1"> Artworks </Menu.Item> : ''}
-          { bio ? <Menu.Item key="2" disabled={!disable}> About Me </Menu.Item> : '' }
-          {isArtist ? <Menu.Item key="3"> Reviews </Menu.Item> : ''}
+          {isArtist ? <Menu.Item key="#art"> Artworks </Menu.Item> : ''}
+          { bio ? <Menu.Item key="#about-me" disabled={!disable}> About Me </Menu.Item> : '' }
+          {isArtist ? <Menu.Item key="#reviews"> Reviews </Menu.Item> : ''}
         </Menu>
         {
-          current === '1' ?
+          current === '#art' ?
             <Art />
-          : current === '2' ?
+          : current === '#about-me' ?
             <div className="abt-me">
               <Collapse
                 accordion
@@ -95,7 +105,7 @@ class View extends Component {
                 }
               </Collapse>
             </div>
-          : <p> 3 </p>
+          : <Reviews me={profile._id} />
         }
       </Content>
     );

@@ -73,7 +73,14 @@ class Notifications extends Component {
                         <Link to={item.link}>
                           <div>
                             <Text> {item.content} </Text><br />
-                            <Text type="secondary"> {moment([new Date(item.createdAt).getFullYear(), new Date(item.createdAt).getMonth(), new Date(item.createdAt).getDate()]).fromNow()}</Text>
+                            <Text type="secondary">
+                              {moment(new Date(item.createdAt)).calendar(null, {
+                                  sameDay: '[Today at]  h:mm A',
+                                  lastDay: '[Yesterday at] h:mm A',
+                                  lastWeek: '[Last] dddd [at] h:mm A',
+                                  sameElse: 'DD/MM/YYYY',
+                              })}
+                            </Text>
                           </div>
                         </Link>
                       </List.Item>

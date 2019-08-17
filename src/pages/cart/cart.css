@@ -1,44 +1,55 @@
 .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body {
   padding: 0 0; }
-  .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .ant-spin-spinning {
-    position: absolute;
-    top: 50%;
-    left: 50%; }
-    .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .ant-spin-spinning .ant-spin-dot-spin .ant-spin-dot-item {
-      background: #CA0000; }
-  .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded #title {
-    padding: 16px 32px 0 32px;
-    color: #CA0000; }
-  .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded #btn-checkout {
-    background: #CA0000;
-    color: #fff;
-    border-color: #CA0000;
-    max-width: unset;
-    font-weight: 600;
-    min-height: 40px; }
-  .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content {
-    padding: 0 32px;
-    margin-bottom: 120px; }
-    .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content .item-container {
-      padding: 8px 0;
-      border-bottom: 1px solid #dde2e8; }
-      .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content .item-container .thumbnail {
-        width: 100%; }
-      .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content .item-container p {
-        color: #262626; }
-  .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .checkout-container {
-    min-height: 120px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: #f8f8f8;
-    padding: 16px 32px 16px 32px; }
-    .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .checkout-container .checkout-info .label {
-      float: left;
-      margin-bottom: 16px; }
-    .cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .checkout-container .checkout-info .value {
-      float: right;
-      margin-bottom: 16px; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .ant-spin-spinning {
+  position: absolute;
+  top: 50%;
+  left: 50%; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .ant-spin-spinning .ant-spin-dot-spin .ant-spin-dot-item {
+  background: #CA0000; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded #title {
+  padding: 16px 32px 0 32px;
+  color: #CA0000; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded #btn-checkout {
+  background: #CA0000;
+  color: #fff;
+  border-color: #CA0000;
+  max-width: unset;
+  font-weight: 600;
+  min-height: 40px; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content {
+  padding: 0 32px;
+  margin-bottom: 120px; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content .item-container {
+  padding: 8px 0;
+  border-bottom: 1px solid #dde2e8; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content .item-container .thumbnail {
+  width: 100%; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .cart-content .item-container p {
+  color: #262626; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .checkout-container {
+  min-height: 120px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #f8f8f8;
+  padding: 16px 32px 16px 32px; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .checkout-container .checkout-info .label {
+  float: left;
+  margin-bottom: 16px; }
+
+.cart-drawer .ant-drawer-content-wrapper .ant-drawer-body .cart-loaded .checkout-container .checkout-info .value {
+  float: right;
+  margin-bottom: 16px; }
 
 .ant-popover .ant-popover-content .ant-popover-inner .ant-popover-inner-content .ant-popover-buttons .ant-btn-primary {
   border-radius: 0;
@@ -56,14 +67,15 @@
   line-height: 0;
   height: 0;
   --antd-wave-shadow-color: transparent; }
-  #btn-del:hover, #btn-del:focus, #btn-del:active, #btn-del:focus:active, #btn-del:link, #btn-del:visited .active {
-    color: #CA0000;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-    background-image: none;
-    outline: 0 !important;
-    -webkit-box-shadow: none; }
+
+#btn-del:hover, #btn-del:focus, #btn-del:active, #btn-del:focus:active, #btn-del:link, #btn-del:visited .active {
+  color: #CA0000;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  background-image: none;
+  outline: 0 !important;
+  -webkit-box-shadow: none; }
 
 @media only screen and (max-width: 480px) {
   .text {

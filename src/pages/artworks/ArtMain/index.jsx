@@ -20,7 +20,6 @@ import {
   Pagination,
   Spin,
 } from 'antd';
-import qs from 'qs';
 import {
   getArtRequest,
   handleQueryType,
@@ -96,6 +95,7 @@ class ArtMain extends Component {
 
   componentDidMount() {
     this.props.getArtRequest();
+    window.scrollTo(0, 0);
   }
   seeMoreMedium() {
     this.setState({ seeMore: !this.state.seeMore });
@@ -145,19 +145,13 @@ class ArtMain extends Component {
     await this.setState({ minH: e.target.value });
     const { minH } = this.state;
     if (isNaN(minH) || minH < 0) await this.setState({ heightErr: true });
-    else {
-      await this.setState({ heightErr: false });
-      // this.handleHeightChange();
-    }
+    else await this.setState({ heightErr: false });
   }
   async handleMaxHeight(e) {
     await this.setState({ maxH: e.target.value });
     const { maxH } = this.state;
     if (isNaN(maxH) || maxH < 0) await this.setState({ heightErr: true });
-    else {
-      await this.setState({ heightErr: false });
-      // this.handleHeightChange();
-    }
+    else await this.setState({ heightErr: false });
   }
   async handleHeightChange() {
     const {
@@ -168,7 +162,7 @@ class ArtMain extends Component {
       minD,
       maxD,
     } = this.state;
-    if ((minH && maxH) && minH > maxH) await this.setState({ heightErr: true });
+    if ((minH && maxH) && parseInt(minH) > parseInt(maxH)) await this.setState({ heightErr: true });
     else {
       await this.setState({ priceErr: false });
       this.props.handleQueryDimensions({
@@ -185,19 +179,13 @@ class ArtMain extends Component {
     await this.setState({ minW: e.target.value });
     const { minW } = this.state;
     if (isNaN(minW) || minW < 0) await this.setState({ widthErr: true });
-    else {
-      await this.setState({ widthErr: false });
-      // this.handleWidthChange();
-    }
+    else await this.setState({ widthErr: false });
   }
   async handleMaxWidth(e) {
     await this.setState({ maxW: e.target.value });
     const { maxW } = this.state;
     if (isNaN(maxW) || maxW < 0) await this.setState({ widthErr: true });
-    else {
-      await this.setState({ widthErr: false });
-      // this.handleWidthChange();
-    }
+    else await this.setState({ widthErr: false });
   }
   async handleWidthChange() {
     const {
@@ -208,7 +196,7 @@ class ArtMain extends Component {
       minD,
       maxD,
     } = this.state;
-    if ((minW && maxW) && minW > maxW) await this.setState({ widthErr: true });
+    if ((minW && maxW) && parseInt(minW) > parseInt(maxW)) await this.setState({ widthErr: true });
     else {
       await this.setState({ widthErr: false });
       this.props.handleQueryDimensions({
@@ -225,19 +213,13 @@ class ArtMain extends Component {
     await this.setState({ minD: e.target.value });
     const { minD } = this.state;
     if (isNaN(minD) || minD < 0) await this.setState({ depthErr: true });
-    else {
-      await this.setState({ depthErr: false });
-      // this.handleDepthChange();
-    }
+    else await this.setState({ depthErr: false });
   }
   async handleMaxDepth(e) {
     await this.setState({ maxD: e.target.value });
     const { maxD } = this.state;
     if (isNaN(maxD) || maxD < 0) await this.setState({ depthErr: true });
-    else {
-      await this.setState({ depthErr: false });
-      // this.handleDepthChange();
-    }
+    else await this.setState({ depthErr: false });
   }
   async handleDepthChange() {
     const {
@@ -248,7 +230,7 @@ class ArtMain extends Component {
       minD,
       maxD,
     } = this.state;
-    if ((minD && maxD) && minD > maxD) await this.setState({ depthErr: true });
+    if ((minD && maxD) && parseInt(minD) > parseInt(maxD)) await this.setState({ depthErr: true });
     else {
       await this.setState({ depthErr: false });
       this.props.handleQueryDimensions({
@@ -266,23 +248,17 @@ class ArtMain extends Component {
     const minPrice = e.target.value;
     await this.setState({ minP: minPrice });
     if (isNaN(minPrice) || minPrice < 0) await this.setState({ priceErr: true });
-    else {
-      await this.setState({ priceErr: false });
-      // this.handlePriceChange();
-    }
+    else await this.setState({ priceErr: false });
   }
   async handleMaxPrice(e) {
     const maxPrice = e.target.value;
     await this.setState({ maxP: maxPrice });
     if (isNaN(maxPrice) || maxPrice < 0) await this.setState({ priceErr: true });
-    else {
-      await this.setState({ priceErr: false });
-      // this.handlePriceChange();
-    }
+    else await this.setState({ priceErr: false });
   }
   async handlePriceChange() {
     const { minP, maxP } = this.state;
-    if ((minP && maxP) && minP > maxP) await this.setState({ priceErr: true });
+    if ((minP && maxP && parseInt(minP) > parseInt(maxP)) === true) await this.setState({ priceErr: true });
     else {
       await this.setState({ priceErr: false });
       this.props.handleQueryPrice({ minP, maxP });
@@ -366,7 +342,7 @@ class ArtMain extends Component {
     return (
       <div>
         {
-          isFetching ? <Spin className="loader" indicator={antIcon} style={{ position: 'absolute', top: '50%', left: '50%' }} />:
+          isFetching ? <Spin className="loader" indicator={antIcon} style={{ position: 'absolute', top: '50%', left: '50%' }} /> :
           <div className="products-main-container art-main-container">
             <div className="products-container art-container">
               <Breadcrumb className="breadcrumb">
@@ -523,20 +499,22 @@ class ArtMain extends Component {
                               size="small"
                               key={info._id}
                               cover={
-                                <img
-                                  alt="example"
-                                  onClick={() => this.props.history.push(`/artworks/${info._id}`)}
-                                  src={info.images[0].publicURL}
-                                />
+                                <Link to={`/artworks/${info._id}`}>
+                                  <img
+                                    alt="example"
+                                    src={info.images[0].publicURL}
+                                    style={{ width: '100%' }}
+                                  />
+                                </Link>
                               }
                             >
                               <Link to={`/artworks/${info._id}`}>
                                 <div>
-                                    <Text strong>{info.title}</Text><br />
-                                    <Text>By {info.artist.firstName} {info.artist.lastName}</Text>
-                                    <br />
-                                    <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
-                                    <br />
+                                  <Text strong>{info.title}</Text><br />
+                                  <Text>By {info.artist.firstName} {info.artist.lastName}</Text>
+                                  <br />
+                                  <Text type="secondary">{info.dimensions.height}"x{info.dimensions.width}"x{info.dimensions.depth}</Text>
+                                  <br />
                                 </div>
                               </Link>
                               <Row className="bottom-div" justify="space-between" type="flex">

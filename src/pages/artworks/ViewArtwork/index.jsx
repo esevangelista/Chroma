@@ -27,6 +27,7 @@ class ViewArtwork extends Component {
   }
   componentDidMount() {
     this.props.getActiveArtRequest(this.props.match.params._id || this.props.activeArtwork._id);
+    window.scrollTo(0, 0);
   }
   qtyChange = value => this.setState({ qty: value });
   handleUpdateCart = async () => {
@@ -101,7 +102,7 @@ class ViewArtwork extends Component {
                 <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10} className="right-content">
                   <Title level={4} id="art-title"> {title} </Title>
                   <Text id="form"> {artform} by </Text>
-                  <Text id="artist"> {artist.firstName} {artist.lastName} </Text> <br />
+                  <Text id="artist"><Link to={`/artists/${artist._id}#art`} > {artist.firstName} {artist.lastName} </Link> </Text> <br />
                   <br />
                   <ul>
                     <li><Text> Size: {dimensions.height}H x {dimensions.width}W x {dimensions.depth} in</Text></li>
@@ -150,17 +151,23 @@ class ViewArtwork extends Component {
               >
                 <Panel header="Artwork Description" key="1">
                   <div className="desc">
-                   {
-                    formattedDesc.map(d => <Paragraph> {d} </Paragraph>)
-                   }
+                    <Paragraph ellipsis={{ rows: 15, expandable: true }}>
+                     {
+                      formattedDesc.map(d => <span>{d}<br /></span>)
+                     }
+                    </Paragraph>
                   </div>
                   <br />
                 </Panel>
-                <Panel header="Shipment Information" key="2">
-                  <p> ... </p>
+                <Panel header="Shipping" key="2">
+                  This artwork will be sold and shipped to you by
+                  <Link to={`/artists/${artist._id}#art`}> {artist.firstName} {artist.lastName} </Link>.
+                  The seller will be informing you of the tracking details once payment has been transferred and product has been shipped.
                 </Panel>
                 <Panel header="Returns and Refunds" key="3">
-                  <p> ... </p>
+                  If you are not completely satisfied with your purchase you can
+                  return it upon informing and discussing with the seller.
+                  Returns and refunds shall be managed by the buyer and seller directly over chat or other preferred mode of communication.
                 </Panel>
               </Collapse>
             </div>

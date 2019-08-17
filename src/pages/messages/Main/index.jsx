@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, withRouter, Switch, Route } from 'react-router-dom';
-import moment from 'moment';
-import { Icon, Divider, Avatar, List, Typography, Row, Col, Skeleton, Empty, Result } from 'antd';
+import { withRouter, Switch, Route } from 'react-router-dom';
+import { Icon, Avatar, List, Typography, Row, Col, Skeleton, Empty, Result } from 'antd';
 import { CometChat } from '@cometchat-pro/chat';
 import { fetchMsgsRequest } from '../../../ducks/chat';
 import Web from '../Web/';

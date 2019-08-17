@@ -50,8 +50,7 @@ class Completed extends Component {
         <Timeline className="timeline" reverse>
           <Timeline.Item color="green">
             {new Date(order.datePurchased).toLocaleString('en-US', options)} <br />
-            <br />
-            {order.ownedBy.firstName} {order.ownedBy.lastName} placed an order <br />
+            {order.ownedBy.firstName} {order.ownedBy.lastName} placed an order
           </Timeline.Item>
           <Timeline.Item color="green">
             {new Date(order.datePaid).toLocaleString('en-US', options)} <br />

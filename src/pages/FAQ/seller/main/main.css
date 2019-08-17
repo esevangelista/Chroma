@@ -1,0 +1,28 @@
+.seller-faq-main {
+  margin: 32px 0; }
+
+@media only screen and (min-width: 992px) {
+  .seller-faq-main {
+    padding: 0 32px; } }
+
+@media (min-width: 1200px) {
+  .seller-faq-main {
+    padding: 0 64px; } }
+
+@media (min-width: 1800px) {
+  .seller-faq-main {
+    padding: 0 120px; } }
+
+.seller-faq-main #title {
+  font-size: 24px;
+  font-weight: 500; }
+
+.seller-faq-main .ant-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item a {
+  width: 100%; }
+
+.seller-faq-main .ant-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item a .ant-list-item-meta .ant-list-item-meta-avatar .ant-avatar {
+  color: #595959;
+  background: #f8f8f8; }
+
+.seller-faq-main .ant-list .ant-spin-nested-loading .ant-spin-container .ant-list-items .ant-list-item a .ant-list-item-meta .ant-list-item-meta-content .ant-list-item-meta-title {
+  font-size: 16px; }

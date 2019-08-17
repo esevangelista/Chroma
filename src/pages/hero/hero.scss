@@ -40,6 +40,12 @@
       &.link-to-list {
         font-size: 10px;
       }
+      a {
+        color: $chroma-red;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
     .btn-hero {
       display: block;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { regions, provinces, cities } from 'philippines';
-import { Row, Col, Typography, Steps, Form, Input, Select, Switch, Button } from 'antd';
+import { Row, Col, Typography, Steps, Form, Input, Select, Result, Button } from 'antd';
 import { handleNewOrder } from '../../../ducks/orders';
 import './shipping.css';
 
@@ -61,7 +61,6 @@ class Shipping extends Component {
   render() {
     const { profile, cart, form } = this.props;
     const { products, tally, total } = cart;
-    const { location } = profile;
     const { filteredProvinces, filteredCities } = this.state;
     const { getFieldDecorator } = form;
     return (
@@ -179,9 +178,6 @@ class Shipping extends Component {
                       rules: [{ required: true, message: 'Landmarks missing.' }],
                     })(<Input.TextArea autosize={{ minRows: 2, max: 7 }} />)}
                   </Form.Item>
-                  <Form.Item label="Set as my default address" >
-                    {getFieldDecorator('asDefault', { valuePropName: 'checked' })(<Switch />)}
-                  </Form.Item>
                   <Form.Item>
                     <Button type="primary" htmlType="submit" className="form-button">
                       Save & Proceed to Payment
@@ -191,7 +187,7 @@ class Shipping extends Component {
               </Form>
             </Col>
           </Row>
-          : <p> Cart is Empty </p>
+          : <Result status="404" title="No items in cart" />
         }
       </div>
     );

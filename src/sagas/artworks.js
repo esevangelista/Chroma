@@ -18,7 +18,6 @@ import {
   REMOVE_ALL_FILTERS,
   HANDLE_QUERY_LIMIT,
   HANDLE_QUERY_PAGE,
-  // handleAllQuery,
   getArtRequest,
   getArtSuccess,
   getArtFailed,
@@ -34,12 +33,6 @@ export const getUser = state => state.user.profile;
 export function* getArtworks() {
   try {
     const query = yield select(getQuery);
-    // const queryParams = yield select(getSearch);
-    // const q = qs.parse(queryParams, { ignoreQueryPrefix: true });
-    // if (q) {
-    //   query = { ...q, ...query };
-    //   yield put(handleAllQuery(query));
-    // }
     const response = yield call(getRequestService, `/artwork?${qs.stringify(query)}`);
     const { data } = response;
     const { success } = data;

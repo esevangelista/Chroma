@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Icon, Layout, Menu, Avatar, Collapse, Typography } from 'antd';
+import { Icon, Layout, Menu, Avatar, Rate, Collapse, Typography } from 'antd';
 import { regions, provinces } from 'philippines';
 import Art from './Art';
+import Reviews from './Reviews';
 
-const { Paragraph } = Typography;
+const { Paragraph, Text } = Typography;
 const { Panel } = Collapse;
 
 const loc = (location) => {
@@ -29,12 +30,20 @@ class Content extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: '1',
+      current: '#art',
     };
     this.handleMenuClick = this.handleMenuClick.bind(this);
   }
-
-  handleMenuClick = e => this.setState({ current: e.key });
+  componentWillMount() {
+    const { hash } = this.props.history.location;
+    if (hash && ['#reviews', '#about-me', '#art'].includes(hash)) {
+      this.setState({ current: hash });
+    }
+  }
+  handleMenuClick = e => {
+    this.setState({ current: e.key });
+    this.props.history.replace({ hash: e.key });
+  }
   render() {
     const profile = this.props.artist;
     const {
@@ -45,6 +54,8 @@ class Content extends Component {
       bio,
       links,
       isArtist,
+      rating,
+      reviews,
     } = profile;
     const formattedBio = bio ? bio.split('\n') : '';
     const { current } = this.state;
@@ -58,16 +69,25 @@ class Content extends Component {
           : <Avatar size={100} style={{ fontSize: '60px', color: 'white', backgroundColor: '#CA0000' }}>{def}</Avatar>
         }
         <p id="name"> {firstName} {lastName} <a style={{ color: '#CA0000' }} href={`/messages/${profile._id}`}> <Icon type="message" /></a></p>
+        {
+          rating ?
+            <div>
+              <Rate disabled allowhalf defaultValue={rating} style={{ color: '#CA0000' }} />
+              <Text type="secondary" style={{ marginLeft: '8px' }}>({reviews.length})</Text>
+              <br />
+            </div>
+          : ''
+        }
         {loc(location) ? <span id="location"><Icon type="environment" theme="filled" /> {loc(location)} </span> : ''}
         <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.state.current]} className="profile-menu">
-          {isArtist ? <Menu.Item key="1"> Artworks </Menu.Item> : ''}
-          { bio ? <Menu.Item key="2" disabled={!disable}> About Me </Menu.Item> : '' }
-          {isArtist ? <Menu.Item key="3"> Reviews </Menu.Item> : ''}
+          {isArtist ? <Menu.Item key="#art"> Artworks </Menu.Item> : ''}
+          { bio ? <Menu.Item key="#about-me" disabled={!disable}> About Me </Menu.Item> : '' }
+          {isArtist ? <Menu.Item key="#reviews"> Reviews </Menu.Item> : ''}
         </Menu>
         {
-          current === '1' ?
+          current === '#art' ?
             <Art match={this.props.match} />
-          : current === '2' ?
+          : current === '#about-me' ?
             <div className="abt-me">
               <Collapse
                 accordion
@@ -95,7 +115,7 @@ class Content extends Component {
                 }
               </Collapse>
             </div>
-          : <p> 3 </p>
+          : <Reviews artist={this.props.artist} />
         }
       </Layout.Content>
     );

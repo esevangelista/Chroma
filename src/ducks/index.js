@@ -12,9 +12,11 @@ import orders from './orders';
 import transactions from './transactions';
 import notifications from './notifications';
 import chat from './chat';
+import admin from './admin';
 
 const appReducer = combineReducers({
   router: routerReducer,
+  admin,
   auth,
   user,
   chat,
@@ -30,9 +32,9 @@ const appReducer = combineReducers({
 });
 
 const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
-
+const ADMIN_LOGOUT_REQUEST = 'ADMIN_LOGOUT_REQUEST';
 export default (state, action) => {
-  if (action.type === LOGOUT_REQUEST) {
+  if (action.type === LOGOUT_REQUEST || action.type === ADMIN_LOGOUT_REQUEST) {
     state = undefined; // eslint-disable-line
   }
 

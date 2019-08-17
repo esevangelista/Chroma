@@ -8,6 +8,7 @@ import Footer from '../../global/footer/';
 import Main from './Main/';
 import ViewArtist from './ViewArtist/';
 import { checkUserSession } from '../../ducks/users';
+import { artistClearQuery } from '../../ducks/artists';
 import './artists.css';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
@@ -17,6 +18,9 @@ class Artist extends Component {
   componentDidMount() {
     this.props.checkUserSession();
     window.scrollTo(0, 0);
+  }
+  componentWillUnmount() {
+    this.props.artistClearQuery();
   }
   render() {
     const { isGettingSession } = this.props;
@@ -43,6 +47,7 @@ class Artist extends Component {
 }
 
 Artist.propTypes = {
+  artistClearQuery: PropTypes.func.isRequired,
   checkUserSession: PropTypes.func.isRequired,
   isGettingSession: PropTypes.bool.isRequired,
 };
@@ -51,6 +56,7 @@ const mapStateToProps = state => state.user;
 
 const mapDispatchToProps = {
   checkUserSession,
+  artistClearQuery,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Artist));

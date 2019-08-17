@@ -1,0 +1,87 @@
+.pending-container .whatsnext #icon {
+  color: #CA0000;
+  cursor: pointer;
+  margin-left: 8px; }
+
+.pending-container .whatsnext .review-container {
+  margin-top: 8px; }
+
+.pending-container .whatsnext .review-container .new-review {
+  padding: 0 8px; }
+
+.pending-container .whatsnext .review-container .new-review .ant-rate {
+  margin: 8px 0;
+  display: block;
+  font-size: 24px; }
+
+.pending-container .whatsnext .review-container .new-review .ant-rate .ant-rate-star {
+  color: #CA0000; }
+
+.pending-container .whatsnext .review-container .new-review .ant-input {
+  margin: 8px 0; }
+
+.pending-container .whatsnext .review-container .new-review .ant-input:focus {
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07); }
+
+.pending-container .whatsnext .review-container .new-review .ant-btn-primary[disabled] {
+  color: #CA0000;
+  border-color: #CA0000 !important; }
+
+.pending-container .whatsnext .review-container .new-review .ant-btn-primary[disabled]:hover {
+  color: #CA0000 !important;
+  border-color: #CA0000 !important; }
+
+.pending-container .whatsnext .review-container .new-review .btn-submit {
+  background: #CA0000;
+  border-color: #CA0000;
+  color: #fff;
+  margin: 32px 0; }
+
+.pending-container .whatsnext .review-container .new-review .btn-submit:hover, .pending-container .whatsnext .review-container .new-review .btn-submit:active, .pending-container .whatsnext .review-container .new-review .btn-submit:focus {
+  border-color: #CA0000;
+  background: #CA0000;
+  color: #fff; }
+
+.pending-container .whatsnext .review-container .review .edit-review {
+  padding: 0 8px; }
+
+.pending-container .whatsnext .review-container .review .edit-review .ant-rate {
+  margin: 8px 0;
+  display: block;
+  font-size: 24px; }
+
+.pending-container .whatsnext .review-container .review .edit-review .ant-rate .ant-rate-star {
+  color: #CA0000; }
+
+.pending-container .whatsnext .review-container .review .edit-review .ant-input {
+  margin: 8px 0; }
+
+.pending-container .whatsnext .review-container .review .edit-review .ant-input:focus {
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07); }
+
+.pending-container .whatsnext .review-container .review .edit-review .ant-btn-primary[disabled] {
+  color: #CA0000;
+  border-color: #CA0000 !important; }
+
+.pending-container .whatsnext .review-container .review .edit-review .ant-btn-primary[disabled]:hover {
+  color: #CA0000 !important;
+  border-color: #CA0000 !important; }
+
+.pending-container .whatsnext .review-container .review .edit-review .btn-submit {
+  background: #CA0000;
+  border-color: #CA0000;
+  color: #fff;
+  margin: 32px 0; }
+
+.pending-container .whatsnext .review-container .review .edit-review .btn-submit:hover, .pending-container .whatsnext .review-container .review .edit-review .btn-submit:active, .pending-container .whatsnext .review-container .review .edit-review .btn-submit:focus {
+  border-color: #CA0000;
+  background: #CA0000;
+  color: #fff; }
+
+.pending-container .whatsnext .review-container .review .read-only .ant-rate {
+  margin: 4px 0;
+  display: block;
+  font-size: 20px; }
+
+.pending-container .whatsnext .review-container .review .read-only .ant-rate .ant-rate-star {
+  color: #CA0000; }

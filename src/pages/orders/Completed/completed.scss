@@ -1,0 +1,102 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.pending-container {
+  .whatsnext {
+    #icon {
+      color: $chroma-red;
+      cursor: pointer;
+      margin-left: 8px;
+    }
+    .review-container {
+      margin-top: 8px;
+      .new-review {
+        padding: 0 8px;
+        .ant-rate {
+          margin: 8px 0;
+          display: block;
+          font-size: 24px;
+          .ant-rate-star {
+            color: $chroma-red;
+          }
+        }
+        .ant-input {
+          margin: 8px 0;
+          &:focus {
+            box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07);
+          }
+        }
+        .ant-btn-primary[disabled] {
+          color: $chroma-red;
+          border-color: $chroma-red !important;
+          &:hover {
+            color: $chroma-red !important;
+            border-color: $chroma-red !important;
+          }
+        }
+        .btn-submit {
+          background: $chroma-red;
+          border-color: $chroma-red;
+          color: $white;
+          margin: 32px 0;
+          &:hover, &:active, &:focus {
+            border-color: $chroma-red;
+            background: $chroma-red;
+            color: $white;
+          }     
+        }
+      }
+      .review {
+        .edit-review {
+          padding: 0 8px;
+          .ant-rate {
+            margin: 8px 0;
+            display: block;
+            font-size: 24px;
+            .ant-rate-star {
+              color: $chroma-red;
+            }
+          }
+          .ant-input {
+            margin: 8px 0;
+            &:focus {
+              box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.07);
+            }
+          }
+          .ant-btn-primary[disabled] {
+            color: $chroma-red;
+            border-color: $chroma-red !important;
+            &:hover {
+              color: $chroma-red !important;
+              border-color: $chroma-red !important;
+            }
+          }
+          .btn-submit {
+            background: $chroma-red;
+            border-color: $chroma-red;
+            color: $white;
+            margin: 32px 0;
+            &:hover, &:active, &:focus {
+              border-color: $chroma-red;
+              background: $chroma-red;
+              color: $white;
+            }     
+          }
+        }
+        .read-only {
+          .ant-rate {
+            margin: 4px 0;
+            display: block;
+            font-size: 20px;
+            .ant-rate-star {
+              color: $chroma-red;
+            }
+          }
+          .review-read {
+
+          }
+        }
+      }
+    }
+  }
+}

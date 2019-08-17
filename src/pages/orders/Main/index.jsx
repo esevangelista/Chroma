@@ -55,6 +55,7 @@ class Main extends Component {
   }
   componentDidMount() {
     this.props.fetchOrdersRequest({});
+    // window.scrollTo(0, 0);
   }
   handleSelectStatus(e) {
     const { query } = this.props.orders;

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { CometChat } from '@cometchat-pro/chat';
-import { Icon, Upload, message, Result, Row, Col, Tooltip, Avatar, Skeleton, PageHeader, Typography, Badge, Empty, Input } from 'antd';
+import { Icon, Upload, message, Result, Row, Col, Tooltip, Avatar, Skeleton, PageHeader, Typography, Badge, Input } from 'antd';
 import { fetchConvoRequest } from '../../../ducks/chat';
 import './web.css';
 
@@ -26,7 +25,6 @@ class Web extends Component {
   }
   componentDidMount() {
     const { uid } = this.props.match.params;
-    const { convo, convoWith } = this.props.chat;
     if (uid) this.props.fetchConvoRequest({}, {}, uid);
     const c = document.getElementsByClassName('loader');
     if (c.length >= 1) {
@@ -187,9 +185,9 @@ class Web extends Component {
                                     <Tooltip placement="left" title={moment(moment(c.sentAt).unix()).format('h:mm A')}>
                                       {
                                         c.type === 'text' ?
-                                          c.data.text.split('\n').map(p => p !== '\n' ? <Text id="msg"> {p} <br /></Text> : '')
+                                          c.data.text.split('\n').map(p => p !== '\n' ? <Text key={p} id="msg"> {p} <br /></Text> : '')
                                         : c.type === 'file' ?
-                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="Image cannot be displayed" /></a>
+                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="cannot be displayed" /></a>
                                         : ''
                                       }
                                     </Tooltip>
@@ -201,9 +199,9 @@ class Web extends Component {
                                     <Tooltip placement="right" title={moment(moment(c.sentAt).unix()).format('h:mm A')}>
                                       {
                                         c.type === 'text' ?
-                                          c.data.text.split('\n').map(p => p !== '\n' ? <Text id="msg"> {p} <br /></Text> : '')
+                                          c.data.text.split('\n').map(p => p !== '\n' ? <Text key={p} id="msg"> {p} <br /></Text> : '')
                                         : c.type === 'file' ?
-                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="Image cannot be displayed" /></a>
+                                          <a href={c.data.url} target="_blank" rel="noopener noreferrer" ><img style={{ width: '100%' }} src={c.data.url} alt="cannot be displayed" /></a>
                                         : ''
                                       }
                                     </Tooltip>

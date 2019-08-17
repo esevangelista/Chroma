@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from './app/store';
 import { CometChat } from '@cometchat-pro/chat';
 import App from './app';
-// import serviceWorker from './serviceWorker';
+import * as serviceWorker from './serviceWorker';
 import './index.css';
 
 // import './i18n';
@@ -39,4 +39,4 @@ ReactDOM.render(app, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-// serviceWorker();
+// serviceWorker.register();
