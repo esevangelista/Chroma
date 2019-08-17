@@ -9,8 +9,8 @@ import { CometChat } from '@cometchat-pro/chat';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
+import './i18n';
 
-// import './i18n';
 const APP_ID = '60893392e15857';
 
 CometChat.init(APP_ID).then(
@@ -39,4 +39,4 @@ ReactDOM.render(app, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-// serviceWorker.register();
+serviceWorker.register();
