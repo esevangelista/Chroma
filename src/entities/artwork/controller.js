@@ -13,6 +13,7 @@ export const addArtwork = async (req, res) => {
       artwork: newArtwork,
     });
   } catch (err) {
+    console.log(err)
     return res.json(new InternalServerError(err));
   }
 };
@@ -130,6 +131,7 @@ export const addImages = async (req, res) => {
       images,
     });
   } catch (err) {
+      console.log(err)
     return res.json(new InternalServerError(err));
   }
 };

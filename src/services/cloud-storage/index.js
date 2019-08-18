@@ -33,6 +33,7 @@ export const uploadHandler = Multer({
 export const multerUpload = async (req, res, next) => {
   uploadHandler.array('files', 7)(req, res, (err) => {
     if (err) {
+      console.log(err)
       return res.json(new InternalServerError(err));
     }
     return next();
