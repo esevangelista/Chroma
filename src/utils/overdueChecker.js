@@ -36,6 +36,5 @@ export const updateOverdueTransactions = async () => {
   } catch (err) {
     /* eslint-disable-next-line no-console */
     console.log(err);
-    console.log('Cron job error');
   }
 };
