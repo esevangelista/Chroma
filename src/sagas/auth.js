@@ -91,6 +91,8 @@ export function* confirmEmailFlow(action) {
         url: 'https://api.cometchat.com/v1.8/users',
         headers: {
           appId: APP_ID,
+          apiKey: apiKey,
+          appid: APP_ID,
           apikey: apiKey,
           'content-type': 'application/json',
           accept: 'application/json',
