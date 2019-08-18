@@ -19,7 +19,6 @@ const artworkSchema = new Schema({
     type: String,
     required: [true, 'Missing art title'],
     minlength: 1,
-    maxlength: 40,
   },
   description: {
     type: String,
