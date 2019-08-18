@@ -85,29 +85,29 @@ export function* confirmEmailFlow(action) {
     const response = yield call(putRequestService, `/verify-account/${action.data}`);
     const { success, message, u } = response.data;
     if (success) {
-      const APP_ID = '60893392e15857';
-      const res = yield call(ccRequest, {
-        method: 'POST',
-        url: 'https://api.cometchat.com/v1.8/users',
-        headers: {
-          appId: APP_ID,
-          apiKey: apiKey,
-          appid: APP_ID,
-          apikey: apiKey,
-          'content-type': 'application/json',
-          accept: 'application/json',
-        },
-        body: `{uid: ${u.id}, name: ${u.firstName}${u.lastName} }`,
-      });
-      if (res.status === 200) {
+      // const APP_ID = '60893392e15857';
+      // const res = yield call(ccRequest, {
+      //   method: 'POST',
+      //   mode: 'cors',
+      //   url: 'https://api.cometchat.com/v1.8/users',
+      //   headers: {
+      //     appId: APP_ID,
+      //     // apiKey: apiKey,
+      //     appid: APP_ID,
+      //     apiKey: apiKey,
+      //     'content-type': 'application/json',
+      //   },
+      //   body: `{uid: ${u.id}, name: ${u.firstName}${u.lastName} }`,
+      // });
+      // if (res.status === 200) {
         yield put(confirmEmailSuccess(message));
         yield put(push('/'));
         yield put(alertDisplay({ alertType: 'success', message }));
-      } else {
-        yield put(confirmEmailFailed(message));
-        yield put(push('/'));
-        yield put(alertDisplay({ alertType: 'error', message: res.statusText }));
-      }
+      // } else {
+      //   yield put(confirmEmailFailed(message));
+      //   yield put(push('/'));
+      //   yield put(alertDisplay({ alertType: 'error', message: res.statusText }));
+      // }
     } else {
       yield put(confirmEmailFailed(message));
       yield put(push('/notfound'));

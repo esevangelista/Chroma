@@ -43,7 +43,7 @@ export function* fetchUnreadCount() {
         url: `https://api.cometchat.com/v1.8/users/${subjectUid}/messages`,
         qs: { unread: 'true', count: 'true' },
         headers: {
-          appid: APP_ID,
+          appId: APP_ID,
           apikey: apiKey,
           'content-type': 'application/json',
           accept: 'application/json',
