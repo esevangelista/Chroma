@@ -27,6 +27,9 @@
   .art-main-container .art-container .breadcrumb span .ant-breadcrumb-link a:hover {
     color: #CA0000; }
 
+.art-main-container .art-container .filter-content .col-items .ant-empty {
+  margin-top: 12px; }
+
 .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn {
   border: none;
   height: 0;

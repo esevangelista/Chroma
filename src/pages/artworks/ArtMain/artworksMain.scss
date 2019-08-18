@@ -65,6 +65,9 @@
     }
     .filter-content {
       .col-items {
+        .ant-empty {
+          margin-top: 12px;
+        }
         .artworks {
           .artwork {
             .bottom-div {

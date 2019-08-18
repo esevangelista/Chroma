@@ -91,10 +91,10 @@ class Landing extends Component {
           <div>
             <img src="/icons/support.svg" alt="commission" />
             <h3>
-              Commission
+              Promote
             </h3>
             <p>
-              Hit two birds with one stone by transforming your idea into art and supporting independent artists within the Philippines.
+              Support and help independent Filipino artists promote their works.
             </p>
           </div>
         </Carousel>
@@ -121,10 +121,10 @@ class Landing extends Component {
           <Carousel className="active-on-mobile cat-slider" autoplay>
             {
               data.map(item => (
-                    <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} >
-                      <Link to="/">
+                    <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} onClick={() => this.props.handleQueryType(item.title.toUpperCase())}>
+                      <Link to="/artworks">
                         <div key={item.title} className="container">
-                          <img alt={item.title} src={item.attachment}/>
+                          <img alt={item.title} src={item.attachment} />
                           <p> {item.title} </p>
                         </div>
                       </Link>
