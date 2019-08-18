@@ -55,7 +55,7 @@ class AccountForm extends Component {
   validatePWStrength(rule, value, callback) {
     if (!value) {
       this.setState({ isPWValid: null, pwStatus: '' });
-      this.props.form.setFieldsValue({ oldPW: undefined });
+      this.props.form.setFieldsValue({ oldPW_update: undefined });
       return callback();
     }
     this.setState({ isPWValid: false, pwStatus: 'warning' });
@@ -77,8 +77,8 @@ class AccountForm extends Component {
           email: values.email,
           username: values.username,
         };
-        if (isPWValid && values.oldPW && values.newPW) {
-          data.currentPassword = values.oldPW;
+        if (isPWValid && values.oldPW_update && values.newPW) {
+          data.currentPassword = values.oldPW_update;
           data.newPassword = values.newPW;
         }
         this.props.updateAccountRequest(data);
@@ -162,7 +162,7 @@ class AccountForm extends Component {
           <span id="link-label"> Account Password </span>
           <div className="link-container">
             <Form.Item label="Current Password">
-              {getFieldDecorator('oldPW', { rules: [{ required: getFieldValue('newPW') && getFieldValue('newPW').length >= 1, message: 'Current password is required.' }] })(<Input.Password prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Old Password" />)}
+              {getFieldDecorator('oldPW_update', { rules: [{ required: getFieldValue('newPW') && getFieldValue('newPW').length >= 1, message: 'Current password is required.' }] })(<Input.Password prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Old Password" />)}
             </Form.Item>
             <Form.Item
               label="New Password"
