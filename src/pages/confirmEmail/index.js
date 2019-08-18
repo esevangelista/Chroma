@@ -17,16 +17,8 @@ class ConfirmAccount extends React.PureComponent {
   render() {
     const { isFetching, error } = this.props;
     return (
-      <div>
-        {
-          isFetching ?
-            <div className="confirm-email-container">
-              <Spin size="large" />
-            </div>
-          : error ?
-            <Redirect to={error === false ? "/" : "/kkkkk"} />
-          : <Redirect to="/kkkkk" />
-        }
+      <div className="confirm-email-container">
+        <Spin size="large" />
       </div>
     );
   }

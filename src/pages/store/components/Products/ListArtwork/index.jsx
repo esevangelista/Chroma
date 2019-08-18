@@ -171,10 +171,10 @@ class ListArtwork extends Component {
         if (isUpdate) this.setState({ newFile: [...this.state.newFile, file] });
         return false;
       },
-      onRemove: (file) => {
-        if (images.filter( i => i._id === file.uid).length === 1) {
+      onRemove: async (file) => {
+        if (images && images.filter(i => i._id === file.uid).length === 1) {
           const imgs = images.filter(i => i._id !== file.uid);
-          this.props.updateDrawer({ ...selectedProduct, images: imgs });
+          await this.props.updateDrawer({ ...selectedProduct, images: imgs });
         }
       },
     };

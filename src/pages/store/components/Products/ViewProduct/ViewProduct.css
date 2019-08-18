@@ -13,39 +13,51 @@
 
 .right-content {
   margin-top: 16px; }
-  .right-content ul {
-    padding-inline-start: 16px; }
-  .right-content #art-title {
-    font-family: 'Sailec-Bold';
-    font-size: 28px; }
-  .right-content #artist {
-    color: #CA0000; }
-  .right-content .desc {
-    border: 1px solid #dde2e8;
-    padding: 16px 16px;
-    text-align: justify; }
-    .right-content .desc .ant-typography .ant-typography-expand {
-      color: #CA0000; }
-  .right-content #price {
-    font-family: 'Sailec-Bold';
-    font-size: 24px; }
-  .right-content .btn-opt {
-    text-align: center;
-    margin: 16px 0; }
-    .right-content .btn-opt #upd, .right-content .btn-opt #del {
-      margin: 4px 8px; }
-    .right-content .btn-opt #del {
-      color: #943636;
-      border-color: #943636; }
-      .right-content .btn-opt #del:hover, .right-content .btn-opt #del:focus, .right-content .btn-opt #del:active {
-        background: #943636;
-        color: #fff; }
-    .right-content .btn-opt #upd {
-      color: #778f9b;
-      border-color: #778f9b; }
-      .right-content .btn-opt #upd:hover, .right-content .btn-opt #upd:focus, .right-content .btn-opt #upd:active {
-        background: #778f9b;
-        color: #fff; }
+
+.right-content ul {
+  padding-inline-start: 16px; }
+
+.right-content #art-title {
+  font-family: 'Sailec-Bold';
+  font-size: 28px; }
+
+.right-content #artist {
+  color: #CA0000; }
+
+.right-content .desc {
+  border: 1px solid #dde2e8;
+  padding: 16px 16px;
+  text-align: left; }
+
+.right-content .desc .ant-typography .ant-typography-expand {
+  color: #CA0000; }
+
+.right-content #price {
+  font-family: 'Sailec-Bold';
+  font-size: 24px; }
+
+.right-content .btn-opt {
+  text-align: center;
+  margin: 16px 0; }
+
+.right-content .btn-opt #upd, .right-content .btn-opt #del {
+  margin: 4px 8px; }
+
+.right-content .btn-opt #del {
+  color: #943636;
+  border-color: #943636; }
+
+.right-content .btn-opt #del:hover, .right-content .btn-opt #del:focus, .right-content .btn-opt #del:active {
+  background: #943636;
+  color: #fff; }
+
+.right-content .btn-opt #upd {
+  color: #778f9b;
+  border-color: #778f9b; }
+
+.right-content .btn-opt #upd:hover, .right-content .btn-opt #upd:focus, .right-content .btn-opt #upd:active {
+  background: #778f9b;
+  color: #fff; }
 
 @media only screen and (min-width: 992px) {
   .right-content {
