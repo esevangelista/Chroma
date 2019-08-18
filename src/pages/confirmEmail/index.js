@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Spin } from 'antd';
 import { confirmEmailRequest } from '../../ducks/auth';
 import { alertDisplay } from '../../ducks/feedback';
@@ -14,9 +15,18 @@ class ConfirmAccount extends React.PureComponent {
   }
 
   render() {
+    const { isFetching, error } = this.props;
     return (
-      <div className="confirm-email-container">
-        <Spin size="large" />
+      <div>
+        {
+          isFetching ?
+            <div className="confirm-email-container">
+              <Spin size="large" />
+            </div>
+          : error ?
+            <Redirect to={error === false ? "/" : "/kkkkk"} />
+          : <Redirect to="/kkkkk" />
+        }
       </div>
     );
   }
@@ -29,8 +39,10 @@ ConfirmAccount.propTypes = {
     }).isRequired,
   }).isRequired,
   confirmEmailRequest: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
 };
-const mapStateToProps = state => state;
+const mapStateToProps = state => state.auth.confirmEmail;
 const mapDispatchToProps = {
   confirmEmailRequest,
   alertDisplay,
