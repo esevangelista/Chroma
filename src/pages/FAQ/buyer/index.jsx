@@ -44,7 +44,7 @@ const shopping = [
   {
     key: 's0',
     q: 'What types of artwork are listed on this site?',
-    a: 'Paintings, drawings, collages, sculptures, prints, photographs, and digital art are listed here on CHROMA.',
+    a: 'Paintings, drawings, sculptures, prints, photographs, and digital art are listed here on CHROMA.',
   },
   {
     key: 's1',

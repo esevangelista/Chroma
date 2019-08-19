@@ -14,7 +14,6 @@ const artforms =
     'PHOTOGRAPHY',
     'DRAWING',
     'SCULPTURE',
-    'COLLAGE',
     'PRINT',
     'DIGITAL ART',
   ];

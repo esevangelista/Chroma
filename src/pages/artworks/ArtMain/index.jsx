@@ -382,7 +382,6 @@ class ArtMain extends Component {
                             <Radio value="PRINT"> Print </Radio>
                             <Radio value="DRAWING"> Drawing </Radio>
                             <Radio value="DIGITAL ART"> Digital Art </Radio>
-                            <Radio value="COLLAGE"> Collage  </Radio>
                             <Radio value="PHOTOGRAPHY"> Photography </Radio>
                             <Radio value="SCULPTURE"> Sculpture </Radio>
                           </Radio.Group>

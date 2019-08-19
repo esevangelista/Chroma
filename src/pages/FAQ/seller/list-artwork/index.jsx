@@ -74,7 +74,7 @@ class ListArtwork extends Component {
             Before you list your artwork, please keep in mind that
             <ul>
               <li>
-                CHROMA allows its users to sell paintings, drawings, collages, sculptures, prints, photographs, and digital artworks only.
+                CHROMA allows its users to sell paintings, drawings, sculptures, prints, photographs, and digital artworks only.
               </li>
               <li>
                 CHROMA uses inches(in) as its unit of measurement. Make sure you know the correct dimensions of your artworks.
@@ -101,7 +101,7 @@ class ListArtwork extends Component {
               </li>
               <li>
                 <Text strong>Art Form.</Text><br />
-                This refers to the category your artwork belongs to. Categories include paintings, drawings, collages, sculptures, prints, photographs, and digital artworks.
+                This refers to the category your artwork belongs to. Categories include paintings, drawings, sculptures, prints, photographs, and digital artworks.
               </li>
               <li>
                 <Text strong>Medium.</Text><br />
