@@ -147,7 +147,6 @@ class Main extends Component {
                     <Option value="DRAWING"> Drawing </Option>
                     <Option value="SCULPTURE"> Sculpture </Option>
                     <Option value="PRINT"> Print </Option>
-                    <Option value="COLLAGE"> Collage </Option>
                     <Option value="DIGITAL ART"> Digital Art </Option>
                   </Select>
                 </div>
