@@ -86,6 +86,7 @@ class Main extends Component {
                           cover={
                             <Link to={`/artworks/${info._id}`}>
                               <img
+                                style={{ width: '100%'}}
                                 alt="example"
                                 src={info.images[0].publicURL}
                               />
