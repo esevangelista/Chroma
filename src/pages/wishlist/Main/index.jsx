@@ -84,11 +84,12 @@ class Main extends Component {
                           size="small"
                           key={info._id}
                           cover={
-                            <img
-                              alt="example"
-                              onClick={() => this.props.history.push(`/artworks/${info._id}`)}
-                              src={info.images[0].publicURL}
-                            />
+                            <Link to={`/artworks/${info._id}`}>
+                              <img
+                                alt="example"
+                                src={info.images[0].publicURL}
+                              />
+                            </Link>
                           }
                         >
                           <Link to={`/artworks/${info._id}`}>
