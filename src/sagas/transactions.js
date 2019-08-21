@@ -69,7 +69,7 @@ export function* shipOrder(action) {
 export function* completeOrder(action) {
   try {
     const { _id, data } = action;
-    const response = yield call(putRequestService, `/complete-transaction//${_id}`, data);
+    const response = yield call(putRequestService, `/complete-transaction/${_id}`, data);
     const { success, message } = response.data;
     if (success) {
       yield put(completeOrderSuccess(message));
