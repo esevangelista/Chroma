@@ -367,7 +367,7 @@ function fetchReducer(state = initialFetchState, action) {
     case CLEAR_ALL_FILTERS:
       return {
         ...state,
-        query: { ...state.query.artist },
+        query: { page: 1 },
       };
     case CHANGE_ACTIVE_PRODUCT:
       return {

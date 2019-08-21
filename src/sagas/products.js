@@ -34,6 +34,7 @@ import {
   updateArtSucess,
   updateArtFailed,
   changeActiveProduct,
+  changeQueryArtist,
   deleteArtSuccess,
   deleteArtFailed,
 } from '../ducks/products';
@@ -41,6 +42,7 @@ import {
 export const getUploadedImages = state => state.product.upload.uploadedImages;
 export const getUploadStatus = state => state.product.upload.error;
 export const getQuery = state => state.product.fetch.query;
+export const getUser = state => state.user.profile._id;
 export const getActiveProduct = state => state.product.fetch.activeProduct;
 export const getSelectedProductID = state => state.product.update.selectedProduct._id;
 export const getUploadedImagesID = (state) => {
@@ -123,7 +125,8 @@ export function* handleUpdateArtwork(action) {
 
 export function* fetchArtProducts() {
   try {
-    const query = yield select(getQuery);
+    let query = yield select(getQuery);
+    query = { ...query, artist: yield select(getUser) };
     const response = yield call(getRequestService, `/artwork?${qs.stringify(query)}`);
     const { data } = response;
     const { success } = data;
