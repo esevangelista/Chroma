@@ -76,7 +76,7 @@ export function* completeOrder(action) {
       yield put(push('/my-store/transactions'));
       yield put(alertDisplay({ alertType: 'success', message }));
     } else {
-      yield put(completeOrderSuccess(message));
+      yield put(completeOrderFailed(message));
       yield put(push('/my-store/transactions'));
       yield put(alertDisplay({ alertType: 'error', message }));
     }

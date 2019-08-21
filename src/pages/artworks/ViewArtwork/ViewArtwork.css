@@ -54,7 +54,7 @@ img {
       font-family: 'Sailec-Bold';
       font-size: 20px; }
     .active-art-container .more-info .ant-collapse-item .ant-collapse-content {
-      text-align: justify; }
+      text-align: left; }
       .active-art-container .more-info .ant-collapse-item .ant-collapse-content .ant-collapse-content-box a {
         color: #CA0000; }
 
