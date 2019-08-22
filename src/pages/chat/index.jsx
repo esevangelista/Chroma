@@ -28,12 +28,16 @@ class Chat extends Component {
       listenerID,
       new CometChat.MessageListener({
         onTextMessageReceived: (textMessage) => {
-          openNotification(textMessage);
-          this.props.fetchUnreadCountRequest();
+          if (textMessage.sender.uid !== this.props.profile._id) {
+            openNotification(textMessage);
+            this.props.fetchUnreadCountRequest();
+          }
         },
         onMediaMessageReceived: (mediaMessage) => {
-          openNotification(mediaMessage);
-          this.props.fetchUnreadCountRequest();
+          if (mediaMessage.sender.uid !== this.props.profile._id) {
+            openNotification(mediaMessage);
+            this.props.fetchUnreadCountRequest();
+          }
         },
         onMessageRead: () => this.props.fetchUnreadCountRequest(),
       }),
