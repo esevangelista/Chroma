@@ -22,7 +22,7 @@ class Chat extends Component {
   }
 
   render() {
-    const listenerID = 'UNIQUE_LISTENER_ID';
+    const listenerID = 'UNIQUE_LISTENER_ID_1';
     const { unread } = this.props.chat;
     CometChat.addMessageListener(
       listenerID,
@@ -30,16 +30,18 @@ class Chat extends Component {
         onTextMessageReceived: (textMessage) => {
           if (textMessage.sender.uid !== this.props.profile._id) {
             openNotification(textMessage);
-            this.props.fetchUnreadCountRequest();
           }
+          this.props.fetchUnreadCountRequest();
         },
         onMediaMessageReceived: (mediaMessage) => {
           if (mediaMessage.sender.uid !== this.props.profile._id) {
             openNotification(mediaMessage);
-            this.props.fetchUnreadCountRequest();
           }
+          this.props.fetchUnreadCountRequest();
         },
-        onMessageRead: () => this.props.fetchUnreadCountRequest(),
+        onMessageRead: () => {
+          this.props.fetchUnreadCountRequest();
+        },
       }),
     );
     return (
