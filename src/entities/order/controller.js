@@ -250,7 +250,7 @@ export const addReview = async (req, res) => {
       let newReview = new Review({ rating, review });
       newReview = await newReview.save();
       await Order.findByIdAndUpdate({ _id }, { review: newReview._id });
-      await createNotification(order.seller, `${req.session.user.firstName} ${req.session.user.lastName} wrote you a review for order #${order._id}`, '/profile#review');
+      await createNotification(order.seller, `${req.session.user.firstName} ${req.session.user.lastName} wrote you a review for order #${order._id}`, '/account/profile#review');
       let arr = await Order.find({ seller: order.seller, status: 'COMPLETED' }).select('review').populate('review', 'rating');
       arr = arr.filter(r => r.review).map(f => f.review.rating);
       const average = arr.reduce((p, c) => p + c, 0) / arr.length;
@@ -276,7 +276,7 @@ export const updateReview = async (req, res) => {
     arr = arr.filter(r => r.review).map(f => f.review.rating);
     const average = arr.reduce((p, c) => p + c, 0) / arr.length;
     await User.findByIdAndUpdate({ _id: order.seller }, { rating: average });
-    await createNotification(order.seller, `${req.session.user.firstName} ${req.session.user.lastName} edit his/her review for order #${order._id}`, '/profile#review');
+    await createNotification(order.seller, `${req.session.user.firstName} ${req.session.user.lastName} edit his/her review for order #${order._id}`, '/account/profile#review');
     return res.status(200).json({
       success: 200,
       message: 'Review updated',
