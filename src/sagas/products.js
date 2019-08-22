@@ -125,8 +125,7 @@ export function* handleUpdateArtwork(action) {
 
 export function* fetchArtProducts() {
   try {
-    let query = yield select(getQuery);
-    query = { ...query, artist: yield select(getUser) };
+    const query = yield select(getQuery);
     const response = yield call(getRequestService, `/artwork?${qs.stringify(query)}`);
     const { data } = response;
     const { success } = data;

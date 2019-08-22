@@ -152,6 +152,7 @@ class Products extends Component {
       subject: [],
     });
     this.props.clearFilter();
+    this.props.changeQueryArtist(this.props.profile._id);
   }
   async handleMinHeight(e) {
     await this.setState({ minH: e.target.value });
