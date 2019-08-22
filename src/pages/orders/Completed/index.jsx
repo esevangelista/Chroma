@@ -200,7 +200,7 @@ class Completed extends Component {
                       </div>
                     :
                       <div className="read-only">
-                        <Rate disabled defaultValue={order.review.rating} />
+                        <Rate disabled allowHalf defaultValue={order.review.rating} />
                         <div className="review-read">
                           {
                             order.review.review.split('\n').map(p => <Paragraph key={p}> {p} </Paragraph>)

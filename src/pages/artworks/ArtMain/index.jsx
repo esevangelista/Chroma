@@ -271,7 +271,7 @@ class ArtMain extends Component {
       let products = await this.props.wishlist.map(w => w._id) || [];
       if (products.includes(_id)) products = await products.filter(p => p !== _id);
       else await products.push(_id);
-      this.props.updateWishlistRequest(products);
+      await this.props.updateWishlistRequest(products);
     } else this.props.handleLoginModal(true);
   }
   handleAddToCart(prod) {
