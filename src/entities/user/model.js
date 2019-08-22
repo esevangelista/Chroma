@@ -2,8 +2,6 @@ import { Schema } from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate';
 import uniqueValidator from 'mongoose-unique-validator';
 import validator from 'validator';
-import Cart from '../cart/model';
-import Wishlist from '../wishlist/model';
 import db from '../../db';
 
 const userSchema = new Schema({

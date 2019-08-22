@@ -7,6 +7,8 @@ import { BaseError, InternalServerError } from '../../utils/systemErrors';
 import { generateToken } from '../../utils/generateToken';
 import { sendConfirmYourAccountEmail } from '../../utils/email/confirmEmail/sendConfirmEmail';
 import { addImage } from '../../services/cloud-storage/index';
+import Cart from '../cart/model';
+import Wishlist from '../wishlist/model';
 
 import config from '../../config';
 
@@ -152,6 +154,10 @@ export const addUser = async (req, res) => {
     const newUser = new User(req.body);
     newUser.confirmToken = confirmToken;
     await newUser.save();
+    const cart = new Cart({ ownedBy: newUser._id });
+    await cart.save();
+    const wishlist = new Wishlist({ ownedBy: newUser._id });
+    await wishlist.save();
     sendConfirmYourAccountEmail(email, confirmToken, config.urls.client);
     delete newUser.password;
     return res
