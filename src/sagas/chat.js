@@ -51,7 +51,7 @@ export function* fetchUnreadCount() {
       },
     );
     const { data } = response.data;
-    const grouped = data.filter(d => d.sender !== subjectUid && !d.deletedAt && !d.readAt).length > 0 ? group(data.filter(d => d.sender !== subjectUid && !d.deletedAt && !d.readAt), 'sender') : [];
+    const grouped = data.filter(d => d.sender !== subjectUid && !d.readAt && d.category === 'message' && !d.deletedAt).length > 0 ? group(data.filter(d => d.sender !== subjectUid && !d.readAt && d.category === 'message' && !d.deletedAt), 'sender') : [];
     if (response.status === 200) yield put(fetchUnreadCountSuccess(Object.keys(grouped).length));
     else yield put(fetchUnreadCountFailed('Something went wrong.'));
   } catch (err) {
@@ -77,7 +77,7 @@ export function* fetchMsgs() {
       },
     );
     const { data } = response.data;
-    const grouped = data.length > 0 ? groupUser(data, subjectUid) : [];
+    const grouped = data.filter(d => d.category === 'message' && !d.deletedAt).length > 0 ? groupUser(data.filter(d => d.category === 'message' && !d.deletedAt), subjectUid) : [];
     const res = yield all(Object.keys(grouped).map(g =>
       call(
         ccRequest,

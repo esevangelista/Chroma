@@ -61,7 +61,7 @@ class Main extends Component {
                           : <Avatar> {getName(m[m.length - 1].data.entities, _id).charAt(0).toUpperCase()} </Avatar>
                         }
                         title={<Text> {getName(m[m.length - 1].data.entities, _id)}</Text>}
-                        description={m[m.length - 1].sender === _id ? <Text type="secondary"> You: {m[m.length - 1].data.text}</Text> : <Text strong={m[m.length - 1].readAt ? false : true}> {m[m.length - 1].data.text} </Text>}
+                        description={m[m.length - 1].sender === _id ? <Text type="secondary"> You: {m[m.length - 1].type === 'file' ? 'sent a file' : m[m.length - 1].data.text}</Text> : <Text strong={m[m.length - 1].readAt ? false : true}> {m[m.length - 1].type === 'file' ? 'sent a file' :m[m.length - 1].data.text} </Text>}
                       />
                     </List.Item>
                   )}
