@@ -43,5 +43,9 @@ router
     isArtist,
     canEdit,
     artworkController.updateArtwork,
+  )
+  .delete(
+    isAuthenticated,
+    artworkController.deleteArtwork,
   );
 export default router;
