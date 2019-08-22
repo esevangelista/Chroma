@@ -51,7 +51,7 @@ export function* fetchUnreadCount() {
       },
     );
     const { data } = response.data;
-    const grouped = data.filter(d => d.sender !== subjectUid && !d.readAt).length > 0 ? group(data.filter(d => d.sender !== subjectUid  && !d.readAt), 'sender') : [];
+    const grouped = data.filter(d => d.sender !== subjectUid && !d.deletedAt && !d.readAt).length > 0 ? group(data.filter(d => d.sender !== subjectUid && !d.deletedAt && !d.readAt), 'sender') : [];
     if (response.status === 200) yield put(fetchUnreadCountSuccess(Object.keys(grouped).length));
     else yield put(fetchUnreadCountFailed('Something went wrong.'));
   } catch (err) {
