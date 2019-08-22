@@ -25,7 +25,7 @@ class Main extends Component {
           :
             <Layout>
               <Header {...this.props} />
-              <Content>
+              <Content className="land">
                 <Hero />
                 <Landing />
               </Content>
