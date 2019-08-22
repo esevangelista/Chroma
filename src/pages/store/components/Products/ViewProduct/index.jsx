@@ -83,7 +83,11 @@ class ViewProduct extends Component {
                       className="popover"
                       onConfirm={() => this.props.deleteArtRequest()}
                     >
-                      <Button icon="delete" id="del" onClick={() => console.log('delete')}> Delete </Button>
+                      {
+                        status === 'AVAILABLE' ?
+                          <Button icon="delete" id="del" onClick={() => null}> Delete </Button>
+                        : ''
+                      }
                     </Popconfirm>
                   </div>
                 </Col>
