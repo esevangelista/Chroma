@@ -1,4 +1,4 @@
-import { takeLatest } from 'redux-saga';
+import { takeLatest, takeEvery } from 'redux-saga';
 import { all, call, put, select } from 'redux-saga/effects';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
@@ -151,7 +151,7 @@ export function* fetchConvo(action) {
 export function* watchChatFlow() {
   yield [
     takeLatest(FETCH_CONVO_REQUEST, fetchConvo),
-    takeLatest(FETCH_UNREAD_COUNT_REQUEST, fetchUnreadCount),
+    takeEvery(FETCH_UNREAD_COUNT_REQUEST, fetchUnreadCount),
     takeLatest(FETCH_MSGS_REQUEST, fetchMsgs),
   ];
 }
