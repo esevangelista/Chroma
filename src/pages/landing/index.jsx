@@ -38,27 +38,27 @@ const { Content } = Layout;
 const dataMobile = [
   {
     title: 'Print',
-    attachment: '/landing/printocean-mobile.jp2',
+    attachment: '/landing/printocean-mobile.jpg',
   },
   {
     title: 'Painting',
-    attachment: '/landing/colors-mobile.jp2',
+    attachment: '/landing/colors-mobile.jpg',
   },
   {
     title: 'Drawing',
-    attachment: '/landing/draw-mobile.jp2',
+    attachment: '/landing/draw-mobile.jpg',
   },
   {
     title: 'Sculpture',
-    attachment: '/landing/juliet-mobile.jp2',
+    attachment: '/landing/juliet-mobile.jpg',
   },
   {
     title: 'Photography',
-    attachment: '/landing/natgeo-mobile.jp2',
+    attachment: '/landing/natgeo-mobile.jpg',
   },
   {
     title: 'Digital Art',
-    attachment: '/landing/retro-mobile.jp2',
+    attachment: '/landing/retro-mobile.jpg',
   },
 ];
 class Landing extends Component {
