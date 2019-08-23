@@ -8,57 +8,57 @@ import './landing.css';
 
 
 const { Content } = Layout;
-const data = [
-  {
-    title: 'Print',
-    attachment: '/landing/printocean.jpg',
-  },
-  {
-    title: 'Painting',
-    attachment: '/landing/colors.jpg',
-  },
-  {
-    title: 'Drawing',
-    attachment: '/landing/draw.jpg',
-  },
-  {
-    title: 'Sculpture',
-    attachment: '/landing/juliet.jpg',
-  },
-  {
-    title: 'Photography',
-    attachment: '/landing/natgeo.jpg',
-  },
-  {
-    title: 'Digital Art',
-    attachment: '/landing/retro.jpg',
-  },
-];
+// const data = [
+//   {
+//     title: 'Print',
+//     attachment: '/landing/printocean.jpg',
+//   },
+//   {
+//     title: 'Painting',
+//     attachment: '/landing/colors.jpg',
+//   },
+//   {
+//     title: 'Drawing',
+//     attachment: '/landing/draw.jpg',
+//   },
+//   {
+//     title: 'Sculpture',
+//     attachment: '/landing/juliet.jpg',
+//   },
+//   {
+//     title: 'Photography',
+//     attachment: '/landing/natgeo.jpg',
+//   },
+//   {
+//     title: 'Digital Art',
+//     attachment: '/landing/retro.jpg',
+//   },
+// ];
 
 const dataMobile = [
   {
     title: 'Print',
-    attachment: '/landing/printocean-mobile.jpg',
+    attachment: '/landing/printocean-mobile.jp2',
   },
   {
     title: 'Painting',
-    attachment: '/landing/colors-mobile.jpg',
+    attachment: '/landing/colors-mobile.jp2',
   },
   {
     title: 'Drawing',
-    attachment: '/landing/draw-mobile.jpg',
+    attachment: '/landing/draw-mobile.jp2',
   },
   {
     title: 'Sculpture',
-    attachment: '/landing/juliet-mobile.jpg',
+    attachment: '/landing/juliet-mobile.jp2',
   },
   {
     title: 'Photography',
-    attachment: '/landing/natgeo-mobile.jpg',
+    attachment: '/landing/natgeo-mobile.jp2',
   },
   {
     title: 'Digital Art',
-    attachment: '/landing/retro-mobile.jpg',
+    attachment: '/landing/retro-mobile.jp2',
   },
 ];
 class Landing extends Component {
