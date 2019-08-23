@@ -130,7 +130,7 @@ class Landing extends Component {
           </Row>
           <Row type="flex" justify="space-between" className="categories">
             {
-              dataMobile.map(item => (
+              data.map(item => (
                 <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} onClick={() => this.props.handleQueryType(item.title.toUpperCase())}>
                   <Link to="/artworks">
                     <div className="container">
@@ -145,7 +145,7 @@ class Landing extends Component {
           </Row>
           <Carousel className="active-on-mobile cat-slider" autoplay>
             {
-              data.map(item => (
+              dataMobile.map(item => (
                     <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} onClick={() => this.props.handleQueryType(item.title.toUpperCase())}>
                       <Link to="/artworks">
                         <div key={item.title} className="container">
