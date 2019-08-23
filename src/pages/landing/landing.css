@@ -95,6 +95,7 @@
   .landing-content .category-label {
     font-size: 24px; }
   .banner {
+    background-image: url("/landing/bike-mobile.jpg");
     margin-top: 56px; }
     .banner h3 {
       font-size: 24px; }
