@@ -341,10 +341,8 @@ class ArtMain extends Component {
     const { total, page, limit } = this.props.pagination;
     return (
       <div>
-        {
-          isFetching ? <Spin className="loader" indicator={antIcon} style={{ position: 'absolute', top: '50%', left: '50%' }} /> :
-          <div className="products-main-container art-main-container">
-            <div className="products-container art-container">
+        <div className="products-main-container art-main-container">
+            <div className="products-container this art-container">
               <Breadcrumb className="breadcrumb">
                 <Breadcrumb.Item><Link to="/"><Icon type="home" /></Link></Breadcrumb.Item>
                 <Breadcrumb.Item><Link to="/artworks"> Artworks </Link></Breadcrumb.Item>
@@ -364,7 +362,6 @@ class ArtMain extends Component {
                     bordered={false}
                     defaultActiveKey={['1']}
                     expandIconPosition="right"
-                    accordion
                     className="collapse-filter"
                     expandIcon={({ isActive }) => <Icon type="down" rotate={isActive ? 180 : 0} />}
                   >
@@ -372,7 +369,6 @@ class ArtMain extends Component {
                       <Collapse
                         bordered={false}
                         expandIconPosition="right"
-                        accordion
                         className="collapse-inner"
                         expandIcon={({ isActive }) => <Icon type="caret-down" rotate={isActive ? 180 : 0} />}
                       >
@@ -549,8 +545,7 @@ class ArtMain extends Component {
               onChange={p => this.props.handleQueryPage(p)}
               onShowSizeChange={(_, size) => size !== limit ? this.props.handleQueryLimit(size) : null}
             />
-          </div>
-        }
+        </div>
       </div>
     );
   }

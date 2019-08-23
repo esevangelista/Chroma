@@ -52,6 +52,12 @@
       }
     }
   }
+  .this {
+    .ant-spin-spinning {
+      position: absolute !important;
+      left: 0 !important;
+    }
+  }
   .art-container {
     .breadcrumb {
       margin-bottom: 8px;

@@ -5,27 +5,40 @@
 .art-main-container .ant-pagination {
   float: right;
   margin: 16px 0; }
-  .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
-    border-color: #CA0000; }
-  .art-main-container .ant-pagination .ant-pagination-disabled a:hover, .art-main-container .ant-pagination .ant-pagination-disabled a:active, .art-main-container .ant-pagination .ant-pagination-disabled a:focus {
-    color: #e8e8e8 !important; }
-  .art-main-container .ant-pagination .ant-pagination-item:hover, .art-main-container .ant-pagination .ant-pagination-item:focus, .art-main-container .ant-pagination .ant-pagination-prev:hover, .art-main-container .ant-pagination .ant-pagination-prev:focus, .art-main-container .ant-pagination .ant-pagination-next:hover, .art-main-container .ant-pagination .ant-pagination-next:focus {
-    border-color: #CA0000; }
-  .art-main-container .ant-pagination .ant-pagination-item a:hover, .art-main-container .ant-pagination .ant-pagination-prev a:hover, .art-main-container .ant-pagination .ant-pagination-next a:hover {
-    color: #CA0000; }
-  .art-main-container .ant-pagination .ant-pagination-item .ant-pagination-item-link:hover, .art-main-container .ant-pagination .ant-pagination-prev .ant-pagination-item-link:hover, .art-main-container .ant-pagination .ant-pagination-next .ant-pagination-item-link:hover {
-    border-color: #dde2e8; }
-  .art-main-container .ant-pagination .ant-pagination-item-active {
-    border-color: #CA0000; }
-    .art-main-container .ant-pagination .ant-pagination-item-active a {
-      color: #CA0000; }
-      .art-main-container .ant-pagination .ant-pagination-item-active a:hover, .art-main-container .ant-pagination .ant-pagination-item-active a:link, .art-main-container .ant-pagination .ant-pagination-item-active a:focus {
-        color: #CA0000; }
+
+.art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:hover, .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:active, .art-main-container .ant-pagination .ant-pagination-options .ant-pagination-options-size-changer .ant-select-selection:focus-within {
+  border-color: #CA0000; }
+
+.art-main-container .ant-pagination .ant-pagination-disabled a:hover, .art-main-container .ant-pagination .ant-pagination-disabled a:active, .art-main-container .ant-pagination .ant-pagination-disabled a:focus {
+  color: #e8e8e8 !important; }
+
+.art-main-container .ant-pagination .ant-pagination-item:hover, .art-main-container .ant-pagination .ant-pagination-item:focus, .art-main-container .ant-pagination .ant-pagination-prev:hover, .art-main-container .ant-pagination .ant-pagination-prev:focus, .art-main-container .ant-pagination .ant-pagination-next:hover, .art-main-container .ant-pagination .ant-pagination-next:focus {
+  border-color: #CA0000; }
+
+.art-main-container .ant-pagination .ant-pagination-item a:hover, .art-main-container .ant-pagination .ant-pagination-prev a:hover, .art-main-container .ant-pagination .ant-pagination-next a:hover {
+  color: #CA0000; }
+
+.art-main-container .ant-pagination .ant-pagination-item .ant-pagination-item-link:hover, .art-main-container .ant-pagination .ant-pagination-prev .ant-pagination-item-link:hover, .art-main-container .ant-pagination .ant-pagination-next .ant-pagination-item-link:hover {
+  border-color: #dde2e8; }
+
+.art-main-container .ant-pagination .ant-pagination-item-active {
+  border-color: #CA0000; }
+
+.art-main-container .ant-pagination .ant-pagination-item-active a {
+  color: #CA0000; }
+
+.art-main-container .ant-pagination .ant-pagination-item-active a:hover, .art-main-container .ant-pagination .ant-pagination-item-active a:link, .art-main-container .ant-pagination .ant-pagination-item-active a:focus {
+  color: #CA0000; }
+
+.art-main-container .this .ant-spin-spinning {
+  position: absolute !important;
+  left: 0 !important; }
 
 .art-main-container .art-container .breadcrumb {
   margin-bottom: 8px; }
-  .art-main-container .art-container .breadcrumb span .ant-breadcrumb-link a:hover {
-    color: #CA0000; }
+
+.art-main-container .art-container .breadcrumb span .ant-breadcrumb-link a:hover {
+  color: #CA0000; }
 
 .art-main-container .art-container .filter-content .col-items .ant-empty {
   margin-top: 12px; }
@@ -36,5 +49,6 @@
   font-size: 18px;
   line-height: 0;
   border-radius: 0; }
-  .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:hover, .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:active, .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:link, .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:focus {
-    color: inherit; }
+
+.art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:hover, .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:active, .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:link, .art-main-container .art-container .filter-content .col-items .artworks .artwork .bottom-div .actions .ant-btn:focus {
+  color: inherit; }

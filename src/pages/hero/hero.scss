@@ -65,6 +65,7 @@
   
   @include for-phone-only {
     height: 360px;
+    background-image: url('/landing/mobile.jpg');
     .hero-container {
       min-width: 270px;
       max-width: 320px;  

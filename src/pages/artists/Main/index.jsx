@@ -114,142 +114,139 @@ class Main extends Component {
     const colProps = a => a.artworks.length === 0 ? { xs: 24, md: 14, xl: 10 } : { xs: 24, sm: 12, md: 14, xl: 12 };
     return (
       <div className="products-main-container">
-        {
-          isFetching ? <Spin className="loader" indicator={antIcon} style={{ position: 'absolute', top: '50%', left: '50%' }} /> :
-          <div className="products-container artists-container">
-            <Breadcrumb className="paths">
-              <Breadcrumb.Item><Link to="/"><Icon type="home" /></Link></Breadcrumb.Item>
-              <Breadcrumb.Item><Link to="/artists"> Artists </Link></Breadcrumb.Item>
-            </Breadcrumb>
-            <Search className="search" placeholder="ex. John" onSearch={name => this.props.handleQueryName(name)} onChange={this.searchChange} value={this.state.search} allowClear enterButton />
-            <Row className="content">
-              <Col xs={24} sm={24} md={8} lg={6} xl={6} xxl={6} className="col-filters">
-                <div className="rating">
-                  <span id="rate"> Rating </span>
-                  <Rate allowClear value={query.rate || 0} onChange={(rate) => this.props.artistQueryRate(rate)} />
-                </div>
-                <div className="location">
-                  <span id="province"> Province/Area </span>
-                  <Select size="small" showSearch defaultValue={formatProvince} onSelect={this.handleProvinceChange}>
-                    {filteredProvinces.map(p => <Option key={p.name} value={p.name}> {p.name} </Option>)}
-                  </Select>
-                  <span id="city"> City/Town </span>
-                  <Select size="small" showSearch defaultValue={query.city} onSelect={this.handleCityChange}>
-                    {filteredCities.map(c => <Option key={`${c.name}${c.province}`} value={`${c.name}+${c.province}`}> {c.name} ({c.province}) </Option>)}
-                  </Select>
-                </div>
-                <div className="category">
-                  <span id="artform"> Art Category </span>
-                  <Select size="small" defaultValue={query.artform} onSelect={(value) => this.props.artistQueryArtType(value)} >
-                    <Option value="ANY"> Any </Option>
-                    <Option value="PAINTING"> Painting </Option>
-                    <Option value="PHOTOGRAPHY"> Photography </Option>
-                    <Option value="DRAWING"> Drawing </Option>
-                    <Option value="SCULPTURE"> Sculpture </Option>
-                    <Option value="PRINT"> Print </Option>
-                    <Option value="DIGITAL ART"> Digital Art </Option>
-                  </Select>
-                </div>
-                <span id="clear-btn" onClick={() => this.props.artistClearQuery()}> Clear Filters </span>
-              </Col>
-              <Col xs={24} sm={24} md={8} lg={6} xl={6} xxl={6} className="col-filters-mobile">
-                <Collapse
-                  bordered={false}
-                  defaultActiveKey={['1']}
-                  expandIconPosition="right"
-                  accordion
-                  className="collapse-mobile"
-                  expandIcon={({ isActive }) => isActive ? <Icon type="minus" /> : <Icon type="plus" /> }
-                >
-                  <Panel header="Filters" key="1">
-                    <div className="rating">
-                      <span id="rate"> Rating </span>
-                      <Rate allowClear value={query.rate || 0} onChange={(rate) => this.props.artistQueryRate(rate)} />
-                    </div>
-                    <div className="location">
-                      <span id="region"> Region </span>
-                      <Select size="small" onSelect={this.handleRegionChange} defaultValue={query.region} >
-                        {regions.map(r => <Option key={r.key} value={r.key}> {r.long} ({r.name}) </Option>)}
-                      </Select>
-                      <span id="province"> Province/Area </span>
-                      <Select size="small" showSearch defaultValue={formatProvince} onSelect={this.handleProvinceChange}>
-                        {filteredProvinces.map(p => <Option key={p.name} value={p.name}> {p.name} </Option>)}
-                      </Select>
-                      <span id="city"> City/Town </span>
-                      <Select size="small" showSearch defaultValue={query.city} onSelect={this.handleCityChange}>
-                        {filteredCities.map(c => <Option key={`${c.name}${c.province}`} value={`${c.name}+${c.province}`}> {c.name} ({c.province}) </Option>)}
-                      </Select>
-                    </div>
-                    <div className="category">
-                      <span id="artform"> Art Category </span>
-                      <Select size="small" defaultValue={query.artform} onSelect={(value) => this.props.artistQueryArtType(value)} >
-                        <Option value="ANY"> Any </Option>
-                        <Option value="PAINTING"> Painting </Option>
-                        <Option value="PHOTOGRAPHY"> Photography </Option>
-                        <Option value="DRAWING"> Drawing </Option>
-                        <Option value="SCULPTURE"> Sculpture </Option>
-                        <Option value="PRINT"> Print </Option>
-                        <Option value="COLLAGE"> Collage </Option>
-                        <Option value="DIGITAL ART"> Digital Art </Option>
-                      </Select>
-                    </div>
-                    <span id="clear-btn" onClick={() => this.props.artistClearQuery()}> Clear Filters </span>
-                </Panel>
-              </Collapse>
-              </Col>
-              <Col xs={24} sm={24} md={16} lg={18} xl={18} xxl={18} className="col-artist">
-                {
-                  isNotEmpty ?
-                    artists.map(artist => (
-                      <Card
-                        loading={isFetching}
-                        hoverable
-                        size="small"
-                        key={artist._id}
-                        className="artist-card"
-                        onClick={() => this.props.history.push(`/artists/${artist._id}`)}
-                      >
-                        <Row type="flex" justify="start" className="avatar-container">
-                          <Col {...colProps(artist)} className="info" >
-                            <Link to={`/artists/${artist._id}`}>
-                              {artist.image ? <Avatar src={artist.image.publicURL} size={60} />
-                              : <Avatar size={60} style={{ fontSize: '40px', color: 'white', backgroundColor: '#CA0000' }}>{artist.firstName.charAt(0).toUpperCase()}</Avatar>}  
-                            </Link>
-                            <div className="brief-info">
-                              <span id="name"> {artist.firstName} {artist.lastName}</span><br />
-                              {loc(artist.location) ? <span id="location"><Icon type="environment" theme="filled" /> {loc(artist.location)} </span> : ''}<br />
-                              {artist.rating ? <Rate disabled defaultValue={artist.rating} style={{ color: '#CA0000'}} /> : ''}
+        <div className="products-container artists-container">
+          <Breadcrumb className="paths">
+            <Breadcrumb.Item><Link to="/"><Icon type="home" /></Link></Breadcrumb.Item>
+            <Breadcrumb.Item><Link to="/artists"> Artists </Link></Breadcrumb.Item>
+          </Breadcrumb>
+          <Search className="search" placeholder="ex. John" onSearch={name => this.props.handleQueryName(name)} onChange={this.searchChange} value={this.state.search} allowClear enterButton />
+          <Row className="content">
+            <Col xs={24} sm={24} md={8} lg={6} xl={6} xxl={6} className="col-filters">
+              <div className="rating">
+                <span id="rate"> Rating </span>
+                <Rate allowClear value={query.rate || 0} onChange={(rate) => this.props.artistQueryRate(rate)} />
+              </div>
+              <div className="location">
+                <span id="province"> Province/Area </span>
+                <Select size="small" showSearch defaultValue={formatProvince} onSelect={this.handleProvinceChange}>
+                  {filteredProvinces.map(p => <Option key={p.name} value={p.name}> {p.name} </Option>)}
+                </Select>
+                <span id="city"> City/Town </span>
+                <Select size="small" showSearch defaultValue={query.city} onSelect={this.handleCityChange}>
+                  {filteredCities.map(c => <Option key={`${c.name}${c.province}`} value={`${c.name}+${c.province}`}> {c.name} ({c.province}) </Option>)}
+                </Select>
+              </div>
+              <div className="category">
+                <span id="artform"> Art Category </span>
+                <Select size="small" defaultValue={query.artform} onSelect={(value) => this.props.artistQueryArtType(value)} >
+                  <Option value="ANY"> Any </Option>
+                  <Option value="PAINTING"> Painting </Option>
+                  <Option value="PHOTOGRAPHY"> Photography </Option>
+                  <Option value="DRAWING"> Drawing </Option>
+                  <Option value="SCULPTURE"> Sculpture </Option>
+                  <Option value="PRINT"> Print </Option>
+                  <Option value="DIGITAL ART"> Digital Art </Option>
+                </Select>
+              </div>
+              <span id="clear-btn" onClick={() => this.props.artistClearQuery()}> Clear Filters </span>
+            </Col>
+            <Col xs={24} sm={24} md={8} lg={6} xl={6} xxl={6} className="col-filters-mobile">
+              <Collapse
+                bordered={false}
+                defaultActiveKey={['1']}
+                expandIconPosition="right"
+                accordion
+                className="collapse-mobile"
+                expandIcon={({ isActive }) => isActive ? <Icon type="minus" /> : <Icon type="plus" /> }
+              >
+                <Panel header="Filters" key="1">
+                  <div className="rating">
+                    <span id="rate"> Rating </span>
+                    <Rate allowClear value={query.rate || 0} onChange={(rate) => this.props.artistQueryRate(rate)} />
+                  </div>
+                  <div className="location">
+                    <span id="region"> Region </span>
+                    <Select size="small" onSelect={this.handleRegionChange} defaultValue={query.region} >
+                      {regions.map(r => <Option key={r.key} value={r.key}> {r.long} ({r.name}) </Option>)}
+                    </Select>
+                    <span id="province"> Province/Area </span>
+                    <Select size="small" showSearch defaultValue={formatProvince} onSelect={this.handleProvinceChange}>
+                      {filteredProvinces.map(p => <Option key={p.name} value={p.name}> {p.name} </Option>)}
+                    </Select>
+                    <span id="city"> City/Town </span>
+                    <Select size="small" showSearch defaultValue={query.city} onSelect={this.handleCityChange}>
+                      {filteredCities.map(c => <Option key={`${c.name}${c.province}`} value={`${c.name}+${c.province}`}> {c.name} ({c.province}) </Option>)}
+                    </Select>
+                  </div>
+                  <div className="category">
+                    <span id="artform"> Art Category </span>
+                    <Select size="small" defaultValue={query.artform} onSelect={(value) => this.props.artistQueryArtType(value)} >
+                      <Option value="ANY"> Any </Option>
+                      <Option value="PAINTING"> Painting </Option>
+                      <Option value="PHOTOGRAPHY"> Photography </Option>
+                      <Option value="DRAWING"> Drawing </Option>
+                      <Option value="SCULPTURE"> Sculpture </Option>
+                      <Option value="PRINT"> Print </Option>
+                      <Option value="COLLAGE"> Collage </Option>
+                      <Option value="DIGITAL ART"> Digital Art </Option>
+                    </Select>
+                  </div>
+                  <span id="clear-btn" onClick={() => this.props.artistClearQuery()}> Clear Filters </span>
+              </Panel>
+            </Collapse>
+            </Col>
+            <Col xs={24} sm={24} md={16} lg={18} xl={18} xxl={18} className="col-artist">
+              {
+                isNotEmpty ?
+                  artists.map(artist => (
+                    <Card
+                      loading={isFetching}
+                      hoverable
+                      size="small"
+                      key={artist._id}
+                      className="artist-card"
+                      onClick={() => this.props.history.push(`/artists/${artist._id}`)}
+                    >
+                      <Row type="flex" justify="start" className="avatar-container">
+                        <Col {...colProps(artist)} className="info" >
+                          <Link to={`/artists/${artist._id}`}>
+                            {artist.image ? <Avatar src={artist.image.publicURL} size={60} />
+                            : <Avatar size={60} style={{ fontSize: '40px', color: 'white', backgroundColor: '#CA0000' }}>{artist.firstName.charAt(0).toUpperCase()}</Avatar>}  
+                          </Link>
+                          <div className="brief-info">
+                            <span id="name"> {artist.firstName} {artist.lastName}</span><br />
+                            {loc(artist.location) ? <span id="location"><Icon type="environment" theme="filled" /> {loc(artist.location)} </span> : ''}<br />
+                            {artist.rating ? <Rate disabled defaultValue={artist.rating} style={{ color: '#CA0000'}} /> : ''}
                           </div>
-                          </Col>
-                          {
-                            artist.artworks.length !== 0 ?
-                              <Col xs={24} sm={12} md={10} xl={12} className="artwork-panel">
-                                {artist.artworks.map(i => <div key={i._id} className="arts" style={{ background: `url(${i.images[0].publicURL})` }}/>)}
-                              </Col>
-                            :
-                              <Col xs={24} md={8} xl={5} className="no-data">
-                                <Text type="secondary" disabled id="no-data-text"> No artworks for sale </Text>
-                              </Col>
-                          }
-                        </Row>
-                      </Card>))
-                  : <Empty />
-                }
-              </Col>
-            </Row>
-            <Pagination
-              current={page}
-              total={total}
-              pageSize={limit}
-              // hideOnSinglePage
-              className="paginate"
-              pageSizeOptions={['12', '24', '36', '48']}
-              showSizeChanger
-              onChange={p => this.props.handleQueryPage(p)}
-              onShowSizeChange={(_, size) => size !== limit ? this.props.handleQueryLimit(size) : null}
-            />
-          </div>
-        }
+                        </Col>
+                        {
+                          artist.artworks.length !== 0 ?
+                            <Col xs={24} sm={12} md={10} xl={12} className="artwork-panel">
+                              {artist.artworks.map(i => <div key={i._id} className="arts" style={{ background: `url(${i.images[0].publicURL})` }}/>)}
+                            </Col>
+                          :
+                            <Col xs={24} md={8} xl={5} className="no-data">
+                              <Text type="secondary" disabled id="no-data-text"> No artworks for sale </Text>
+                            </Col>
+                        }
+                      </Row>
+                    </Card>))
+                : <Empty />
+              }
+            </Col>
+          </Row>
+          <Pagination
+            current={page}
+            total={total}
+            pageSize={limit}
+            // hideOnSinglePage
+            className="paginate"
+            pageSizeOptions={['12', '24', '36', '48']}
+            showSizeChanger
+            onChange={p => this.props.handleQueryPage(p)}
+            onShowSizeChange={(_, size) => size !== limit ? this.props.handleQueryLimit(size) : null}
+          />
+        </div>
       </div>
     );
   }

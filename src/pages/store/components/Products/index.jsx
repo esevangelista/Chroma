@@ -333,10 +333,8 @@ class Products extends Component {
     const { total, page, limit } = this.props.pagination;
     return (
       <div>
-        {
-          isFetching ? <Spin className="loader" indicator={antIcon} style={{ position: 'absolute', top: '50%', left: '50%' }} /> :
           <div className="products-main-container">
-            <div className="products-container">
+            <div className="products-container this">
               <Breadcrumb className="breadcrumb">
                 <Breadcrumb.Item><Link to="/my-store/overview"><Icon type="shop" /></Link></Breadcrumb.Item>
                 <Breadcrumb.Item><Link to="/my-store/products"> My Artworks </Link></Breadcrumb.Item>
@@ -364,7 +362,6 @@ class Products extends Component {
                       <Collapse
                         bordered={false}
                         expandIconPosition="right"
-                        accordion
                         className="collapse-inner"
                         expandIcon={({ isActive }) => <Icon type="caret-down" rotate={isActive ? 180 : 0} />}
                       >
@@ -559,8 +556,7 @@ class Products extends Component {
             >
               <ListArtwork isUpdate />
             </Drawer>
-          </div>
-        }
+        </div>
       </div>
     );
   }
