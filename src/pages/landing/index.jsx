@@ -35,7 +35,32 @@ const data = [
   },
 ];
 
-
+const dataMobile = [
+  {
+    title: 'Print',
+    attachment: '/landing/printocean-mobile.jpg',
+  },
+  {
+    title: 'Painting',
+    attachment: '/landing/colors-mobile.jpg',
+  },
+  {
+    title: 'Drawing',
+    attachment: '/landing/draw-mobile.jpg',
+  },
+  {
+    title: 'Sculpture',
+    attachment: '/landing/juliet-mobile.jpg',
+  },
+  {
+    title: 'Photography',
+    attachment: '/landing/natgeo-mobile.jpg',
+  },
+  {
+    title: 'Digital Art',
+    attachment: '/landing/retro-mobile.jpg',
+  },
+];
 class Landing extends Component {
   render() {
     return (
@@ -105,7 +130,7 @@ class Landing extends Component {
           </Row>
           <Row type="flex" justify="space-between" className="categories">
             {
-              data.map(item => (
+              dataMobile.map(item => (
                 <Col key={item.title} xs={24} sm={12} md={8} lg={8} xl={4} onClick={() => this.props.handleQueryType(item.title.toUpperCase())}>
                   <Link to="/artworks">
                     <div className="container">
