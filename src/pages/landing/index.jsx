@@ -38,27 +38,33 @@ const { Content } = Layout;
 const dataMobile = [
   {
     title: 'Print',
-    attachment: '/landing/printocean-mobile.jpg',
+    // attachment: '/landing/printocean-mobile.jpg',
+    attachment: 'https://storage.cloud.google.com/chroma190/landing/printocean-mobile.jpg',
   },
   {
     title: 'Painting',
-    attachment: '/landing/colors-mobile.jpg',
+    // attachment: '/landing/colors-mobile.jpg',
+    attachment: 'https://storage.cloud.google.com/chroma190/landing/colors-mobile.jpg',
   },
   {
     title: 'Drawing',
-    attachment: '/landing/draw-mobile.jpg',
+    // attachment: '/landing/draw-mobile.jpg',
+    attachment: 'https://storage.cloud.google.com/chroma190/landing/draw-mobile.jpg',
   },
   {
     title: 'Sculpture',
-    attachment: '/landing/juliet-mobile.jpg',
+    // attachment: '/landing/juliet-mobile.jpg',
+    attachment: 'https://storage.cloud.google.com/chroma190/landing/juliet-mobile.jpg',
   },
   {
     title: 'Photography',
-    attachment: '/landing/natgeo-mobile.jpg',
+    // attachment: '/landing/natgeo-mobile.jpg',
+    attachment: 'https://storage.cloud.google.com/chroma190/landing/natgeo-mobile.jpg',
   },
   {
     title: 'Digital Art',
-    attachment: '/landing/retro-mobile.jpg',
+    // attachment: '/landing/retro-mobile.jpg',
+    attachment: 'https://storage.cloud.google.com/chroma190/landing/retro-mobile.jpg',
   },
 ];
 class Landing extends Component {
