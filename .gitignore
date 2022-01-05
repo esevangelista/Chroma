@@ -14,4 +14,7 @@ node_modules/
 
 src/services/cloud-storage/keyfile.json
 
-build
+build/
+
+# misc
+.DS_Store
