@@ -10,5 +10,8 @@ node_modules/
 .eslintcache
 # dotenv environment variables file
 .env
+.env.production
+
+src/services/cloud-storage/keyfile.json
 
 build

@@ -17,8 +17,7 @@ const options = {
   // socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
 };
 
-// const db = mongoose.createConnection(config.db.uri, options);
-const db = mongoose.createConnection(config.db.test, options);
+const db = mongoose.createConnection(config.db.uri, options);
 
 // eslint-disable-next-line no-console
 db.on('error', err => console.log(err));

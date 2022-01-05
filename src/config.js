@@ -2,14 +2,13 @@ require('dotenv').config();
 
 module.exports = {
   urls: {
-    client: 'https://artbychroma.com' || 'http://localhost:3000',
+    client: process.env.CLIENT_URL,
   },
   db: {
-    uri: process.env.MONGODB_URI || 'mongodb://localhost:27017/chroma',
-    test: 'mongodb://localhost:27017/chroma',
+    uri: process.env.MONGODB_URI,
   },
   app: {
-    port: process.env.PORT || 3001,
+    port: process.env.PORT,
   },
   zxcvbnOptions: {
     minimumAllowedScore: 3,

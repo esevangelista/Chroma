@@ -10,6 +10,8 @@ import db from './db';
 import router from './router';
 import { updateOverdueTransactions } from './utils/overdueChecker';
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(cors());
@@ -37,8 +39,11 @@ app.use('/api', router);
 cron.schedule('0 0 19 * 0-7', () => {
   updateOverdueTransactions();
 });
-app.use('/', express.static(path.join(__dirname, '../build')));
-app.use(favicon(path.join(__dirname, '../build', 'chroma.ico')));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.join(__dirname, '../build')));
+  app.use(favicon(path.join(__dirname, '../build', 'chroma.ico')));
+}
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
