@@ -1,0 +1,20 @@
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+# Optional eslint cache
+.eslintcache
+# dotenv environment variables file
+.env
+.env.production
+
+src/services/cloud-storage/keyfile.json
+
+build/
+
+# misc
+.DS_Store
