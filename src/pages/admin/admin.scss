@@ -1,0 +1,25 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.admin-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .anticon-loading {
+    color: $white;
+    font-size: 32px;
+  }
+}
+
+.admin-login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100vh;
+  background: url('/landing/sis.jpg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}

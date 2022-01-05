@@ -1,0 +1,124 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.ant-popover {
+  .ant-popover-inner {
+    .ant-popover-inner-content {
+      .ant-popover-buttons {
+        .ant-btn-sm {
+          &:hover, &:active, &:focus {
+            border-color: $chroma-red;
+            color: $chroma-red;
+          }
+        }
+        .ant-btn-primary {
+          &:hover, &:active, &:focus {
+            border-color: $chroma-red;
+            background: $chroma-red;
+            color: $white;
+          }     
+        }
+      }
+    }
+  }
+}
+.preview {
+  width: 90% !important;
+  .ant-modal-content {
+    .ant-modal-body {
+      background: transparent;
+      padding: 16px 16px 16px 16px;
+    }
+  }
+}
+@include for-desktop-up {
+  .preview {
+    width: 60% !important;
+    .ant-modal-content {
+      padding-top: 16px;
+    }
+  }
+}
+.pending-container {
+  text-align: center;
+  .head {
+    #label-summary {
+      color: $gray-8;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Sailec-Light';
+    }
+  }
+  .timeline {
+    text-align: left;
+    margin: 16px 0;
+    .ant-timeline-item {
+      .ant-timeline-item-content {
+        #view-link {
+          color: $chroma-red;
+          text-decoration: underline;
+        }
+        .btn-track {
+          margin-top: 16px;
+          background: $chroma-red;
+          border-color: $chroma-red;
+        }
+      }
+    }
+  }
+  .whatsnext {
+    text-align: left;
+  }
+  .reserved-upload {
+    .ant-upload, .ant-select, .ant-input {
+      margin: 8px 0 12px 0;
+    }
+    .ant-select {
+      width: 100%;
+      .ant-select-selection {
+        &:hover, &:active, &:focus {
+          border-color: $dead-grey;
+          box-shadow: 0 0 0 2px rgba(232, 232, 232, 0.2)
+        }
+      }
+    }
+    .ant-input:focus {
+      box-shadow: 0 0 0 2px rgba(232, 232, 232, 0.2)
+    }
+  }
+  .upload-container {
+    margin: 16px 0;
+    text-align: left;    
+    .ant-upload .ant-upload {
+      .check {
+        padding-left: 8px;
+        color: $success;
+      }
+      button {
+        padding-left: 4px;
+        &:hover, &:focus, &:active {
+          color: $chroma-red;
+          border-color: $chroma-red;
+        }
+      }
+    }
+
+    #btn-submit {
+      margin: 8px 0;
+      border-color: $chroma-red;
+      background: $chroma-red;
+    }
+  }
+  #btn-cancel {
+    margin-top: 32px;
+    border-color: $chroma-red;
+    color: $chroma-red;
+    font-size: 14px;
+    background: transparent;
+    &:hover, &:active, &:focus {
+      border-color: $chroma-red;
+      background: $chroma-red;
+      color: $white;
+    }
+  }
+}

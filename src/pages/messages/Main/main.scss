@@ -1,0 +1,107 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.messages-container {
+  // padding: 16px 16px;
+  // margin: 16px 0;
+  min-height: 100vh;
+  @include for-tablet-landscape-up {
+    min-height: 0;
+  }
+  .msg-row {
+    .col-users {
+      .messages-header {
+        width: 100%;
+        margin-bottom: 16px;
+        padding: 16px;
+        @include for-tablet-landscape-up {
+          padding: 24px;
+        }
+        @include for-big-desktop-up {
+          padding: 48px;
+        }
+        #label {
+          color: $gray-8;
+          font-size: 24px;
+          font-family: 'Sailec-Regular';
+          font-weight: 600;
+          float: left;
+        }
+        #new-icn {
+          cursor: pointer;
+          float: right;
+          font-size: 18px;
+          margin-top: 8px;
+          color: $gray-8;
+        }
+      }
+      .msgs-list {
+        padding: 0 16px;
+        @include for-tablet-landscape-up {
+          max-height: 100vh - 17.72853185595568vh;
+          overflow-y: auto;
+          padding: unset;
+        }
+        @include for-big-desktop-up {
+          max-height: 100vh - 24.37673130193906vh;
+          overflow-y: auto;
+          padding: unset;
+        }
+        .ant-spin-nested-loading {
+          .ant-spin-container {
+            .ant-list-items {
+              .ant-list-item {
+                cursor: pointer;
+                @include for-tablet-landscape-up {
+                  padding-left: 24px;
+                }
+                @include for-big-desktop-up {
+                  padding-left: 48px
+                }
+                .ant-list-item-meta {
+                  cursor: pointer;
+                  .ant-list-item-meta-content {
+                    .ant-list-item-meta-description, .ant-list-item-meta-title {
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      max-width: 200px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .ant-skeleton {
+        padding: 0 16px;
+        @include for-tablet-landscape-up {
+          padding: 0 24px;
+        }
+        @include for-big-desktop-up {
+          padding: 0 48px;
+        }
+      }
+    }
+    .web {
+      display: none;
+      @include for-tablet-landscape-up {
+        display: block;
+        border-left: 1px solid $dead-grey;
+        overflow-y: auto;
+        height: 100vh - 11.0803324099723vh;
+        .ant-result {
+          .ant-result-title {
+            color: $gray-8;
+          }
+          .ant-result-icon {
+            i {
+              color: $chroma-red;
+            }
+          }
+        }
+      }
+    }
+  }
+}

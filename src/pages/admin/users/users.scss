@@ -1,0 +1,173 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.users-content {
+  .filters {
+    margin: 24px 0;
+    .ant-col {
+      #main-label {
+        font-size: 24px;
+      }
+      .acc-type {
+        width: 100% !important;
+      }
+      .ant-select {
+        width: 40%;
+      }
+      .ant-select-enabled {
+        .ant-select-focused .ant-select-selection, .ant-select-selection:focus, .ant-select-selection:active {
+          box-shadow: 0 0 0 2px rgba(202, 0, 0, 0.1);
+        }
+      }
+
+      .ant-input-group {
+        width: 100%;
+        display: flex;
+        .ant-input-search {
+          width: 100%;
+          .ant-input-wrapper {
+            .ant-input-group-addon {
+              width: unset;
+              .ant-btn {
+                background: $chroma-red;
+                border-color: $dead-grey;
+              }
+            }
+          }
+        }
+      }
+      a {
+        color: $chroma-red;
+        font-size: 16px;
+        font-family: 'Sailec-Light';
+        font-weight: 550;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .users-container {
+    .ant-table-wrapper {
+      margin-top: 32px;
+      .ant-spin-nested-loading {
+        .ant-spin {
+          .ant-spin-dot-spin {
+            .ant-spin-dot-item {
+              background: $chroma-red;
+            }
+          }
+        }
+        .ant-spin-container {
+          .ant-table {
+            .ant-table-content {
+              .ant-table-body {
+                table {
+                  .ant-table-thead tr {
+                    .ant-table-column-has-filters {
+                      .ant-table-filter-selected {
+                        color: $chroma-red;
+                      }
+                    }
+                    .ant-table-column-has-sorters, .ant-table-column-has-actions {
+                      &:hover {
+                        background: $dead-grey;
+                      }
+                      .ant-table-header-column {
+                        .ant-table-column-sorters {
+                          .ant-table-column-sorter {
+                            .on {
+                              color: $chroma-red;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  .ant-table-tbody {
+                    .ant-table-row {
+                      td {
+                        a {
+                          color: $chroma-red;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .ant-pagination {
+            .ant-pagination-options {
+              .ant-pagination-options-size-changer {
+                .ant-select-selection {
+                  &:hover, &:active, &:focus-within{
+                    border-color: $chroma-red;
+                  }
+                }
+              }
+            }
+            .ant-pagination-disabled {
+              a {
+                &:hover, &:active, &:focus {
+                  color: $gray-4 !important;
+                  }
+              }
+            }
+            .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+              // &:hover, &:focus {
+              //   border-color: $chroma-red;
+              // }
+              a {
+                &:hover {
+                  color: $chroma-red;
+                }
+              }
+              .ant-pagination-item-link {
+                // &:hover {
+                //   border-color: $pale-grey;
+                // }
+              }
+            }
+            .ant-pagination-item-active {
+              border-color: $chroma-red;
+              a {
+                color: $chroma-red;
+                &:hover, &:link, &:focus {
+                  color: $chroma-red;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.ant-dropdown {
+  .ant-table-filter-dropdown {
+    .ant-dropdown-menu {
+      .ant-dropdown-menu-item-selected {
+        background: $dead-grey;
+        color: $chroma-red;
+        .ant-radio-wrapper-checked {
+          .ant-radio-checked {
+            .ant-radio-inner {
+              border-color: $chroma-red;
+              &:after {
+                background-color: $chroma-red;
+              }
+            }
+            &:after {
+              border-color: $chroma-red;
+            }
+          }
+        }
+      }
+    }
+    .ant-table-filter-dropdown-btns {
+      a { color: $chroma-red; }
+    }
+  }
+}

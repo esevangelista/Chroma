@@ -1,0 +1,50 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+
+.seller-faq-get-started {
+  margin: 32px 0;
+  @include for-tablet-landscape-up {
+    padding: 0 32px;
+  }
+  @include for-desktop-up {
+    padding: 0 64px;
+  }
+  @include for-big-desktop-up {
+    padding: 0 120px;
+  }
+  .routes {
+    margin-bottom: 16px;
+    span {
+      .ant-breadcrumb-link a {
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+    }
+  }
+  #title {
+    color: $gray-8;
+  }
+  .section {
+    li {
+      margin-top: 8px;
+    }
+    .ant-row-flex {
+      background: $dead-grey;
+      .ant-col {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  #more-on {
+    a {
+      color: $chroma-red;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

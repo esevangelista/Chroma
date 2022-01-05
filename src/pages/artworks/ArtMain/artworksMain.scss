@@ -1,0 +1,98 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.art-main-container {
+  #btn-afx {
+    &:hover {
+      background: $chroma-red;
+      color: $white;
+    }
+  }
+  .ant-pagination {
+    float: right;
+    margin: 16px 0;
+    .ant-pagination-options {
+      .ant-pagination-options-size-changer {
+        .ant-select-selection {
+          &:hover, &:active, &:focus-within{
+            border-color: $chroma-red;
+          }
+        }
+      }
+    }
+    .ant-pagination-disabled {
+      a {
+        &:hover, &:active, &:focus {
+          color: $gray-4 !important;
+          }
+      }
+    }
+    .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+      &:hover, &:focus {
+        border-color: $chroma-red;
+      }
+      a {
+        &:hover {
+          color: $chroma-red;
+        }
+      }
+      .ant-pagination-item-link {
+        &:hover {
+          border-color: $pale-grey;
+        }
+      }
+    }
+    .ant-pagination-item-active {
+      border-color: $chroma-red;
+      a {
+        color: $chroma-red;
+        &:hover, &:link, &:focus {
+          color: $chroma-red;
+        }
+      }
+    }
+  }
+  .this {
+    .ant-spin-spinning {
+      position: absolute !important;
+      left: 0 !important;
+    }
+  }
+  .art-container {
+    .breadcrumb {
+      margin-bottom: 8px;
+      span {
+        .ant-breadcrumb-link a {
+          &:hover {
+            color: $chroma-red;
+          }
+        }
+      }
+    }
+    .filter-content {
+      .col-items {
+        .ant-empty {
+          margin-top: 12px;
+        }
+        .artworks {
+          .artwork {
+            .bottom-div {
+              .actions {
+                .ant-btn {
+                  border: none;
+                  height: 0;
+                  font-size: 18px;
+                  line-height: 0;
+                  border-radius: 0;
+                  &:hover, &:active, &:link, &:focus {
+                    color: inherit;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

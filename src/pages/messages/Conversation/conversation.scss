@@ -1,0 +1,189 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+@import 'src/styles/variables';
+
+.conversation {
+  min-height: 100vh;
+  .ant-skeleton {
+    margin-top: 24px;
+  }
+  .convo-container {
+  
+    .convo-header {
+      padding: 16px 16px;
+      position: fixed;
+      z-index: 100;
+      width: 100%;
+      top: 80px;
+      border-top: 1px solid $dead-grey;
+      border-bottom: 1px solid $dead-grey;
+      margin: 0 (20 - $site-padding);
+      @include for-tablet-portrait-down {
+        margin: 0 (40 - $site-padding);
+      }
+      @include for-phone-only {
+        margin: 0 (70 - $site-padding);
+      }
+      @include for-tablet-landscape-up {
+        margin: 0 0;
+      }
+    }
+    .convo-content {
+      margin-top: 75px;
+      margin-bottom: 24px;
+      .has-messages {
+        .grp-msgs {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          margin: 16px 0;
+          #time-label {
+            margin-top: 16px;
+            font-size: 14px
+          }
+          .msg-me {
+            width: 60%;
+            float: right;
+            margin: 4px 0;
+            div {
+              float: right;
+              display: inline-grid;
+              text-align: left;
+              background: $chroma-red;
+              box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
+              padding: 12px;
+              border-radius: 10px;
+              #msg {
+                color: $white;
+              }
+            }
+          }
+          .for-me {
+            width: 60%;
+            float: left;
+            margin: 4px 0;
+            div {
+              text-align: left;
+              background: $dead-grey;
+              float: left;
+              display: inline-grid;
+              box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
+              padding: 12px;
+              border-radius: 10px;
+              #msg {
+                color: $gray-8;
+              }
+            }
+          }
+          .loader {
+            width: 60%;
+            float: right;
+            margin-top: 8px;
+            div {
+              text-align: right;
+              float: right;
+              background: $chroma-red;
+              border-radius: 50%;
+              i {
+                padding: 8px;
+                color: $white;
+                font-weight: 600;
+              }
+            }
+          }
+          &:last-of-type {
+            margin-bottom: 14vh !important;
+          }
+        }
+      }
+      .no-msg {
+
+      }
+    }
+    
+    .convo-action {
+      border-top: 1px solid $dead-grey;
+      position:fixed;
+      z-index: 100;
+      bottom: 0;
+      background: $dead-grey;
+      width: 100%;
+      min-height: 8vh;
+      padding: 8px ($site-padding - 20);
+      margin: 0 (20 - $site-padding);
+      @include for-tablet-portrait-down {
+        margin: 0 (40 - $site-padding);
+        padding: 8px ($site-padding - 40);
+      }
+      @include for-phone-only {
+        margin: 0 (70 - $site-padding);
+        padding: 8px ($site-padding - 70);
+
+      }
+      @include for-tablet-landscape-up {
+        margin: 0 0;
+        padding: 8px 8px;
+
+      }
+      .ant-row-flex {
+        .ant-col {
+          #txtarea-mobile {
+            min-height: 6vh !important;
+            border-radius: 8px;
+            &:focus {
+              box-shadow: 0px 0px 0px  1px rgba(0, 0, 0, 0.07);
+            }
+            @include for-tablet-landscape-up {
+              display: none;
+            }
+          }
+          #txtarea {
+            display: none;
+            @include for-tablet-landscape-up {
+              border-radius: 8px;
+              height: auto;
+              display: inline-block;
+              &:focus {
+                box-shadow: 0px 0px 0px  1px rgba(0, 0, 0, 0.07);
+              }
+            }
+          }
+        }
+        .file-upload {
+          background: $white;
+          padding: 8px;
+          border-radius: 8px;
+          #ppclip {
+            color: $chroma-red;
+          }
+          #trash {
+            margin-left: 12px;
+            color: $gray-8;
+            font-size: 14px;
+            cursor: pointer;
+          }
+          .ant-typography {
+            color: $orange-8;
+          }
+        }
+        .upl {
+          text-align: center;
+          .ant-upload {
+            i {
+              font-size: 1.3rem;
+              color: $chroma-red;
+            }
+          }
+        }
+        .send-btn {
+          text-align: center;
+          #send {
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: $chroma-red;
+          }
+        }
+      }
+    }
+  }
+}

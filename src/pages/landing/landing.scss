@@ -1,0 +1,431 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+@import 'src/styles/variables';
+
+.hero-extension {
+  padding: 48px 80px 48px 80px;
+  text-align: center;
+  background-color: $white;
+  h3 {
+    font-family: 'Sailec-Bold';
+    font-weight: bolder;
+    font-size: 32px;
+  }
+  p {
+    padding: 0 16px;
+  }
+  img {
+    height:48px;
+  }
+}
+
+.landingg {
+  min-height: 0 !important;
+  margin-top: 32px;
+  padding: 0 ($site-padding - 20);
+
+  @include for-tablet-portrait-down {
+    padding: 0 ($site-padding - 40);
+  }
+
+  @include for-phone-only {
+    padding: 0 ($site-padding - 70);
+  }
+
+  @include for-tablet-landscape-up {
+    padding: 0 $site-padding;
+  }
+  a.more {
+    color: $chroma-red;
+    font-size: 20px;
+    font-weight: 600;
+    float: right;
+    margin-top: 16px;
+    margin-right: 16px;
+    text-decoration: underline;
+  }
+
+  .category-label {
+    font-family: 'Sailec-Bold';
+    font-weight: bolder;
+    font-size: 32px;
+  }
+  .categories {
+    margin: 32px 0;
+    a, a:visited, a:hover, a:active {
+      text-decoration: none !important;
+    }
+    a:hover {
+      .container {
+        transform: translateY(2px);
+      }
+      p {
+        color: $chroma-red;
+      }
+    }
+    .container {
+
+      box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.15);
+      background: $white;
+      padding: 16px 16px;
+      margin: 16px 16px;
+      img {
+        width:100%;
+        height: 100%;
+      }
+      p {
+        margin: 8px 0 0 0;
+        font-size: 18px;
+        font-family: 'Sailer-Regular';
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: black;
+      }
+    }
+  }
+}
+
+.banner {
+  background-color: $white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+  background-image: url('/landing/bike.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  h3 {
+    font-family: 'Sailec-Bold';
+    font-weight: bolder;
+    font-size: 56px;
+  }
+  .ant-btn {
+    &.btn-mor {
+      display: block;
+      margin: 0 auto;
+      background-color: $chroma-red;
+      border-color: $chroma-red;
+      color: $white;
+      // font-weight: 900;
+      font-family: 'Sailec-Light';
+      letter-spacing: 1px;
+      text-align: center;
+      opacity: 0.9;
+      font-size: 20px;
+      border-radius: 2px;
+    }
+  }
+}
+
+@include for-phone-only {
+  .ant-row {
+    &.hero-extension {
+      display: none;
+    }
+  }
+  .landing-content {
+    .categories, a.more {
+      display:none;
+    }
+    .category-label {
+      font-size: 24px;
+    }
+  }
+  .banner {
+    background-image: url('/landing/bike-mobile.jpg');
+    margin-top: 56px;
+    h3 {
+      font-size: 24px;
+    }
+    .ant-btn {
+      &.btn-mor {
+        font-size: 16px;
+      }
+    }
+  }
+  a.more-mobile {
+    background: none;
+    color: $chroma-red;
+    font-size: 16px;
+    font-weight: 900;
+    float: right;
+    text-decoration: underline;
+    padding: 0 8px 0 0;
+    margin-bottom: 16px;
+  }
+  .active-on-mobile {
+
+    &.cat-slider {
+      a, a:visited, a:hover, a:active {
+        text-decoration: none !important;
+      }
+      :active, :link, :hover {
+        p {
+          color: $chroma-red;
+        }
+      }
+      box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.15);
+      margin: 16px 8px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+      
+      p {
+        color: $black;
+        font-size: 16px;
+        margin: 8px 0 0 0;
+        font-weight: 500;
+        font-family: 'Sailec-Regular';
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  .ant-carousel {
+    .slick-dots {
+      text-align: left !important;
+      position: unset !important;
+      li {
+        button {
+          height: 12px !important;
+          width: 12px !important;
+          border-radius: 50% !important;
+          border: 1px solid !important;
+          border-color: $chroma-red !important;
+          opacity: 0.8 !important;
+        }
+        &.slick-active {
+          button { 
+            background-color: $chroma-red !important;
+          }
+        }
+      }
+    }
+  }
+  .active-on-mobile {
+    background: $white;
+    padding: 32px 24px;
+    overflow:hidden;
+    h3 {
+      font-family: 'Sailec-Bold';
+      font-weight: bolder;
+      font-size: 24px;
+    }
+    p {
+      font-size: 14px;
+    }
+    img {
+      height: 32px;
+    }
+  }
+  
+}
+
+@include for-tablet-portrait-down {
+  .ant-row {
+    &.hero-extension {
+      display: none;
+    }
+  }
+
+  .landing-content {
+    .categories, a.more {
+      display:none;
+    }
+  }
+  .banner {
+    margin-top: 64px;
+    h3 {
+      font-size: 32px;
+    }
+  }
+  a.more-mobile {
+    background: none;
+    color: $chroma-red;
+    font-size: 16px;
+    font-weight: 900;
+    float: right;
+    text-decoration: underline;
+    padding: 0 8px 0 0;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+  .active-on-mobile {
+    &.cat-slider {
+      a, a:visited, a:hover, a:active {
+        text-decoration: none !important;
+      }
+      :active, :link, :hover{
+        p {
+          color: $chroma-red;
+        }
+      }
+      box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.15);
+      margin: 16px 8px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+      p {
+        color: $black;
+        font-size: 24px;
+        margin: 8px 0 0 0;
+        font-weight: 500;
+        font-family: 'Sailec-Regular';
+        letter-spacing: 1px;
+      }
+    }
+  }
+  .ant-carousel {
+    .slick-dots {
+      text-align: left !important;
+      position: unset !important;
+      height: 12px !important;
+      li {
+        button {
+          margin-top: 8px;
+          height: 12px !important;
+          width: 12px !important;
+          border-radius: 50% !important;
+          border: 1px solid !important;
+          border-color: $chroma-red !important;
+          opacity: 0.8 !important;
+        }
+        &.slick-active {
+          button { 
+            background-color: $chroma-red !important;
+          }
+        }
+      }
+    }
+  }
+  .active-on-mobile {
+    background: $white;
+    padding: 32px 48px;
+    overflow:hidden;
+
+    h3 {
+      font-family: 'Sailec-Bold';
+      font-weight: bolder;
+      font-size: 32px;
+    }
+    p {
+      font-size: 16px;
+    }
+    img {
+      height: 48px;
+    }
+  }
+}
+
+@include for-tablet-portrait-up {
+  .hero-extension{
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 10px;
+    }
+    img {
+      height: 24px;
+    }
+  }
+  .ant-carousel, a.more-mobile{
+    display: none !important;
+  }
+  .banner {
+    h3 {
+      font-size: 36px;
+    }
+  }
+  .landing-content {
+    &.categories {
+      .cards {
+        min-height: 100px;
+        padding: 8px 8px;
+          .ant-card-body {
+            padding: 4px 4px;
+          }
+        .img-wrapper {
+          content: '';
+          height: 81px;
+        }
+        .ant-card-meta-title {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@include for-tablet-landscape-up {
+  .hero-extension{
+    h3 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 14px;
+    }
+    img {
+      height: 32px;
+    }
+  }
+  .ant-carousel, a.more-mobile {
+    display: none !important;
+  }
+  .banner {
+    h3 {
+      font-size: 48px;
+    }
+    .ant-btn {
+      &.btn-mor {
+        height: 48px;
+        width: 144px;
+      }
+    }
+  }
+}
+
+@include for-desktop-up {
+  .hero-extension{
+    h3 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 16px;
+    }
+    img {
+      height: 48px;
+    }
+  }
+  .ant-carousel, a.more-mobile {
+    display: none !important;
+  }
+  .banner {
+    h3 {
+      font-size: 56px;
+    }
+    .ant-btn {
+      &.btn-mor {
+        height: 48px;
+        width: 144px;
+      }
+    }
+  }
+}
+
+@include for-big-desktop-up {
+  .banner {
+    h3 {
+      font-size: 64px;
+    }
+    .ant-btn {
+      &.btn-mor {
+        height: 48px;
+        width: 144px;
+      }
+    }
+  }
+}

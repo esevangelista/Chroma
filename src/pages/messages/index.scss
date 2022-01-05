@@ -1,0 +1,21 @@
+
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.web-view {
+  display: none;
+}
+@include for-tablet-landscape-up {
+  .mobile {
+    display: none;
+    padding: 0 0;
+  }
+  .web-view {
+    display: block;
+    padding: 0 0 !important;
+    overflow: hidden;
+    min-height: 100vh - 11.0803324099723vh !important;
+  }
+}
+
+

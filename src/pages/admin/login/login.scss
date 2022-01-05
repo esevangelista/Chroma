@@ -1,0 +1,39 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.admin-login-container {
+  text-align: center;
+  box-shadow: 0px 5px 4px 0px rgba(0,0,0,0.15);
+  background-color: rgba(248, 248, 248, 0.85);
+  width: 70%;
+  padding: 16px 24px;
+  @include for-phone-only {
+    width: 90%;
+    padding: 16px 24px;
+  }
+  @include for-tablet-landscape-up {
+    width: 40%;
+  }
+  @include for-big-desktop-up {
+    width: 35%;
+  }
+  a {
+    .logo {
+      max-width: 250px;
+      margin-top: 16px;
+    }
+  }
+  .form {
+    margin: 32px 0 24px 0;
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+    .login-button {
+      background: $chroma-red;
+      border-color: $chroma-red;
+      font-size: 16px;
+      font-family: 'Sailec-Regular';
+    }
+  }
+}
+

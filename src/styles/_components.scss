@@ -1,0 +1,35 @@
+@import "src/styles/colors";
+@import "src/styles/devices";
+
+.container {
+  padding: 0 2rem;
+  width: 1440px;
+  margin: 0 auto;
+  max-width: 100%;
+  @include for-tablet-portrait-up {
+    padding: 0 3rem;
+  }
+}
+
+.badge {
+  font-family: 'Sailec-Bold', sans-serif;
+  font-size: .725rem;
+  background: $grey;
+  color: $white;
+  padding: 0.25rem 0.75rem;
+  float: left;
+  text-align: left;
+
+  &.error {
+    background: $error;
+  }
+  &.warning {
+    background: $warning;
+  }
+  &.success {
+    background: $success;
+  }
+  &.info {
+    background: $aqwire-blue;
+  }
+}

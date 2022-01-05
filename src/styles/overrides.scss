@@ -1,0 +1,549 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+$gray-shadow: rgba(217, 217, 217, 0.25);
+$transparent-white: rgba(255, 255, 255, 0.2);
+
+// a {
+//   color: $aqwire-blue;
+// }
+
+// Layouts
+.ant-layout {
+  background: transparent;
+}
+
+// Menu
+.ant-menu {
+  font-family: 'Sailec-Regular', sans-serif;
+}
+.ant-spin-spinning {
+  .anticon-loading {
+    color: $chroma-red;
+  }
+  .ant-spin-dot-spin {
+    .ant-spin-dot-item {
+      background: $chroma-red;
+    }
+  }
+}
+// -- Sidebar
+.ant-input {
+  border-radius: 0;
+}
+
+.ant-layout-sider {
+  background: $white;
+  height: 100%;
+  left: 0;
+  max-width: 200px;
+  padding-top: 32px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 11;
+
+  @include for-tablet-landscape-up {
+    background: transparent;
+    padding-top: 0;
+    position: relative;
+  }
+
+  .ant-layout-sider-zero-width-trigger {
+    background: $white;
+    border: 2px solid $aqwire-blue;
+    border-radius: 0;
+    box-shadow: 0 5px 4px 0 $gray-shadow;
+    color: $aqwire-blue;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    position: fixed;
+    right: 24px;
+    top: 16px;
+    transition: all .3s ease-in-out;
+    width: 40px;
+
+    @include for-tablet-landscape-up {
+      display: none;
+    }
+  }
+
+  &.collapsed-true {
+
+    .ant-layout-sider-zero-width-trigger {
+      background: $transparent-white;
+      border-color: $white;
+      border-radius: 50px;
+      box-shadow: none;
+      color: $white;
+
+      .anticon-bars:before {
+        content: "\E633";
+      }
+    }
+  }
+
+  .ant-menu-inline .ant-menu-item {
+    height: 32px;
+    line-height: 24px;
+    overflow: visible;
+
+    > a {
+      font-size: 16px;
+      color: $bluish-grey;
+      white-space: normal;
+    }
+
+    &.divider {
+      display: block;
+      height: 64px;
+      padding-top: 24px;
+
+      > .item {
+        font-size: 16px;
+        color: $bluish-grey;
+        border-top: 1px solid $pale-grey;
+        margin-top: 8px;
+        padding-top: 8px;
+      }
+    }
+
+    @include for-tablet-landscape-up {
+      &.divider {
+        display: none;
+      }
+    }
+  }
+
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    font-family: 'Sailec-Bold', sans-serif;
+    background: transparent;
+    border-right: none;
+    > a {
+      color: $black;
+    }
+  }
+
+  .ant-menu-inline .ant-menu-item:after {
+    border-right: none;
+  }
+}
+
+.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left { 
+  border-right: none;
+}
+
+// Forms
+.ant-form, .ant-input {
+  font-family: 'Sailec-Regular', sans-serif;
+}
+
+.ant-input-lg, .ant-btn-lg {
+  height: 48px;
+}
+
+.ant-input-group-addon:first-child {
+  border-radius: 0;
+}
+
+.ant-form-item {
+  font-family: 'Sailec-Regular', sans-serif;
+  margin-bottom: 32px;  
+
+  // --- ReactPasswordStrength
+  .ReactPasswordStrength {
+    border: none;
+    
+    &.is-strength-0 {
+      .ReactPasswordStrength-strength-bar {
+        background: $error;
+      }
+      .ReactPasswordStrength-strength-desc { 
+        color: $error;
+      }
+    }
+
+    &.is-strength-1 {
+      .ReactPasswordStrength-strength-bar {
+        background: $warning;
+      }
+      .ReactPasswordStrength-strength-desc { 
+        color: $warning;
+      }
+    }
+
+    &.is-strength-2 {
+      .ReactPasswordStrength-strength-bar {
+        background: $aqwire-blue;
+      }
+      .ReactPasswordStrength-strength-desc { 
+        color: $aqwire-blue;
+      }
+    }
+
+    &.is-strength-3 {
+      .ReactPasswordStrength-strength-bar {
+        background: $success;
+      }
+      .ReactPasswordStrength-strength-desc { 
+        color: $success;
+      }
+    }
+
+    .ReactPasswordStrength-strength-bar {
+      height: 4px;
+    }
+    .ReactPasswordStrength-strength-desc {
+      top: 48px;
+      font-family: 'Sailec-Bold', sans-serif;
+      font-style: normal;
+      font-size: 14px;
+      padding-top: 8px;
+      padding-right: 0px;
+    }
+  }
+
+
+  .extra-caption p {
+    color: $silver;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    margin-bottom: 0;
+    margin-top: 8px;
+    text-align: right;
+
+    > a {
+      font-family: 'Sailec-Bold', sans-serif;
+    }
+ 
+    > i {
+      color: $aqwire-blue;
+    }
+
+  }
+}
+
+.ant-form-item-with-help {
+  margin-bottom: 24px;
+}
+
+.ant-form .ant-btn {
+  font-size: 12px;
+  max-width: 100%;
+
+  @include for-tablet-portrait-up {
+    font-size: 16px;
+  }
+}
+
+.ant-btn {
+  // -- States
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 4px 0 rgba(217, 217, 217, 0.25);
+  }
+  
+  // -- Sizes
+  &.ant-btn-sm {
+    font-size: 12px;
+  }
+  
+  &.btn-block {
+    max-width: 100%;
+  }
+}
+
+// Buttons
+.ant-btn-primary {
+  line-height: 22px;
+  border-radius: 0;
+  background-color: $aqwire-blue;
+  border-color: $aqwire-blue;
+  font-family: Sailec-Bold, serif;
+  max-width: 160px;
+  width: 100%;
+
+  &.ant-btn-background-ghost {
+    border-color: $aqwire-blue;
+    color: $aqwire-blue;
+  }
+
+  &.disabled, &[disabled]{
+    background-color: #f5f5f5!important;
+    border-color: #d9d9d9!important;
+  }
+}
+
+.ant-btn-success {
+  background-color: $success;
+  border-color: $success;
+  &:hover {
+    background-color: #16e270;
+    border-color: $success;
+  }
+}
+
+// Cards
+.card-heading {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-family: 'Sailec-Bold', sans-serif;
+  display: flex;
+  .coming-soon {
+    float: none;
+    margin-left: 8px; 
+  }
+}
+
+.card-sub-heading {
+  font-size: 12px;
+  margin-bottom: 16px;
+  color: $grey;
+  line-height: 1.5;
+
+  @include for-tablet-portrait-up {
+    font-size: 14px;
+  }
+}
+
+.card-divider {
+  height: 1px;
+  width: 100%;
+  border: 0;
+  margin: 24px 0;
+  border-top: 1px solid $pale-grey;
+}
+
+.ant-card {
+  font-family: 'Sailec-Regular', sans-serif;
+  border-radius: 0px;
+  padding-top: 32px;
+  margin-bottom: 32px;
+  min-height: 200px;
+  box-shadow: 0 5px 4px 0 rgba(217, 217, 217, 0.25);
+  
+  &.ant-card-bordered {
+    border: 1px solid #d3edf1;
+  }
+  
+  .ant-card-head-title {
+    font-size: 14px;
+    font-family: 'Sailec-Bold', sans-serif;
+    white-space: normal;
+  }
+  
+  .ant-card-extra {
+    width: 30%;
+  }
+
+  .instructions {
+    font-size: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+
+// Tabs
+.ant-tabs-nav .ant-tabs-tab {
+  font-family: 'Sailec-Regular', sans-serif;
+  font-size: 14px;
+  color: $grey;
+
+  &:hover{
+    color: $aqwire-blue;
+  }
+}
+
+.ant-tabs-large .ant-tabs-tab {
+    padding: 16px;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active {
+  font-family: 'Sailec-Bold', sans-serif;
+  color: $black;
+ }
+
+.ant-tabs-ink-bar {
+  background-color: $aqwire-blue;
+}
+
+// Checkbox
+.ant-checkbox-wrapper {
+  font-family: 'Sailec-Regular', sans-serif;
+}
+
+// Label 
+.ant-form label {
+  line-height: 1.5;
+}
+
+.ant-form-item-label label {
+  font-family: 'Sailec-Regular', sans-serif;
+  color: $gray-9;
+}
+// -- Error Label
+.has-error .ant-form-explain, .has-error .ant-form-split{
+  font-family: 'Sailec-Regular', sans-serif;
+  padding-top: 8px;
+}
+
+// Progress Bar
+.ant-progress-success-bg, .ant-progress-bg {
+  background-color: $success;
+}
+
+.ant-progress-text {
+  font-size: 12px;
+  font-family: 'Sailec-Regular', sans-serif;
+}
+
+// Dropdown 
+.ant-select-lg {
+  .ant-select-selection--single {
+    border-radius: 0;
+    height: 48px;
+  }
+
+  .ant-select-selection__rendered {
+    line-height: 44px;
+  }
+}
+
+// Alert
+.ant-alert {
+  font-family: 'Sailec-Regular', sans-serif;
+  color: $gray-8;
+  .ant-alert-message {
+    color: $gray-8;
+    font-weight: 600;
+  }
+  &.alert-fixed {
+    align-items: center;
+    animation: bounce 1s ease forwards;
+    color: $white;
+    display: flex;
+    font-family: 'Sailec-Bold', sans-serif;
+    min-height: 48px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+
+    @include for-tablet-portrait-up {
+      font-size: 16px;
+      line-height: 48px;
+    }
+
+    .ant-alert-icon {
+      color: $white;
+      top: 23px;
+      margin-right: 24px;
+    }
+  }
+  &.ant-alert-error {
+    // background: $error;
+  }
+  &.ant-alert-warning {
+    background: $warning;
+  }
+  &.ant-alert-success {
+    background: $success;
+  }
+  &.ant-alert-info {
+    background: $aqwire-blue;
+  }
+  .ant-alert-close-icon .anticon-cross {
+    color: $white;
+    margin-top: 16px;
+  }
+}
+
+.form-alert-container {
+  margin-bottom: 24px;
+  .ant-alert {
+    padding: 16px;
+    font-family: 'Sailec-Bold', sans-serif;
+  }
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+    40% {
+        -webkit-transform: translateY(-0px);
+        transform: translateY(-0px)
+    }
+    60% {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px)
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0)
+    }
+    40% {
+        -webkit-transform: translateY(-0px);
+        -ms-transform: translateY(-0px);
+        transform: translateY(-0px)
+    }
+    60% {
+        -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px)
+    }
+}
+
+.bounce {
+    -webkit-animation-name: bounce;
+    animation-name: bounce
+}
+
+// Modal
+.ant-modal {
+  font-family: 'Sailec-Regular', sans-serif;
+  .ant-modal-header {
+    padding: 24px;
+  }
+  .ant-modal-title {
+    font-family: 'Sailec-Bold', sans-serif;
+  }
+  .ant-modal-content {
+    border-radius: 0;
+  }
+}
+
+.ant-modal-mask {
+    background-color: rgba(42, 60, 80, 0.8);
+}
+
+.vertical-center-modal {
+  text-align: center;
+}
+
+.vertical-center-modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 0;
+}
+
+.vertical-center-modal .ant-modal {
+  display: inline-block;
+  vertical-align: middle;
+  top: 0;
+  text-align: left;
+  img {
+    width: 100%;
+  }
+}
+

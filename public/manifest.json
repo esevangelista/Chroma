@@ -1,0 +1,31 @@
+{
+  "short_name": "Chroma",
+  "name": "Chroma",
+  "description": "Online Marketplace for Artworks",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+     "src": "chroma16.png",
+     "sizes": "16x16",
+     "type": "image/png"
+    },
+    {
+     "src": "chroma32.png",
+     "sizes": "32x32",
+     "type": "image/png"
+    },
+    {
+     "src": "chroma192.png",
+     "sizes": "192x192",
+     "type": "image/png"
+    },
+    {
+     "src": "chroma512.png",
+     "sizes": "512x512",
+     "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.update-container {
+  .ant-menu-horizontal {
+    margin-top:16px;
+    .ant-menu-item-selected {
+      color: $chroma-red !important;
+      border-bottom: 2px solid $chroma-red !important;
+    }
+    .ant-menu-item:hover {
+      color: $chroma-red !important;
+      border-bottom: 2px solid $chroma-red !important;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import 'src/styles/variables';
+@import 'src/styles/devices';
+
+// .auth-pages {
+//   .aqwire-logo {
+//     margin-bottom: 40px;
+//     text-align: center;
+//     img {
+//       width: 180px;
+//     }
+//   }
+// }
+
+// stickyfooter
+html,
+body,
+#root,
+.mvp.ant-layout {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main.site-main {
+  flex: 1 0 auto;
+}
+
+.site-footer.site-footer {
+  flex-shrink: 0;
+}
+// end stickyfooter
+.site-content.site.content {
+  min-height: 100vh;
+}
+.site-header.site-header,
+.site-content.site-content,
+.site-footer.site-footer {
+  padding: 0 ($site-padding - 20);
+
+  @include for-tablet-portrait-down {
+    padding: 0 ($site-padding - 40);
+  }
+
+  @include for-phone-only {
+    padding: 0 ($site-padding - 70);
+  }
+
+  @include for-tablet-landscape-up {
+    padding: 0 $site-padding;
+  }
+}

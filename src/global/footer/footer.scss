@@ -1,0 +1,87 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  background: $dead-grey;
+}
+
+.extra-mask {
+  text-align: center;
+  .extra {
+    display: inline-flex;
+    margin-bottom: 8px;
+    font-size: 10px;
+
+    h4 {
+      font-family: 'Sailec-Light';
+      text-align: center;
+      margin: 0 8px;
+    }
+    a {
+      color: $black;
+      p {
+        font-family: 'Sailec-Light';
+        margin: 0 8px;
+      }
+      :hover {
+        color: $chroma-red;
+      }
+    }
+
+  }
+}
+
+
+.footer-container {
+  margin-top: 32px;
+  text-align: center;
+  width: 100%;
+  .col-container {
+    // left: 10%;
+  }
+
+  a {
+    color: $black;
+    p {
+      font-size: 12px;
+      font-family: 'Sailec-Regular';
+    }
+  }
+  a:hover {
+    color: $chroma-red;
+  }
+  h3 {
+    font-size: 16px;
+    font-family: 'Sailec-Bold';
+    font-weight: 600;
+  }
+}
+
+// @include for-tablet-portrait-up {
+//   .footer-container {
+//     width: 80%;   
+//   }
+// }
+
+@include for-desktop-up {
+  .extra-mask {
+    .extra {
+      font-size: 14px;
+    }
+  }
+  .footer-container {
+    .col-container {
+    }
+    a {
+      p {
+        font-size: 16px;
+        margin-bottom: 0.5rem;
+      }
+    }
+    h3 {
+      font-size: 18px;
+    }
+  }
+}

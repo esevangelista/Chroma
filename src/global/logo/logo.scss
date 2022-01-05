@@ -1,0 +1,11 @@
+@import "src/styles/devices";
+
+.logo {
+  max-width: 200px;
+}
+
+  @include for-phone-only {
+    .logo {
+      max-width: 130px;
+    }
+  }

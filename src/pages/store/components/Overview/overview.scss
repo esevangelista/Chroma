@@ -1,0 +1,56 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.overview-content {
+  padding: 16px 16px;
+  margin-top: 16px;
+  @include for-tablet-landscape-up {
+    padding: 32px 32px;
+  }
+  @include for-big-desktop-up {
+    padding: 32px 80px;
+  }
+  #title {
+    color: $gray-8;
+    font-weight: 700;
+    font-family: 'Sailec-Regular';
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .container {
+    padding-top: 16px;
+    .ant-card-body {
+      .ant-spin-spinning {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        .ant-spin-dot-spin {
+          .ant-spin-dot-item {
+            background-color: $chroma-red;
+          }
+        }
+      }
+      #label {
+        font-size: 24px;
+        color: $chroma-red;
+        font-weight: 600;
+        font-family: 'Sailec-Regular';
+      }
+      .ant-row-flex {
+        margin-top: 16px;
+        .ant-col {
+          margin-top: 8px;
+          .ant-rate {
+            color: $chroma-red;
+            margin-right: 8px;
+          }
+          .ant-statistic {
+            .ant-statistic-content {
+              color: $gray-8;
+            }
+          }
+        }
+      }
+    }
+  }
+}

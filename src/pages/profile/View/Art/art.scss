@@ -1,0 +1,162 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.profile-art {
+  padding: 16px 16px;
+  .profile-art-content {
+    .filterr {
+      text-align: center;
+      font-family: 'Sailec-Light';
+      margin-bottom: 16px;
+      #page-info {
+        font-family: 'Sailec-Light';
+        color: $gray-8;
+        margin: 8px 0;
+      }
+      .art-collapse-filter {
+        text-align: left;
+        background: $dead-grey;
+        margin-bottom: 8px;
+        .ant-collapse-content {
+          .ant-collapse-content-box {
+            .radiotype {
+              .ant-radio-wrapper {
+                display: block;
+              }
+              .ant-radio-wrapper-checked {
+                .ant-radio-checked {
+                  .ant-radio-inner {
+                    border-color: $chroma-red;
+                    &::after {
+                      background-color: $chroma-red;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .col-items {
+      .ant-pagination {
+        float: right;
+        .ant-pagination-options {
+          .ant-pagination-options-size-changer {
+            .ant-select-selection {
+              &:hover, &:active, &:focus-within{
+                border-color: $chroma-red;
+              }
+            }
+          }
+        }
+        .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+          &:hover, &:focus {
+            border-color: $chroma-red;
+          }
+          a {
+            &:hover {
+              color: $chroma-red;
+            }
+          }
+          .ant-pagination-item-link {
+            &:hover {
+              border-color: $pale-grey;
+            }
+          }
+        }
+        .ant-pagination-item-active {
+          border-color: $chroma-red;
+          a {
+            color: $chroma-red;
+            &:hover, &:link, &:focus {
+              color: $chroma-red;
+            }
+          }
+        }
+  }
+      .artworks {
+        padding: 0 16px;
+        .ant-list-item {
+          padding: 0 0;
+          border: none;
+          display: inline-flex;
+        }
+        .art {
+          padding-top: 0;
+          .ant-card-body {
+            text-align: left;
+          }
+          .bottom-div {
+            .actions {
+              .ant-btn {
+                border: none;
+                height: 0;
+                font-size: 18px;
+                line-height: 0;
+                border-radius: 0;
+                &:hover, &:active, &:link, &:focus {
+                  color: inherit;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include for-phone-only {
+  .profile-art {
+    #page-info {
+      display: none;
+    }
+    .profile-art-content {
+      .filterr {
+        display: none;
+      }
+    }
+  }
+}
+@include for-tablet-portrait-down {
+  .profile-art {
+    .profile-art-content {
+      .filterr {
+        display: block;
+      }
+      .ant-list-items {
+        column-count: 1;
+      }
+    }
+  }
+}
+@include for-tablet-portrait-up {
+  .profile-art {
+    .profile-art-content {
+      .ant-list-items {
+        column-count: 2;
+      }
+    }
+  }
+}
+
+@include for-tablet-landscape-up {
+  .profile-art {
+    .profile-art-content {
+      .ant-list-items {
+        column-count: 3;
+      }
+    }
+  }
+}
+
+@include for-big-desktop-up {
+  .profile-art {
+    .profile-art-content {
+      .ant-list-items {
+        column-count: 5;
+      }
+    }
+  }
+}

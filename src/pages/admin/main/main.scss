@@ -1,0 +1,54 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.admin-users-content {
+  .ant-layout-sider {
+    background: $black;
+    height: 100vh;
+    .ant-layout-sider-children {
+      .ant-menu {
+        background: $black;
+        margin: 60px 0 32px 0;
+        .ant-menu-item-selected {
+          background: $dead-grey;
+          display: flex;
+          a {
+            color: $chroma-red !important;
+            display: flex;
+            align-items: center;
+          }
+        }
+        .ant-menu-item {
+          color: $white;
+        }
+      }
+    }
+  }
+  .ant-layout {
+    .ant-layout-header {
+      display: flex;
+      align-items: center;
+      background: $dead-grey;
+      .trigger {
+        margin-right: 16px;
+      }
+      a {
+        display: flex;
+        align-items: center;
+        color: $gray-8;
+      }
+      .logout {
+        color: $gray-8;
+        position: absolute;
+        right: 50px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .ant-layout-content {
+      background: $white;
+      padding: 16px 50px;
+    }
+  }
+}

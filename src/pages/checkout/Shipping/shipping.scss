@@ -1,0 +1,130 @@
+@import 'src/styles/colors';
+@import 'src/styles/devices';
+
+.shipping-container {
+  .checkout-steps {
+    @include for-phone-only {
+      display: none !important;
+    }
+    margin-top: 32px;
+    width: 75%;
+    .ant-steps-item {
+      .ant-steps-item-icon {
+        display: none;
+      }
+    }
+    .ant-steps-item-process {
+      .ant-steps-item-content {
+        .ant-steps-item-title {
+          color: $chroma-red;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .ship-info {
+    margin: 32px 0;
+    padding: 0 16px;
+    #ship-label {
+      font-family: 'Sailec-Light';
+      font-weight: 700;
+      color: $gray-8;
+      font-size: 24px;
+    }
+    #label {
+      font-family: 'Sailec-Bold';
+      font-size: 14px;
+      color: $gray-8;
+    }
+    .proceed-button {
+      max-width: 100%;
+      width: 100%;
+      background: $chroma-red;
+      border-color: $chroma-red;
+      font-size: 16px;
+      margin: 16px 0;
+    }
+    .acc-form {
+      margin-top: 16px;
+      #label {
+        font-family: 'Sailec-Bold';
+        font-size: 16px;
+        color: $gray-8;
+        font-weight: 600;
+      }
+      .del-add {
+        padding: 16px 16px;
+        @include for-phone-only {
+          .loc-container {
+            display: block;
+          }
+        }
+        @include for-tablet-portrait-down {
+          .loc-container {
+            display: block;
+          }
+        }
+        .ant-form-item {
+          .ant-form-item-label label {
+            color: $gray-8;
+            font-family: 'Sailec-Light';
+            font-size: 16px;
+          }
+          margin-bottom: 8px;
+        }
+        .form-button {
+          max-width: 100%;
+          width: 100%;
+          background: $chroma-red;
+          border-color: $chroma-red;
+          font-size: 16px;
+          margin: 16px 0;
+        }
+      }
+    }
+  }
+  .cart-content {
+    border: 1px solid $dead-grey;
+    margin: 32px 0 0 0;
+    padding: 16px 16px;
+    #cart-sum {
+      color: $gray-8;
+      font-family: 'Sailec-Light';
+      font-weight: 600;
+    }
+    .item-container {
+      margin-top: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid $dead-grey;
+      .thumbnail {
+        width: 100%;
+      }
+      .info {
+        font-size: 14px;
+        padding: 0 8px;
+        @include for-tablet-portrait-up {
+          padding: 0 0;
+        }
+      }
+
+    }
+    .checkout-container {
+      width: 100%;
+      display: inline-block;
+      font-size: 14px;
+      .checkout-info {
+        .label {
+          float: left;
+          margin-bottom: 2px;
+        }
+        .value {
+          float: right;
+          margin-bottom: 2px;
+        }
+        .grandtotal {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
