@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, Drawer, Button, Badge } from 'antd';
+import { Layout, Menu, Drawer, Button, Badge } from 'antd';
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import Logo from '../../global/logo';
 import './header.css';
@@ -42,6 +43,7 @@ class Header extends Component {
   render() {
     const { unread } = this.props;
     const { profile, isGettingSession } = this.props.user;
+
     return (
       <Layout.Header className="site-header">
         <Menu mode="horizontal" >
@@ -88,7 +90,7 @@ class Header extends Component {
           </Menu.Item>
 
           { !isGettingSession && profile && profile._id ?
-            <SubMenu className="show-on-desktop submenu-user" key="6" title={<Icon type="user" />}>
+            <SubMenu className="show-on-desktop submenu-user" key="6" title={<UserOutlined />}>
               <Menu.ItemGroup key="user-group">
                 <Menu.Item key="6.1"><Link to="/account/profile"> Profile </Link></Menu.Item>
                 <Menu.Item key="6.2"><Link to="/wishlist"> Wishlist </Link></Menu.Item>
@@ -103,7 +105,7 @@ class Header extends Component {
           <Menu.Item key="7" className="hide-on-desktop icons">
             <Badge dot={!!unread}>
               <Button id="btn-drawer" onClick={this.showDrawer} >
-                <Icon type="menu-unfold" />
+                <MenuOutlined />
               </Button>
             </Badge>
             <Drawer

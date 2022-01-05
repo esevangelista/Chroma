@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Form, Icon, Input, Button, Alert, Modal } from 'antd';
+import { Form, Input, Button, Alert, Modal } from 'antd';
+import {
+  MessageOutlined,
+  UserOutlined,
+  ShoppingOutlined,
+  BellOutlined,
+  MailOutlined,
+  LockOutlined,
+} from '@ant-design/icons';
 import { loginRequest, alertClear, handleLoginModal } from '../../ducks/auth';
 import RegForm from '../register/';
 import './login.css';
@@ -20,6 +28,7 @@ class LoginForm extends Component {
     this.hideRegister = this.hideRegister.bind(this);
     this.clearAlert = this.clearAlert.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.getDisplayedIcon = this.getDisplayedIcon.bind(this);
   }
 
   clearAlert = () => {
@@ -49,17 +58,26 @@ class LoginForm extends Component {
     });
   }
 
+  getDisplayedIcon = () => {
+    const { isCartIcon, isBellIcon, isMsgIcon } = this.props;
+    if (isCartIcon) return <ShoppingOutlined onClick={this.toggleModal} className="popover" id="btn-user" />;
+    else if (isBellIcon) return <BellOutlined onClick={this.toggleModal} className="popover" id="btn-user"/>;
+    else if (isMsgIcon) return <MessageOutlined onClick={this.toggleModal} className="popover" id="btn-user"/>;
+    else return <UserOutlined onClick={this.toggleModal} className="popover" id="btn-user" />;
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
     const { isFetching, error, isMobile, visible, isCartIcon, isBellIcon, isMsgIcon } = this.props;
     const { registerIsVisible } = this.state;
+
     return (
       <div>
         {
           isMobile ?
             <a onClick={this.toggleModal}> Join/Login </a>
           :
-            <Button onClick={this.toggleModal} className="popover" id="btn-user"><Icon type={isCartIcon ? "shopping" : isBellIcon ? "bell" : isMsgIcon ? 'message' : "user"} /></Button>
+            this.getDisplayedIcon()
         }
         <Modal
           className="login-modal"
@@ -93,7 +111,7 @@ class LoginForm extends Component {
                     ],
                   })(
                     <Input
-                      prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                      prefix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                       placeholder="Email Address"
                     />,
                   )}
@@ -103,7 +121,7 @@ class LoginForm extends Component {
                     rules: [{ required: true, message: 'Password is missing.' }],
                   })(
                     <Input.Password
-                      prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                      prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                       type="password"
                       placeholder="Password"
                     />,

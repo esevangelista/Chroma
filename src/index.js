@@ -10,8 +10,6 @@ import App from './app';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
-const APP_ID = '60893392e15857';
-
 const app = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -27,13 +25,13 @@ ReactDOM.render(app, document.getElementById('root'));
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.register();
 
-CometChat.init(APP_ID).then(
+CometChat.init(process.env.REACT_APP_COMETCHAT_APP_ID).then(
   () => {
     /* eslint-disable-next-line no-console */
     console.log('CometChat: Initialization completed successfully');
     // You can now call login function.
   },
-  error => {
+  (error) => {
     /* eslint-disable-next-line no-console */
     console.log('Initialization failed with error:', error);
     // Check the reason for error and take appropriate action.

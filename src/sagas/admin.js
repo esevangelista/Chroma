@@ -1,5 +1,4 @@
-import { takeLatest } from 'redux-saga';
-import { call, put, select } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import qs from 'qs';
 import { postRequestService, getRequestService } from '../api/apiRequest';
 import {

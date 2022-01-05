@@ -1,6 +1,4 @@
-import { takeLatest } from 'redux-saga';
-import { call, put, select } from 'redux-saga/effects';
-// import { push } from 'react-router-redux';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import {
   UPDATE_CART_REQUEST,
   FETCH_CART_REQUEST,

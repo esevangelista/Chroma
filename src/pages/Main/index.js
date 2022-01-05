@@ -41,6 +41,7 @@ Main.propTypes = {
   checkUserSession: PropTypes.func.isRequired,
   isGettingSession: PropTypes.bool.isRequired,
 };
+
 const mapStateToProps = state => state.user;
 
 export default connect(mapStateToProps, { checkUserSession })(Main);
