@@ -3,6 +3,8 @@ import mongoosePaginate from 'mongoose-paginate';
 import uniqueValidator from 'mongoose-unique-validator';
 import validator from 'validator';
 import db from '../../db';
+import Cart from '../cart/model';
+import Wishlist from '../wishlist/model';
 
 const userSchema = new Schema({
   email: {
