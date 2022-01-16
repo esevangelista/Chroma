@@ -57,7 +57,6 @@ class Conversation extends Component {
     const { uid } = this.props.match.params;
     const { msg } = this.state;
     const { convo, convoWith } = this.props.chat;
-    const messageType = CometChat.MESSAGE_TYPE.TEXT;
     const receiverType = CometChat.RECEIVER_TYPE.USER;
     if (e.keyCode === 13 && !e.shiftKey && /\S/.test(e.target.value)) {
       e.preventDefault();
@@ -65,7 +64,7 @@ class Conversation extends Component {
       this.setState({ msg: '' });
       this.setState({ loading: true });
       try {
-        const textMessage = new CometChat.TextMessage(uid, m, messageType, receiverType);
+        const textMessage = new CometChat.TextMessage(uid, m, receiverType);
         await CometChat.sendMessage(textMessage);
         await this.props.fetchConvoRequest(convo, convoWith, uid);
       } catch (error) {
@@ -78,14 +77,13 @@ class Conversation extends Component {
     const { uid } = this.props.match.params;
     const { msg } = this.state;
     const { convo, convoWith } = this.props.chat;
-    const messageType = CometChat.MESSAGE_TYPE.TEXT;
     const receiverType = CometChat.RECEIVER_TYPE.USER;
     if (/\S/.test(msg)) {
       const m = msg;
       this.setState({ msg: '' });
       this.setState({ loading: true });
       try {
-        const textMessage = new CometChat.TextMessage(uid, m, messageType, receiverType);
+        const textMessage = new CometChat.TextMessage(uid, m, receiverType);
         await CometChat.sendMessage(textMessage);
         await this.props.fetchConvoRequest(convo, convoWith, uid);
       } catch (error) {
@@ -141,6 +139,8 @@ class Conversation extends Component {
       }),
     );
     const { _id } = this.props.profile;
+    console.log(convo, 'convo')
+    console.log(convoWith, 'with')
     return (
       <div className="conversation">
         {

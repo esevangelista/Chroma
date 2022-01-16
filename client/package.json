@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@cometchat-pro/chat": "^1.8.5",
+    "@cometchat-pro/chat": "3.0.6",
     "antd": "^3.20.7",
     "axios": "^0.18.0",
     "dotenv": "^6.0.0",

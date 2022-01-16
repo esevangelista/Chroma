@@ -18,7 +18,7 @@ import {
 import { alertDisplay } from '../ducks/feedback';
 import { postRequestService, putRequestService, ccRequest } from '../api/apiRequest';
 
-const apiKey = 'c1b0d0cdc1c30c162982192c0842b8470975e453';
+const apiKey = process.env.REACT_APP_COMETCHAT_AUTH_KEY;
 export function* loginFlow(action) {
   try {
     const response = yield call(postRequestService, '/login', action.data);
@@ -67,9 +67,22 @@ export function* logoutFlow() {
 export function* registerFlow(action) {
   try {
     const response = yield call(postRequestService, '/users', action.data);
-    const { success, message } = response.data;
+    const { success, message, user } = response.data;
     if (success) {
+      const cometChatUser = new CometChat.User(user.id);
+
+      cometChatUser.setName(user.username);
+
+      CometChat.createUser(user, process.env.REACT_APP_COMETCHAT_AUTH_KEY).then(
+        (ccUser) => {
+          console.log('comet chat user created', ccUser);
+        },
+        (error) => {
+          console.log('error', error);
+        },
+      )
       yield put(registerSuccess(response.data.message));
+
     } else {
       yield put(registerFailed(message));
     }
@@ -82,7 +95,7 @@ export function* registerFlow(action) {
 export function* confirmEmailFlow(action) {
   try {
     const response = yield call(putRequestService, `/verify-account/${action.data}`);
-    const { success, message, u } = response.data;
+    const { success, message } = response.data;
     if (success) {
       // const APP_ID = '60893392e15857';
       // const res = yield call(ccRequest, {
@@ -99,9 +112,9 @@ export function* confirmEmailFlow(action) {
       //   body: `{uid: ${u.id}, name: ${u.firstName}${u.lastName} }`,
       // });
       // if (res.status === 200) {
-        yield put(confirmEmailSuccess(message));
-        yield put(push('/'));
-        yield put(alertDisplay({ alertType: 'success', message }));
+      yield put(confirmEmailSuccess(message));
+      yield put(push('/'));
+      yield put(alertDisplay({ alertType: 'success', message }));
       // } else {
       //   yield put(confirmEmailFailed(message));
       //   yield put(push('/'));

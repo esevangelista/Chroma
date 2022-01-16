@@ -25,7 +25,8 @@ ReactDOM.render(app, document.getElementById('root'));
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.register();
 
-CometChat.init(process.env.REACT_APP_COMETCHAT_APP_ID).then(
+const appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion('us').build();
+CometChat.init(process.env.REACT_APP_COMETCHAT_APP_ID, appSetting).then(
   () => {
     /* eslint-disable-next-line no-console */
     console.log('CometChat: Initialization completed successfully');

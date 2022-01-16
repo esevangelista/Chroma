@@ -1,6 +1,8 @@
 import { all, call, put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
+import { CometChat } from '@cometchat-pro/chat';
+
 import {
   FETCH_UNREAD_COUNT_REQUEST,
   fetchUnreadCountSuccess,
@@ -14,8 +16,9 @@ import {
 } from '../ducks/chat';
 import { ccRequest } from '../api/apiRequest';
 
-const apiKey = 'c1b0d0cdc1c30c162982192c0842b8470975e453';
-const APP_ID = '60893392e15857';
+const apiKey = process.env.REACT_APP_COMETCHAT_REST_API_KEY;
+const APP_ID = process.env.REACT_APP_COMETCHAT_APP_ID;
+const chatRegion = 'us';
 export const getUserID = state => state.user.profile._id;
 
 const group = function (xs, key) {
@@ -39,10 +42,10 @@ export function* fetchUnreadCount() {
       ccRequest,
       {
         method: 'GET',
-        url: `https://api.cometchat.com/v1.8/users/${subjectUid}/messages`,
+        url: `https://${APP_ID}.api-${chatRegion}.cometchat.io/v3/messages`,
         qs: { unread: 'true', count: 'true' },
         headers: {
-          appId: APP_ID,
+          onBehalfOf: subjectUid,
           apikey: apiKey,
           'content-type': 'application/json',
           accept: 'application/json',
@@ -66,37 +69,21 @@ export function* fetchMsgs() {
       ccRequest,
       {
         method: 'GET',
-        url: `https://api.cometchat.com/v1.8/users/${subjectUid}/messages`,
+        url: `https://${APP_ID}.api-${chatRegion}.cometchat.io/v3/conversations`,
         headers: {
-          appid: APP_ID,
           apikey: apiKey,
+          onBehalfOf: subjectUid,
           'content-type': 'application/json',
           accept: 'application/json',
+        },
+        params: {
+          category: 'message',
+          hideDeleted: true,
         },
       },
     );
     const { data } = response.data;
-    const grouped = data.filter(d => d.category === 'message' && !d.deletedAt).length > 0 ? groupUser(data.filter(d => d.category === 'message' && !d.deletedAt), subjectUid) : [];
-    const res = yield all(Object.keys(grouped).map(g =>
-      call(
-        ccRequest,
-        {
-          method: 'GET',
-          url: `https://api.cometchat.com/v1.8/users/${subjectUid}/users/${g}/messages`,
-          headers: {
-            appid: APP_ID,
-            apikey: apiKey,
-            'content-type': 'application/json',
-            accept: 'application/json',
-          },
-        },
-      )));
-    const messages = [];
-    res.map(r => r.status === 200 ? messages.push(r.data.data.filter(d => d.category === 'message' && !d.deletedAt)) : null);
-    const sorted = messages.length > 0 ? messages.sort((a, b) => {
-      return parseInt(b[b.length - 1].id) - parseInt(a[a.length - 1].id);
-    }) : [];
-    if (response.status === 200) yield put(fetchMsgsSuccess(sorted));
+    if (response.status === 200) yield put(fetchMsgsSuccess(data));
     else yield put(fetchMsgsFailed('Something went wrong.'));
   } catch (err) {
     const { message } = err;
@@ -105,16 +92,16 @@ export function* fetchMsgs() {
 }
 
 export function* fetchConvo(action) {
+  const subjectUid = yield select(getUserID);
   try {
-    const subjectUid = yield select(getUserID);
     const res = yield call(
       ccRequest,
       {
         method: 'GET',
-        url: `https://api.cometchat.com/v1.8/users/${subjectUid}/users/${action.uid}`,
+        url: `https://${APP_ID}.api-${chatRegion}.cometchat.io/v3/users/${action.uid}/conversation`,
         headers: {
-          appid: APP_ID,
           apikey: apiKey,
+          onBehalfOf: subjectUid,
           'content-type': 'application/json',
           accept: 'application/json',
         },
@@ -125,25 +112,46 @@ export function* fetchConvo(action) {
         ccRequest,
         {
           method: 'GET',
-          url: `https://api.cometchat.com/v1.8/users/${subjectUid}/users/${action.uid}/messages`,
+          url: `https://${APP_ID}.api-${chatRegion}.cometchat.io/v3/messages`,
           headers: {
-            appid: APP_ID,
             apikey: apiKey,
+            onBehalfOf: subjectUid,
             'content-type': 'application/json',
             accept: 'application/json',
+          },
+          params: {
+            category: 'message',
+            hideDeleted: true,
+            conversationId: res.data.data.conversationId,
           },
         },
       );
       if (response.status === 200) {
         let convo = response.data.data;
-        convo = convo.filter(c => c.category === 'message' && !c.deletedAt);
         convo = groupBy(convo, (result => (moment.unix(result.sentAt)).startOf('day')));
-        yield put(fetchConvoSuccess(convo, res.data.data));
+        yield put(fetchConvoSuccess(convo, res.data.data.conversationWith));
       } else yield put(fetchConvoFailed(response.data.statusText));
     } else yield put(fetchConvoFailed('User not found.'));
   } catch (err) {
     const { message } = err;
-    yield put(fetchConvoFailed(message));
+    const userRequest = yield call(
+      ccRequest,
+      {
+        method: 'GET',
+        url: `https://${APP_ID}.api-${chatRegion}.cometchat.io/v3/users/${action.uid}`,
+        headers: {
+          apikey: apiKey,
+          onBehalfOf: subjectUid,
+          'content-type': 'application/json',
+          accept: 'application/json',
+        },
+      },
+    );
+    if (userRequest.status === 200) {
+      yield put(fetchConvoSuccess([], userRequest.data.data));
+    } else {
+      yield put(fetchConvoFailed(message));
+    }
   }
 }
 
