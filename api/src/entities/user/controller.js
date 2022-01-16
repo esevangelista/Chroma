@@ -154,15 +154,11 @@ export const addUser = async (req, res) => {
     const newUser = new User(req.body);
     newUser.confirmToken = confirmToken;
     await newUser.save();
-    const cart = new Cart({ ownedBy: newUser._id });
-    await cart.save();
-    const wishlist = new Wishlist({ ownedBy: newUser._id });
-    await wishlist.save();
-    sendConfirmYourAccountEmail(email, confirmToken, config.urls.client);
+    // sendConfirmYourAccountEmail(email, confirmToken, config.urls.client);
     delete newUser.password;
     return res
       .status(200)
-      .json({ success: true, message: 'Please check your email for instructions.' });
+      .json({ success: true, message: 'Please check your email for instructions.', user: newUser });
   } catch (err) {
     return res.json(new InternalServerError(err));
   }
